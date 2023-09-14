@@ -1,9 +1,9 @@
 {
   "name": "next-antd-scafflod",
   "version": "1.0.0",
-  "description": "A react ssr scafflod with ant-design based on Next.js.",
+  "description": "react + next.js",
   "main": "server.js",
-  "author": "luffyZh",
+  "author": "xink",
   "license": "MIT",
   "husky": {
     "hooks": {
