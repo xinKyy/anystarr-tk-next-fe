@@ -1,4 +1,65 @@
 
 .home_page{
   width: 100vw;
+  position: relative;
+  .home_bg{
+    background: url("../../imgs/home/home-bg.webp") no-repeat;
+    width: 100vw;
+    height: calc(100vw - 30vw);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .home_radius{
+      position: absolute;
+      background: url("../../imgs/home/home-raduis.webp") no-repeat;
+      width: 40vw;
+      height: 40vw;
+      z-index: 1;
+      background-size: cover;
+    }
+    .home_front{
+      position: absolute;
+      background: url("../../imgs/home/home-front.webp") no-repeat;
+      width: 65vw;
+      height: 65vw;
+      z-index: 2;
+      background-size: cover;
+    }
+    .home_line{
+      position: absolute;
+      background: url("../../imgs/home/home-line-icon.webp") no-repeat;
+      width: 50vw;
+      height: 50vw;
+      z-index: 3;
+      background-size: cover;
+    }
+  }
+  .home_qty_wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    .home_start_all_wrap{
+      display: inline;
+      border: .5px solid #ffffff;
+      border-radius: 30px;
+      padding: 15px 30px;
+      font-size: 14px;
+      color: #FFFFFF;
+      text-align: center;
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+
+    .coin_name_btn{
+      border: none;
+      background: linear-gradient(to right, #9D26F7, #314AF0);
+      font-size: 16px;
+      padding: 15px 45px;
+      font-weight: bold;
+    }
+  }
 }
