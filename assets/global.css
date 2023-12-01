@@ -4,5 +4,65 @@
 }
 body {
   font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
-  background-color: #f3f3f3;
+  background-color: #050811;
+}
+
+.container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #050811;
+  z-index: 999;
+}
+.logo-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 20px;
+  cursor: pointer;
+}
+.sys-name {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.logo {
+  width: 87px;
+  height: 42px;
+}
+.right-container {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.link_wallet{
+  background: url("../src/imgs/header/btn-bg.svg") no-repeat;
+  width: 76px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  line-height: 36px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+}
+
+.language-btn{
+  background: url("../src/imgs/header/global-icon.svg") no-repeat;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px;
+}
+
+.application-btn{
+  background: url("../src/imgs/header/application-icon.svg") no-repeat;
+  width: 24px;
+  height: 24px;
 }
