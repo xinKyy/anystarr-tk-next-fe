@@ -44,6 +44,27 @@ body {
   align-items: center;
 }
 
+.sub_page_title{
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #FFFFFF;
+  z-index: -1;
+}
+
+.back-icon{
+  background: url("../src/imgs/header/back_icon.webp") no-repeat;
+  width: 24.57px;
+  height: 15.57px;
+  margin-left: 20px;
+  background-size: cover;
+}
+
 .address_show_wrap{
   font-size: 12px;
   font-weight: 600;

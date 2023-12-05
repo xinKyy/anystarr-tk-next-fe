@@ -8,6 +8,7 @@ import {splitWalletAddress} from "@/utils/addressUtil";
 import {useSelector} from "react-redux";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {addToNumber, decrement, increment, reset, setWalletInfo} from "@/redux/actions/home";
+import {useRouter} from "next/router";
 const ChartComponents = dynamic(() => import('@/components/Home/chartComponents'), { ssr: false });
 
 const BuyCoinItem = ({max, min}) =>{
@@ -32,6 +33,11 @@ const Home = ( ) =>{
   const walletInfo = useSelector(state => state.home.walletInfo.walletInfo);
   const dispatchAction = useDispatchAction({ setWalletInfo });
 
+  const router = useRouter();
+
+  const toIncome = () =>{
+    router.push("/income");
+  };
 
   return <div className={styles.home_page}>
     <div className={styles.home_bg}>
@@ -122,7 +128,7 @@ const Home = ( ) =>{
     <div className={styles.home_bottom_wrap}>
       <div className={styles.wrap_title}>
         <div className={styles.mod_title}>分享</div>
-        <div className={styles.mod_des}>
+        <div onClick={toIncome} className={styles.mod_des}>
           收益详情 <RightOutlined />
         </div>
       </div>

@@ -10,11 +10,12 @@ import {splitWalletAddress} from "@/utils/addressUtil";
 import {useSelector} from "react-redux";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {setWalletInfo} from "@/redux/actions/home";
+import {useRouter} from "next/router";
 // Only holds serverRuntimeConfig and publicRuntimeConfig from next.config.js nothing else.
 const { publicRuntimeConfig: { staticFolder } } = getConfig();
 
 const Header = () => {
-
+  const router = useRouter();
   const walletInfo = useSelector(state => state.home.walletInfo.walletInfo);
   const dispatchAction = useDispatchAction({ setWalletInfo });
   const [open, setOpen] = useState(false);
@@ -50,26 +51,32 @@ const Header = () => {
   };
 
   return  <div id='header_bar' className='container'>
-    <Link href='/'>
-      <div className='logo-container'>
-        <img className='logo' alt='logo' src={logo.src} />
-      </div>
-    </Link>
-    <div className='right-container'>
-      {
-       walletInfo.address ?
-         <div className={"address_show_wrap"}>
-             { splitWalletAddress( walletInfo.address) }
-        </div> :
-         <div onClick={connectWallet} className={"link_wallet"}>
-             链接钱包
-         </div>
-      }
-      <div className='language-btn'></div>
-      {
-        walletInfo.address ?  <div onClick={()=>setOpen(true)} className='application-btn'></div> : null
-      }
-    </div>
+
+    {
+      router.asPath === "/" ?    <Link href='/'>
+        <div className='logo-container'>
+          <img className='logo' alt='logo' src={logo.src} />
+        </div>
+      </Link> : <div onClick={()=>router.push("/")} className={"back-icon"}></div>
+    }
+
+    {
+      router.asPath === "/" ? <div className='right-container'>
+        {
+          walletInfo.address ?
+            <div className={"address_show_wrap"}>
+              { splitWalletAddress( walletInfo.address) }
+            </div> :
+            <div onClick={connectWallet} className={"link_wallet"}>
+              链接钱包
+            </div>
+        }
+        <div className='language-btn'></div>
+        {
+          walletInfo.address ?  <div onClick={()=>setOpen(true)} className='application-btn'></div> : null
+        }
+      </div> : <div className={"sub_page_title"}>收益详情</div>
+    }
 
     <Drawer
       placement={"left"}
