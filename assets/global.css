@@ -5,7 +5,7 @@
 body {
   /*font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;*/
   font-family: Segoe UI, Segoe UI;
-  background-color: #050811;
+  background-color: #090B14;
 }
 
 .container {
@@ -15,7 +15,7 @@ body {
   top: 0;
   width: 100%;
   height: 60px;
-  background-color: #050811;
+  background-color: #090B14;
   z-index: 999;
 }
 .logo-container {
@@ -43,6 +43,15 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.address_show_wrap{
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  line-height: 36px;
+}
+
 .link_wallet{
   background: url("../src/imgs/header/btn-bg.svg") no-repeat;
   width: 76px;
@@ -67,4 +76,33 @@ body {
   background: url("../src/imgs/header/application-icon.svg") no-repeat;
   width: 24px;
   height: 24px;
+}
+
+.ant-drawer-body{
+  background: #030406;
+  font-weight: 400;
+  color: #FFFFFF;
+  font-size: 16px
+}
+
+.header-drawer-top-logo{
+  background: url("../src/imgs/header/home_drawer_logo.webp") no-repeat;
+  width: 151px;
+  height: 74px;
+  background-size: cover;
+  margin: 0 auto 70px 0;
+}
+
+.flex_div_wrap{
+  display: flex;
+  align-items: center;
+}
+
+.logout_icon{
+  background: url("../src/imgs/header/logout_icon.webp") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  margin-right: 15px;
+  margin-left: 10px;
 }

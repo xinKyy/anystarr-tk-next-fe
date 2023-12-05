@@ -1,8 +1,8 @@
-import { 
+import {
   INCREMENT,
   DECREMENT,
   RESET,
-  ADD_TO_NUMBER
+  ADD_TO_NUMBER, SET_WALLET_INFO
 } from '../../constants/ActionTypes';
 
 export function increment() {
@@ -26,6 +26,13 @@ export function reset() {
 export function addToNumber(payload) {
   return  {
     type: ADD_TO_NUMBER,
+    payload
+  };
+}
+
+export function setWalletInfo(payload) {
+  return  {
+    type: SET_WALLET_INFO,
     payload
   };
 }
