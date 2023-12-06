@@ -11,6 +11,7 @@ import {useSelector} from "react-redux";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {setWalletInfo} from "@/redux/actions/home";
 import {useRouter} from "next/router";
+import {t} from "i18next";
 // Only holds serverRuntimeConfig and publicRuntimeConfig from next.config.js nothing else.
 const { publicRuntimeConfig: { staticFolder } } = getConfig();
 
@@ -68,14 +69,14 @@ const Header = () => {
               { splitWalletAddress( walletInfo.address) }
             </div> :
             <div onClick={connectWallet} className={"link_wallet"}>
-              链接钱包
+              {t("t27")}
             </div>
         }
         <div className='language-btn'></div>
         {
           walletInfo.address ?  <div onClick={()=>setOpen(true)} className='application-btn'></div> : null
         }
-      </div> : <div className={"sub_page_title"}>收益详情</div>
+      </div> : <div className={"sub_page_title"}> {t("t19")}</div>
     }
 
     <Drawer
@@ -88,7 +89,7 @@ const Header = () => {
       <div className={"header-drawer-top-logo"}></div>
       <div className={"flex_div_wrap"}>
         <div className={"logout_icon"}></div>
-        <div onClick={logout}>退出</div>
+        <div onClick={logout}>{t("t28")}</div>
       </div>
     </Drawer>
   </div>;

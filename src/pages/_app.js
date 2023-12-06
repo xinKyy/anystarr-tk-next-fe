@@ -3,7 +3,7 @@ import { wrapper } from '../redux/store';
 import Layout from '../components/Layout';
 import 'antd/dist/antd.css';
 import '../../assets/global.css';
-
+import '../config/i18n';
 function App({ Component, pageProps }) {
   return (
     <>
