@@ -84,6 +84,11 @@ module.exports = withBundleAnalyzer({
     // Important: return the modified config
     return config;
   },
+  i18n: {
+    locales: ['en','en-SG','en-MY','en-ID','id-ID','en-PH','pt-BR','en-BR','ar-AE','en-AE','ar-EG','en-EG','ar-SA','en-SA','en-QA','ar-QA','ja-JP'],
+    defaultLocale: 'en',
+    localeDetection: true,
+  },
   serverRuntimeConfig: { // Will only be available on the server side
     rootDir: path.join(__dirname, './'),
     PORT: isDev ? 3006 : (process.env.PORT || 5999)

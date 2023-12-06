@@ -5,8 +5,8 @@ import zhCNTrans from "../../public/locales/zh-cn.json";
 import krTrans from "../../public/locales/kr-kr.json";
 import jpTrans from "../../public/locales/jp-jp.json";
 import {
-    initReactI18next
-  } from 'react-i18next';
+  initReactI18next
+} from 'react-i18next';
 
 i18n.use(LanguageDetector) // 嗅探当前浏览器语言
 .use(initReactI18next) // init i18next
