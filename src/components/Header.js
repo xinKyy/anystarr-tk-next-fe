@@ -4,7 +4,7 @@ import {Button, Drawer, message} from 'antd';
 import { LoginOutlined, EditOutlined } from '@ant-design/icons';
 import { color_white } from '../constants/CustomTheme';
 import logo from "../imgs/header/mod-icon.webp";
-import { loginMetaMask } from "../utils/walletTools";
+import {connectWallet, loginMetaMask} from "../utils/walletTools";
 import {useEffect, useState} from "react";
 import {splitWalletAddress} from "@/utils/addressUtil";
 import {useSelector} from "react-redux";
@@ -12,6 +12,13 @@ import useDispatchAction from "@/hooks/useDisptachAction";
 import {setWalletInfo} from "@/redux/actions/home";
 import {useRouter} from "next/router";
 import {t} from "i18next";
+import {
+  addOrgan,
+  connectToMetaMask,
+  getHasJoinedOrgan,
+  getTeamLevel,
+  updateAvailableWithdrawal
+} from "@/utils/walletConact";
 // Only holds serverRuntimeConfig and publicRuntimeConfig from next.config.js nothing else.
 const { publicRuntimeConfig: { staticFolder } } = getConfig();
 
@@ -20,30 +27,29 @@ const Header = () => {
   const walletInfo = useSelector(state => state.home.walletInfo.walletInfo);
   const dispatchAction = useDispatchAction({ setWalletInfo });
   const [open, setOpen] = useState(false);
-  useEffect(()=>{
+  useEffect(async ()=>{
     let walletAddress = localStorage.getItem("currentWallet");
     if (walletAddress && walletAddress !== "undefined"){
       dispatchAction.setWalletInfo({
         address:walletAddress
       });
+      await connectWallet(dispatchAction, joinTeam);
     }
   }, []);
 
-  const connectWallet = () =>{
-    if (walletInfo.address !== undefined){
-      return;
-    }
-    loginMetaMask().then(accounts=>{
-      const selectedAccount = accounts[0];
-      dispatchAction.setWalletInfo({
-        address:selectedAccount
+  const joinTeam = () =>{
+    const path = router.asPath;
+    if (path && path.startsWith("/?")){
+      let shareAddress = path.split("?")[1];
+      getHasJoinedOrgan(shareAddress).then(resp=>{
+        if (resp === false){
+          addOrgan(shareAddress).then(resp =>{
+            message[resp.result ? "success" : "error"](resp.msg);
+          });
+        }
       });
-      localStorage.setItem("currentWallet", selectedAccount);
-    }).catch(err=>{
-      message.error("获取钱包失败");
-    });
+    }
   };
-
 
   const logout = () =>{
     localStorage.removeItem("currentWallet");
@@ -54,7 +60,7 @@ const Header = () => {
   return  <div id='header_bar' className='container'>
 
     {
-      router.asPath === "/" ?    <Link href='/'>
+      router.pathname === "/" ?    <Link href='/'>
         <div className='logo-container'>
           <img className='logo' alt='logo' src={logo.src} />
         </div>
@@ -62,7 +68,7 @@ const Header = () => {
     }
 
     {
-      router.asPath === "/" ? <div className='right-container'>
+      router.pathname === "/" ? <div className='right-container'>
         {
           walletInfo.address ?
             <div className={"address_show_wrap"}>

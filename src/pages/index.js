@@ -1,20 +1,32 @@
 
 import styles from '../components/Home/home.module.scss';
-import {Button, Drawer, Progress, Slider} from "antd";
+import {Button, Drawer, message, Progress, Slider} from "antd";
 import {useEffect, useState} from "react";
 import dynamic from "next/dynamic";
 import {RightOutlined} from "@ant-design/icons";
-import {splitWalletAddress} from "@/utils/addressUtil";
+import {copyLink, splitWalletAddress} from "@/utils/addressUtil";
 import {useSelector} from "react-redux";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {setWalletInfo} from "@/redux/actions/home";
 import {useRouter} from "next/router";
 import {t} from "i18next";
+import {buyMod, connectToMetaMask, getMod, updateAvailableWithdrawal} from "@/utils/walletConact";
+import {connectWallet} from "@/utils/walletTools";
 const ChartComponents = dynamic(() => import('@/components/Home/chartComponents'), { ssr: false });
 
 const BuyCoinItem = ({max, min}) =>{
-
+  const dispatchAction = useDispatchAction({ setWalletInfo });
+  const buyModFunc = async () =>{
+    setLoading(true);
+    await connectWallet(dispatchAction);
+    buyMod(currentValue).then(resp=>{
+      message[resp.result ? "success" : "error"](resp.msg);
+    }).finally(()=>{
+      setLoading(false);
+    });
+  };
   const [currentValue, setCurrentValue] = useState(min + (max - min) / 2);
+  const [loading, setLoading] = useState(false);
 
   return  <div className={styles.buy_coin_wrap}>
     <div className={styles.left_wrap}>
@@ -25,7 +37,7 @@ const BuyCoinItem = ({max, min}) =>{
         <div>{max}</div>
       </div>
     </div>
-    <div className={styles.right_wrap}>{t("t26")} {currentValue}</div>
+    <Button loading={loading}  onClick={buyModFunc} className={styles.right_wrap}>{t("t26")} {currentValue}</Button>
   </div>;
 };
 
@@ -33,11 +45,29 @@ const Home = ( ) =>{
 
   const walletInfo = useSelector(state => state.home.walletInfo.walletInfo);
   const dispatchAction = useDispatchAction({ setWalletInfo });
+  const [getModLoading, setGetModLoading] = useState(false);
 
   const router = useRouter();
 
   const toIncome = () =>{
     router.push("/income");
+  };
+
+  const getModFunc = () =>{
+    setGetModLoading(true);
+    getMod(walletInfo.myModBalance ?? 0).then(resp =>{
+      message[resp.result ? "success" : "error"](resp.msg);
+    }).finally(()=>{
+      setGetModLoading(false);
+    });
+  };
+
+  const copyShareLink = () =>{
+    if (!walletInfo.address){
+      message.error("请连接钱包后使用");
+    }
+    let shareLink = "http://" +  window.location.host + `?${walletInfo.address}`;
+    copyLink(shareLink);
   };
 
   return <div className={styles.home_page}>
@@ -56,12 +86,12 @@ const Home = ( ) =>{
       <div className={`${styles.coin_name}`}>MOD</div>
     </div>
 
-    <div className={styles.home_qty_wrap}>
-      <div className={`${styles.middle_wrap}`}>
-        <div className={styles.amount_icon}></div>
-        <div>{t("t3")}  $0.1</div>
-      </div>
-    </div>
+    {/* <div className={styles.home_qty_wrap}> */}
+    {/*   <div className={`${styles.middle_wrap}`}> */}
+    {/*     <div className={styles.amount_icon}></div> */}
+    {/*     <div>{t("t3")}  $0.1</div> */}
+    {/*   </div> */}
+    {/* </div> */}
 
     <div className={styles.home_qty_wrap}>
       <div className={`${styles.middle_wrap}`}>
@@ -80,21 +110,23 @@ const Home = ( ) =>{
     <div className={styles.home_bottom_wrap}>
       <div className={styles.wrap_title}>
         <div className={styles.mod_title}>MOD {t("t6")}</div>
-        <div className={styles.mod_des}>{t("t7")}（0.1ETH=0.1MOD）</div>
+        {/* <div className={styles.mod_des}>{t("t7")}（0.1ETH=0.1MOD）</div> */}
       </div>
 
       <div className={styles.section_title}>{t("t8")}5000000</div>
       <div className={styles.slider_wrap}>
-        <Slider disabled defaultValue={50}  />
+        <Progress percent={(walletInfo.modBalance ?? 0) / 5000000 * 100} showInfo={false} strokeColor={{
+          '0%': '#9D26F7', '100%': '#314AF0'
+        }}  />
       </div>
 
       <div className={styles.section_title}>{t("t9")}</div>
-      <BuyCoinItem min={100} max={500}></BuyCoinItem>
-      <BuyCoinItem min={501} max={1000}></BuyCoinItem>
-      <BuyCoinItem min={1001} max={3000}></BuyCoinItem>
+      <BuyCoinItem  min={100} max={500}></BuyCoinItem>
+      <BuyCoinItem  min={501} max={1000}></BuyCoinItem>
+      <BuyCoinItem  min={1001} max={3000}></BuyCoinItem>
 
-      <div className={`${styles.section_title} ${styles.center_title}`}>{t("t10")}2000.0000MOD</div>
-      <Button className={styles.section_btn}>{t("t11")}</Button>
+      <div className={`${styles.section_title} ${styles.center_title}`}>{t("t10")}{walletInfo.myModBalance ?? 0} MOD</div>
+      <Button disabled={!walletInfo.address} loading={getModLoading} onClick={getModFunc} className={styles.section_btn}>{t("t11")}</Button>
     </div>
 
     <div className={styles.home_bottom_wrap}>
@@ -138,25 +170,25 @@ const Home = ( ) =>{
           <div className={styles.star_icon}></div>
           <div>{t("t20")}</div>
         </div>
-        <div className={styles.right_wrap}>MI</div>
+        <div className={styles.right_wrap}>M{walletInfo.currentLevel ?? 0}</div>
       </div>
       <div className={styles.flex_wrap}>
         <div className={styles.flex_item_wrap}>
           <div className={styles.people_icon}></div>
           <div>{t("t21")}</div>
         </div>
-        <div className={styles.right_wrap}>0</div>
+        <div className={styles.right_wrap}>{walletInfo.sharePersonNum ?? 0}</div>
       </div>
       <div className={styles.flex_wrap}>
         <div className={styles.flex_item_wrap}>
           <div className={styles.share_icon}></div>
           <div>{t("t22")}（USDT）</div>
         </div>
-        <div className={styles.right_wrap}>0</div>
+        <div className={styles.right_wrap}>{walletInfo.totalIncome ?? 0}</div>
       </div>
       <div className={styles.share_link_wrap}>
         <div>{t("t23")}<span className={styles.link_wrap}>{ walletInfo.address ? splitWalletAddress(walletInfo.address) : t("t39")}</span></div>
-        <Button className={styles.copy_btn}>{t("t24")}</Button>
+        <Button onClick={copyShareLink} className={styles.copy_btn}>{t("t24")}</Button>
       </div>
     </div>
 

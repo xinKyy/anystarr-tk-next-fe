@@ -142,6 +142,12 @@
 
     .slider_wrap{
       :global{
+        .ant-progress-success-bg, .ant-progress-bg{
+          height: 15px !important;
+        }
+        .ant-progress-inner{
+          background: #31354E;
+        }
         .ant-slider{
           margin: 10px 0;
         }
@@ -216,8 +222,9 @@
         font-size: 12px;
         font-weight: 300;
         color: #FFFFFF;
-        line-height: 36px;
-        width: 90px;
+        border: none;
+        line-height: 1.7;
+        min-width: 90px;
         text-align: center;
       }
     }

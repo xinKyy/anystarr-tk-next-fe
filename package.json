@@ -38,6 +38,7 @@
     "@ant-design/icons": "^4.0.2",
     "@babel/polyfill": "^7.8.7",
     "antd": "^4.3.0",
+    "bignumber.js": "^9.1.2",
     "dynamic-antd-theme": "latest",
     "echarts": "^5.4.3",
     "express": "^4.16.3",
