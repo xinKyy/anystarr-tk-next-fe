@@ -155,7 +155,7 @@ const Home = ( ) =>{
         <div className={styles.right_wrap}>0</div>
       </div>
       <div className={styles.share_link_wrap}>
-        <div>{t("t23")}<span className={styles.link_wrap}>{ walletInfo.address ? splitWalletAddress(walletInfo.address) : "登录后查看"}</span></div>
+        <div>{t("t23")}<span className={styles.link_wrap}>{ walletInfo.address ? splitWalletAddress(walletInfo.address) : t("t39")}</span></div>
         <Button className={styles.copy_btn}>{t("t24")}</Button>
       </div>
     </div>
