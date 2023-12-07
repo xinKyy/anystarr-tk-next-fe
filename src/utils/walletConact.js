@@ -761,7 +761,7 @@ export async function updateAvailableWithdrawal() {
 
 
 // 提取收益
-async function withdraw() {
+export async function withdrawUSDT() {
   try {
     const transaction = await tokenContract.methods.withdraw().send({
       from: accountAddress,
@@ -769,8 +769,16 @@ async function withdraw() {
       gasPrice: '30000000',
     });
     console.log('提取收益成功:', transaction);
+    return {
+      result: true,
+      msg:"提现成功！"
+    };
   } catch (error) {
     console.error('提取收益出错:', error.message);
+    return {
+      result: true,
+      msg:"提现失败！"
+    };
   }
 }
 

@@ -1,12 +1,12 @@
 import styles from './index.module.scss';
-import {Button, Skeleton} from "antd";
+import {Button, message, Skeleton} from "antd";
 import {useEffect, useState} from "react";
 import {t} from "i18next";
 import {useSelector} from "react-redux";
 import {connectWallet} from "@/utils/walletTools";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {setWalletInfo} from "@/redux/actions/home";
-import {getRevenueDetailsMap, getWithdrawalLogs} from "@/utils/walletConact";
+import {getRevenueDetailsMap, getWithdrawalLogs, withdrawUSDT} from "@/utils/walletConact";
 import web3 from "web3";
 import {numSubString} from "@/utils/numUtils";
 const Income = () =>{
@@ -17,9 +17,14 @@ const Income = () =>{
   const [withdrawLogList, setWithdrawLogList] = useState([]);
   const [depositLogList, setDepositLogList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [withdrawLoading, setWithdrawLoading] = useState(false);
 
 
-  useEffect( async()=>{
+  useEffect( ()=>{
+    init();
+  }, []);
+
+  const init = async () =>{
     await connectWallet(dispatchAction);
     setLoading(true);
     getWithdrawalLogs().then(resp=>{
@@ -33,15 +38,26 @@ const Income = () =>{
     }).finally(() =>{
       setLoading(false);
     });
-  }, []);
+  };
 
+  const withdraw = () =>{
+    setWithdrawLoading(true);
+    withdrawUSDT().then(resp=>{
+      message[resp.result ? "success" : "error"](resp.msg);
+      if (resp.result){
+        init();
+      }
+    }).finally(()=>{
+      setWithdrawLoading(false);
+    });
+  };
 
   return <div className={styles.income_page}>
     <div className={styles.card_wrap}>
       <div className={styles.card_title}>{t("t29")}</div>
       <div className={styles.withdraw_warp}>
         <div className={styles.balance_warp}>{walletInfo.myBalance ?? 0}</div>
-        <Button className={styles.withdraw_btn}>{t("t30")}</Button>
+        <Button onClick={withdraw} loading={withdrawLoading} className={styles.withdraw_btn}>{t("t30")}</Button>
       </div>
       <div className={styles.income_wrap}>
         <div className={styles.yestoday_wrap}>
@@ -77,7 +93,7 @@ const Income = () =>{
                 withdrawLogList && withdrawLogList.map(item =>{
                   return  <div className={styles.tr_wrap}>
                     <div className={styles.th_1}>{numSubString(item.amount / BN1)}</div>
-                    <div className={styles.th_3}>{item.timeString}</div>
+                    <div className={styles.th_3}>{new Date(item.timeString * 1000).toLocaleString()}</div>
                   </div>;
                 })
               }
