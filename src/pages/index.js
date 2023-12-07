@@ -10,11 +10,18 @@ import useDispatchAction from "@/hooks/useDisptachAction";
 import {setWalletInfo} from "@/redux/actions/home";
 import {useRouter} from "next/router";
 import {t} from "i18next";
-import {buyMod, connectToMetaMask, getMod, updateAvailableWithdrawal} from "@/utils/walletConact";
+import {
+  buyMod,
+  connectToMetaMask,
+  getMod,
+  getPriceOne, getPriceThree,
+  getPriceTwo,
+  updateAvailableWithdrawal
+} from "@/utils/walletConact";
 import {connectWallet} from "@/utils/walletTools";
 const ChartComponents = dynamic(() => import('@/components/Home/chartComponents'), { ssr: false });
 
-const BuyCoinItem = ({max, min}) =>{
+const BuyCoinItem = ({max, min, current, price}) =>{
   const dispatchAction = useDispatchAction({ setWalletInfo });
   const buyModFunc = async () =>{
     setLoading(true);
@@ -25,12 +32,12 @@ const BuyCoinItem = ({max, min}) =>{
       setLoading(false);
     });
   };
-  const [currentValue, setCurrentValue] = useState(min + (max - min) / 2);
+  const [currentValue, setCurrentValue] = useState(current);
   const [loading, setLoading] = useState(false);
 
   return  <div className={styles.buy_coin_wrap}>
     <div className={styles.left_wrap}>
-      <div className={styles.sku_title}>0.035U</div>
+      <div className={styles.sku_title}>{price}U</div>
       <Slider value={currentValue} onChange={setCurrentValue}  max={max} min={min} defaultValue={currentValue}  />
       <div className={styles.min_max_wrap}>
         <div>{min}</div>
@@ -46,6 +53,33 @@ const Home = ( ) =>{
   const walletInfo = useSelector(state => state.home.walletInfo.walletInfo);
   const dispatchAction = useDispatchAction({ setWalletInfo });
   const [getModLoading, setGetModLoading] = useState(false);
+
+  const [price, setPrice] = useState({});
+
+  useEffect(()=>{
+    let currentPrice = {};
+    getPriceOne().then(resp=>{
+      currentPrice.one = resp;
+      setPrice({
+        ...currentPrice,
+        one:resp
+      });
+    });
+    getPriceTwo().then(resp=>{
+      currentPrice.two = resp;
+      setPrice({
+        ...currentPrice,
+        two:resp
+      });
+    });
+    getPriceThree().then(resp=>{
+      currentPrice.three = resp;
+      setPrice({
+        ...currentPrice,
+        three:resp
+      });
+    });
+  }, []);
 
   const router = useRouter();
 
@@ -121,9 +155,9 @@ const Home = ( ) =>{
       </div>
 
       <div className={styles.section_title}>{t("t9")}</div>
-      <BuyCoinItem  min={100} max={500}></BuyCoinItem>
-      <BuyCoinItem  min={501} max={1000}></BuyCoinItem>
-      <BuyCoinItem  min={1001} max={3000}></BuyCoinItem>
+      <BuyCoinItem  min={100} max={500} current={250} price={price.one}></BuyCoinItem>
+      <BuyCoinItem  min={501} max={1000} current={750} price={price.two}></BuyCoinItem>
+      <BuyCoinItem  min={1001} max={3000} current={1500} price={price.three}></BuyCoinItem>
 
       <div className={`${styles.section_title} ${styles.center_title}`}>{t("t10")}{walletInfo.myModBalance ?? 0} MOD</div>
       <Button disabled={!walletInfo.address} loading={getModLoading} onClick={getModFunc} className={styles.section_btn}>{t("t11")}</Button>

@@ -148,3 +148,30 @@ body {
 .select-language-wrap div:last-child{
   padding: 15px 0 0 0;
 }
+
+.ant-modal-header{
+  background: #31354E;
+  color: #fff;
+}
+
+.ant-modal-title{
+  color: #fff;
+}
+.ant-modal-close{
+  color: #ffffff;
+}
+.ant-modal-content{
+  background: #31354E;
+}
+.ant-modal-content p{
+  color: #ffffff;
+}
+.ant-modal-footer .ant-btn{
+  background: #31354E;
+  color: #ffffff;
+}
+
+.ant-modal-footer .ant-btn-primary{
+  background: linear-gradient(to right, #9D26F7, #314AF0);
+  border: none;
+}

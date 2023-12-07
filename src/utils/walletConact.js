@@ -566,8 +566,8 @@ const BN1 = web3.utils.toWei("1", 'ether');
 let accountAddress = 'YOUR_INITIAL_ACCOUNT_ADDRESS';
 
 // 代币合约地址
-const tokenContractAddress = '0xE2d6c2a32975F9f5Db88b90245D8dD4230be9476';
-const Erc20ContractAddress = "0xAF4565C915163D159b82A89aF57c7DbBA61a5eC3";
+const tokenContractAddress = '0x265aF767346bfa308d5D928F0223050cFDdCCEb6';
+const Erc20ContractAddress = "0x2c49DBA5fD4584fF4744169B8B6230F29603f5f3";
 
 // 获取代币合约实例
 const tokenContract = new web3.eth.Contract(tokenContractAbi, tokenContractAddress);
@@ -905,3 +905,38 @@ export async function getHasJoinedOrgan(shareAddress) {
   }
 }
 
+// 获取100-500的价格
+export async function getPriceOne() {
+  try {
+    const num = await tokenContract.methods.priceone().call();
+    console.log('获取100-500的价格:', num / 1000);
+    return num / 1000;
+  } catch (error) {
+    console.error('获取100-500的价格时出错:', error.message);
+    return 0;
+  }
+}
+
+// 获取501-1000的价格
+export async function getPriceTwo() {
+  try {
+    const num = await tokenContract.methods.pricetwo().call();
+    console.log('获取501-1000的价格:', num / 1000);
+    return num / 1000;
+  } catch (error) {
+    console.error('获取501-1000的价格时出错:', error.message);
+    return 0;
+  }
+}
+
+// 获取1100-3000的价格
+export async function getPriceThree() {
+  try {
+    const num = await tokenContract.methods.pricethree().call();
+    console.log('获取1100-3000的价格:', num / 1000);
+    return num / 1000;
+  } catch (error) {
+    console.error('获取1100-3000的价格时出错:', error.message);
+    return 0;
+  }
+}
