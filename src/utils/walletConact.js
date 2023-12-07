@@ -2,6 +2,8 @@
 import Web3 from "web3";
 import BigNumber from "bignumber.js";
 import {message} from "antd";
+import {t} from "i18next";
+import {numSubString} from "@/utils/numUtils";
 
 const web3 = new Web3(window.ethereum);
 const ethereum = window.ethereum;
@@ -558,13 +560,14 @@ const ERC20Abi = [
   }
 ];
 
+const BN1 = web3.utils.toWei("1", 'ether');
 
 // 初始化账户地址
 let accountAddress = 'YOUR_INITIAL_ACCOUNT_ADDRESS';
 
 // 代币合约地址
-const tokenContractAddress = '0xDfD0c920D73F5Ae86206D864514fE6baa7712032';
-const Erc20ContractAddress = "0x8F90043928C4dE58b2B9A1E6bBDa2aBF02f9BF9e";
+const tokenContractAddress = '0xc358492B3f7CBE506ED882291Ca4D8c4eE09E94d';
+const Erc20ContractAddress = "0xD43607C8F3622b8c39536C54adbfFcF01BBf807c";
 
 // 获取代币合约实例
 const tokenContract = new web3.eth.Contract(tokenContractAbi, tokenContractAddress);
@@ -648,33 +651,34 @@ export async function buyMod(amountUsdt) {
     });
     return {
       result:true,
-      msg:"购买Mod成功!"
+      msg:t("t40")
     };
   } catch (error) {
     return {
       result:false,
-      msg:"购买失败!"
+      msg:t("t41")
     };
   }
 }
 
 // 领取mod代币
 export async function getMod(amount) {
+  let amountBN = web3.utils.toWei(amount + "", 'ether');
   try {
-    const transaction = await tokenContract.methods.getMod(parseInt(amount)).send({
+    const transaction = await tokenContract.methods.getMod(amountBN).send({
       from: accountAddress,
       gas: '1500000',
       gasPrice: '30000000',
     });
     return {
       result:true,
-      msg:"领取MOD成功"
+      msg:t("t42")
     };
   } catch (error) {
     console.log(error.message);
     return {
       result:false,
-      msg:"领取MOD失败"
+      msg:t("t43")
     };
   }
 }
@@ -689,13 +693,13 @@ export async function addOrgan(origin) {
     });
     return {
       result: true,
-      msg:"加入团队成功"
+      msg:t("t44")
     };
   } catch (error) {
     console.error('加入团队出错:', error.message);
     return {
       result: false,
-      msg:"加入团队失败"
+      msg:t("t45")
     };
   }
 }
@@ -748,7 +752,7 @@ export async function updateAvailableWithdrawal() {
       from: accountAddress,
     });
     console.log('查询可领取收入余额成功:', transaction);
-    return transaction;
+    return numSubString(transaction / BN1);
   } catch (error) {
     console.error('查询可领取收入余额出错:', error.message);
     return 0;
@@ -791,7 +795,7 @@ export async function ModBalance() {
       from: accountAddress
     });
     console.log('领取mod代币:', num);
-    return num;
+    return numSubString(num / BN1);
   } catch (error) {
     console.error('查询领取mod代币时出错:', error.message);
     return 0;
@@ -835,7 +839,7 @@ export async function getAllIncome() {
       from: accountAddress
     });
     console.log('获取所有收益:', num);
-    return num;
+    return numSubString(num / BN1);
   } catch (error) {
     console.error('查询获取所有收益时出错:', error.message);
     return 0;
@@ -850,7 +854,7 @@ export async function getYesterdayIncome() {
       from: accountAddress
     });
     console.log('获取所有收益:', num);
-    return num;
+    return numSubString(num / BN1);
   } catch (error) {
     console.error('查询获取所有收益时出错:', error.message);
     return 0;
@@ -864,7 +868,7 @@ export async function getCumulativeGain() {
       from: accountAddress
     });
     console.log('获取累计收益:', num);
-    return num;
+    return numSubString(num / BN1);
   } catch (error) {
     console.error('查询累计收益时出错:', error.message);
     return 0;
@@ -892,11 +896,9 @@ export async function getHasJoinedOrgan(shareAddress) {
  // 获取代币剩余
  export async function getmodbalance() {
   try {
-    const num = await tokenContract.methods.getmodbalance().call({
-      from:accountAddress
-    });
+    const num = await tokenContract.methods.getmodbalance().call();
     console.log('获取代币剩余:', num);
-    return num;
+    return numSubString(num / BN1);
   } catch (error) {
     console.error('获取代币剩余时出错:', error.message);
     return 0;

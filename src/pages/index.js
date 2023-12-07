@@ -113,7 +113,7 @@ const Home = ( ) =>{
         {/* <div className={styles.mod_des}>{t("t7")}（0.1ETH=0.1MOD）</div> */}
       </div>
 
-      <div className={styles.section_title}>{t("t8")}5000000</div>
+      <div className={styles.section_title}>{t("t8")}{walletInfo.modBalance ?? 0}</div>
       <div className={styles.slider_wrap}>
         <Progress percent={(walletInfo.modBalance ?? 0) / 5000000 * 100} showInfo={false} strokeColor={{
           '0%': '#9D26F7', '100%': '#314AF0'
@@ -133,7 +133,9 @@ const Home = ( ) =>{
       <div className={styles.wrap_title}>
         <div className={styles.radius_wrap_title}>{t("t12")}</div>
       </div>
-      <ChartComponents className={styles.radius_wrapper}></ChartComponents>
+      <div className={styles.radius_wrapper}>
+
+      </div>
       <div className={styles.coin_fixed_wrap}>
         <div className={styles.content_wrap}>
           <div className={styles.me_wrap}></div>

@@ -28,6 +28,7 @@ const getAddressHandle = async (web3) => {
 
 export const connectWallet = async (dispatchAction, joinTeam) =>{
   const address = await connectToMetaMask();
+  console.log(dispatchAction, "dispatchAction");
   dispatchAction.setWalletInfo({
     address:address
   });
@@ -111,6 +112,7 @@ export const connectWallet = async (dispatchAction, joinTeam) =>{
       cumulativeGain:cumulativeGain,
       modBalance:modBalance
     });
+
   }
 
   // loginMetaMask().then(accounts=>{

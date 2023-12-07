@@ -15,10 +15,11 @@ import {t} from "i18next";
 import {
   addOrgan,
   connectToMetaMask,
-  getHasJoinedOrgan,
+  getHasJoinedOrgan, getmodbalance,
   getTeamLevel,
   updateAvailableWithdrawal
 } from "@/utils/walletConact";
+import {useTranslation} from "react-i18next";
 // Only holds serverRuntimeConfig and publicRuntimeConfig from next.config.js nothing else.
 const { publicRuntimeConfig: { staticFolder } } = getConfig();
 
@@ -27,7 +28,13 @@ const Header = () => {
   const walletInfo = useSelector(state => state.home.walletInfo.walletInfo);
   const dispatchAction = useDispatchAction({ setWalletInfo });
   const [open, setOpen] = useState(false);
+  const [showLanguageWrap, setShowLanguageWrap] = useState(false);
+  const { t, i18n} = useTranslation();
   useEffect(async ()=>{
+    const modBalance = await getmodbalance();
+    dispatchAction.setWalletInfo({
+      modBalance:modBalance
+    });
     let walletAddress = localStorage.getItem("currentWallet");
     if (walletAddress && walletAddress !== "undefined"){
       dispatchAction.setWalletInfo({
@@ -36,6 +43,7 @@ const Header = () => {
       await connectWallet(dispatchAction, joinTeam);
     }
   }, []);
+
 
   const joinTeam = () =>{
     const path = router.asPath;
@@ -57,6 +65,14 @@ const Header = () => {
     setOpen(false);
   };
 
+  const changeLanguage = (key) =>{
+    i18n.changeLanguage(key).then(r => {
+      router.replace(`/`, `/`, );
+    }).finally(() =>{
+      setShowLanguageWrap(false);
+    });
+  };
+
   return  <div id='header_bar' className='container'>
 
     {
@@ -74,11 +90,11 @@ const Header = () => {
             <div className={"address_show_wrap"}>
               { splitWalletAddress( walletInfo.address) }
             </div> :
-            <div onClick={connectWallet} className={"link_wallet"}>
+            <div onClick={()=>connectWallet(dispatchAction)} className={"link_wallet"}>
               {t("t27")}
             </div>
         }
-        <div className='language-btn'></div>
+        <div onClick={()=>setShowLanguageWrap(true)} className='language-btn'></div>
         {
           walletInfo.address ?  <div onClick={()=>setOpen(true)} className='application-btn'></div> : null
         }
@@ -96,6 +112,19 @@ const Header = () => {
       <div className={"flex_div_wrap"}>
         <div className={"logout_icon"}></div>
         <div onClick={logout}>{t("t28")}</div>
+      </div>
+    </Drawer>
+
+    <Drawer
+      placement={"bottom"}
+      onClose={()=>setShowLanguageWrap(false)}
+      visible={showLanguageWrap}
+    >
+      <div className={"select-language-wrap"}>
+        <div onClick={()=>changeLanguage("en")}>English</div>
+        <div onClick={()=>changeLanguage("jp")}>日本語</div>
+        <div onClick={()=>changeLanguage("kr")}>한국어</div>
+        <div onClick={()=>changeLanguage("cn")}>简体中文</div>
       </div>
     </Drawer>
   </div>;

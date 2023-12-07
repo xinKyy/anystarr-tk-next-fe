@@ -242,9 +242,11 @@
     }
 
     .radius_wrapper{
-      width: 50vw;
-      height: 50vw;
+      width: 65vw;
+      height: 65vw;
       margin: 20px auto;
+      background: url("../../imgs/bottom/box_radius_icon.webp");
+      background-size: cover;
     }
 
     .coin_fixed_wrap{

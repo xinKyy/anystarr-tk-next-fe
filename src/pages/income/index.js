@@ -7,8 +7,10 @@ import {connectWallet} from "@/utils/walletTools";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {setWalletInfo} from "@/redux/actions/home";
 import {getRevenueDetailsMap, getWithdrawalLogs} from "@/utils/walletConact";
+import web3 from "web3";
+import {numSubString} from "@/utils/numUtils";
 const Income = () =>{
-
+  const BN1 = web3.utils.toWei("1", 'ether');
   const [tabIndex, setTabIndex] = useState(0);
   const walletInfo = useSelector(state => state.home.walletInfo.walletInfo);
   const dispatchAction = useDispatchAction({ setWalletInfo });
@@ -74,7 +76,7 @@ const Income = () =>{
               {
                 withdrawLogList && withdrawLogList.map(item =>{
                   return  <div className={styles.tr_wrap}>
-                    <div className={styles.th_1}>{item.amount}</div>
+                    <div className={styles.th_1}>{numSubString(item.amount / BN1)}</div>
                     <div className={styles.th_3}>{item.timeString}</div>
                   </div>;
                 })
@@ -93,9 +95,9 @@ const Income = () =>{
               {
                 depositLogList.map(item =>{
                   return   <div className={styles.tr_wrap}>
-                    <div className={styles.th_1}>{item.amount}</div>
+                    <div className={styles.th_1}>{numSubString(item.amount / BN1)}</div>
                     <div className={styles.th_2}>{item.details}</div>
-                    <div className={styles.th_3}>{item.time}</div>
+                    <div className={styles.th_3}>{new Date(item.time * 1000).toLocaleString()}</div>
                   </div>;
                 })
               }

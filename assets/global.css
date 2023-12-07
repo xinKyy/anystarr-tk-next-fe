@@ -129,3 +129,22 @@ body {
   margin-right: 15px;
   margin-left: 10px;
 }
+
+.select-language-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.select-language-wrap div:first-child{
+  padding: 0 0 15px 0;
+}
+.select-language-wrap div{
+  padding: 15px 0;
+}
+.select-language-wrap div{
+  padding: 15px 0;
+}
+.select-language-wrap div:last-child{
+  padding: 15px 0 0 0;
+}

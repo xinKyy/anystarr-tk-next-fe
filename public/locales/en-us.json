@@ -37,5 +37,14 @@
   "t36": "Time",
   "t37": "Type",
   "t38": "Deposit",
-  "t39": "Log in to view"
+  "t39": "Log in to view",
+
+  "t40": "Successfully purchased Mod!",
+  "t41": "Purchase failed!",
+  "t42": "Successfully claimed MOD",
+  "t43": "Failed to claim MOD",
+  "t44": "Successfully joined the team",
+  "t45": "Failed to join the team",
+  "t46": "Copy successful",
+  "": ""
 }
