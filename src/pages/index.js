@@ -197,10 +197,13 @@ const Home = ( ) =>{
     <div className={styles.home_partners_title}>{t("t25")}</div>
 
     <div className={styles.home_partners_wrap}>
-      <div className={styles.coin_base_icon}></div>
-      <div className={styles.luno_icon}></div>
-      <div className={styles.kraken_icon}></div>
-      <div className={styles.solana_icon}></div>
+      <div className={styles.mamon_icon}></div>
+      <div className={styles.paradigm_icon}></div>
+      <div className={styles.panguweb_icon}></div>
+    </div>
+    <div className={styles.home_partners_sec_wrap}>
+      <div className={styles.youtube_icon}></div>
+      <div className={styles.tiktok_icon}></div>
     </div>
   </div>;
 };

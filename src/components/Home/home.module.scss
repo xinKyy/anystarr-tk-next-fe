@@ -376,7 +376,8 @@
   .home_partners_wrap{
     display: flex;
     justify-content: space-between;
-    margin:3vh  3vw 5vh 3vw;
+    margin:3vh 3vw 0 3vw;
+    flex-wrap: wrap;
     .coin_base_icon{
       width: calc(94vw / 4  - 10px);
       height: calc((94vw / 4  - 10px) * 0.4);
@@ -407,7 +408,52 @@
     }
 
     .mamon_icon{
+      background: url("../../imgs/bottom/mamon_icon.webp");
+      width: 81px;
+      height: 54px;
+      background-size: cover;
+    }
+    .paradigm_icon{
+      background: url("../../imgs/bottom/paradigm.webp");
+      width: 127px;
+      height: 70px;
+      background-size: cover;
+    }
+    .panguweb_icon{
+      background: url("../../imgs/bottom/panguweb.webp");
+      width: 117px;
+      height: 46px;
+      background-size: cover;
+    }
+    .youtube_icon{
       background: url("../../imgs/bottom/youtube.webp");
+      width: 150px;
+      height: 39px;
+      background-size: cover;
+    }
+    .tiktok_icon{
+      background: url("../../imgs/bottom/tiktok.webp");
+      width: 128px;
+      height: 44px;
+      background-size: cover;
+    }
+  }
+  .home_partners_sec_wrap{
+    display: flex;
+    justify-content: center;
+    margin:0 3vw 5vh 3vw;
+    flex-wrap: wrap;
+    .youtube_icon{
+      background: url("../../imgs/bottom/youtube.webp");
+      width: 150px;
+      height: 39px;
+      background-size: cover;
+    }
+    .tiktok_icon{
+      background: url("../../imgs/bottom/tiktok.webp");
+      width: 128px;
+      height: 44px;
+      background-size: cover;
     }
   }
 }

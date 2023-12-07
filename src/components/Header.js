@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import getConfig from 'next/config';
-import {Button, Drawer, message} from 'antd';
+import {Button, Drawer, message, Modal} from 'antd';
 import { LoginOutlined, EditOutlined } from '@ant-design/icons';
 import { color_white } from '../constants/CustomTheme';
 import logo from "../imgs/header/mod-icon.webp";
@@ -29,7 +29,10 @@ const Header = () => {
   const dispatchAction = useDispatchAction({ setWalletInfo });
   const [open, setOpen] = useState(false);
   const [showLanguageWrap, setShowLanguageWrap] = useState(false);
-  const { t, i18n} = useTranslation();
+  const [hideModal, setHideModal] = useState(false);
+  const [shareHrefAddress, setShareHrefAddress] = useState("");
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const {i18n} = useTranslation();
   useEffect(async ()=>{
     const modBalance = await getmodbalance();
     dispatchAction.setWalletInfo({
@@ -49,14 +52,23 @@ const Header = () => {
     const path = router.asPath;
     if (path && path.startsWith("/?")){
       let shareAddress = path.split("?")[1];
+      setShareHrefAddress(shareAddress);
       getHasJoinedOrgan(shareAddress).then(resp=>{
         if (resp === false){
-          addOrgan(shareAddress).then(resp =>{
-            message[resp.result ? "success" : "error"](resp.msg);
-          });
+          setHideModal(true);
         }
       });
     }
+  };
+
+  const realJoinTeam = () =>{
+    setConfirmLoading(true);
+    addOrgan(shareHrefAddress).then(resp =>{
+      message[resp.result ? "success" : "error"](resp.msg);
+    }).finally(()=>{
+      setHideModal(false);
+      setConfirmLoading(false);
+    });
   };
 
   const logout = () =>{
@@ -127,6 +139,18 @@ const Header = () => {
         <div onClick={()=>changeLanguage("cn")}>简体中文</div>
       </div>
     </Drawer>
+
+    <Modal
+      title={t("t47")}
+      visible={hideModal}
+      onOk={()=>realJoinTeam()}
+      onCancel={()=>setHideModal(false)}
+      okText={t("t48")}
+      confirmLoading={confirmLoading}
+      cancelText={t("t49")}
+    >
+      <p>{t("t50")} {splitWalletAddress(shareHrefAddress)} {t("t51")}</p>
+    </Modal>
   </div>;
 };
 
