@@ -26,7 +26,7 @@ const BuyCoinItem = ({max, min, current, price}) =>{
   const buyModFunc = async () =>{
     setLoading(true);
     await connectWallet(dispatchAction);
-    buyMod(currentValue).then(resp=>{
+    buyMod(currentValue, price).then(resp=>{
       message[resp.result ? "success" : "error"](resp.msg);
       connectWallet(dispatchAction);
     }).finally(()=>{

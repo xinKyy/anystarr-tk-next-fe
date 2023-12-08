@@ -642,9 +642,10 @@ async function approve(amount) {
 }
 
 // 购买代币
-export async function buyMod(amountUsdt) {
+export async function buyMod(amountUsdt, price) {
   let aa = web3.utils.toWei(amountUsdt + "", 'ether');
   const distanceOfTheSun = aa;
+  aa = web3.utils.toWei(amountUsdt * price + "", 'ether');
   await approve(aa.valueOf());
   try {
     const transaction = await tokenContract.methods.buyMod(distanceOfTheSun.valueOf()).send({
