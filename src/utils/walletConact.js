@@ -5,8 +5,8 @@ import {message} from "antd";
 import {t} from "i18next";
 import {numSubString} from "@/utils/numUtils";
 
-const web3 = new Web3(window?.ethereum);
-const ethereum = window?.ethereum;
+const web3 = new Web3(window.ethereum);
+const ethereum = window.ethereum;
 
 // 引入代币合约的 ABI
 const tokenContractAbi = [
@@ -566,8 +566,8 @@ const BN1 = web3.utils.toWei("1", 'ether');
 let accountAddress = 'YOUR_INITIAL_ACCOUNT_ADDRESS';
 
 // 代币合约地址
-const tokenContractAddress = '0x1F7904d12F07dF8049B094B408A9D64A7fD2D3Cc';
-const Erc20ContractAddress = "0x4fd5F60ED782d9289314c3415d6D1Fc9442b3898";
+const tokenContractAddress = '0x36a63C2F2d41482B07c7A0Bf1996c6b7688461dB';
+const Erc20ContractAddress = "0x704EaFCC7651275857d3c1c039D64edf4F9d475c";
 
 // 获取代币合约实例
 const tokenContract = new web3.eth.Contract(tokenContractAbi, tokenContractAddress);
@@ -588,14 +588,14 @@ export async function connectToMetaMask() {
       } catch (error) {
         // console.error('连接到 MetaMask 时出错:', error.message);
         // alert('连接到 MetaMask 时出错: ' + error.message);
-        message.error("连接钱包失败:" + error.message);
+        message.error(t("t52") + error.message);
         return false;
       }
     } else {
       // MetaMask 未安装
       // console.error('MetaMask 未安装。请安装 MetaMask 以使用此功能。');
       // alert('MetaMask 未安装。请安装 MetaMask 以使用此功能。');
-      message.error("请安装MateMask");
+      message.error(t("t53"));
       return false;
     }
   }
