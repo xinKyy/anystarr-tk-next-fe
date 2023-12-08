@@ -5,8 +5,8 @@ import {message} from "antd";
 import {t} from "i18next";
 import {numSubString} from "@/utils/numUtils";
 
-const web3 = new Web3(window.ethereum);
-const ethereum = window.ethereum;
+const web3 = new Web3(window?.ethereum);
+const ethereum = window?.ethereum;
 
 // 引入代币合约的 ABI
 const tokenContractAbi = [
@@ -566,8 +566,8 @@ const BN1 = web3.utils.toWei("1", 'ether');
 let accountAddress = 'YOUR_INITIAL_ACCOUNT_ADDRESS';
 
 // 代币合约地址
-const tokenContractAddress = '0x265aF767346bfa308d5D928F0223050cFDdCCEb6';
-const Erc20ContractAddress = "0x2c49DBA5fD4584fF4744169B8B6230F29603f5f3";
+const tokenContractAddress = '0x1F7904d12F07dF8049B094B408A9D64A7fD2D3Cc';
+const Erc20ContractAddress = "0x4fd5F60ED782d9289314c3415d6D1Fc9442b3898";
 
 // 获取代币合约实例
 const tokenContract = new web3.eth.Contract(tokenContractAbi, tokenContractAddress);
@@ -576,35 +576,38 @@ const amountUsdt = new web3.eth.Contract(ERC20Abi, Erc20ContractAddress);
 
 // 连接metamask
 export async function connectToMetaMask() {
-  if (window.ethereum) {
-    try {
-      // 请求用户授权连接 MetaMask
-      const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
-      // 连接成功后，accounts 数组中将包含用户的账户地址
-      accountAddress = accounts[0];
-      return accountAddress;
-    } catch (error) {
-      // console.error('连接到 MetaMask 时出错:', error.message);
-      // alert('连接到 MetaMask 时出错: ' + error.message);
-      message.error("连接钱包失败:" + error.message);
+  if (typeof window !== 'undefined') {
+    // 在这里使用 window 对象
+    if (window.ethereum) {
+      try {
+        // 请求用户授权连接 MetaMask
+        const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
+        // 连接成功后，accounts 数组中将包含用户的账户地址
+        accountAddress = accounts[0];
+        return accountAddress;
+      } catch (error) {
+        // console.error('连接到 MetaMask 时出错:', error.message);
+        // alert('连接到 MetaMask 时出错: ' + error.message);
+        message.error("连接钱包失败:" + error.message);
+        return false;
+      }
+    } else {
+      // MetaMask 未安装
+      // console.error('MetaMask 未安装。请安装 MetaMask 以使用此功能。');
+      // alert('MetaMask 未安装。请安装 MetaMask 以使用此功能。');
+      message.error("请安装MateMask");
       return false;
     }
-  } else {
-    // MetaMask 未安装
-    // console.error('MetaMask 未安装。请安装 MetaMask 以使用此功能。');
-    // alert('MetaMask 未安装。请安装 MetaMask 以使用此功能。');
-    message.error("请安装MateMask");
-    return false;
   }
 }
 
-// 监听账户切换
-ethereum.on('accountsChanged', (accounts) => {
-  // accounts 数组包含当前连接的所有账户
-  // console.log('MetaMask 账户已切换。新账户:', accounts[0]);
-  // alert('MetaMask 账户已切换。新账户: ' + accounts[0]);
-  // updateAccountAddress(accounts[0]);
-});
+// // 监听账户切换
+// ethereum.on('accountsChanged', (accounts) => {
+//   // accounts 数组包含当前连接的所有账户
+//   // console.log('MetaMask 账户已切换。新账户:', accounts[0]);
+//   // alert('MetaMask 账户已切换。新账户: ' + accounts[0]);
+//   // updateAccountAddress(accounts[0]);
+// });
 
 
 // 更新账户地址的函数
@@ -902,7 +905,7 @@ export async function getHasJoinedOrgan(shareAddress) {
 
 
  // 获取代币剩余
- export async function getmodbalance() {
+export async function getmodbalance() {
   try {
     const num = await tokenContract.methods.getmodbalance().call();
     console.log('获取代币剩余:', num);

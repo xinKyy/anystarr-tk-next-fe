@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'next-antd-scaffold',
+      name: 'mod',
       script: './server.js', // start script
       cwd: './', // current workspace
       watch: [
