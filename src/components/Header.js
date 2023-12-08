@@ -123,7 +123,7 @@ const Header = () => {
       <div className={"header-drawer-top-logo"}></div>
       <div className={"flex_div_wrap"}>
         <div className={"store_icon"}></div>
-        <div onClick={()=>message.info("商城正在开发中")}>商城</div>
+        <div onClick={()=>message.info(t("t58"))}>{t("t59")}</div>
       </div>
       <div className={"flex_div_wrap"}>
         <div className={"logout_icon"}></div>
