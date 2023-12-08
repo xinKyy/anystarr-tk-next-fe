@@ -119,10 +119,19 @@ body {
 .flex_div_wrap{
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .logout_icon{
   background: url("../src/imgs/header/logout_icon.webp") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  margin-right: 15px;
+  margin-left: 10px;
+}
+.store_icon{
+  background: url("../src/imgs/header/store_icon.webp") no-repeat;
   width: 30px;
   height: 30px;
   background-size: cover;

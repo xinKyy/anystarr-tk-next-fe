@@ -533,6 +533,9 @@ const tokenContractAbi = [
   }
 ];
 
+const canWrite = () =>{
+  return ethereum && ethereum.chainId === "0x38";
+};
 
 const ERC20Abi = [
   {
@@ -584,6 +587,19 @@ export async function connectToMetaMask() {
         const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
         // 连接成功后，accounts 数组中将包含用户的账户地址
         accountAddress = accounts[0];
+        const currentNetworkId = ethereum.chainId;
+        if (currentNetworkId !== "0x38"){
+          // 切换网络
+          try {
+            await ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: '0x38' }] // 0x1 是以太坊主网的链ID
+            });
+          } catch (e) {
+            message.info(t("t57"));
+            return accountAddress;
+          }
+        }
         return accountAddress;
       } catch (error) {
         // console.error('连接到 MetaMask 时出错:', error.message);
@@ -643,6 +659,9 @@ async function approve(amount) {
 
 // 购买代币
 export async function buyMod(amountUsdt, price) {
+  if (!canWrite()){
+    return message.error(t("t57"));
+  }
   let aa = web3.utils.toWei(amountUsdt + "", 'ether');
   const distanceOfTheSun = aa;
   aa = web3.utils.toWei(amountUsdt * price + "", 'ether');
@@ -667,6 +686,9 @@ export async function buyMod(amountUsdt, price) {
 
 // 领取mod代币
 export async function getMod(amount) {
+  if (!canWrite()){
+    return message.error(t("t57"));
+  }
   let amountBN = web3.utils.toWei(amount + "", 'ether');
   try {
     const transaction = await tokenContract.methods.getMod(amountBN).send({
@@ -689,6 +711,9 @@ export async function getMod(amount) {
 
 // 加入团队
 export async function addOrgan(origin) {
+  if (!canWrite()){
+    return message.error(t("t57"));
+  }
   try {
     const transaction = await tokenContract.methods.addOrgin(origin).send({
       from: accountAddress,
@@ -766,6 +791,9 @@ export async function updateAvailableWithdrawal() {
 
 // 提取收益
 export async function withdrawUSDT() {
+  if (!canWrite()){
+    return message.error(t("t57"));
+  }
   try {
     const transaction = await tokenContract.methods.withdraw().send({
       from: accountAddress,
