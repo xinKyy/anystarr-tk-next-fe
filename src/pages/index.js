@@ -211,6 +211,7 @@ const Home = ( ) =>{
           <div>{t("t20")}</div>
         </div>
         <div className={styles.right_wrap}>M{walletInfo.currentLevel ?? 0}</div>
+        <div className={styles.crown_icon}></div>
       </div>
       <div className={styles.flex_wrap}>
         <div className={styles.flex_item_wrap}>

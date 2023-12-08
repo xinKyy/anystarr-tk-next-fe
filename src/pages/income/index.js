@@ -19,6 +19,11 @@ const Income = () =>{
   const [loading, setLoading] = useState(false);
   const [withdrawLoading, setWithdrawLoading] = useState(false);
 
+  const transferMenu = {
+    "0":"直推充值",
+    "1":"间推充值",
+    "2":"团队充值",
+  };
 
   useEffect( ()=>{
     init();
@@ -88,16 +93,18 @@ const Income = () =>{
               <div className={styles.th_1}>{t("t35")}</div>
               <div className={styles.th_3}>{t("t36")}</div>
             </div>
-            <Skeleton loading={loading} active >
-              {
-                withdrawLogList && withdrawLogList.map(item =>{
-                  return  <div className={styles.tr_wrap}>
-                    <div className={styles.th_1}>{numSubString(item.amount / BN1)}</div>
-                    <div className={styles.th_3}>{new Date(item.timeString * 1000).toLocaleString()}</div>
-                  </div>;
-                })
-              }
-            </Skeleton>
+            <div className={styles.logs_wrap}>
+              <Skeleton loading={loading} active >
+                {
+                  withdrawLogList && withdrawLogList.map(item =>{
+                    return  <div className={styles.tr_wrap}>
+                      <div className={styles.th_1}>{numSubString(item.amount / BN1)}</div>
+                      <div className={styles.th_3}>{new Date(item.timeString * 1000).toLocaleString()}</div>
+                    </div>;
+                  })
+                }
+              </Skeleton>
+            </div>
           </div>
           :
           <div className={styles.history_wrap}>
@@ -106,18 +113,19 @@ const Income = () =>{
               <div className={styles.th_2}>{t("t37")}</div>
               <div className={styles.th_3}>{t("t36")}</div>
             </div>
-
-            <Skeleton loading={loading} active >
-              {
-                depositLogList.map(item =>{
-                  return   <div className={styles.tr_wrap}>
-                    <div className={styles.th_1}>{numSubString(item.amount / BN1)}</div>
-                    <div className={styles.th_2}>{item.details}</div>
-                    <div className={styles.th_3}>{new Date(item.time * 1000).toLocaleString()}</div>
-                  </div>;
-                })
-              }
-            </Skeleton>
+            <div className={styles.logs_wrap}>
+              <Skeleton loading={loading} active >
+                {
+                  depositLogList.map(item =>{
+                    return   <div className={styles.tr_wrap}>
+                      <div className={styles.th_1}>{numSubString(item.amount / BN1)}</div>
+                      <div className={styles.th_2}>{transferMenu[item.details]}</div>
+                      <div className={styles.th_3}>{new Date(item.time * 1000).toLocaleString()}</div>
+                    </div>;
+                  })
+                }
+              </Skeleton>
+            </div>
           </div>
       }
     </div>

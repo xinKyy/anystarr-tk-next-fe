@@ -303,6 +303,7 @@
       margin: 20px 0 0 0;
       padding-bottom: 10px;
       border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+      position: relative;
       .flex_item_wrap{
         display: flex;
         align-items: center;
@@ -335,6 +336,14 @@
         font-size: 18px;
         font-weight: bold;
         color: #FFFFFF;
+      }
+      .crown_icon{
+        position: absolute;
+        right: 30px;
+        background: url("../../imgs/bottom/crown_icon.webp");
+        background-size: cover;
+        width: 50px;
+        height: 50px;
       }
     }
 
@@ -377,6 +386,7 @@
     display: flex;
     justify-content: space-between;
     margin:3vh 3vw 0 3vw;
+    align-items: center;
     flex-wrap: wrap;
     .coin_base_icon{
       width: calc(94vw / 4  - 10px);
@@ -415,8 +425,8 @@
     }
     .paradigm_icon{
       background: url("../../imgs/bottom/paradigm.webp");
-      width: 127px;
-      height: 70px;
+      width: 160px;
+      height:calc(160px * (70 / 127)) ;
       background-size: cover;
     }
     .panguweb_icon{
@@ -441,7 +451,7 @@
   .home_partners_sec_wrap{
     display: flex;
     justify-content: center;
-    margin:0 3vw 5vh 3vw;
+    margin:1vh 3vw 5vh 3vw;
     flex-wrap: wrap;
     .youtube_icon{
       background: url("../../imgs/bottom/youtube.webp");

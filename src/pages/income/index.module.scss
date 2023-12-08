@@ -86,6 +86,13 @@
     .history_wrap{
       width: 100%;
       margin-top: 20px;
+
+      .logs_wrap{
+        overflow: scroll;
+        height: 50vh;
+        background: #8A24F0;
+      }
+
       .tr_wrap{
         display: flex;
         font-weight: 300;

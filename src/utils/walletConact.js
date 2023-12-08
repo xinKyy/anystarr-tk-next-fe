@@ -566,7 +566,7 @@ const BN1 = web3.utils.toWei("1", 'ether');
 let accountAddress = 'YOUR_INITIAL_ACCOUNT_ADDRESS';
 
 // 代币合约地址
-const tokenContractAddress = '0x36a63C2F2d41482B07c7A0Bf1996c6b7688461dB';
+const tokenContractAddress = '0xD6B49277E0a8b1f755a2368B1CAf3B25d7a7AB9d';
 const Erc20ContractAddress = "0x704EaFCC7651275857d3c1c039D64edf4F9d475c";
 
 // 获取代币合约实例
