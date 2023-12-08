@@ -161,7 +161,7 @@ const Home = ( ) =>{
       <div className={styles.section_title}>{t("t9")}</div>
       <BuyCoinItem  min={100} max={500} current={250} price={price.one}></BuyCoinItem>
       <BuyCoinItem  min={501} max={1000} current={750} price={price.two}></BuyCoinItem>
-      <BuyCoinItem  min={1001} max={3000} current={2000} price={price.three}></BuyCoinItem>
+      <BuyCoinItem  min={1100} max={3000} current={2000} price={price.three}></BuyCoinItem>
 
       <div className={`${styles.section_title} ${styles.center_title}`}>{t("t10")}{walletInfo.myModBalance ?? 0} MOD</div>
       <Button disabled={!walletInfo.address} loading={getModLoading} onClick={getModFunc} className={styles.section_btn}>{t("t11")}</Button>
