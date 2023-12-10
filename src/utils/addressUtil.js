@@ -1,8 +1,9 @@
 import {message} from "antd";
+import {t} from "i18next";
 
 export const splitWalletAddress = (address) =>{
   if (address) {
-    address = address.substring(0, 6) + "***" + address.substring(address.length - 4, address.length);
+    address = address.substring(0, 5) + "***" + address.substring(address.length - 7, address.length);
     return address;
   }
   return "";
@@ -18,5 +19,5 @@ export const copyLink = (shareLink) => {
   oInput.className = 'oInput';
   oInput.style.display = 'none';
   document.body.removeChild(oInput);
-  message.success("复制成功");
+  message.success(t("t60"));
 };

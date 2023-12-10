@@ -138,6 +138,30 @@ body {
   margin-right: 15px;
   margin-left: 10px;
 }
+.short_icon{
+  background: url("../src/imgs/header/short_icon.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  margin-right: 15px;
+  margin-left: 10px;
+}
+.short_video_icon{
+  background: url("../src/imgs/header/short_video_icon.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  margin-right: 15px;
+  margin-left: 10px;
+}
+.chat_icon{
+  background: url("../src/imgs/header/chat_icon.png") no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  margin-right: 15px;
+  margin-left: 10px;
+}
 
 .select-language-wrap{
   display: flex;

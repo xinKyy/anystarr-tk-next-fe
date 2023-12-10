@@ -34,6 +34,7 @@ const Header = () => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const {i18n} = useTranslation();
   useEffect(async ()=>{
+    console.log(router);
     const modBalance = await getmodbalance();
     dispatchAction.setWalletInfo({
       modBalance:modBalance
@@ -46,7 +47,6 @@ const Header = () => {
       await connectWallet(dispatchAction, joinTeam);
     }
   }, []);
-
 
   const joinTeam = () =>{
     const path = router.asPath;
@@ -85,6 +85,11 @@ const Header = () => {
     });
   };
 
+  const routerTitleMap = {
+    "/promotion":t("t65"),
+    "/income":t("t19")
+  };
+
   return  <div id='header_bar' className='container'>
 
     {
@@ -92,7 +97,7 @@ const Header = () => {
         <div className='logo-container'>
           <img className='logo' alt='logo' src={logo.src} />
         </div>
-      </Link> : <div onClick={()=>router.push("/")} className={"back-icon"}></div>
+      </Link> : <div onClick={()=>router.replace("/")} className={"back-icon"}></div>
     }
 
     {
@@ -110,7 +115,7 @@ const Header = () => {
         {
           walletInfo.address ?  <div onClick={()=>setOpen(true)} className='application-btn'></div> : null
         }
-      </div> : <div className={"sub_page_title"}> {t("t19")}</div>
+      </div> : <div className={"sub_page_title"}>{ routerTitleMap[router.pathname] }</div>
     }
 
     <Drawer
@@ -124,6 +129,18 @@ const Header = () => {
       <div className={"flex_div_wrap"}>
         <div className={"store_icon"}></div>
         <div onClick={()=>message.info(t("t58"))}>{t("t59")}</div>
+      </div>
+      <div className={"flex_div_wrap"}>
+        <div className={"short_icon"}></div>
+        <div onClick={()=>message.info(t("t61"))}>{t("t62")}</div>
+      </div>
+      <div className={"flex_div_wrap"}>
+        <div className={"short_video_icon"}></div>
+        <div onClick={()=>message.info(t("t61"))}>{t("t63")}</div>
+      </div>
+      <div className={"flex_div_wrap"}>
+        <div className={"chat_icon"}></div>
+        <div onClick={()=>message.info(t("t61"))}>{t("t64")}</div>
       </div>
       <div className={"flex_div_wrap"}>
         <div className={"logout_icon"}></div>

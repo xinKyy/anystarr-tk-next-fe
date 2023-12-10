@@ -7,6 +7,7 @@ import {numSubString} from "@/utils/numUtils";
 
 const web3 = new Web3(window.ethereum);
 const ethereum = window.ethereum;
+let gasPrice1;
 
 // 引入代币合约的 ABI
 const tokenContractAbi = [
@@ -600,6 +601,13 @@ export async function connectToMetaMask() {
             return accountAddress;
           }
         }
+
+        try {
+          gasPrice1 = await web3.eth.getGasPrice();
+        } catch (e){
+          return accountAddress;
+        }
+
         return accountAddress;
       } catch (error) {
         // console.error('连接到 MetaMask 时出错:', error.message);
@@ -648,8 +656,7 @@ async function approve(amount) {
   try {
     const transaction = await amountUsdt.methods.approve(tokenContractAddress, amount).send({
       from: accountAddress,
-      gas: '1500000',
-      gasPrice: '30000000',
+      gasPrice:gasPrice1,
     });
     console.log('授权:', transaction);
   } catch (error) {
@@ -669,8 +676,8 @@ export async function buyMod(amountUsdt, price) {
   try {
     const transaction = await tokenContract.methods.buyMod(distanceOfTheSun.valueOf()).send({
       from: accountAddress,
-      gas: '1500000',
-      gasPrice: '30000000',
+
+      gasPrice:gasPrice1,
     });
     return {
       result:true,
@@ -693,8 +700,7 @@ export async function getMod(amount) {
   try {
     const transaction = await tokenContract.methods.getMod(amountBN).send({
       from: accountAddress,
-      gas: '1500000',
-      gasPrice: '30000000',
+      gasPrice:gasPrice1,
     });
     return {
       result:true,
@@ -717,8 +723,8 @@ export async function addOrgan(origin) {
   try {
     const transaction = await tokenContract.methods.addOrgin(origin).send({
       from: accountAddress,
-      gas: '1500000',
-      gasPrice: '30000000',
+
+      gasPrice:gasPrice1,
     });
     return {
       result: true,
@@ -797,8 +803,8 @@ export async function withdrawUSDT() {
   try {
     const transaction = await tokenContract.methods.withdraw().send({
       from: accountAddress,
-      gas: '1500000',
-      gasPrice: '30000000',
+
+      gasPrice:gasPrice1,
     });
     console.log('提取收益成功:', transaction);
     return {
@@ -933,7 +939,7 @@ export async function getHasJoinedOrgan(shareAddress) {
 }
 
 
- // 获取代币剩余
+// 获取代币剩余
 export async function getmodbalance() {
   try {
     const num = await tokenContract.methods.getmodbalance().call();

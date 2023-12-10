@@ -230,6 +230,7 @@
     }
 
     .section_btn{
+      display: none;
       background: linear-gradient(to right, #9D26F7, #314AF0);
       border-radius: 20px;
       font-size: 14px;
@@ -336,6 +337,11 @@
         font-size: 18px;
         font-weight: bold;
         color: #FFFFFF;
+        span{
+          font-size: 12px;
+          line-height: 30px;
+          margin-left: 5px;
+        }
       }
       .crown_icon{
         position: absolute;
@@ -359,6 +365,7 @@
         font-weight: 400;
         font-size: 13px;
         color: rgba(255, 255, 255, 0.42);
+        margin-left: 5px;
       }
 
       .copy_btn{

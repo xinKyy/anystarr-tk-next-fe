@@ -39,7 +39,7 @@ const BuyCoinItem = ({max, min, current, price}) =>{
   return  <div className={styles.buy_coin_wrap}>
     <div className={styles.left_wrap}>
       <div className={styles.sku_title}>{price}U</div>
-      <Slider value={currentValue} onChange={setCurrentValue}  max={max} min={min} defaultValue={currentValue}  />
+      <Slider value={currentValue} onChange={setCurrentValue}  step={100} max={max} min={min} defaultValue={currentValue}  />
       <div className={styles.min_max_wrap}>
         <div>{min}</div>
         <div>{max}</div>
@@ -138,12 +138,12 @@ const Home = ( ) =>{
       </div>
     </div>
 
-    <div className={styles.home_qty_wrap}>
-      <div className={`${styles.middle_wrap}`}>
-        <div className={`${styles.amount_icon} ${styles.time_icon}`}></div>
-        <div>{t("t5")}  1096</div>
-      </div>
-    </div>
+    {/* <div className={styles.home_qty_wrap}> */}
+    {/*   <div className={`${styles.middle_wrap}`}> */}
+    {/*     <div className={`${styles.amount_icon} ${styles.time_icon}`}></div> */}
+    {/*     <div>{t("t5")}  1096</div> */}
+    {/*   </div> */}
+    {/* </div> */}
 
     <div className={styles.home_bottom_wrap}>
       <div className={styles.wrap_title}>
@@ -159,8 +159,8 @@ const Home = ( ) =>{
       </div>
 
       <div className={styles.section_title}>{t("t9")}</div>
-      <BuyCoinItem  min={100} max={500} current={250} price={price.one}></BuyCoinItem>
-      <BuyCoinItem  min={501} max={1000} current={750} price={price.two}></BuyCoinItem>
+      <BuyCoinItem  min={100} max={500} current={300} price={price.one}></BuyCoinItem>
+      <BuyCoinItem  min={600} max={1000} current={800} price={price.two}></BuyCoinItem>
       <BuyCoinItem  min={1100} max={3000} current={2000} price={price.three}></BuyCoinItem>
 
       <div className={`${styles.section_title} ${styles.center_title}`}>{t("t10")}{walletInfo.myModBalance ?? 0} MOD</div>
@@ -218,7 +218,13 @@ const Home = ( ) =>{
           <div className={styles.people_icon}></div>
           <div>{t("t21")}</div>
         </div>
-        <div className={styles.right_wrap}>{walletInfo.sharePersonNum ?? 0}</div>
+        {/* <div onClick={()=>router.push("/promotion")} className={styles.right_wrap}> */}
+        {/*   {walletInfo.sharePersonNum ?? 0} */}
+        {/*   <RightOutlined /> */}
+        {/* </div> */}
+        <div  className={styles.right_wrap}>
+          {walletInfo.sharePersonNum ?? 0}
+        </div>
       </div>
       <div className={styles.flex_wrap}>
         <div className={styles.flex_item_wrap}>

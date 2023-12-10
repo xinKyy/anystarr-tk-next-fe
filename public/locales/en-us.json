@@ -2,7 +2,7 @@
   "t1": "Total Supply",
   "t2": "Token Name",
   "t3": "Private Sale Price",
-  "t4": "Private Sale Allocation",
+  "t4": "DIO Allocation",
   "t5": "Private Sale Lock-up Period (Days)",
   "t6": "Token",
   "t7": "Price",
@@ -11,7 +11,7 @@
   "t10": "My Claimable:",
   "t11": "Claim",
   "t12": "Allocation",
-  "t13": "Private Sale",
+  "t13": "DIO",
   "t14": "Pool",
   "t15": "Technology",
   "t16": "Community",
@@ -38,7 +38,6 @@
   "t37": "Type",
   "t38": "Deposit",
   "t39": "Log in to view",
-
   "t40": "Successfully purchased Mod!",
   "t41": "Purchase failed!",
   "t42": "Successfully claimed MOD",
@@ -46,7 +45,6 @@
   "t44": "Successfully joined the team",
   "t45": "Failed to join the team",
   "t46": "Copy successful",
-
   "t47": "Team Invitation",
   "t48": "Confirm",
   "t49": "Cancel",
@@ -60,6 +58,10 @@
   "t57": "Please switch your wallet network to Binance Smart Chain (BSC) Mainnet.",
   "t58": "The shopping mall is under development",
   "t59": "Shopping Mall",
-
-  "": ""
+  "t60": "Copy successful",
+  "t61": "Feature under development",
+  "t62": "Short Drama",
+  "t63": "Short Video",
+  "t64": "Social",
+  "t65": "My Promotion"
 }
