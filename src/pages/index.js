@@ -218,13 +218,13 @@ const Home = ( ) =>{
           <div className={styles.people_icon}></div>
           <div>{t("t21")}</div>
         </div>
-        {/* <div onClick={()=>router.push("/promotion")} className={styles.right_wrap}> */}
-        {/*   {walletInfo.sharePersonNum ?? 0} */}
-        {/*   <RightOutlined /> */}
-        {/* </div> */}
-        <div  className={styles.right_wrap}>
+        <div onClick={()=>router.push("/promotion")} className={styles.right_wrap}>
           {walletInfo.sharePersonNum ?? 0}
+          <RightOutlined />
         </div>
+        {/* <div  className={styles.right_wrap}> */}
+        {/*   {walletInfo.sharePersonNum ?? 0} */}
+        {/* </div> */}
       </div>
       <div className={styles.flex_wrap}>
         <div className={styles.flex_item_wrap}>

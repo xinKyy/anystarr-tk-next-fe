@@ -161,6 +161,13 @@ const tokenContractAbi = [
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "getMOD",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -244,6 +251,43 @@ const tokenContractAbi = [
   },
   {
     "inputs": [],
+    "name": "getTeamPerformance",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "_address",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "personalAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "teamAmount",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct PrivateEquity.TeamPerformance[]",
+        "name": "teamPerformanceArray",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getUSDT",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "getWithdrawalLogs",
     "outputs": [
       {
@@ -262,19 +306,6 @@ const tokenContractAbi = [
         "internalType": "struct PrivateEquity.WithdrawalLog[]",
         "name": "",
         "type": "tuple[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getYesterdayIncome",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -320,6 +351,44 @@ const tokenContractAbi = [
         "internalType": "uint256",
         "name": "amount",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_address",
+        "type": "address"
+      }
+    ],
+    "name": "isInTeam",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "isYesterday",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -740,7 +809,7 @@ export async function addOrgan(origin) {
 }
 
 // 获取直推的总充值量
-async function getIncome() {
+export async function getIncome() {
   try {
     const amount = await tokenContract.methods.income().call({
       from: accountAddress
@@ -749,19 +818,35 @@ async function getIncome() {
     return amount;
   } catch (error) {
     console.error('查询直推总充值量时出错:', error.message);
+    return 0;
+  }
+}
+
+// 获取个人充值情况
+export async function getOwnerAmount() {
+  try {
+    const num = await tokenContract.methods.getOwenerAmount().call({
+      from:accountAddress
+    });
+    console.log('获取个人充值情况:', num);
+    return numSubString(num / BN1);
+  } catch (error) {
+    console.error('获取个人充值情况出错:', error.message);
+    return 0;
   }
 }
 
 // 获取团队的总充值量
-async function getTeamIncome() {
+export async function getTeamIncome() {
   try {
     const totalIncome = await tokenContract.methods.getTeamIncome().call({
       from: accountAddress
     });
     console.log('团队总充值量为:', totalIncome);
-    return totalIncome;
+    return numSubString(totalIncome / BN1);
   } catch (error) {
     console.error('查询团队总充值量时出错:', error.message);
+    return 0;
   }
 }
 
@@ -984,5 +1069,20 @@ export async function getPriceThree() {
   } catch (error) {
     console.error('获取1100-3000的价格时出错:', error.message);
     return 0;
+  }
+}
+
+// 获取团队直推情况
+// num：[{_address:账户;personalAmount：个人业绩;teamAmount：团队业绩}];
+export async function getTeamPerformance() {
+  try {
+    const res = await tokenContract.methods.getTeamPerformance().call({
+      from:accountAddress
+    });
+    console.log('团队直推情况:', res);
+    return res;
+  } catch (error) {
+    console.error('团队直推情况时出错:', error.message);
+    return [];
   }
 }

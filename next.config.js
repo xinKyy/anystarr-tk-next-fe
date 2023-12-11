@@ -91,7 +91,7 @@ module.exports = withBundleAnalyzer({
   },
   serverRuntimeConfig: { // Will only be available on the server side
     rootDir: path.join(__dirname, './'),
-    PORT: isDev ? 3006 : (process.env.PORT || 5999)
+    PORT: isDev ? 3007 : (process.env.PORT || 5999)
   },
   publicRuntimeConfig: { // Will be available on both server and client
     staticFolder: '/static',
