@@ -739,7 +739,7 @@ export const BN1 = web3.utils.toWei("1", 'ether');
 let accountAddress = 'YOUR_INITIAL_ACCOUNT_ADDRESS';
 
 // 代币合约地址
-const tokenContractAddress = '0x5F534f4efF0b359C023574b5481ae92B39b7ba1F';
+const tokenContractAddress = '0x6913015459e685D120BE532ad16d07629c9075bE';
 const Erc20ContractAddress = "0x290BE78bfaf39bf8819437C2bB2E329E374499e0";
 
 // 获取代币合约实例
