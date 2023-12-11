@@ -104,7 +104,7 @@ const Home = ( ) =>{
     if (!walletInfo.address){
       message.error("请连接钱包后使用");
     }
-    let shareLink = "http://" +  window.location.host + `?${walletInfo.address}`;
+    let shareLink = "http://" +  window.location.host + `?address=${walletInfo.address}`;
     copyLink(shareLink);
   };
 

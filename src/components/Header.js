@@ -6,7 +6,7 @@ import { color_white } from '../constants/CustomTheme';
 import logo from "../imgs/header/mod-icon.webp";
 import {connectWallet, loginMetaMask} from "../utils/walletTools";
 import {useEffect, useState} from "react";
-import {splitWalletAddress} from "@/utils/addressUtil";
+import {getQueryString, splitWalletAddress} from "@/utils/addressUtil";
 import {useSelector} from "react-redux";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {setWalletInfo} from "@/redux/actions/home";
@@ -50,28 +50,37 @@ const Header = () => {
 
   const joinTeam = () =>{
     const path = router.asPath;
-    if (path && path.startsWith("/?")){
-
-      let currentPath = path;
-      if (currentPath.indexOf("?utm_source=tokenpocket")){
-        currentPath = currentPath.replace("?utm_source=tokenpocket", "");
-      }
-
-      if (currentPath && currentPath.length < 30){
-        return;
-      }
-
-      let shareAddress = currentPath.split("?")[1];
-      if (shareAddress.indexOf("&utm_source=tokenpocket")){
-        shareAddress = shareAddress.replace("&utm_source=tokenpocket", "");
-      }
-      setShareHrefAddress(shareAddress);
-      getHasJoinedOrgan(shareAddress).then(resp=>{
+    let address = getQueryString("address");
+    if (address){
+      setShareHrefAddress(address);
+      getHasJoinedOrgan(address).then(resp=>{
         if (resp === false){
           setHideModal(true);
         }
       });
-    }
+    } else if (path && path.startsWith("/?")){
+
+        let currentPath = path;
+        if (currentPath.indexOf("?utm_source=tokenpocket")){
+          currentPath = currentPath.replace("?utm_source=tokenpocket", "");
+        }
+
+        if (currentPath && currentPath.length < 30){
+          return;
+        }
+
+        let shareAddress = currentPath.split("?")[1];
+        if (shareAddress.indexOf("&utm_source=tokenpocket")){
+          shareAddress = shareAddress.replace("&utm_source=tokenpocket", "");
+        }
+        setShareHrefAddress(shareAddress);
+        getHasJoinedOrgan(shareAddress).then(resp=>{
+          if (resp === false){
+            setHideModal(true);
+          }
+        });
+      }
+
   };
 
   const realJoinTeam = () =>{

@@ -952,13 +952,13 @@ export async function withdrawUSDT() {
     console.log('提取收益成功:', transaction);
     return {
       result: true,
-      msg:"提现成功！"
+      msg:t("t71")
     };
   } catch (error) {
     console.error('提取收益出错:', error.message);
     return {
-      result: true,
-      msg:"提现失败！"
+      result: false,
+      msg:t("t72")
     };
   }
 }
