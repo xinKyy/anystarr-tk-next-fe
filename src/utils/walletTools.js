@@ -2,7 +2,7 @@ import Web3 from "web3";
 import {message} from "antd";
 import {
   connectToMetaMask,
-  getAllIncome, getCumulativeGain, getmodbalance,
+  getAllIncome, getBtnNowStatus, getCumulativeGain, getmodbalance,
   getPersonalNum,
   getTeamLevel, getYesterdayIncome, ModBalance,
   updateAvailableWithdrawal
@@ -111,6 +111,20 @@ export const connectWallet = async (dispatchAction, joinTeam) =>{
       yesterdayIncome:yesterdayIncome,
       cumulativeGain:cumulativeGain,
       modBalance:modBalance
+    });
+
+    const btnNowStatus = await getBtnNowStatus();
+    dispatchAction.setWalletInfo({
+      address:address,
+      myBalance:myBalance,
+      currentLevel:currentLevel,
+      sharePersonNum:sharePersonNum,
+      totalIncome:totalIncome,
+      myModBalance:myModBalance,
+      yesterdayIncome:yesterdayIncome,
+      cumulativeGain:cumulativeGain,
+      modBalance:modBalance,
+      btnNowStatus:btnNowStatus === 0
     });
 
   }

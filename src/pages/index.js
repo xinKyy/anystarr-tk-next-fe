@@ -164,7 +164,9 @@ const Home = ( ) =>{
       <BuyCoinItem  min={1100} max={3000} current={2000} price={price.three}></BuyCoinItem>
 
       <div className={`${styles.section_title} ${styles.center_title}`}>{t("t10")}{walletInfo.myModBalance ?? 0} MOD</div>
-      <Button disabled={!walletInfo.address} loading={getModLoading} onClick={getModFunc} className={styles.section_btn}>{t("t11")}</Button>
+      {
+        walletInfo.btnNowStatus ? <Button disabled={!walletInfo.address} loading={getModLoading} onClick={getModFunc} className={styles.section_btn}>{t("t11")}</Button> : null
+      }
     </div>
 
     <div className={styles.home_bottom_wrap}>

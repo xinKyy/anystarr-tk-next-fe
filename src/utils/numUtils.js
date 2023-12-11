@@ -1,3 +1,8 @@
 export const numSubString = (num) =>{
-  return num.toFixed(4);
-}
+  try {
+    let currentNum = num.toFixed(4);
+    return currentNum;
+  } catch (e) {
+    return 0;
+  }
+};

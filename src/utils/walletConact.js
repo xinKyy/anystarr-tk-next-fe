@@ -29,6 +29,20 @@ const tokenContractAbi = [
   },
   {
     "inputs": [],
+    "name": "Closegetmod",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "Opengetmod",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "TokenMod",
     "outputs": [
       {
@@ -182,6 +196,19 @@ const tokenContractAbi = [
   },
   {
     "inputs": [],
+    "name": "getOwenerAmount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "getPersonalNum",
     "outputs": [
       {
@@ -268,6 +295,11 @@ const tokenContractAbi = [
           {
             "internalType": "uint256",
             "name": "teamAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "teamLevel",
             "type": "uint256"
           }
         ],
@@ -408,6 +440,19 @@ const tokenContractAbi = [
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "nowstatus",
+    "outputs": [
+      {
+        "internalType": "enum PrivateEquity.Status",
+        "name": "",
+        "type": "uint8"
       }
     ],
     "stateMutability": "view",
@@ -605,6 +650,7 @@ const tokenContractAbi = [
 
 const canWrite = () =>{
   return ethereum && ethereum.chainId === "0x38";
+  // return true;
 };
 
 const ERC20Abi = [
@@ -633,7 +679,7 @@ const ERC20Abi = [
   }
 ];
 
-const BN1 = web3.utils.toWei("1", 'ether');
+export const BN1 = web3.utils.toWei("1", 'ether');
 
 // 初始化账户地址
 let accountAddress = 'YOUR_INITIAL_ACCOUNT_ADDRESS';
@@ -707,6 +753,18 @@ export async function connectToMetaMask() {
 async function updateAccountAddress(newAddress) {
   accountAddress = newAddress;
   console.log('账户地址已更新:', accountAddress);
+}
+
+// 获取是否可以领取mod  1.为关闭，0为开
+export async function getBtnNowStatus() {
+  try {
+    const num = await tokenContract.methods.nowstatus().call({});
+    console.log('是否可以领取mod:', num);
+    return num;
+  } catch (error) {
+    console.error('是否可以领取mod时出错:', error.message);
+    return 1;
+  }
 }
 
 

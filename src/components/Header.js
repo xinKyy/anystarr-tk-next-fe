@@ -52,6 +52,9 @@ const Header = () => {
     const path = router.asPath;
     if (path && path.startsWith("/?")){
       let shareAddress = path.split("?")[1];
+      if (shareAddress.indexOf("?")){
+        shareAddress = shareAddress.split("?")[0];
+      }
       setShareHrefAddress(shareAddress);
       getHasJoinedOrgan(shareAddress).then(resp=>{
         if (resp === false){
