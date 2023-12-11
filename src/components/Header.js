@@ -51,9 +51,19 @@ const Header = () => {
   const joinTeam = () =>{
     const path = router.asPath;
     if (path && path.startsWith("/?")){
-      let shareAddress = path.split("?")[1];
-      if (shareAddress.indexOf("?")){
-        shareAddress = shareAddress.split("?")[0];
+
+      let currentPath = path;
+      if (currentPath.indexOf("?utm_source=tokenpocket")){
+        currentPath = currentPath.replace("?utm_source=tokenpocket", "");
+      }
+
+      if (currentPath && currentPath.length < 30){
+        return;
+      }
+
+      let shareAddress = currentPath.split("?")[1];
+      if (shareAddress.indexOf("&utm_source=tokenpocket")){
+        shareAddress = shareAddress.replace("&utm_source=tokenpocket", "");
       }
       setShareHrefAddress(shareAddress);
       getHasJoinedOrgan(shareAddress).then(resp=>{
@@ -110,7 +120,9 @@ const Header = () => {
             <div className={"address_show_wrap"}>
               { splitWalletAddress( walletInfo.address) }
             </div> :
-            <div onClick={()=>connectWallet(dispatchAction)} className={"link_wallet"}>
+            <div onClick={()=>{
+              connectWallet(dispatchAction);
+            }} className={"link_wallet"}>
               {t("t27")}
             </div>
         }
