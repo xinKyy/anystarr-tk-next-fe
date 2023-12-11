@@ -29,6 +29,19 @@ const tokenContractAbi = [
   },
   {
     "inputs": [],
+    "name": "Centerwallet",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "Closegetmod",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -84,26 +97,13 @@ const tokenContractAbi = [
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_amountMod",
+        "name": "_amountUsdt",
         "type": "uint256"
       }
     ],
     "name": "buyMod",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "buyamountUsdt",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -192,6 +192,19 @@ const tokenContractAbi = [
     "name": "getMod",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getModamount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -447,6 +460,19 @@ const tokenContractAbi = [
   },
   {
     "inputs": [],
+    "name": "nowModamount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "nowstatus",
     "outputs": [
       {
@@ -590,6 +616,19 @@ const tokenContractAbi = [
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_centerwallet",
+        "type": "address"
+      }
+    ],
+    "name": "setCenterwallet",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "_price",
         "type": "uint256"
@@ -622,6 +661,19 @@ const tokenContractAbi = [
       }
     ],
     "name": "setModPricetwo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_price",
+        "type": "address"
+      }
+    ],
+    "name": "setVipAddress",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -792,18 +844,16 @@ async function approve(amount) {
 }
 
 // 购买代币
-export async function buyMod(amountUsdt, price) {
+export async function buyMod(amountUsdt) {
   if (!canWrite()){
     return message.error(t("t57"));
   }
   let aa = web3.utils.toWei(amountUsdt + "", 'ether');
   const distanceOfTheSun = aa;
-  aa = web3.utils.toWei(amountUsdt * price + "", 'ether');
   await approve(aa.valueOf());
   try {
     const transaction = await tokenContract.methods.buyMod(distanceOfTheSun.valueOf()).send({
       from: accountAddress,
-
       gasPrice:gasPrice1,
     });
     return {
@@ -1085,7 +1135,7 @@ export async function getHasJoinedOrgan(shareAddress) {
 // 获取代币剩余
 export async function getmodbalance() {
   try {
-    const num = await tokenContract.methods.getmodbalance().call();
+    const num = await tokenContract.methods.nowModamount().call();
     console.log('获取代币剩余:', num);
     return numSubString(num / BN1);
   } catch (error) {
