@@ -699,9 +699,11 @@ const tokenContractAbi = [
     "type": "function"
   }
 ];
-
+// const chainId = "0x38";  // bsc主网
+const chainId = "0x61";  // bsc测试网
 const canWrite = () =>{
-  return ethereum && ethereum.chainId === "0x38";
+  // return ethereum && ethereum.chainId === "0x38";
+  return ethereum && ethereum.chainId === chainId;
   // return true;
 };
 
@@ -756,12 +758,12 @@ export async function connectToMetaMask() {
         // 连接成功后，accounts 数组中将包含用户的账户地址
         accountAddress = accounts[0];
         const currentNetworkId = ethereum.chainId;
-        if (currentNetworkId !== "0x38"){
+        if (currentNetworkId !== chainId){
           // 切换网络
           try {
             await ethereum.request({
               method: 'wallet_switchEthereumChain',
-              params: [{ chainId: '0x38' }] // 0x1 是以太坊主网的链ID
+              params: [{ chainId: chainId }] // 0x1 是以太坊主网的链ID
             });
           } catch (e) {
             message.info(t("t57"));
