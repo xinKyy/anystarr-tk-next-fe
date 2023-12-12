@@ -175,15 +175,15 @@ const tokenContractAbi = [
     "inputs": [
       {
         "internalType": "address",
-        "name": "",
+        "name": "_member",
         "type": "address"
       }
     ],
-    "name": "addressLevel",
+    "name": "calculateHighestTeamLevel",
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "highestLevel",
         "type": "uint256"
       }
     ],
@@ -434,6 +434,19 @@ const tokenContractAbi = [
         "internalType": "struct PrivateEquity.WithdrawalLog[]",
         "name": "",
         "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getYesterdayIncome",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
