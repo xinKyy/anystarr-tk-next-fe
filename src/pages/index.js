@@ -102,7 +102,7 @@ const Home = ( ) =>{
 
   const copyShareLink = () =>{
     if (!walletInfo.address){
-      message.error("请连接钱包后使用");
+      message.error(t("t73"));
     }
     let shareLink = "http://" +  window.location.host + `?address=${walletInfo.address}`;
     copyLink(shareLink);
