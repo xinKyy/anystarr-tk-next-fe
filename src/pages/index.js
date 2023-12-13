@@ -153,7 +153,7 @@ const Home = ( ) =>{
 
       <div className={styles.section_title}>{t("t8")}{walletInfo.modBalance ?? 0}</div>
       <div className={styles.slider_wrap}>
-        <Progress percent={(walletInfo.modBalance ?? 0) / 5000000 * 100} showInfo={false} strokeColor={{
+        <Progress percent={(walletInfo.modBalance ?? 0) / 50000000 * 100} showInfo={false} strokeColor={{
           '0%': '#9D26F7', '100%': '#314AF0'
         }}  />
       </div>
