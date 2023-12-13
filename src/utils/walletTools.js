@@ -124,7 +124,7 @@ export const connectWallet = async (dispatchAction, joinTeam) =>{
       yesterdayIncome:yesterdayIncome,
       cumulativeGain:cumulativeGain,
       modBalance:modBalance,
-      btnNowStatus:btnNowStatus === 0
+      btnNowStatus:btnNowStatus === "0"
     });
 
   }
