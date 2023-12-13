@@ -118,7 +118,7 @@ const Income = () =>{
                 {
                   depositLogList.map(item =>{
                     return   <div className={styles.tr_wrap}>
-                      <div className={styles.th_1}>{numSubString(item.amount / 100000000)}</div>
+                      <div className={styles.th_1}>{numSubString(item.amount / BN1)}</div>
                       <div className={styles.th_2}>{transferMenu[item.details]}</div>
                       <div className={styles.th_3}>{new Date(item.time * 1000).toLocaleString()}</div>
                     </div>;

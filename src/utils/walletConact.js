@@ -172,25 +172,6 @@ const tokenContractAbi = [
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_member",
-        "type": "address"
-      }
-    ],
-    "name": "calculateHighestTeamLevel",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "highestLevel",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "Centerwallet",
     "outputs": [
@@ -198,38 +179,6 @@ const tokenContractAbi = [
         "internalType": "address",
         "name": "",
         "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "countTeamIncome",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "totalIncome",
-        "type": "uint256"
-      }
-    ],
-    "name": "countTeamIncomeText",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -354,9 +303,9 @@ const tokenContractAbi = [
             "type": "uint256"
           },
           {
-            "internalType": "uint256",
+            "internalType": "string",
             "name": "details",
-            "type": "uint256"
+            "type": "string"
           },
           {
             "internalType": "uint256",
@@ -497,6 +446,25 @@ const tokenContractAbi = [
       {
         "internalType": "uint256",
         "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "incomeMapp",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -683,9 +651,9 @@ const tokenContractAbi = [
         "type": "uint256"
       },
       {
-        "internalType": "uint256",
+        "internalType": "string",
         "name": "details",
-        "type": "uint256"
+        "type": "string"
       },
       {
         "internalType": "uint256",
@@ -795,8 +763,8 @@ export const BN1 = web3.utils.toWei("1", 'ether');
 let accountAddress = 'YOUR_INITIAL_ACCOUNT_ADDRESS';
 
 // 代币合约地址
-const tokenContractAddress = '0xE2d6c2a32975F9f5Db88b90245D8dD4230be9476';
-const Erc20ContractAddress = "0x290BE78bfaf39bf8819437C2bB2E329E374499e0";
+const tokenContractAddress = '0xd61A21aC9109A1CEBBe18233b6F1Db7B8039802b';
+const Erc20ContractAddress = "0x41b64E01aBA15a60982020CdBF7e551299F24375";
 
 // 获取代币合约实例
 const tokenContract = new web3.eth.Contract(tokenContractAbi, tokenContractAddress);
@@ -1150,10 +1118,10 @@ export async function getYesterdayIncome() {
     const num = await tokenContract.methods.getYesterdayIncome().call({
       from: accountAddress
     });
-    console.log('获取所有收益:', num);
+    console.log('查询获取昨日收益:', num);
     return numSubString(num / BN1);
   } catch (error) {
-    console.error('查询获取所有收益时出错:', error.message);
+    console.error('查询获取昨日收益时出错:', error.message);
     return 0;
   }
 }
