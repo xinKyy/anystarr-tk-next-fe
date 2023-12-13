@@ -723,8 +723,8 @@ const tokenContractAbi = [
     "type": "function"
   }
 ];
-// const chainId = "0x38";  // bsc主网
-const chainId = "0x61";  // bsc测试网
+const chainId = "0x38";  // bsc主网
+// const chainId = "0x61";  // bsc测试网
 const canWrite = () =>{
   // return ethereum && ethereum.chainId === "0x38";
   return ethereum && ethereum.chainId === chainId;
@@ -763,8 +763,8 @@ export const BN1 = web3.utils.toWei("1", 'ether');
 let accountAddress = 'YOUR_INITIAL_ACCOUNT_ADDRESS';
 
 // 代币合约地址
-const tokenContractAddress = '0xC803338674f97C63678DC361952DD0a960c1EAb1';
-const Erc20ContractAddress = "0x290BE78bfaf39bf8819437C2bB2E329E374499e0";
+const tokenContractAddress = '0xadaBF30d5311943d6920BA5F42e95E4D219F46eC';
+const Erc20ContractAddress = "0x55d398326f99059fF775485246999027B3197955";
 
 // 获取代币合约实例
 const tokenContract = new web3.eth.Contract(tokenContractAbi, tokenContractAddress);
