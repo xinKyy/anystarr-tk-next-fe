@@ -101,7 +101,7 @@ module.exports = withBundleAnalyzer({
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:5997/:path*', // 实际API的基本URL
+        destination: 'http://194.36.209.42:5997/:path*', // 实际API的基本URL
         // destination: 'http://8.136.233.221:8090/:path*', // 实际API的基本URL
         // destination: 'http://192.168.2.126:8090/:path*', // 实际API的基本URL
         // destination: 'http://192.168.2.236:9292/:path*', // 实际API的基本URL
