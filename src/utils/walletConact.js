@@ -1220,3 +1220,128 @@ export async function getTeamPerformance() {
     return [];
   }
 }
+
+
+// 管理员接口
+// 100-500
+export async function setModPriceone(price) {
+  try {
+    let priceTest = parseInt(price) * 1000;
+    const transaction = await tokenContract.methods.setModPriceone(priceTest).send({
+      from: accountAddress,
+    });
+    console.log('修改价格成功:', transaction);
+    return {
+      result: true,
+      msg:"修改价格成功！"
+    };
+  } catch (error) {
+    console.error('修改价格成功出错:', error.message);
+    return {
+      result: false,
+      msg:"修改价格失败！"
+    };
+  }
+}
+
+// 600-1000
+export async function setModPricetwo(price) {
+  try {
+    let priceTest = parseInt(price) * 1000;
+    const transaction = await tokenContract.methods.setModPricetwo(priceTest).send({
+      from: accountAddress,
+    });
+    console.log('修改价格成功:', transaction);
+    return {
+      result: true,
+      msg:"修改价格成功！"
+    };
+  } catch (error) {
+    console.error('修改价格出错:', error.message);
+    return {
+      result: false,
+      msg:"修改价格失败！"
+    };
+  }
+}
+
+// 1100-3000
+export async function setModPricethree(price) {
+  try {
+    let priceTest = parseInt(price) * 1000;
+    const transaction = await tokenContract.methods.setModPricethree(priceTest).send({
+      from: accountAddress,
+    });
+    console.log('修改价格成功:', transaction);
+    return {
+      result: true,
+      msg:"修改价格成功！"
+    };
+  } catch (error) {
+    console.error('修改价格成功出错:', error.message);
+    return {
+      result: false,
+      msg:"修改价格失败！"
+    };
+  }
+}
+
+// 修改收款地址
+export async function setCenterwallet(address) {
+  try {
+    const transaction = await tokenContract.methods.setCenterwallet(address).send({
+      from: accountAddress,
+    });
+    return {
+      result: true,
+      msg:"修改收款地址成功！"
+    };
+  } catch (error) {
+    console.error('修改收款地址出错:', error.message);
+    return {
+      result: false,
+      msg:"修改收款地址失败！"
+    };
+  }
+}
+
+// 开启领取mod
+export async function openGetMod() {
+  try {
+    const transaction = await tokenContract.methods.Opengetmod().send({
+      from: accountAddress,
+    });
+    console.log('修改收款地址成功:', transaction);
+    return {
+      result: true,
+      msg:"开启领取成功！"
+    };
+  } catch (error) {
+    console.error('修改收款地址出错:', error.message);
+    return {
+      result: false,
+      msg:"开启领取失败！"
+    };
+  }
+}
+
+// 关闭领取mod
+export async function closeGetMod() {
+  try {
+
+    const transaction = await tokenContract.methods.Closegetmod().send({
+      from: accountAddress,
+    });
+    console.log('修改收款地址成功:', transaction);
+    return {
+      result: true,
+      msg:"关闭领取成功！"
+    };
+  } catch (error) {
+    console.error('修改收款地址出错:', error.message);
+    return {
+      result: false,
+      msg:"关闭领取失败！"
+    };
+  }
+}

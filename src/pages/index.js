@@ -19,6 +19,7 @@ import {
   updateAvailableWithdrawal
 } from "@/utils/walletConact";
 import {connectWallet} from "@/utils/walletTools";
+import {APIGetModAmount} from "@/api";
 const ChartComponents = dynamic(() => import('@/components/Home/chartComponents'), { ssr: false });
 
 const BuyCoinItem = ({max, min, current, price}) =>{
@@ -54,7 +55,7 @@ const Home = ( ) =>{
   const walletInfo = useSelector(state => state.home.walletInfo.walletInfo);
   const dispatchAction = useDispatchAction({ setWalletInfo });
   const [getModLoading, setGetModLoading] = useState(false);
-
+  const [totalAmount, setTotalAmount] = useState(0);
   const [price, setPrice] = useState({});
 
   useEffect(()=>{
@@ -79,6 +80,9 @@ const Home = ( ) =>{
         ...currentPrice,
         three:resp
       });
+    });
+    APIGetModAmount().then(resp=>{
+      setTotalAmount(Number(resp.totalAmount));
     });
   }, []);
 
@@ -153,13 +157,13 @@ const Home = ( ) =>{
 
       <div className={styles.section_title}>{t("t8")}{
         // walletInfo.modBalance ?? 0
-        36585352.85
+        totalAmount
       }</div>
       <div className={styles.slider_wrap}>
         {/* <Progress percent={(walletInfo.modBalance ?? 0) / 50000000 * 100} showInfo={false} strokeColor={{ */}
         {/*   '0%': '#9D26F7', '100%': '#314AF0' */}
         {/* }}  /> */}
-        <Progress percent={36585352.85 / 50000000 * 100} showInfo={false} strokeColor={{
+        <Progress percent={totalAmount / 50000000 * 100} showInfo={false} strokeColor={{
           '0%': '#9D26F7', '100%': '#314AF0'
         }}  />
       </div>

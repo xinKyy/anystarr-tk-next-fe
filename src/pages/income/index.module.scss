@@ -218,4 +218,28 @@
       }
     }
   }
+
+  .controller_wrap{
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    .flex_wrap{
+      margin-top: 15px;
+      display: flex;
+      height: 45px;
+      justify-content: space-between;
+      :global{
+        .ant-btn{
+          height: 45px;
+        }
+        .ant-switch{
+          background-color: rgba(255, 255, 255, 0.35);
+        }
+        .ant-switch-checked{
+          background-color: rgba(21, 104, 208, 1);
+        }
+      }
+    }
+  }
 }

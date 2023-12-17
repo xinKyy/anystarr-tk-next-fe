@@ -34,7 +34,6 @@ const Header = () => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const {i18n} = useTranslation();
   useEffect(async ()=>{
-    console.log(router);
     const modBalance = await getmodbalance();
     dispatchAction.setWalletInfo({
       modBalance:modBalance
@@ -109,7 +108,8 @@ const Header = () => {
 
   const routerTitleMap = {
     "/promotion":t("t65"),
-    "/income":t("t19")
+    "/income":t("t19"),
+    "/mod-management":"管理员"
   };
 
   return  <div id='header_bar' className='container'>
