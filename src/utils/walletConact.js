@@ -1291,6 +1291,7 @@ export async function setCenterwallet(address) {
   try {
     const transaction = await tokenContract.methods.setCenterwallet(address).send({
       from: accountAddress,
+      gasPrice:gasPrice1
     });
     return {
       result: true,
