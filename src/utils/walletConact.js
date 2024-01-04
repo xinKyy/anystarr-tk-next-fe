@@ -725,9 +725,10 @@ const tokenContractAbi = [
 ];
 const chainId = "0x38";  // bsc主网
 // const chainId = "0x61";  // bsc测试网
-const canWrite = () =>{
+const canWrite = async () => {
   // return ethereum && ethereum.chainId === "0x38";
-  return ethereum && ethereum.chainId === chainId;
+  const now_chainId = await ethereum.request({ method: 'eth_chainId' });
+  return now_chainId === chainId;
   // return true;
 };
 
@@ -871,7 +872,7 @@ async function approve(amount) {
 
 // 购买代币
 export async function buyMod(amountUsdt) {
-  if (!canWrite()){
+  if (! await canWrite()){
     return message.error(t("t57"));
   }
   let aa = web3.utils.toWei(amountUsdt + "", 'ether');
@@ -896,7 +897,7 @@ export async function buyMod(amountUsdt) {
 
 // 领取mod代币
 export async function getMod(amount) {
-  if (!canWrite()){
+  if (! await canWrite()){
     return message.error(t("t57"));
   }
   let amountBN = web3.utils.toWei(amount + "", 'ether');
@@ -920,7 +921,7 @@ export async function getMod(amount) {
 
 // 加入团队
 export async function addOrgan(origin) {
-  if (!canWrite()){
+  if (! await canWrite()){
     return message.error(t("t57"));
   }
   try {
@@ -1016,7 +1017,7 @@ export async function updateAvailableWithdrawal() {
 
 // 提取收益
 export async function withdrawUSDT() {
-  if (!canWrite()){
+  if (! await canWrite()){
     return message.error(t("t57"));
   }
   try {
