@@ -782,7 +782,7 @@ export async function connectToMetaMask() {
         const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
         // 连接成功后，accounts 数组中将包含用户的账户地址
         accountAddress = accounts[0];
-        const currentNetworkId = ethereum.chainId;
+        const currentNetworkId = await ethereum.request({ method: 'eth_chainId' });
         if (currentNetworkId !== chainId){
           // 切换网络
           try {
@@ -901,6 +901,7 @@ export async function getMod(amount) {
     return message.error(t("t57"));
   }
   let amountBN = web3.utils.toWei(amount + "", 'ether');
+  console.log(amountBN, "Amount");
   try {
     const transaction = await tokenContract.methods.getMod(amountBN).send({
       from: accountAddress,
