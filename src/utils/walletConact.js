@@ -1101,7 +1101,7 @@ export async function getTeamLevel() {
 export async function getAllIncome() {
   try {
     const num = await tokenContract.methods.getAllIncome().call({
-      from: accountAddress
+      from: accountAddress,
     });
     console.log('获取所有收益:', num);
     return numSubString(num / BN1);
@@ -1116,7 +1116,7 @@ export async function getAllIncome() {
 export async function getYesterdayIncome() {
   try {
     const num = await tokenContract.methods.getYesterdayIncome().call({
-      from: accountAddress
+      from: accountAddress,
     });
     console.log('查询获取昨日收益:', num);
     return numSubString(num / BN1);
@@ -1130,7 +1130,7 @@ export async function getYesterdayIncome() {
 export async function getCumulativeGain() {
   try {
     const num = await tokenContract.methods.getCumulativeGain().call({
-      from: accountAddress
+      from: accountAddress,
     });
     console.log('获取累计收益:', num);
     return numSubString(num / BN1);
@@ -1147,7 +1147,7 @@ export async function getHasJoinedOrgan(shareAddress) {
       return true;
     }
     const flag = await tokenContract.methods.hasJoinedOrgan(accountAddress).call({
-      from:accountAddress
+      from:accountAddress,
     });
     console.log('是否加入团队:', flag);
     return flag;
@@ -1211,7 +1211,7 @@ export async function getPriceThree() {
 export async function getTeamPerformance() {
   try {
     const res = await tokenContract.methods.getTeamPerformance().call({
-      from:accountAddress
+      from:accountAddress,
     });
     console.log('团队直推情况:', res);
     return res;
@@ -1229,6 +1229,7 @@ export async function setModPriceone(price) {
     let priceTest = parseInt(price) * 1000;
     const transaction = await tokenContract.methods.setModPriceone(priceTest).send({
       from: accountAddress,
+      gasPrice:gasPrice1
     });
     console.log('修改价格成功:', transaction);
     return {
@@ -1311,6 +1312,7 @@ export async function openGetMod() {
   try {
     const transaction = await tokenContract.methods.Opengetmod().send({
       from: accountAddress,
+      gasPrice:gasPrice1
     });
     console.log('修改收款地址成功:', transaction);
     return {
@@ -1332,6 +1334,7 @@ export async function closeGetMod() {
 
     const transaction = await tokenContract.methods.Closegetmod().send({
       from: accountAddress,
+      gasPrice:gasPrice1
     });
     console.log('修改收款地址成功:', transaction);
     return {
