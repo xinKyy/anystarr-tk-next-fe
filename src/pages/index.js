@@ -46,7 +46,7 @@ const BuyCoinItem = ({max, min, current, price}) =>{
         <div>{max}</div>
       </div>
     </div>
-    <Button loading={loading}  onClick={buyModFunc} className={styles.right_wrap}>{t("t26")} {currentValue}</Button>
+    <Button disabled loading={loading}  onClick={buyModFunc} className={styles.right_wrap}>{t("t26")} {currentValue}</Button>
   </div>;
 };
 
