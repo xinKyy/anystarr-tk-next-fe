@@ -5,7 +5,7 @@
 body {
   /*font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;*/
   font-family: Segoe UI, Segoe UI;
-  background-color: #090B14;
+  background-color: #ffffff;
 }
 
 .container {
@@ -15,7 +15,7 @@ body {
   top: 0;
   width: 100%;
   height: 60px;
-  background-color: #090B14;
+  background-color: #ffffff;
   z-index: 999;
 }
 .logo-container {
@@ -25,6 +25,7 @@ body {
   align-items: center;
   left: 20px;
   cursor: pointer;
+
 }
 .sys-name {
   display: inline-block;
@@ -33,7 +34,7 @@ body {
   font-weight: 600;
 }
 .logo {
-  width: 87px;
+  width: 120px;
   height: 42px;
 }
 .right-container {
@@ -74,22 +75,24 @@ body {
 }
 
 .link_wallet{
-  background: #171925;
+  background: #FF0167;
   padding: 0 20px;
   height: 36px;
   display: flex;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  justify-content: center;
+  justify-content: flex-end;
   line-height: 36px;
   text-align: center;
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
   font-size: 12px;
 }
 
 .language-btn{
   background: url("../src/imgs/header/global-icon.svg") no-repeat;
+    background-color: #FF0167;
+    border-radius: 12px;
   width: 24px;
   height: 24px;
   margin: 0 10px;
@@ -207,4 +210,8 @@ body {
 .ant-modal-footer .ant-btn-primary{
   background: linear-gradient(to right, #9D26F7, #314AF0);
   border: none;
+}
+
+*::-webkit-scrollbar{
+    display: none;
 }

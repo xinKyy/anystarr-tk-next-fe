@@ -1,0 +1,107 @@
+.commissionContainer {
+  margin-top: 18px;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 20px;
+    margin-left: -4px;
+  }
+}
+
+.commissionImage {
+  width: 100%;
+  height: auto;
+}
+
+.commissionInfo {
+  position: absolute;
+  width: calc(38% - 14px);
+  height: 70%;
+  bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  font-family: 'Inter', sans-serif;
+  color: #666;
+  text-align: center;
+  zoom: 0.9;
+  &.left {
+    left: 14px;
+
+    @media (max-width: 768px) {
+      left: 40px;
+    }
+  }
+
+  &.right {
+    right: 14px;
+
+    @media (max-width: 768px) {
+      right: 24px;
+    }
+  }
+}
+
+.commissionInfo_right{
+  bottom: -10px;
+}
+
+.label {
+  font-size: 14px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.subLabel {
+  font-size: 14px;
+}
+
+.commissionRate {
+  color: #000;
+  font-weight: 800;
+  margin-bottom: 12px;
+  font-size: 30px;
+
+  @media (max-width: 1440px) {
+    font-size: 28px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+
+  @media (max-width: 1280px) {
+    font-size: 26px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+
+  &.exclusive {
+    color: #FF0280;
+  }
+}
+
+.rateLabel {
+  font-size: 14px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}

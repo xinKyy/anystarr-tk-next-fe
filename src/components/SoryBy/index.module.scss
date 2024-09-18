@@ -1,0 +1,45 @@
+.container {
+  display: flex; /* 使用 flexbox 布局 */
+  color: #999;
+  width: 100%;
+  gap: 12px;
+  overflow-x: auto; /* 允许横向滚动 */
+  white-space: nowrap; /* 确保子元素在一行内显示，不换行 */
+}
+
+.sortItem {
+  display: flex;
+  height: 24px;
+  line-height: 24px;
+  user-select: none;
+  cursor: pointer;
+  &.active {
+    border-color: #ff99aa;
+    color: #ff99aa;
+    font-weight: bold;
+  }
+}
+
+.itemText {
+  padding-right: 4px;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+}
+
+.arrowUp,
+.arrowDown {
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.arrowUp {
+  justify-content: flex-end;
+}
+
+.arrowDown {
+  justify-content: flex-start;
+}
