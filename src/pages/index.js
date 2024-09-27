@@ -13,6 +13,7 @@ import SearchBar from "@/components/SearchBar";
 import HomeCard from "@/components/HomeCard";
 import SortBy from "@/components/SoryBy";
 import {APIGetProductList} from "@/api";
+import {getQueryString} from "@/utils/action";
 
 const Home = ( ) =>{
 
@@ -31,8 +32,16 @@ const Home = ( ) =>{
     });
   };
 
+  const getToken = () =>{
+    const token = getQueryString("token");
+    if (token){
+      localStorage.setItem("token", token);
+    }
+  };
+
   useEffect(()=>{
     getProdList();
+    getToken();
   }, []);
 
   return <div className={styles.home_page}>
