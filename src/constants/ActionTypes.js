@@ -12,3 +12,5 @@ export const FETCH_USER_LIST_SUCCESS = 'FETCH_USER_LIST_SUCCESS';
 
 
 export const SET_WALLET_INFO = 'SET_WALLET_INFO';
+export const SET_USER_INFO = 'SET_USER_INFO';
+

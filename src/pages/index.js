@@ -17,7 +17,12 @@ import {getQueryString} from "@/utils/action";
 
 const Home = ( ) =>{
 
-  const [prodList, setProdList] = useState([]);
+  const [prodList, setProdList] = useState([{
+    price:"$90",
+    title:"hahah",
+    image:"https://p19-oec-ttp.tiktokcdn-us.com/tos-useast5-i-omjb5zjo8w-tx/671058679dac4cb6a2deb499a21d58e5~tplv-omjb5zjo8w-resize-jpeg:2000:2000.jpeg?from=520841845",
+    soldNum:"99+"
+  }]);
 
   const getProdList = () =>{
     APIGetProductList(JSON.stringify({

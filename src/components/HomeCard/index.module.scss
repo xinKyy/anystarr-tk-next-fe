@@ -60,6 +60,16 @@
     }
   }
 
+  .normal_wrap{
+    font-size: 14px;
+    margin-top: 5px;
+    color: rgba(0, 0, 0, 0.7);
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
   .commission {
     font-family: 'Inter', sans-serif;
     font-weight: medium;

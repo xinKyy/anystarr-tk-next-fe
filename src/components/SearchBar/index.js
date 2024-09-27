@@ -9,17 +9,8 @@ const SearchBar = () => {
         placeholder='Search product'
       />
       <div className={styles.searchButton}>
-        <span role='img' className={`${styles.icon} anticon`}>
-          <svg
-            width='1em'
-            height='1em'
-            fill='currentColor'
-            aria-hidden='true'
-            focusable='false'
-          >
-            <use xlinkHref='#icon-search' />
-          </svg>
-        </span>
+        <img src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/search.svg"} className={`${styles.icon} anticon`}>
+        </img>
       </div>
     </div>
   );

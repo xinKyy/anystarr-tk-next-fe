@@ -27,7 +27,14 @@ const HomeCard = ({item}) => {
           display:"flex",
           justifyContent:"space-between"
         }}>
-          <span className={styles.price}>{item.price}</span>
+          <div>
+            <div className={styles.price}>{item.price}</div>
+            <div className={styles.normal_wrap}>Earn per sale</div>
+          </div>
+          <div>
+            <div className={styles.price}>{item.price}</div>
+            <div className={styles.normal_wrap}>Commission</div>
+          </div>
         </div>
         <div className={styles.title}>{item.title}</div>
         {/* <span className={styles.commission}>Commission ¥20</span>*/}

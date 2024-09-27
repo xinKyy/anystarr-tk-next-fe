@@ -2,7 +2,7 @@ import {
   INCREMENT,
   DECREMENT,
   RESET,
-  ADD_TO_NUMBER, SET_WALLET_INFO
+  ADD_TO_NUMBER, SET_WALLET_INFO, SET_USER_INFO
 } from '../../constants/ActionTypes';
 
 export function increment() {
@@ -33,6 +33,13 @@ export function addToNumber(payload) {
 export function setWalletInfo(payload) {
   return  {
     type: SET_WALLET_INFO,
+    payload
+  };
+}
+
+export function setUserInfo(payload) {
+  return  {
+    type: SET_USER_INFO,
     payload
   };
 }
