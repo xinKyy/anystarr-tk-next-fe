@@ -1,13 +1,29 @@
 import ajaxRequest from "@/utils/ajaxRequest";
-export const APIGetModAmount = (params) => {
-  return ajaxRequest.get(`/api/mod-token/total`, params);
-};
-
-export const APIChangeModAmount = (params) => {
-  return ajaxRequest.get(`/api/change/total`, params);
-};
-
-
 export const APIGetProductList = (params) => {
   return ajaxRequest.postJson(`/api/v1/product/list`, params);
+};
+
+// 用户信息
+export const APIGetUserInfo = (params) => {
+  return ajaxRequest.get(`/api/v1/product/get`, params);
+};
+
+// {productId:string} // 获取商品详情
+export const APIGetProductInfo = (params) => {
+  return ajaxRequest.get(`/api/v1/product/getProduct`, params);
+};
+
+// {uid:string, itemId:string} // 增加收藏
+export const APIAddFavoriteItems = (params) => {
+  return ajaxRequest.get(`/api/v1/favoriteItems/add`, params);
+};
+
+// {collectId:string} // 删除收藏
+export const APIDeleteFavoriteItems = (params) => {
+  return ajaxRequest.get(`/api/v1/favoriteItems/remove`, params);
+};
+
+// {collectId:string} // 检查是否收藏
+export const APICheckCollect = (params) => {
+  return ajaxRequest.get(`/api/v1/favoriteItems/checkCollect`, params);
 };
