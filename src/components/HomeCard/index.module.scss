@@ -53,8 +53,8 @@
     font-family: 'Inter', sans-serif;
     font-weight: bold;
     color: #FF002C;
-    font-size: 26px;
-
+    font-size: 20px;
+    height: 15px;
     @media (max-width: 768px) {
       font-size: 16px;
     }
@@ -74,7 +74,11 @@
     font-size: 12px;
     margin-top: 13px;
     line-height: 16px;
-    min-height: 32px;
+    display: -webkit-box;        /* 兼容 flex 布局 */
+    -webkit-box-orient: vertical; /* 垂直方向排列子元素 */
+    overflow: hidden;            /* 隐藏溢出部分 */
+    text-overflow: ellipsis;     /* 溢出时显示省略号 */
+    -webkit-line-clamp: 1;       /* 限制显示的行数，这里是 2 行 */
   }
 
   .sold {
@@ -82,17 +86,16 @@
     font-weight: medium;
     color: #666;
     font-size: 12px;
-    margin-left: 4px;
+    margin-top: 5px;
   }
 
   .sampleBtn {
-    width: 148px;
+    width: 100%;
     padding-top: 30px;
     background: linear-gradient(to right, #25f4ee 50%, #fe2c55 50%);
     border-radius: 25px;
     position: relative;
     cursor: pointer;
-
     .btnInner {
       position: absolute;
       top: 0;

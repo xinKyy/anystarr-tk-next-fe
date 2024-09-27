@@ -1,23 +1,37 @@
 import React from 'react';
 import styles from './index.module.scss';
-import SizeBox from "@/components/SizeBox"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
+import SizeBox from "@/components/SizeBox";
+import {useRouter} from "next/router"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
 
-const HomeCard = () => {
+const HomeCard = ({item}) => {
+
+  const router = useRouter();
+
+
+  const toDetails = () =>{
+    router.push(`/product/${item.productId}`);
+  };
+
   return (
-    <div className={styles.flexContainer}>
+    <div onClick={toDetails} className={styles.flexContainer}>
       <div className={styles.imgContainer}>
         <img
-          src='https://p19-oec-ttp.tiktokcdn-us.com/tos-useast5-i-omjb5zjo8w-tx/671058679dac4cb6a2deb499a21d58e5~tplv-omjb5zjo8w-resize-jpeg:2000:2000.jpeg?from=520841845'
+          src={item.image}
           alt='Image'
           className={styles.rcImage}
         />
       </div>
 
       <div className={styles.textContainer}>
-        <span className={styles.price}>¥168</span>
-        <span className={styles.commission}>Commission ¥20</span>
-        <div className={styles.title}>Product Title</div>
-        <span className={styles.sold}>Sold 50+</span>
+        <div style={{
+          display:"flex",
+          justifyContent:"space-between"
+        }}>
+          <span className={styles.price}>{item.price}</span>
+        </div>
+        <div className={styles.title}>{item.title}</div>
+        {/* <span className={styles.commission}>Commission ¥20</span>*/}
+        <div className={styles.sold}>Sold {item.soldNum}</div>
         <SizeBox h={10}></SizeBox>
         <div className={styles.sampleBtn}>
           <div className={styles.btnInner}>一键加橱</div>
