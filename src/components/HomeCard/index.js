@@ -12,6 +12,20 @@ const HomeCard = ({item}) => {
     router.push(`/product/${item.productId}`);
   };
 
+  const convertPrice = (price) =>{
+    if (price && price.indexOf("-") !== -1){
+       return price.split("-")[0];
+    }
+    return price;
+  };
+
+  const toAddTk = (e) =>{
+    e.stopPropagation();
+    if (item.url){
+      window.open(item.url, "_blank");
+    }
+  };
+
   return (
     <div onClick={toDetails} className={styles.flexContainer}>
       <div className={styles.imgContainer}>
@@ -28,11 +42,11 @@ const HomeCard = ({item}) => {
           justifyContent:"space-between"
         }}>
           <div>
-            <div className={styles.price}>{item.price}</div>
+            <div className={styles.price}>{convertPrice(item.price)}</div>
             <div className={styles.normal_wrap}>Earn per sale</div>
           </div>
           <div>
-            <div className={styles.price}>{item.price}</div>
+            <div className={styles.price}>{item.finishRate}%</div>
             <div className={styles.normal_wrap}>Commission</div>
           </div>
         </div>
@@ -40,7 +54,7 @@ const HomeCard = ({item}) => {
         {/* <span className={styles.commission}>Commission ¥20</span>*/}
         <div className={styles.sold}>Sold {item.soldNum}</div>
         <SizeBox h={10}></SizeBox>
-        <div className={styles.sampleBtn}>
+        <div onClick={toAddTk} className={styles.sampleBtn}>
           <div className={styles.btnInner}>一键加橱</div>
         </div>
       </div>

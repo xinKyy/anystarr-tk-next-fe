@@ -5,7 +5,7 @@ export const APIGetProductList = (params) => {
 
 // 用户信息
 export const APIGetUserInfo = () => {
-  return ajaxRequest.get(`/api/v1/product/get`, {});
+  return ajaxRequest.get(`/api/v1/user/get`, {});
 };
 
 // {productId:string} // 获取商品详情

@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {setUserInfo} from "@/redux/actions/home";
+import {Avatar, Popover} from "antd";
 const { publicRuntimeConfig: { staticFolder } } = getConfig();
 const Header = () => {
   const router = useRouter();
@@ -17,7 +18,6 @@ const Header = () => {
     const token = localStorage.getItem("token");
     if (token){
       APIGetUserInfo().then(resp=>{
-        dispatchAction.setUserInfo();
       });
     }
   };
@@ -25,10 +25,39 @@ const Header = () => {
 
   useEffect(()=>{
     getUserInfo();
+    const user = {
+      "id": 6003,
+      "openId": "-000V3sGqSuFQyRHskcsGNbJs3I9M8825kTp",
+      "unionId": "71daec53-1fd1-5321-8faf-e87b81b3ee12",
+      "token": "act.TI88LaXHX8cTNGo1K9loWARpZ5O7vwpMWBbat3VJfkvN3z7SMwRa96xSoAGt!6176.va",
+      "updateTime": "2024-09-28T05:45:37.000+00:00",
+      "avatarUrl": "https://p16-sign-va.tiktokcdn.com/musically-maliva-obj/1594805258216454~c5_168x168.jpeg?lk3s=a5d48078&nonce=58290&refresh_token=f278f199bfe5127018cf978496152287&x-expires=1727672400&x-signature=0J%2FrIX0BBeOxUSTDYhUq%2Fqc56y0%3D&shp=a5d48078&shcp=8aecc5ac",
+      "displayName": "xink0722cc",
+      "profileDeepLink": "https://vm.tiktok.com/ZMh636hH9/",
+      "bioDescription": null,
+      "followerCount": 0,
+      "followingCount": 0,
+      "likesCount": 0,
+      "videoCount": 0,
+      "isDelete": 0
+    };
+    dispatchAction.setUserInfo(user);
+    localStorage.setItem("userInfo", JSON.stringify(user));
   }, []);
 
+  const content = (
+    <div className={"pop_content"}>
+      <div>我的收藏</div>
+      <div onClick={()=>{
+        localStorage.removeItem("userInfo");
+        localStorage.removeItem("token");
+        dispatchAction.setUserInfo(null);
+      }}>Logout</div>
+    </div>
+  );
 
-  return  <div id='header_bar' className='container'>
+
+  return  <div id='header_bar' className='header_container'>
 
     <Link href='/'>
       <div className='logo-container'>
@@ -37,9 +66,16 @@ const Header = () => {
     </Link>
 
     <div className='right-container'>
-      <div className='language-btn'></div>
+      {/* <div className='language-btn'></div>*/}
       {
-        <a href={`${host}/api/v1/tiktok/oauth`}>
+        userInfo?.displayName ?
+          <Popover trigger={"click"} placement={"bottom"} content={content}>
+            <div>
+             <Avatar src={userInfo.avatarUrl}></Avatar>
+              <span className={"user_name_wrap"} style={{marginLeft:"10px"}}>{userInfo?.displayName}</span>
+            </div>
+          </Popover>
+          : <a href={`${host}/api/v1/tiktok/oauth`}>
           <div className={"link_wallet"}>
             Connect Tiktok
           </div>
