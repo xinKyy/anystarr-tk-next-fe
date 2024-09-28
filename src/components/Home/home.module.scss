@@ -14,8 +14,15 @@
     grid-template-columns: repeat(5, 1fr); /* 两列等宽 */
     gap: 10px; /* 列与列之间的间隔 */
     padding: 10px;
-
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr); /* 两列等宽 */
+      gap: 10px; /* 列与列之间的间隔 */
+    }
     @media (max-width: 768px) {
+      grid-template-columns: repeat(3, 1fr); /* 两列等宽 */
+      gap: 10px; /* 列与列之间的间隔 */
+    }
+    @media (max-width: 500px) {
       grid-template-columns: repeat(2, 1fr); /* 两列等宽 */
       gap: 10px; /* 列与列之间的间隔 */
     }

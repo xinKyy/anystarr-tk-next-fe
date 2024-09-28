@@ -1,50 +1,34 @@
 import styles from "./index.module.scss";
 
-const SortBy = () => {
+const SortBy = ({current, onChange}) => {
   return (
-    <div className={styles.container}>
-      <div className={`${styles.sortItem} ${styles.active}`}>
-        <div className={styles.itemText}>Best Match</div>
+    <div onClick={()=>onChange(1)} className={styles.container}>
+      <div className={`${styles.sortItem} ${ current === 1 && styles.active}`}>
+        <div className={styles.itemText}>产品销量</div>
         <div className={styles.arrows}>
           <div className={styles.arrowUp}></div>
           <div className={styles.arrowDown}></div>
         </div>
       </div>
 
-      <div className={styles.sortItem}>
-        <div className={styles.itemText}>Total Sales</div>
+      <div onClick={()=>onChange(2)}  className={`${styles.sortItem} ${ current === 2 && styles.active}`}>
+        <div className={styles.itemText}>总销售额</div>
         <div className={styles.arrows}>
           <div className={styles.arrowUp}></div>
           <div className={styles.arrowDown}></div>
         </div>
       </div>
 
-      <div className={styles.sortItem}>
-        <div className={styles.itemText}>Earn per sale</div>
+      <div  onClick={()=>onChange(3)} className={`${styles.sortItem} ${ current === 3 && styles.active}`}>
+        <div className={styles.itemText}>日销售额 </div>
         <div className={styles.arrows}>
           <div className={styles.arrowUp}></div>
           <div className={styles.arrowDown}></div>
         </div>
       </div>
 
-      <div className={styles.sortItem}>
-        <div className={styles.itemText}>Commission Rate</div>
-        <div className={styles.arrows}>
-          <div className={styles.arrowUp}></div>
-          <div className={styles.arrowDown}></div>
-        </div>
-      </div>
-
-      <div className={styles.sortItem}>
-        <div className={styles.itemText}>Price</div>
-        <div className={styles.arrows}>
-          <div className={styles.arrowUp}></div>
-          <div className={styles.arrowDown}></div>
-        </div>
-      </div>
-
-      <div className={styles.sortItem}>
-        <div className={styles.itemText}>Latest</div>
+      <div onClick={()=>onChange(4)}  className={`${styles.sortItem} ${ current === 4 && styles.active}`}>
+        <div className={styles.itemText}>佣金率</div>
         <div className={styles.arrows}>
           <div className={styles.arrowUp}></div>
           <div className={styles.arrowDown}></div>
@@ -54,4 +38,4 @@ const SortBy = () => {
   );
 };
 
-export default SortBy
+export default SortBy;

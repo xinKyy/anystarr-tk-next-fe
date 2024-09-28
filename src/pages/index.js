@@ -1,4 +1,3 @@
-
 import styles from '../components/Home/home.module.scss';
 import {Button, Drawer, message, Progress, Slider} from "antd";
 import {useEffect, useState} from "react";
@@ -17,49 +16,82 @@ import {getQueryString} from "@/utils/action";
 
 let data = [];
 
-const Home = ( ) =>{
-
+const Home = () => {
   const [prodList, setProdList] = useState(data);
+  const [sort, setSort] = useState(null);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  const getProdList = () =>{
+  const getProdList = () => {
+    if (loading) return;
+    setLoading(true);
     APIGetProductList(JSON.stringify({
-      sort: 1,
-      page: 1,
+      sort: sort,
+      page: page,
       pageSize: 100
-    })).then(resp=>{
-      if (resp){
-        setProdList(resp.data.list.records);
-        data = resp.data.list.records;
-        console.log(resp, "respresp");
+    })).then(resp => {
+      if (resp) {
+        const newData = resp.data.list.records;
+        setProdList(prevProdList => (page === 1 ? newData : [...prevProdList, ...newData]));
+        data = newData;
       }
+    }).finally(() => {
+      setLoading(false);
     });
   };
 
-  const getToken = () =>{
+  const getToken = () => {
     const token = getQueryString("token");
-    if (token){
+    if (token) {
       localStorage.setItem("token", token);
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     getProdList();
+  }, [sort, page]);
+
+  useEffect(() => {
     getToken();
   }, []);
 
-  return <div className={styles.home_page}>
-    <SearchBar></SearchBar>
-    <div className={styles.sort_wrap}>
-      <SortBy></SortBy>
+  const onSortChange = (sortby) => {
+    if (loading) return;
+    setSort(sortby);
+    setPage(1); // Reset page when sorting
+  };
+
+  const handleScroll = () => {
+    if (loading) return;
+
+    // Check if user has scrolled to the bottom of the page
+    if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight) {
+      setPage(prevPage => prevPage + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [loading]);
+
+  return (
+    <div className={styles.home_page}>
+      <SearchBar />
+      <div className={styles.sort_wrap}>
+        <SortBy current={sort} onChange={onSortChange} />
+      </div>
+      <div className={styles.grid_container}>
+        {
+          prodList && prodList.map(item => (
+            <HomeCard key={item.productId} item={item} />
+          ))
+        }
+      </div>
     </div>
-    <div className={styles.grid_container}>
-      {
-        prodList && prodList.map(item=>{
-          return <HomeCard item={item}></HomeCard>;
-        })
-      }
-    </div>
-  </div>;
+  );
 };
 
 export default Home;
