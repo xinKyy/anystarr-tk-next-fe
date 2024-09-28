@@ -1,7 +1,10 @@
 import React from 'react';
 import styles from './index.module.scss';
 import SizeBox from "@/components/SizeBox";
-import {useRouter} from "next/router"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
+import {useRouter} from "next/router";
+import {isMobile} from "@/utils/action";
+import copy from "copy-to-clipboard";
+import {message} from "antd"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
 
 const HomeCard = ({item}) => {
 
@@ -21,9 +24,16 @@ const HomeCard = ({item}) => {
 
   const toAddTk = (e) =>{
     e.stopPropagation();
-    if (item.url){
-      window.open(item.url, "_blank");
+
+    if (item?.url){
+      if (isMobile()){
+        window.open(item?.url, "_blank");
+      } else {
+        copy(item?.url);
+        message.success("Copy link successfully, please open it with a browser on your mobile device");
+      }
     }
+
   };
 
   return (
