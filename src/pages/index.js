@@ -1,6 +1,6 @@
 import styles from '../components/Home/home.module.scss';
 import {Button, Drawer, message, Progress, Slider} from "antd";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {RightOutlined} from "@ant-design/icons";
 import {copyLink, splitWalletAddress} from "@/utils/addressUtil";
 import {useSelector} from "react-redux";
@@ -21,9 +21,12 @@ const Home = () => {
   const [sort, setSort] = useState(null);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
+
+  const scrollDiv = useRef();
 
   const getProdList = () => {
-    if (loading) return;
+    if (loading || !hasMore) return; // 检查是否正在加载或没有更多数据
     setLoading(true);
     APIGetProductList(JSON.stringify({
       sort: sort,
@@ -33,40 +36,29 @@ const Home = () => {
       if (resp) {
         const newData = resp.data.list.records;
         setProdList(prevProdList => (page === 1 ? newData : [...prevProdList, ...newData]));
-        data = newData;
+        setHasMore(newData.length > 0); // 更新是否还有更多数据
       }
     }).finally(() => {
       setLoading(false);
     });
   };
 
-  const getToken = () => {
-    const token = getQueryString("token");
-    if (token) {
-      localStorage.setItem("token", token);
-    }
-  };
-
   useEffect(() => {
     getProdList();
   }, [sort, page]);
-
-  useEffect(() => {
-    getToken();
-  }, []);
 
   const onSortChange = (sortby) => {
     if (loading) return;
     setSort(sortby);
     setPage(1); // Reset page when sorting
+    setHasMore(true); // 重置是否还有更多数据
   };
 
   const handleScroll = () => {
     if (loading) return;
-
-    // Check if user has scrolled to the bottom of the page
-    if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight) {
-      setPage(prevPage => prevPage + 1);
+    const nearBottom = window.innerHeight + document.documentElement.scrollTop >= scrollDiv.current.offsetHeight - 100;
+    if (nearBottom) {
+      setPage(page + 1);
     }
   };
 
@@ -78,7 +70,7 @@ const Home = () => {
   }, [loading]);
 
   return (
-    <div className={styles.home_page}>
+    <div ref={scrollDiv} className={styles.home_page}>
       <SearchBar />
       <div className={styles.sort_wrap}>
         <SortBy current={sort} onChange={onSortChange} />
