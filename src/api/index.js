@@ -3,6 +3,11 @@ export const APIGetProductList = (params) => {
   return ajaxRequest.postJson(`/api/v1/product/list`, params);
 };
 
+// 获取收藏列表
+export const APIGetLikeProductList = (params) => {
+  return ajaxRequest.postJson(`/api/v1/favoriteItems/list`, params);
+};
+
 // 用户信息
 export const APIGetUserInfo = () => {
   return ajaxRequest.get(`/api/v1/user/get`, {});

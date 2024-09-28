@@ -38,7 +38,7 @@ function ajaxRequest(methods, url, params, contentType) {
                     if (res === 'unLogin') {
                         reject();
                     } else if (!res) {
-                        message.error(resp.resultMessage || '系统故障');
+                        message.error(resp.resultMessage || 'System error');
                         return reject(resp.resultMessage);
                     } else {
                         resolve(resp);
@@ -47,12 +47,12 @@ function ajaxRequest(methods, url, params, contentType) {
             },
             error: err => {
               if (err.status === 401){
-                message.error("登录过期，请重新登录");
+                message.error("Login expired!");
                 setTimeout(() => {
                   window.location.href = "/";
                 }, 1000);
               } else {
-                message.error(err.statusText);
+                // message.error(err.statusText);
               }
               reject(err);
             }

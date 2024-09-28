@@ -12,7 +12,6 @@ import SearchBar from "@/components/SearchBar";
 import HomeCard from "@/components/HomeCard";
 import SortBy from "@/components/SoryBy";
 import {APIGetProductList} from "@/api";
-import {getQueryString} from "@/utils/action";
 
 let data = [];
 
@@ -33,9 +32,15 @@ const Home = () => {
       page: page,
       pageSize: 100
     })).then(resp => {
-      if (resp) {
-        const newData = resp.data.list.records;
-        setProdList(prevProdList => (page === 1 ? newData : [...prevProdList, ...newData]));
+      if (resp.data.list) {
+        let newData = [];
+        if ( page === 1){
+          newData = resp.data.list.records;
+        } else {
+          newData = prodList.concat(resp.data.list.records);
+        }
+        let data = newData;
+        setProdList(data);
         setHasMore(newData.length > 0); // 更新是否还有更多数据
       }
     }).finally(() => {
@@ -55,7 +60,7 @@ const Home = () => {
   };
 
   const handleScroll = () => {
-    if (loading) return;
+    if (loading || !hasMore) return;
     const nearBottom = window.innerHeight + document.documentElement.scrollTop >= scrollDiv.current.offsetHeight - 100;
     if (nearBottom) {
       setPage(page + 1);
