@@ -15,14 +15,11 @@ import SortBy from "@/components/SoryBy";
 import {APIGetProductList} from "@/api";
 import {getQueryString} from "@/utils/action";
 
+let data = [];
+
 const Home = ( ) =>{
 
-  const [prodList, setProdList] = useState([{
-    price:"$90",
-    title:"hahah",
-    image:"https://p19-oec-ttp.tiktokcdn-us.com/tos-useast5-i-omjb5zjo8w-tx/671058679dac4cb6a2deb499a21d58e5~tplv-omjb5zjo8w-resize-jpeg:2000:2000.jpeg?from=520841845",
-    soldNum:"99+"
-  }]);
+  const [prodList, setProdList] = useState(data);
 
   const getProdList = () =>{
     APIGetProductList(JSON.stringify({
@@ -32,6 +29,7 @@ const Home = ( ) =>{
     })).then(resp=>{
       if (resp){
         setProdList(resp.data.list.records);
+        data = resp.data.list.records;
         console.log(resp, "respresp");
       }
     });

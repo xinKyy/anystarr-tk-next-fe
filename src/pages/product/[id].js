@@ -1,6 +1,6 @@
 import styles from "./index.module.scss";
 import React, {useEffect, useState} from "react";
-import {Carousel, message} from "antd";
+import {Carousel, Image, message, Skeleton} from "antd";
 import ProductPrice from "@/components/ProductPrice";
 import ProductPrice2 from "@/components/ProductPrice2";
 import SizeBox from "@/components/SizeBox";
@@ -8,11 +8,13 @@ import {useRouter} from "next/router";
 import {APIGetProductInfo} from "@/api";
 import {isMobile} from "@/utils/action";
 import copy from 'copy-to-clipboard';
+import BackBtn from "@/components/BackBtn";
 const Product = ({productId}) =>{
 
   const router = useRouter();
 
   const [product, setProduct] = useState();
+  const [mobile, setMobile] = useState(false);
 
   const onChange = (currentSlide) => {
     console.log(currentSlide);
@@ -28,6 +30,7 @@ const Product = ({productId}) =>{
   };
 
   useEffect(()=>{
+    setMobile(isMobile());
     getDetails();
   }, []);
 
@@ -44,37 +47,51 @@ const Product = ({productId}) =>{
     }
 
   };
+  return <div>
+    {
+      !mobile && <SizeBox h={10}></SizeBox>
+    }
 
-  return <div className={styles.product_wrap}>
-    <Carousel afterChange={onChange}>
-      <div className={styles.top_img_wrap}>
-        <img
-          src={product?.image ?? ""}
-          alt='Image'
-          className={styles.rcImage}
-        />
-      </div>
-    </Carousel>
-    <ProductPrice price={product?.price} rate={product?.finishRate}></ProductPrice>
-    <ProductPrice2 tkRate={product?.openRate} usRate={product?.finishRate}></ProductPrice2>
-    <div className={styles.product_des_wrap}>
-      {
-        product?.title
-      }
+    <div className={styles.back_wrap}>
+      <BackBtn></BackBtn>
     </div>
-    <SizeBox w={"100%"} h={10} bgColor={"rgb(241 243 249)"}></SizeBox>
-    {/* <div className={styles.product_des_wrap}>*/}
-    {/*  <h3>Content brief:</h3>*/}
-    {/*  <div>*/}
-    {/*    1.VOLUMIZING SHAMPOO revives your strands into a thick, voluminous and healthy look. Blended with Biotin for fuller looking hair, vegan collagen to support healthy hair growth, and superfruits elderberry and restoring plum oil to protect strands from damage.*/}
-    {/*    2.STRENGTHENING CONDITIONER transforms limp, dry hair into full, rich, voluminous locks. This rich conditioner is packed with repairing biotin, growth and volume promoting collagen, restoring and lengthening elderberry and nourishing plum oil.*/}
-    {/*  </div>*/}
-    {/* </div>*/}
-    <div className={styles.bottom_wrap}>
-      <div className={styles.btn}>
-        <div onClick={toAddTk} className={styles.btnInner}>Add to Showcase</div>
-      </div>
-    </div>
+    {
+      product ? <div className={styles.product_wrap}>
+        <Carousel className={styles.top_img_wrap} afterChange={onChange}>
+          <img
+            src={product?.image ?? ""}
+            alt='Image'
+            className={styles.rc_image}
+          />
+        </Carousel>
+        <div>
+          <ProductPrice price={product?.price} rate={product?.finishRate}></ProductPrice>
+          <ProductPrice2 tkRate={product?.openRate} usRate={product?.finishRate}></ProductPrice2>
+          <div className={styles.product_des_wrap}>
+            {
+              product?.title
+            }
+          </div>
+          <div className={styles.pc_btn}>
+            <div className={styles.btn}>
+              <div onClick={toAddTk} className={styles.btnInner}>Add to Showcase</div>
+            </div>
+          </div>
+        </div>
+        {/* <div className={styles.product_des_wrap}>*/}
+        {/*  <h3>Content brief:</h3>*/}
+        {/*  <div>*/}
+        {/*    1.VOLUMIZING SHAMPOO revives your strands into a thick, voluminous and healthy look. Blended with Biotin for fuller looking hair, vegan collagen to support healthy hair growth, and superfruits elderberry and restoring plum oil to protect strands from damage.*/}
+        {/*    2.STRENGTHENING CONDITIONER transforms limp, dry hair into full, rich, voluminous locks. This rich conditioner is packed with repairing biotin, growth and volume promoting collagen, restoring and lengthening elderberry and nourishing plum oil.*/}
+        {/*  </div>*/}
+        {/* </div>*/}
+        <div className={styles.bottom_wrap}>
+          <div className={styles.btn}>
+            <div onClick={toAddTk} className={styles.btnInner}>Add to Showcase</div>
+          </div>
+        </div>
+      </div> : <div className={styles.product_wrap}><Skeleton /></div>
+    }
   </div>;
 
 };

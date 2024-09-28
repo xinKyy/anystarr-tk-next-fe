@@ -31,16 +31,14 @@
   text-align: center;
   zoom: 0.9;
   &.left {
-    left: 14px;
-
+    left: 55px;
     @media (max-width: 768px) {
       left: 40px;
     }
   }
 
   &.right {
-    right: 14px;
-
+    right: 30px;
     @media (max-width: 768px) {
       right: 24px;
     }
@@ -60,14 +58,14 @@
 }
 
 .subLabel {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .commissionRate {
   color: #000;
   font-weight: 800;
   margin-bottom: 12px;
-  font-size: 30px;
+  font-size: 33px;
 
   @media (max-width: 1440px) {
     font-size: 28px;

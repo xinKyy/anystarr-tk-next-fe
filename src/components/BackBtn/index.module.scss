@@ -1,0 +1,39 @@
+
+
+.back_btn{
+  width: 100px;
+  cursor: pointer;
+  height: 40px;
+  outline: 0.5px solid rgb(173 174 175);
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: all .3s;
+  div{
+    background: url("https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/back_black.svg");
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    margin-right: 5px;
+  }
+  &:hover{
+    background-color: var(--primary-color);
+    color: #fff;
+    outline: none;
+    div{
+      background: url("https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/back_hover.svg");
+      width: 20px;
+      height: 20px;
+      background-size: contain;
+      margin-right: 5px;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .back_btn{
+    background: #fff;
+  }
+}
