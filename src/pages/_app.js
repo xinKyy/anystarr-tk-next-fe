@@ -10,8 +10,8 @@ function App({ Component, pageProps }) {
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta charSet='utf-8' />
-        <title>MOD</title>
-        <link rel='shortcut icon' href='/favicon.ico' type='image/ico'/>
+        <title>anystarr</title>
+        <link rel='shortcut icon' href='/favicon.jpeg' type='image/ico'/>
       </Head>
       <Layout>
         <Component {...pageProps} />

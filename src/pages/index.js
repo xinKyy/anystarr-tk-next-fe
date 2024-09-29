@@ -13,10 +13,14 @@ import HomeCard from "@/components/HomeCard";
 import SortBy from "@/components/SoryBy";
 import {APIGetProductList} from "@/api";
 
-let data = [];
+let data = [
+
+];
 
 const Home = () => {
-  const [prodList, setProdList] = useState(data);
+  const [prodList, setProdList] = useState([  {
+    title:"11"
+  }]);
   const [sort, setSort] = useState(null);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);

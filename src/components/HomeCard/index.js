@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './index.module.scss';
 import SizeBox from "@/components/SizeBox";
 import {useRouter} from "next/router";
 import {isMobile} from "@/utils/action";
 import copy from "copy-to-clipboard";
-import {message} from "antd"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
+import {message} from "antd";
+import {APIAddFavoriteItems, APIDeleteFavoriteItems} from "@/api"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
 
 const HomeCard = ({item}) => {
 
   const router = useRouter();
+  const [collected, setCollected] = useState(false);
 
 
   const toDetails = () =>{
@@ -34,6 +36,34 @@ const HomeCard = ({item}) => {
       }
     }
 
+  };
+
+  const addCollect = () =>{
+    let user = localStorage.getItem("userInfo");
+    if (user){
+      user = JSON.parse(user);
+      APIAddFavoriteItems({
+        uid:user.id
+      }).then(resp=>{
+        if (resp){
+          console.log("收藏成功");
+        }
+      });
+    }
+  };
+
+  const removeCollect = () =>{
+    let user = localStorage.getItem("userInfo");
+    if (user){
+      user = JSON.parse(user);
+      APIDeleteFavoriteItems({
+        uid:user.id
+      }).then(resp=>{
+        if (resp){
+          console.log("取消收藏成功");
+        }
+      });
+    }
   };
 
   return (
@@ -72,6 +102,8 @@ const HomeCard = ({item}) => {
       <div className={styles.iconContainer}>
         <i className={`icon-class ${styles.icon}`}></i>
       </div>
+
+      <div className={ collected ? styles.stared_img : styles.star_img}></div>
     </div>
   );
 };
