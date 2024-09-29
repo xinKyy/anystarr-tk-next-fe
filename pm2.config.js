@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'mod',
+      name: 'anystarr-tk',
       script: './server.js', // start script
       cwd: './', // current workspace
       watch: [
