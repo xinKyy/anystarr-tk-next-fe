@@ -10,7 +10,7 @@ import {APIAddFavoriteItems, APIDeleteFavoriteItems} from "@/api"; // 假设你�
 const HomeCard = ({item}) => {
 
   const router = useRouter();
-  const [collected, setCollected] = useState(false);
+  const [collected, setCollected] = useState(item.collect);
 
 
   const toDetails = () =>{
