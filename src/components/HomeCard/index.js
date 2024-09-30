@@ -66,6 +66,18 @@ const HomeCard = ({item}) => {
     }
   };
 
+
+  const collect = () =>{
+    if (!collected){
+      addCollect();
+      setCollected(true);
+    } else {
+      removeCollect();
+      setCollected(false);
+    }
+  };
+
+
   return (
     <div onClick={toDetails} className={styles.flexContainer}>
       <div className={styles.imgContainer}>
@@ -103,9 +115,7 @@ const HomeCard = ({item}) => {
         <i className={`icon-class ${styles.icon}`}></i>
       </div>
 
-      <div onClick={()=>{
-
-      }} className={ collected ? styles.stared_img : styles.star_img}></div>
+      <div onClick={collect} className={ collected ? styles.stared_img : styles.star_img}></div>
     </div>
   );
 };
