@@ -20,8 +20,8 @@ const MyLike = () =>{
     if (userInfo){
       userInfo = JSON.parse(userInfo);
       APIGetLikeProductList(JSON.stringify({
-        // page: page,
-        // pageSize: 100,
+        page: page,
+        pageSize: 100000,
         uid:userInfo?.id
       })).then(resp => {
         if (resp.data.result) {
