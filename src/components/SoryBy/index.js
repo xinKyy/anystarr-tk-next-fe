@@ -2,8 +2,8 @@ import styles from "./index.module.scss";
 
 const SortBy = ({current, onChange}) => {
   return (
-    <div onClick={()=>onChange(1)} className={styles.container}>
-      <div className={`${styles.sortItem} ${ current === 1 && styles.active}`}>
+    <div className={styles.container}>
+      <div onClick={()=>onChange(1)} className={`${styles.sortItem} ${ current === 1 && styles.active}`}>
         <div className={styles.itemText}>产品销量</div>
         <div className={styles.arrows}>
           <div className={styles.arrowUp}></div>
