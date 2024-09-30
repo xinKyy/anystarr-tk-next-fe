@@ -53,7 +53,6 @@ const Home = () => {
   }, [sort, page, searchName]);
 
   const onSortChange = (sortby) => {
-    if (loading) return;
     setSort(sortby);
     setPage(1); // Reset page when sorting
     setHasMore(true); // 重置是否还有更多数据
