@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import styles from './index.module.scss';
+import debounce from 'lodash.debounce';
 
-const SearchBar = () => {
+const SearchBar = ({onChange}) => {
+
+  const debouncedOnChange = useCallback(
+    debounce((value) => {
+      onChange(value);
+    }, 500), // 300ms 的防抖时间
+    []
+  );
+
   return (
     <div className={styles.searchBar}>
       <input
+        onChange={(e)=>{
+          debouncedOnChange(e.target.value);
+        }}
         className={styles.inputField}
         placeholder='Search product'
       />

@@ -22,6 +22,7 @@ const Home = () => {
   const [sort, setSort] = useState(1);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [searchName, setSearchName] = useState("");
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
 
   const scrollDiv = useRef();
@@ -32,7 +33,8 @@ const Home = () => {
     APIGetProductList(JSON.stringify({
       sort: sort,
       page: page,
-      pageSize: 100
+      pageSize: 100,
+      searchName:searchName
     })).then(resp => {
       if (resp.data.list) {
         let newData = [];
@@ -52,7 +54,7 @@ const Home = () => {
 
   useEffect(() => {
     getProdList();
-  }, [sort, page]);
+  }, [sort, page, searchName]);
 
   const onSortChange = (sortby) => {
     if (loading) return;
@@ -76,9 +78,14 @@ const Home = () => {
     };
   }, [loading]);
 
+  const onSearch = (v) =>{
+    setPage(1);
+    setSearchName(v);
+  };
+
   return (
     <div ref={scrollDiv} className={styles.home_page}>
-      <SearchBar />
+      <SearchBar onChange={onSearch} />
       <div className={styles.sort_wrap}>
         <SortBy current={sort} onChange={onSortChange} />
       </div>

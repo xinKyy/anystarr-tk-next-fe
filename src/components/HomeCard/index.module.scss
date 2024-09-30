@@ -19,6 +19,7 @@
     cursor: pointer;
     width: 20px;
     height: 20px;
+    z-index: 2;
     background: url("../../../public/product/star.svg") no-repeat;
     background-size: contain;
   }
@@ -31,6 +32,7 @@
     cursor: pointer;
     width: 20px;
     height: 20px;
+    z-index: 2;
     background: url("../../../public/product/stared.svg") no-repeat;
     background-size: contain;
   }

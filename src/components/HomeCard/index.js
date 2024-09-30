@@ -103,7 +103,9 @@ const HomeCard = ({item}) => {
         <i className={`icon-class ${styles.icon}`}></i>
       </div>
 
-      <div className={ collected ? styles.stared_img : styles.star_img}></div>
+      <div onClick={()=>{
+
+      }} className={ collected ? styles.stared_img : styles.star_img}></div>
     </div>
   );
 };
