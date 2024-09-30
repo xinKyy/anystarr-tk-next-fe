@@ -61,13 +61,18 @@ const MyLike = () =>{
     }}>
       <BackBtn/>
     </div>
-    <div className={styles.grid_container}>
-      {
-        prodList && prodList.map(item => (
-          <HomeCard key={item.productId} item={item} />
-        ))
-      }
-    </div>
+    {
+      prodList && prodList.length > 0 ? <div className={styles.grid_container}>
+        {
+          prodList.map(item => (
+            <HomeCard key={item.productId} item={item} />
+          ))
+        }
+      </div> : <div className={styles.no_data}>
+        <img src={"/no_data.svg"} />
+        No data
+      </div>
+    }
   </div>;
 };
 

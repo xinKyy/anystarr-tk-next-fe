@@ -22,4 +22,20 @@
       gap: 10px; /* 列与列之间的间隔 */
     }
   }
+
+
+  .no_data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+      width: 300px;
+      height: 300px;
+      object-fit: contain;
+    }
+    font-size: 20px;
+    font-weight: 500;
+    color: #999999;
+  }
 }
