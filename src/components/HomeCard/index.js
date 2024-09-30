@@ -43,7 +43,8 @@ const HomeCard = ({item}) => {
     if (user){
       user = JSON.parse(user);
       APIAddFavoriteItems({
-        uid:user.id
+        uid:user.id,
+        itemId:item.productId
       }).then(resp=>{
         if (resp){
           console.log("收藏成功");
@@ -57,7 +58,8 @@ const HomeCard = ({item}) => {
     if (user){
       user = JSON.parse(user);
       APIDeleteFavoriteItems({
-        uid:user.id
+        uid:user.id,
+        itemId:item.productId
       }).then(resp=>{
         if (resp){
           console.log("取消收藏成功");
@@ -67,7 +69,8 @@ const HomeCard = ({item}) => {
   };
 
 
-  const collect = () =>{
+  const collect = (e) =>{
+    e.stopPropagation();
     if (!collected){
       addCollect();
       setCollected(true);
