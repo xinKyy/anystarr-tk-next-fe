@@ -20,12 +20,15 @@ const MyLike = () =>{
     if (userInfo){
       userInfo = JSON.parse(userInfo);
       APIGetLikeProductList(JSON.stringify({
-        page: page,
-        pageSize: 100,
+        // page: page,
+        // pageSize: 100,
         uid:userInfo?.id
       })).then(resp => {
-        if (resp) {
+        if (resp.data.result) {
           const newData = resp.data.result;
+          newData.forEach(item=>{
+            item.collect = true;
+          });
           setProdList(prevProdList => (page === 1 ? newData : [...prevProdList, ...newData]));
           setHasMore(newData.length > 0); // 更新是否还有更多数据
         }
@@ -37,7 +40,7 @@ const MyLike = () =>{
 
   useEffect(()=>{
     getProdList();
-  }, [page]);
+  }, []);
 
 
   const handleScroll = () => {
@@ -49,10 +52,10 @@ const MyLike = () =>{
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    // window.addEventListener('scroll', handleScroll);
+    // return () => {
+    //   window.removeEventListener('scroll', handleScroll);
+    // };
   }, [loading]);
 
   return <div className={styles.my_like_page} ref={scrollDiv}>
