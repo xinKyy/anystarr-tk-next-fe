@@ -18,9 +18,7 @@ let data = [
 ];
 
 const Home = () => {
-  const [prodList, setProdList] = useState([  {
-    title:"11"
-  }]);
+  const [prodList, setProdList] = useState([]);
   const [sort, setSort] = useState(null);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
