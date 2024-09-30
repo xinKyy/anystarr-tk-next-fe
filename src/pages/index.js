@@ -13,12 +13,10 @@ import HomeCard from "@/components/HomeCard";
 import SortBy from "@/components/SoryBy";
 import {APIGetProductList} from "@/api";
 
-let data = [
-
-];
+let data = [];
 
 const Home = () => {
-  const [prodList, setProdList] = useState([]);
+  const [prodList, setProdList] = useState(data);
   const [sort, setSort] = useState(1);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -37,15 +35,13 @@ const Home = () => {
       searchName:searchName
     })).then(resp => {
       if (resp.data.list) {
-        let newData = [];
         if ( page === 1){
-          newData = resp.data.list.records;
+          data = resp.data.list.records;
         } else {
-          newData = prodList.concat(resp.data.list.records);
+          data = prodList.concat(resp.data.list.records);
         }
-        let data = newData;
         setProdList(data);
-        setHasMore(newData.length > 0); // 更新是否还有更多数据
+        setHasMore(data.length > 0); // 更新是否还有更多数据
       }
     }).finally(() => {
       setLoading(false);
