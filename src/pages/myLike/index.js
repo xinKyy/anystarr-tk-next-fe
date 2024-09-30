@@ -6,15 +6,14 @@ import BackBtn from "@/components/BackBtn";
 import {useSelector} from "react-redux";
 
 const MyLike = () =>{
-  let data = [];
-  const [prodList, setProdList] = useState(data);
+  const [prodList, setProdList] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
   const scrollDiv = useRef();
 
   const getProdList = () => {
-    let userInfo = localStorage.getItem("userInfo");
+    let userInfo = localStorage.getItem("user");
     if (userInfo){
       userInfo = JSON.parse(userInfo);
       APIGetLikeProductList(JSON.stringify({
@@ -38,7 +37,7 @@ const MyLike = () =>{
 
   useEffect(()=>{
     getProdList();
-  }, []);
+  }, [loading]);
 
 
   const handleScroll = () => {
