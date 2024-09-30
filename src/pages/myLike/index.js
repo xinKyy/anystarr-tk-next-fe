@@ -25,7 +25,7 @@ const MyLike = () =>{
         uid:userInfo?.id
       })).then(resp => {
         if (resp) {
-          const newData = resp.data.list.records;
+          const newData = resp.data.result;
           setProdList(prevProdList => (page === 1 ? newData : [...prevProdList, ...newData]));
           setHasMore(newData.length > 0); // 更新是否还有更多数据
         }
