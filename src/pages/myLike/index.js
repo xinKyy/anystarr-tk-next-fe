@@ -14,8 +14,6 @@ const MyLike = () =>{
   const scrollDiv = useRef();
 
   const getProdList = () => {
-    if (loading || !hasMore) return; // 检查是否正在加载或没有更多数据
-    setLoading(true);
     let userInfo = localStorage.getItem("userInfo");
     if (userInfo){
       userInfo = JSON.parse(userInfo);
