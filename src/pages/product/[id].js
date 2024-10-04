@@ -120,7 +120,7 @@ const Product = ({productId}) =>{
       <BackBtn></BackBtn>
     </div>
     {
-      !product ? <div className={styles.product_wrap}>
+      product ? <div className={styles.product_wrap}>
         <Carousel className={styles.top_img_wrap} afterChange={onChange}>
           <img
             src={product?.image ?? ""}
