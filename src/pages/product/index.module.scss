@@ -177,11 +177,13 @@
     .top_img_wrap{
       width: 100%;
       height: unset;
+      min-height: 50vh;
       margin-right: 0px;
       margin-top: 0px;
       .img{
         width: 100%;
         height: unset;
+        min-height: 50vh;
         border-radius: 0px;
       }
     }

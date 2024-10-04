@@ -9,6 +9,13 @@ import {APIAddFavoriteItems, APIDeleteFavoriteItems, APIGetProductInfo} from "@/
 import {isMobile} from "@/utils/action";
 import copy from 'copy-to-clipboard';
 import BackBtn from "@/components/BackBtn";
+
+function updateImageUrl(url, w, h) {
+  if (!url) return "";
+  return url.replace(/(\d+):(\d+)/, `${w}:${h}`);
+}
+
+
 const Product = ({productId}) =>{
 
   const router = useRouter();
@@ -123,7 +130,7 @@ const Product = ({productId}) =>{
       product ? <div className={styles.product_wrap}>
         <Carousel className={styles.top_img_wrap} afterChange={onChange}>
           <img
-            src={product?.image ?? ""}
+            src={updateImageUrl(product?.image, 500, 600)}
             alt='Image'
             className={styles.rc_image}
           />
