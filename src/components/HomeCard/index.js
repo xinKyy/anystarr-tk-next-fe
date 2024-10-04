@@ -5,13 +5,14 @@ import {useRouter} from "next/router";
 import {isMobile} from "@/utils/action";
 import copy from "copy-to-clipboard";
 import {message} from "antd";
-import {APIAddFavoriteItems, APIDeleteFavoriteItems} from "@/api"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
+import {APIAddFavoriteItems, APIDeleteFavoriteItems} from "@/api";
+import {useSelector} from "react-redux"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
 
 const HomeCard = ({item}) => {
 
   const router = useRouter();
   const [collected, setCollected] = useState(item.collect);
-
+  const userInfo = useSelector(state => state.home.userInfo.userInfo);
 
   const toDetails = () =>{
     router.push(`/product/${item.productId}`);
@@ -39,7 +40,7 @@ const HomeCard = ({item}) => {
   };
 
   const addCollect = () =>{
-    let user = localStorage.getItem("userInfo");
+    let user = localStorage.getItem("user");
     if (user){
       user = JSON.parse(user);
       APIAddFavoriteItems({
@@ -54,7 +55,7 @@ const HomeCard = ({item}) => {
   };
 
   const removeCollect = () =>{
-    let user = localStorage.getItem("userInfo");
+    let user = localStorage.getItem("user");
     if (user){
       user = JSON.parse(user);
       APIDeleteFavoriteItems({
@@ -118,7 +119,9 @@ const HomeCard = ({item}) => {
         <i className={`icon-class ${styles.icon}`}></i>
       </div>
 
-      <div onClick={collect} className={ collected ? styles.stared_img : styles.star_img}></div>
+      {
+        userInfo && <div onClick={collect} className={ collected ? styles.stared_img : styles.star_img}></div>
+      }
     </div>
   );
 };

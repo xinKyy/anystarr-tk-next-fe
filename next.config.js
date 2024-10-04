@@ -10,7 +10,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
 module.exports = withBundleAnalyzer({
-  basePath: '/beta',
+  // basePath: '/',
   webpack: (config, { dev, isServer }) => {
     config.resolve.alias['@'] = path.resolve(__dirname, './src/');
     if (!dev) {
