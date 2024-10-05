@@ -61,7 +61,7 @@ const Header = () => {
 
   const content = (
     <div className={"pop_content"}>
-      <div onClick={toMyLike}>我的收藏</div>
+      <div onClick={toMyLike}>My Collection</div>
       <div onClick={()=>{
         localStorage.removeItem("userInfo");
         localStorage.removeItem("token");

@@ -111,7 +111,7 @@ const HomeCard = ({item}) => {
         <div className={styles.sold}>Sold {item.soldNum}</div>
         <SizeBox h={10}></SizeBox>
         <div onClick={toAddTk} className={styles.sampleBtn}>
-          <div className={styles.btnInner}>一键加橱</div>
+          <div className={styles.btnInner}>Add to Showcase</div>
         </div>
       </div>
 
