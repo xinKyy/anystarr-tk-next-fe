@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import DynamicAntdTheme from 'dynamic-antd-theme';
 import Header from './Header';
 import {BackTop} from "antd";
+import ConnectTikTipsModal from "@/components/connectTikTipsModal";
 function Layout({ children }) {
   return (
     <>

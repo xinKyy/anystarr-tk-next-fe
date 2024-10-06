@@ -6,13 +6,15 @@ import {isMobile} from "@/utils/action";
 import copy from "copy-to-clipboard";
 import {message} from "antd";
 import {APIAddFavoriteItems, APIDeleteFavoriteItems} from "@/api";
-import {useSelector} from "react-redux"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
+import {useSelector} from "react-redux";
+import ConnectTikTipsModal from "@/components/connectTikTipsModal"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
 
 const HomeCard = ({item}) => {
 
   const router = useRouter();
   const [collected, setCollected] = useState(item.collect);
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
+  const [showConnectTips, setShowConnectTips] = useState(false);
 
   const toDetails = () =>{
     router.push(`/product/${item.productId}`);
@@ -27,6 +29,11 @@ const HomeCard = ({item}) => {
 
   const toAddTk = (e) =>{
     e.stopPropagation();
+
+    if (!userInfo){
+      setShowConnectTips(true);
+      return;
+    }
 
     if (item?.url){
       if (isMobile()){
@@ -121,6 +128,10 @@ const HomeCard = ({item}) => {
 
       {
         userInfo && <div onClick={collect} className={ collected ? styles.stared_img : styles.star_img}></div>
+      }
+
+      {
+        showConnectTips && <ConnectTikTipsModal show={showConnectTips} onCancel={()=>setShowConnectTips(false)}></ConnectTikTipsModal>
       }
     </div>
   );

@@ -110,12 +110,13 @@ body {
   display: flex;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  justify-content: flex-end;
+  justify-content: center;
   line-height: 36px;
   text-align: center;
   color: #ffffff;
   font-weight: 600;
   font-size: 12px;
+  cursor: pointer;
 }
 
 .language-btn{
@@ -214,26 +215,33 @@ body {
   padding: 15px 0 0 0;
 }
 
+
+.ant-modal-body{
+
+}
+
 .ant-modal-header{
-  background: #31354E;
-  color: #fff;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 20px;
 }
 
 .ant-modal-title{
-  color: #fff;
+  color: #000000;
 }
 .ant-modal-close{
-  color: #ffffff;
+  color: #000000;
 }
 .ant-modal-content{
-  background: #31354E;
+  background: #ffffff;
+  border-radius: 20px;
 }
 .ant-modal-content p{
-  color: #ffffff;
+  color: #000000;
 }
 .ant-modal-footer .ant-btn{
-  background: #31354E;
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
 }
 
 .ant-modal-footer .ant-btn-primary{

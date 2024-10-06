@@ -9,6 +9,8 @@ import {APIAddFavoriteItems, APIDeleteFavoriteItems, APIGetProductInfo} from "@/
 import {isMobile} from "@/utils/action";
 import copy from 'copy-to-clipboard';
 import BackBtn from "@/components/BackBtn";
+import ConnectTikTipsModal from "@/components/connectTikTipsModal";
+import {useSelector} from "react-redux";
 
 function updateImageUrl(url, w, h) {
   if (!url) return "";
@@ -24,7 +26,8 @@ const Product = ({productId}) =>{
   const [mobile, setMobile] = useState(false);
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const [showConnectTips, setShowConnectTips] = useState(false);
+  const userInfo = useSelector(state => state.home.userInfo.userInfo);
   const onChange = (currentSlide) => {
     console.log(currentSlide);
   };
@@ -45,6 +48,11 @@ const Product = ({productId}) =>{
 
   const toAddTk = (e) =>{
     e.stopPropagation();
+
+    if (!userInfo){
+      setShowConnectTips(true);
+      return;
+    }
 
     if (product?.url){
       if (isMobile()){
@@ -119,6 +127,11 @@ const Product = ({productId}) =>{
   };
 
   return <div>
+
+    {
+      showConnectTips && <ConnectTikTipsModal show={showConnectTips} onCancel={()=>setShowConnectTips(false)}></ConnectTikTipsModal>
+    }
+
     {
       !mobile && <SizeBox h={10}></SizeBox>
     }
