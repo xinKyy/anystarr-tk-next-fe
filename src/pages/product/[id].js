@@ -49,7 +49,7 @@ const Product = ({productId}) =>{
   const toAddTk = (e) =>{
     e.stopPropagation();
 
-    if (!userInfo){
+    if (!userInfo.email){
       setShowConnectTips(true);
       return;
     }
@@ -106,6 +106,10 @@ const Product = ({productId}) =>{
   };
 
   const opCollect = async () =>{
+    if (!userInfo.email){
+      setShowConnectTips(true);
+      return;
+    }
     if (loading){
       return;
     }
