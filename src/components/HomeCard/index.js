@@ -7,12 +7,14 @@ import copy from "copy-to-clipboard";
 import {message} from "antd";
 import {APIAddFavoriteItems, APIDeleteFavoriteItems} from "@/api";
 import {useSelector} from "react-redux";
-import ConnectTikTipsModal from "@/components/connectTikTipsModal"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
+import ConnectTikTipsModal from "@/components/connectTikTipsModal";
+import useLogin from "@/hooks/useLogin"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
 
 const HomeCard = ({item}) => {
 
   const router = useRouter();
   const [collected, setCollected] = useState(item.collect);
+  const { needLogin } = useLogin();
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
   const [showConnectTips, setShowConnectTips] = useState(false);
 
@@ -30,7 +32,7 @@ const HomeCard = ({item}) => {
   const toAddTk = (e) =>{
     e.stopPropagation();
 
-    if (!userInfo.email){
+    if (needLogin){
       setShowConnectTips(true);
       return;
     }
@@ -79,6 +81,10 @@ const HomeCard = ({item}) => {
 
   const collect = (e) =>{
     e.stopPropagation();
+    if (needLogin){
+      setShowConnectTips(true);
+      return;
+    }
     if (!collected){
       addCollect();
       setCollected(true);
@@ -126,9 +132,7 @@ const HomeCard = ({item}) => {
         <i className={`icon-class ${styles.icon}`}></i>
       </div>
 
-      {
-        userInfo.email && <div onClick={collect} className={ collected ? styles.stared_img : styles.star_img}></div>
-      }
+      <div onClick={collect} className={ collected ? styles.stared_img : styles.star_img}></div>
 
       {
         showConnectTips && <ConnectTikTipsModal show={showConnectTips} onCancel={()=>setShowConnectTips(false)}></ConnectTikTipsModal>

@@ -11,6 +11,7 @@ import copy from 'copy-to-clipboard';
 import BackBtn from "@/components/BackBtn";
 import ConnectTikTipsModal from "@/components/connectTikTipsModal";
 import {useSelector} from "react-redux";
+import useLogin from "@/hooks/useLogin";
 
 function updateImageUrl(url, w, h) {
   if (!url) return "";
@@ -27,7 +28,7 @@ const Product = ({productId}) =>{
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showConnectTips, setShowConnectTips] = useState(false);
-  const userInfo = useSelector(state => state.home.userInfo.userInfo);
+  const { needLogin } = useLogin();
   const onChange = (currentSlide) => {
     console.log(currentSlide);
   };
@@ -49,7 +50,7 @@ const Product = ({productId}) =>{
   const toAddTk = (e) =>{
     e.stopPropagation();
 
-    if (!userInfo.email){
+    if (needLogin){
       setShowConnectTips(true);
       return;
     }
@@ -106,7 +107,7 @@ const Product = ({productId}) =>{
   };
 
   const opCollect = async () =>{
-    if (!userInfo.email){
+    if (needLogin){
       setShowConnectTips(true);
       return;
     }
