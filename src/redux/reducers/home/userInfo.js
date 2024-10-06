@@ -5,7 +5,6 @@ const initialState = {
 };
 
 const userInfo = (state = initialState, { type, payload }) => {
-  console.log("设置userinfo", payload);
   switch (type) {
     case SET_USER_INFO: {
       return {

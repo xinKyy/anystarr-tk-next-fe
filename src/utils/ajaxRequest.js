@@ -48,6 +48,8 @@ function ajaxRequest(methods, url, params, contentType) {
             error: err => {
               if (err.status === 401){
                 message.error("Login expired!");
+                localStorage.removeItem("user");
+                localStorage.removeItem("token");
                 setTimeout(() => {
                   window.location.href = "/";
                 }, 1000);

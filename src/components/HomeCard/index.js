@@ -30,7 +30,7 @@ const HomeCard = ({item}) => {
   const toAddTk = (e) =>{
     e.stopPropagation();
 
-    if (!userInfo){
+    if (!userInfo.email){
       setShowConnectTips(true);
       return;
     }
@@ -127,7 +127,7 @@ const HomeCard = ({item}) => {
       </div>
 
       {
-        userInfo && <div onClick={collect} className={ collected ? styles.stared_img : styles.star_img}></div>
+        userInfo.email && <div onClick={collect} className={ collected ? styles.stared_img : styles.star_img}></div>
       }
 
       {

@@ -10,8 +10,17 @@ export const loginShowModal = {
 
 // 统一处理服务端的返回结果
 export const dealResult = async (resp, props) => {
-    if (resp) {
-        return true;
+    if (resp.code === "500" || resp.msg === "Authentication failed") {
+       message.error("Login expired!");
+       localStorage.removeItem("user");
+       localStorage.removeItem("token");
+       setTimeout(() => {
+          window.location.href = "/";
+       }, 1000);
+       return "unLogin";
+    }
+    if (resp){
+      return true;
     }
     return false;
 };
