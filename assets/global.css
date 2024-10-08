@@ -55,6 +55,14 @@ body {
     font-weight: 500;
 }
 
+.font_hover{
+  transition: all .3s;
+}
+
+.font_hover:hover{
+  color: var(--primary-color) !important;
+}
+
 .pop_content{
 
 }

@@ -81,6 +81,14 @@ const Header = () => {
 
     <div className='right-container'>
       {/* <div className='language-btn'></div>*/}
+
+      <a style={{
+        fontSize:"16px",
+        color:"#000",
+        marginRight:"20px",
+        fontWeight:"bold"
+      }} className={"font_hover"} href={"https://anystarr-help-center.gitbook.io/anystarr-help-center/"} target={"_blank"} >Help center</a>
+
       {
         userInfo?.displayName ?
           <Popover trigger={"click"} placement={"bottom"} content={content}>
