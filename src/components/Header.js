@@ -8,11 +8,14 @@ import {useSelector} from "react-redux";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {setUserInfo} from "@/redux/actions/home";
 import {Avatar, Popover} from "antd";
-import {getQueryString} from "@/utils/action";
+import {getQueryString, isMobile} from "@/utils/action";
 const { publicRuntimeConfig: { staticFolder } } = getConfig();
 const Header = () => {
   const router = useRouter();
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
+
+  const [mobile, setMobile] = useState();
+
   const dispatchAction = useDispatchAction({ setUserInfo });
   const getUserInfo = () =>{
     const token = localStorage.getItem("token");
@@ -29,6 +32,9 @@ const Header = () => {
 
 
   useEffect(()=>{
+
+    setMobile(isMobile());
+
     const tokenStr = getQueryString("token");
     if (tokenStr){
       localStorage.setItem("token", tokenStr);
@@ -87,7 +93,11 @@ const Header = () => {
         color:"#000",
         marginRight:"20px",
         fontWeight:"bold"
-      }} className={"font_hover"} href={"https://anystarr-help-center.gitbook.io/anystarr-help-center/"} target={"_blank"} >Help center</a>
+      }} className={"font_hover"} href={"https://anystarr-help-center.gitbook.io/anystarr-help-center/"} target={"_blank"} >
+        {
+          mobile ? <img width={30} height={30} src={"/help_icon.png"}/> : "Help center"
+        }
+      </a>
 
       {
         userInfo?.displayName ?
