@@ -95,7 +95,7 @@ const Header = () => {
         fontWeight:"bold"
       }} className={"font_hover"} href={"https://anystarr-help-center.gitbook.io/anystarr-help-center/"} target={"_blank"} >
         {
-          mobile ? <img width={30} height={30} src={"/help_icon.png"}/> : "Help center"
+          mobile ? <img width={30} height={30} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/help_icon.png"}/> : "Help center"
         }
       </a>
 
