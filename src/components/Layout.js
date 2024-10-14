@@ -8,7 +8,7 @@ function Layout({ children }) {
     <>
       <style jsx>{`
         .content-container {
-           margin-top: 60px;
+          padding-top: 60px;
         }
       `}</style>
       <Header />

@@ -1,12 +1,24 @@
 import Head from 'next/head';
 import { wrapper } from '../redux/store';
 import Layout from '../components/Layout';
-import 'antd/dist/antd.css';
 import '../../assets/global.css';
 import '../config/i18n';
+import {ConfigProvider, message} from "antd";
 function App({ Component, pageProps }) {
   return (
-    <>
+    <ConfigProvider
+      theme={{
+          token: {
+            colorLink: '#F0774A',
+            colorLinkActive: '#F0774A',
+            colorLinkHover: '#F0774A', // 控制超链接悬浮时的颜色。
+            colorPrimary: '#F0774A', // 品牌色
+            colorPrimaryActive: '#F0774A', // 主色梯度下的深色激活态。
+            colorPrimaryBorder: '#F0774A', // 主色梯度下的描边用色，用在 Slider 等组件的描边上。
+            colorPrimaryHover: '#F0774A', // 主色梯度下的悬浮态。
+          }
+      }}
+    >
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta charSet='utf-8' />
@@ -16,7 +28,7 @@ function App({ Component, pageProps }) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </>
+    </ConfigProvider>
   );
 }
 

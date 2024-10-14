@@ -11,6 +11,11 @@ body {
 :root{
     --primary-color: rgb(254, 44, 85);
     --primary-color-80: rgba(254, 44, 85, 0.8);
+    --ansytarr-primary-color: #F0774A
+}
+
+a{
+  text-decoration: none !important;
 }
 
 .header_container {
