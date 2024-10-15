@@ -79,17 +79,21 @@ const Home = () => {
   };
 
   return (
-    <div ref={scrollDiv} className={styles.home_page}>
-      <SearchBar onChange={onSearch} />
-      <div className={styles.sort_wrap}>
-        <SortBy current={sort} onChange={onSortChange} />
-      </div>
-      <div className={styles.grid_container}>
-        {
-          prodList && prodList.map(item => (
-            <HomeCard key={item.productId} item={item} />
-          ))
-        }
+    <div style={{
+      width:"100vw"
+    }}>
+      <div ref={scrollDiv} className={styles.home_page}>
+        <SearchBar onChange={onSearch} />
+        <div className={styles.sort_wrap}>
+          <SortBy current={sort} onChange={onSortChange} />
+        </div>
+        <div className={styles.grid_container}>
+          {
+            prodList && prodList.map(item => (
+              <HomeCard key={item.productId} item={item} />
+            ))
+          }
+        </div>
       </div>
     </div>
   );

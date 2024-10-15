@@ -1,6 +1,7 @@
 import React, {useCallback} from 'react';
 import styles from './index.module.scss';
 import debounce from 'lodash.debounce';
+import {Input} from "antd";
 
 const SearchBar = ({onChange}) => {
 
@@ -13,7 +14,7 @@ const SearchBar = ({onChange}) => {
 
   return (
     <div className={styles.searchBar}>
-      <input
+      <Input
         onChange={(e)=>{
           debouncedOnChange(e.target.value);
         }}

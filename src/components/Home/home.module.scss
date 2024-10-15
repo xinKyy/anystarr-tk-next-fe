@@ -2,6 +2,8 @@
 .home_page{
   width: 100vw;
   max-width: 1300px;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   position: relative;
   padding-top: 20px;
