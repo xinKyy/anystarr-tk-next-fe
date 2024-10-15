@@ -35,6 +35,7 @@
     "redux-saga"
   ],
   "dependencies": {
+    "@ant-design/cssinjs": "^1.21.1",
     "@ant-design/icons": "^4.0.2",
     "@babel/polyfill": "^7.8.7",
     "antd": "^5.21.4",

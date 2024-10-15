@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { wrapper } from '../redux/store';
 import Layout from '../components/Layout';
 import '../../assets/global.css';
+import 'antd/dist/reset.css';
 import '../config/i18n';
 import {ConfigProvider, message} from "antd";
 function App({ Component, pageProps }) {
