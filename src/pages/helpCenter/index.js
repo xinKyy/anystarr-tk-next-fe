@@ -1,6 +1,6 @@
 import styles from "./index.module.scss";
-import {useEffect, useState} from "react";
-import {Input, Menu} from "antd";
+import {useEffect, useRef, useState} from "react";
+import {Input, Menu, Popover} from "antd";
 import {AppstoreOutlined} from "@ant-design/icons";
 import SizeBox from "@/components/SizeBox";
 
@@ -15,19 +15,30 @@ function getItem(label, key, icon, children, type, body) {
   };
 }
 
+function flattenSecondaryItems(items) {
+  const result = [];
+
+  function traverse(item) {
+    if (item.children && item.children.length > 0) {
+      item.children.forEach(child => {
+        // 使用正则表达式去掉label前的数字
+        const cleanLabel = child.label.replace(/^\d+\.\d+\s*/, '');
+        result.push({ title: cleanLabel, key: child.key });
+      });
+    }
+  }
+
+  items.forEach(traverse);
+  return result;
+}
+
+
+
 const HelpCenter = () =>{
   const [isClient, setIsClient] = useState(false);
   const [currentIndex, setCurrentIndex] = useState("0");
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return null; // Show a loading indicator or null during server-side rendering
-  }
-
-  const items = [
+  const [randomList, setRandomList] = useState([]);
+  const items = useRef( [
     getItem('Welcome', '0', <HelpCenterIcon id={8} />, null),
     getItem("New Influencers Guidence", "1",  <HelpCenterIcon id={3} />, [
       getItem('1.1 What is anyStarr ', '1.1', <HelpCenterIcon id={6} />, null, null, "anyStarr is a comprehensive TAP Agency, specializing in short video sales and live-stream sales. Connecting creators with a diverse range of high-potential, best-selling products. To date, anyStarr has successfully partnered with leading U.S. cross-border sellers, helping scale their TikTok shops from the ground up into thriving businesses, while collaborating with over 10 million creators globally."),
@@ -65,30 +76,62 @@ const HelpCenter = () =>{
     getItem("Q&A for Logistics", "6", <HelpCenterIcon id={4} />, [
       getItem('6.1 Why haven\'t I received my package?', '6.1', <HelpCenterIcon id={5} />, null, null, "Please kindly check your sample's status. If it hasn't been sent out within 72 hours, please freely contact us. If it shows delivery or not updated for a long time, we suggest contacting the carrier to check the package first."),
     ]),
-  ];
+  ]);
+
+  function getRandomItems(list, count) {
+    const shuffled = [...list].sort(() => 0.5 - Math.random()); // 打乱数组顺序
+    return shuffled.slice(0, count); // 取前 `count` 个元素
+  }
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  useEffect(()=>{
+    const flatList = flattenSecondaryItems(items.current);
+    setRandomList(getRandomItems(flatList, 4));
+  }, [currentIndex]);
+
+  if (!isClient) {
+    return null; // Show a loading indicator or null during server-side rendering
+  }
 
 
   const onMenuClick = (e) => {
-    window.location.href = `#${e.key}`;
+    setCurrentIndex(e.key);
+    setTimeout(()=>{
+      window.location.href = `#${e.key}`;
+    }, 0);
   };
 
   return <div className={styles.help_page}>
     <div className={styles.nav_wrap}>
       <Menu
         onClick={onMenuClick}
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['1']}
+        defaultSelectedKeys={['0']}
+        defaultOpenKeys={['0']}
         mode={"inline"}
-        items={items}
+        items={items.current}
       />
     </div>
     <div className={styles.body_wrap}>
-      <WelcomeComp items={items}></WelcomeComp>
-      <SizeBox h={40}></SizeBox>
-      <div className={styles.normal_wrap}>
-        {
-          items.map(item=>{
-           return  item.label !== "Welcome" && (
+
+      {
+        currentIndex === "0" ? <>
+          <WelcomeComp onMenu={(item)=>onMenuClick(item)} randomList={randomList} items={items.current}></WelcomeComp>
+          <SizeBox h={30}></SizeBox>
+          <div className={styles.popular_wrap}>
+            <div className={styles.popular_title}>Popular question</div>
+            {
+              randomList.map(item=>{
+                return <div onClick={()=>onMenuClick(item)} className={styles.popular_item}>{item.title}</div>;
+              })
+            }
+          </div>
+          <SizeBox h={30}></SizeBox>
+        </> : <div className={styles.normal_wrap}>
+          {
+            items.current.map(item=>{
+              return  item.label !== "Welcome" && (
                 <div>
                   <SectionTitle1 id={item.key}>
                     {item.label}
@@ -108,16 +151,20 @@ const HelpCenter = () =>{
                   <SizeBox h={50}></SizeBox>
                 </div>
               );
-          })
-        }
-        <SizeBox h={100}></SizeBox>
-      </div>
+            })
+          }
+          <SizeBox h={100}></SizeBox>
+        </div>
+      }
     </div>
   </div>;
 };
 
 
-const WelcomeComp = ({items}) =>{
+const WelcomeComp = ({onMenu, randomList, items}) =>{
+
+  const [currentSearchList, setCurrentSearchList] = useState([]);
+
   const topics = [
     { title: 'New Influencers Guidence', key:"1", description: 'What is anyStarr', icon: 'https://static.xx.fbcdn.net/assets/?revision=1431132240730458&name=Illustrations-Get-Started&density=1' },
     { title: 'Q&A for Accounts', key:"2", description: 'What private information will you get?', icon: 'https://static.xx.fbcdn.net/assets/?revision=1431132240730458&name=Illustrations-Security&density=1' },
@@ -131,12 +178,54 @@ const WelcomeComp = ({items}) =>{
     window.location.href = `#${e.key}`;
   };
 
+  const content = (
+    <div style={{
+      width:"500px"
+    }}>
+      {
+        currentSearchList.length > 0 ? currentSearchList.map(item=>{
+          return <div style={{
+            height:"40px",
+            lineHeight:"40px",
+            cursor:"pointer"
+          }} onClick={()=>onMenu(item)}>{item.title}</div>;
+        }) : randomList.map(item=>{
+          return <div style={{
+            height:"40px",
+            lineHeight:"40px",
+            cursor:"pointer"
+          }} onClick={()=>onMenu(item)}>{item.title}</div>;
+        })
+      }
+    </div>
+  );
+
+  const onChange = (e) =>{
+    if (!e.target.value){
+      setCurrentSearchList([]);
+      return;
+    }
+    const cl = flattenSecondaryItems(items);
+    const searchValue = e.target.value.toLowerCase(); // 将输入值转换为小写，确保不区分大小写
+
+    // 筛选出与 searchValue 模糊匹配的内容
+    const filteredList = cl.filter(item =>
+      item.title.toLowerCase().includes(searchValue)
+    );
+    // 将筛选后的结果设置到 currentSearchList 中
+    setCurrentSearchList(filteredList);
+  };
+
   return (
     <div id={"0"} className={styles.welcome_container}>
+      <h1>Welcome to anystarr!</h1>
+      <SizeBox h={30}/>
       <h1 className={styles.welcome_heading}>How can we help you?</h1>
-      <div className={styles.welcome_search}>
-        <Input type={"text"} placeholder={"Search help articles..."} className={styles.welcome_searchInput} />
-      </div>
+      <Popover placement={"bottomLeft"} trigger={"click"}  content={content}>
+        <div className={styles.welcome_search}>
+          <Input onChange={onChange} type={"text"} placeholder={"Search help articles..."} className={styles.welcome_searchInput} />
+        </div>
+      </Popover>
       <h4 className={styles.welcome_heading}>Popular Topics</h4>
       <div className={styles.welcome_topics}>
         {topics.map((topic, index) => (

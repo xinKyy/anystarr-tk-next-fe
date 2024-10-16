@@ -88,6 +88,31 @@
   color: #666;
 }
 
+.popular_wrap{
+  max-width: 800px;
+  margin: 0 auto;
+  .popular_title{
+    padding-bottom: 20px;
+    color: #000;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .popular_item{
+    padding-bottom: 15px;
+    color: #000;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--ansytarr-primary-color);
+    opacity: 0.8;
+    transition: all .3s;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+}
+
 
 .section_title_1{
   font-size: 26px;
