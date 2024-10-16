@@ -1,0 +1,40 @@
+
+.login_modal{
+  background-color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  padding-top: 20px;
+  padding-bottom: 28px;
+  border-radius: 12px;
+
+  .login_title{
+    color: #303030;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    letter-spacing: -.2px;
+  }
+  .title_desc {
+    color: #616161;
+    font-size: 14px;
+    font-weight: 450;
+    line-height: 20px;
+    margin-top: 8px;
+  }
+
+  .help_wrap{
+    display: flex;
+    align-items:center;
+    margin-top: 20px;
+    div{
+      margin-right: 20px;
+      color: #616161;
+      font-size: 12px;
+      font-weight: 450;
+      text-decoration: underline solid transparent;
+      cursor: pointer;
+    }
+  }
+}

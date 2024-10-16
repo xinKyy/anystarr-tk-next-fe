@@ -9,12 +9,14 @@ import useDispatchAction from "@/hooks/useDisptachAction";
 import {setUserInfo} from "@/redux/actions/home";
 import {Avatar, Popover} from "antd";
 import {getQueryString, isMobile} from "@/utils/action";
+import LoginModal from "@/components/LoginModal";
 const { publicRuntimeConfig: { staticFolder } } = getConfig();
 const Header = () => {
   const router = useRouter();
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
 
   const [mobile, setMobile] = useState();
+  const [openConnectModal, setOpenConnectModal] = useState(false);
 
   const dispatchAction = useDispatchAction({ setUserInfo });
   const getUserInfo = () =>{
@@ -85,6 +87,8 @@ const Header = () => {
       </div>
     </Link>
 
+    <LoginModal open={openConnectModal} onCancel={()=>setOpenConnectModal(false)}></LoginModal>
+
     <div className='right-container'>
       {/* <div className='language-btn'></div>*/}
 
@@ -107,11 +111,9 @@ const Header = () => {
               <span className={"user_name_wrap"} style={{marginLeft:"10px"}}>{userInfo?.displayName}</span>
             </div>
           </Popover>
-          : <a href={`${host}/api/v1/tiktok/oauth`}>
-          <div className={"link_wallet"}>
+          :  <div onClick={()=>setOpenConnectModal(true)} className={"link_wallet"}>
             Connect Tiktok
           </div>
-        </a>
       }
     </div>
   </div>;

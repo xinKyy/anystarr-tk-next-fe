@@ -3,6 +3,7 @@ import DynamicAntdTheme from 'dynamic-antd-theme';
 import Header from './Header';
 import {BackTop} from "antd";
 import ConnectTikTipsModal from "@/components/connectTikTipsModal";
+import LoginModal from "@/components/LoginModal";
 function Layout({ children }) {
   return (
     <>
