@@ -5,17 +5,37 @@
   overflow: hidden; // 阻止父容器本身的滚动
   transition: all .3s ease-in;
   .nav_wrap{
-    flex: 2;
+    width: 500px;
     box-shadow: 4px 0 4px -2px #00000020;
     padding: 20px 0 0 10px;
     height: 100%; // 左侧导航栏的高度与视口一致
     overflow-y: scroll; // 启用垂直滚动
     overflow-x: hidden;
+    @media (max-width: 650px) {
+      width: 78px !important;
+      padding: 20px 0 0 0px;
+    }
+  }
+
+  .show_menu{
+    @media (max-width: 650px) {
+      width: 100vw !important;
+      padding: 20px 0 0 0px;
+    }
+  }
+
+
+  .body_wrap_show_menu{
+    @media (max-width: 650px) {
+      width: 0 !important;
+      box-sizing: border-box;
+      padding: 20px 0 0 0px;
+      display: none;
+    }
   }
 
   .body_wrap{
     transition: all .3s ease-in;
-    flex: 6;
     height: 100%;// 左侧导航栏的高度与视口一致
     overflow-y: scroll; // 启用垂直滚动
     padding: 20px 50px;
@@ -26,6 +46,14 @@
       margin: 0 auto;
     }
   }
+
+  .contact_us{
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    font-size: 50px;
+    color: var(--primary-color);
+  }
 }
 
 
@@ -33,11 +61,19 @@
   padding: 20px 0px;
   margin: 0 auto;
   max-width: 800px;
+  @media (max-width: 650px) {
+    h1{
+      font-size: 22px;
+    }
+  }
 }
 
 .welcome_heading {
   font-size: 25px;
   margin-bottom: 20px;
+  @media (max-width: 650px) {
+    font-size: 18px !important;
+  }
 }
 
 .welcome_search {
@@ -57,6 +93,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
   gap: 20px;
+  @media (max-width: 650px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
+  }
 }
 
 .welcome_card {
@@ -81,11 +120,17 @@
 .welcome_cardTitle {
   font-size: 1.2rem;
   margin-bottom: 10px;
+  @media (max-width: 650px) {
+    font-size: 16px;
+  }
 }
 
 .welcome_cardDescription {
   font-size: 0.9rem;
   color: #666;
+  @media (max-width: 650px) {
+    font-size: 14px;
+  }
 }
 
 .popular_wrap{
@@ -109,6 +154,10 @@
     &:hover{
       text-decoration: underline;
     }
+
+    @media (max-width: 650px) {
+      font-size: 15px;
+    }
   }
 
 }
@@ -118,16 +167,28 @@
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;
+  @media (max-width: 650px) {
+    font-size: 18px;
+  }
 }
 
 .section_title_2{
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 20px;
+  @media (max-width: 650px) {
+    font-size: 16px;
+  }
 }
 
 .section_title_3{
   font-size: 18px;
   line-height: 30px;
   margin-bottom: 20px;
+  @media (max-width: 650px) {
+    font-size: 14px;
+    img{
+      width: 200px;
+    }
+  }
 }

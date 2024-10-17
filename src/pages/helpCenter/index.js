@@ -1,8 +1,9 @@
 import styles from "./index.module.scss";
 import {useEffect, useRef, useState} from "react";
-import {Input, Menu, Popover} from "antd";
-import {AppstoreOutlined} from "@ant-design/icons";
+import {Image, Input, Menu, Popover} from "antd";
+import {AppstoreOutlined, RightOutlined, MessageFilled} from "@ant-design/icons";
 import SizeBox from "@/components/SizeBox";
+import {isMobile} from "@/utils/action";
 
 function getItem(label, key, icon, children, type, body) {
   return {
@@ -36,6 +37,8 @@ function flattenSecondaryItems(items) {
 
 const HelpCenter = () =>{
   const [isClient, setIsClient] = useState(false);
+  const [mobile, setMobile] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const [currentIndex, setCurrentIndex] = useState("0");
   const [randomList, setRandomList] = useState([]);
   const items = useRef( [
@@ -70,7 +73,7 @@ const HelpCenter = () =>{
         <div>-Click Generate code</div>
         <div>-And copy > share the code with you, the advertiser</div>
         <div>It is recommend 30 or 60 days depending on what the creator agrees to.</div>
-        <img src={"example.jpeg"} />
+        <Image src={"example.jpeg"} />
       </div>),
     ]),
     getItem("Q&A for Logistics", "6", <HelpCenterIcon id={4} />, [
@@ -85,6 +88,7 @@ const HelpCenter = () =>{
 
   useEffect(() => {
     setIsClient(true);
+    setMobile(isMobile());
   }, []);
   useEffect(()=>{
     const flatList = flattenSecondaryItems(items.current);
@@ -98,22 +102,46 @@ const HelpCenter = () =>{
 
   const onMenuClick = (e) => {
     setCurrentIndex(e.key);
+    setShowMenu(false);
     setTimeout(()=>{
       window.location.href = `#${e.key}`;
     }, 0);
   };
 
+  const openEmail = () =>{
+    const email = 'tiktoktopkol@abcomo.com';
+    const subject = 'To anystarr';
+    const body = '';
+
+    // 使用mailto协议打开默认的电子邮件客户端
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // 打开邮件客户端
+    window.location.href = mailtoLink;
+  };
+
   return <div className={styles.help_page}>
-    <div className={styles.nav_wrap}>
+    <div className={`${styles.nav_wrap} ${showMenu ? styles.show_menu : ""}`}>
       <Menu
+        inlineCollapsed={!showMenu}
         onClick={onMenuClick}
         defaultSelectedKeys={['0']}
         defaultOpenKeys={['0']}
         mode={"inline"}
         items={items.current}
       />
+
+      {
+        mobile &&  <div onClick={()=>setShowMenu(!showMenu)} style={{
+          margin:"20px"
+        }} className={"link_wallet"}>
+          {
+            showMenu ? "Fold up navigation" :  <RightOutlined />
+          }
+        </div>
+      }
     </div>
-    <div className={styles.body_wrap}>
+    <div className={`${styles.body_wrap} ${showMenu ? styles.body_wrap_show_menu : ""}`}>
 
       {
         currentIndex === "0" ? <>
@@ -156,6 +184,9 @@ const HelpCenter = () =>{
           <SizeBox h={100}></SizeBox>
         </div>
       }
+    </div>
+    <div onClick={openEmail} className={styles.contact_us}>
+      <MessageFilled />
     </div>
   </div>;
 };
