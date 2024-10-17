@@ -38,7 +38,7 @@ function flattenSecondaryItems(items) {
 const HelpCenter = () =>{
   const [isClient, setIsClient] = useState(false);
   const [mobile, setMobile] = useState(false);
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
   const [currentIndex, setCurrentIndex] = useState("0");
   const [randomList, setRandomList] = useState([]);
   const items = useRef( [
@@ -89,6 +89,7 @@ const HelpCenter = () =>{
   useEffect(() => {
     setIsClient(true);
     setMobile(isMobile());
+    setShowMenu(!isMobile());
   }, []);
   useEffect(()=>{
     const flatList = flattenSecondaryItems(items.current);
@@ -122,30 +123,35 @@ const HelpCenter = () =>{
 
   return <div className={styles.help_page}>
     <div className={`${styles.nav_wrap} ${showMenu ? styles.show_menu : ""}`}>
-      <Menu
-        inlineCollapsed={!showMenu}
-        onClick={onMenuClick}
-        defaultSelectedKeys={['0']}
-        defaultOpenKeys={['0']}
-        mode={"inline"}
-        items={items.current}
-      />
+     <div>
+       <Menu
+         inlineCollapsed={!showMenu}
+         onClick={onMenuClick}
+         defaultSelectedKeys={['0']}
+         defaultOpenKeys={['0']}
+         mode={"inline"}
+         items={items.current}
+       />
 
+       {
+         mobile &&  <div onClick={()=>setShowMenu(!showMenu)} style={{
+           margin:"20px"
+         }} className={"link_wallet"}>
+           {
+             showMenu ? "Fold up navigation" :  <RightOutlined />
+           }
+         </div>
+       }
+     </div>
       {
-        mobile &&  <div onClick={()=>setShowMenu(!showMenu)} style={{
-          margin:"20px"
-        }} className={"link_wallet"}>
-          {
-            showMenu ? "Fold up navigation" :  <RightOutlined />
-          }
-        </div>
+        !mobile && <div onClick={openEmail} className={styles.contact_us_txt}> Contact us </div>
       }
     </div>
     <div className={`${styles.body_wrap} ${showMenu ? styles.body_wrap_show_menu : ""}`}>
 
       {
         currentIndex === "0" ? <>
-          <WelcomeComp onMenu={(item)=>onMenuClick(item)} randomList={randomList} items={items.current}></WelcomeComp>
+          <WelcomeComp mobile={mobile} onMenu={(item)=>onMenuClick(item)} randomList={randomList} items={items.current}></WelcomeComp>
           <SizeBox h={30}></SizeBox>
           <div className={styles.popular_wrap}>
             <div className={styles.popular_title}>Popular question</div>
@@ -192,7 +198,7 @@ const HelpCenter = () =>{
 };
 
 
-const WelcomeComp = ({onMenu, randomList, items}) =>{
+const WelcomeComp = ({onMenu, randomList, items, mobile}) =>{
 
   const [currentSearchList, setCurrentSearchList] = useState([]);
 
@@ -211,7 +217,7 @@ const WelcomeComp = ({onMenu, randomList, items}) =>{
 
   const content = (
     <div style={{
-      width:"500px"
+      width:mobile ? 200 : 500
     }}>
       {
         currentSearchList.length > 0 ? currentSearchList.map(item=>{
@@ -222,8 +228,9 @@ const WelcomeComp = ({onMenu, randomList, items}) =>{
           }} onClick={()=>onMenu(item)}>{item.title}</div>;
         }) : randomList.map(item=>{
           return <div style={{
-            height:"40px",
-            lineHeight:"40px",
+            height:mobile ? "unset" : "40px",
+            lineHeight: mobile ? "20px" : "40px",
+            marginBottom: mobile ? 10 : 5,
             cursor:"pointer"
           }} onClick={()=>onMenu(item)}>{item.title}</div>;
         })
@@ -252,7 +259,9 @@ const WelcomeComp = ({onMenu, randomList, items}) =>{
       <h1>Welcome to anystarr!</h1>
       <SizeBox h={30}/>
       <h1 className={styles.welcome_heading}>How can we help you?</h1>
-      <Popover placement={"bottomLeft"} trigger={"click"}  content={content}>
+      <Popover  overlayInnerStyle={{
+        width:mobile ? 210 : 500
+      }} placement={"bottomLeft"} trigger={"click"}  content={content}>
         <div className={styles.welcome_search}>
           <Input onChange={onChange} type={"text"} placeholder={"Search help articles..."} className={styles.welcome_searchInput} />
         </div>
