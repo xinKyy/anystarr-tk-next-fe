@@ -97,7 +97,7 @@ const Header = () => {
         color:"#000",
         marginRight:"20px",
         fontWeight:"bold"
-      }} className={"font_hover"} href={"https://anystarr-help-center.gitbook.io/anystarr-help-center/"} target={"_blank"} >
+      }} className={"font_hover"} href={"/beta/helpCenter"} target={"_blank"} >
         {
           mobile ? <img width={30} height={30} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/help_icon.png"}/> : "Help center"
         }
