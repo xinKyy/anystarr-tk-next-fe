@@ -148,7 +148,7 @@ const Product = ({productId}) =>{
       product ? <div className={styles.product_wrap}>
         <Carousel className={styles.top_img_wrap} afterChange={onChange}>
           <img
-            src={updateImageUrl(product?.image, 500, 600)}
+            src={ product.alyImage ? product.alyImage : updateImageUrl(product?.image, 700, 700)}
             alt='Image'
             className={styles.rc_image}
           />

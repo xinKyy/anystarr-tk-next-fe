@@ -5,6 +5,7 @@ import '../../assets/global.css';
 import 'antd/dist/reset.css';
 import '../config/i18n';
 import {ConfigProvider, message} from "antd";
+import {InstagramOutlined, LinkedinOutlined} from "@ant-design/icons";
 function App({ Component, pageProps }) {
   return (
     <ConfigProvider
@@ -27,7 +28,39 @@ function App({ Component, pageProps }) {
         <link rel='shortcut icon' href='/favicon.jpeg' type='image/ico'/>
       </Head>
       <Layout>
-        <Component {...pageProps} />
+       <div>
+         <div style={{
+           minHeight:"calc(100vh - 110px)"
+         }}>
+           <Component {...pageProps} />
+         </div>
+         <div className={"app-footer"}>
+           <div className={"footer-gray"}>
+             <div className={"footer-g-content"}>
+               <div className={"cont-left"}>
+                 <a href={"https://www.abcomo.com/"} target={"_blank"}>
+                   <img className={"logo-ab"} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/logo_ab.png"}/>
+                 </a>
+                 <img className={"ic-sx"} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/ic_sx.png"} />
+                 <a href={"https://www.anystarr.com/"} target={"_blank"}>
+                   <img className={"logo-1"} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/logo_footer.png"} />
+                 </a>
+               </div>
+               <a href={"https://www.anystarr.com/en/terms-and-conditions/"} className={"footer-link-2 link-item"}>
+                 Terms and Conditions
+               </a>
+               <a href={"https://www.anystarr.com/en/privacy-policy/"} className={"footer-link-2 link-item"}>
+                 Privacy Policy
+               </a>
+             </div>
+           </div>
+           <div className={"footer-black"}>
+              <span>
+                abComo ecommerce pte ltd.2024 All rights reserved
+              </span>
+           </div>
+         </div>
+       </div>
       </Layout>
     </ConfigProvider>
   );

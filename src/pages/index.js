@@ -50,7 +50,7 @@ const Home = () => {
 
   useEffect(() => {
     getProdList();
-  }, [sort, page, searchName]);
+  }, [sort, page]);
 
   const onSortChange = (sortby) => {
     setSort(sortby);
@@ -76,6 +76,9 @@ const Home = () => {
   const onSearch = (v) =>{
     setPage(1);
     setSearchName(v);
+    setTimeout(()=>{
+      getProdList();
+    }, 10);
   };
 
   return (

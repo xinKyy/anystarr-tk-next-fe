@@ -9,7 +9,10 @@ import {APIAddFavoriteItems, APIDeleteFavoriteItems} from "@/api";
 import {useSelector} from "react-redux";
 import ConnectTikTipsModal from "@/components/connectTikTipsModal";
 import useLogin from "@/hooks/useLogin"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
-
+function updateImageUrl(url, w, h) {
+  if (!url) return "";
+  return url.replace(/(\d+):(\d+)/, `${w}:${h}`);
+}
 const HomeCard = ({item}) => {
 
   const router = useRouter();
@@ -99,7 +102,7 @@ const HomeCard = ({item}) => {
     <div onClick={toDetails} className={styles.flexContainer}>
       <div className={styles.imgContainer}>
         <img
-          src={item.image}
+          src={ item.alyImage ? item.alyImage : updateImageUrl(item.image, 500, 500)}
           alt='Image'
           className={styles.rcImage}
         />

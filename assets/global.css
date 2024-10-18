@@ -297,6 +297,100 @@ a{
 }
 
 
+
+
+.app-footer {
+
+}
+.app-footer .footer-gray {
+  /* background-color: rgb(245,242,240); */
+  background-color: #111114;
+  position: relative;
+}
+.app-footer .footer-black {
+  background-color: #111114;
+  text-align: center;
+  color: #fff !important;
+  padding: 10px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-black a{
+  color: #fff !important;
+}
+
+.footer-gray .footer-g-content {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 20px 10px 20px 10px;
+  align-items: center;
+}
+
+.footer-g-content a{
+  color:#fff
+}
+
+.footer-link-2 {
+  margin-left: 40px;
+}
+.footer-g-content .cont-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cont-left .logo-ab {
+  height: 18px;
+}
+.cont-left .ic-sx {
+  height: 30px;
+  margin: 0 10px;
+}
+.cont-left .logo-1 {
+  height: 40px;
+}
+.cont-right {
+  display: flex;
+  align-items: center;
+}
+.cont-right .follow-us {
+  font-size: 14px;
+  margin-right: 10px;
+  color: #fff;
+}
+.linkedin-link, .ins-link {
+  display: inherit;
+  margin-right: 10px;
+}
+.cont-right .logo-fb {
+  height: 35px;
+  margin: 0 5px;
+}
+.cont-right .logo-google {
+  height: 35px;
+}
+
+.cont-right .ins-logo-footer {
+  color: #707a8a;
+  font-size: 17px;
+}
+.cont-right .linkin-logo-footer {
+  color: #707a8a;
+  font-size: 17px;
+}
+.cont-right .ins-logo-footer:hover {
+  color: #fff;
+}
+.cont-right .linkin-logo-footer:hover {
+  color: #fff;
+}
+
+
+
+
 @media screen and (max-width: 640px) {
     .header_container{
         width: 100%;
