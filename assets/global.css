@@ -300,7 +300,7 @@ a{
 
 
 .app-footer {
-
+  margin-top: 30px;
 }
 .app-footer .footer-gray {
   /* background-color: rgb(245,242,240); */
@@ -316,6 +316,12 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 650px){
+  .app-footer{
+    zoom:0.7
+  }
 }
 
 .footer-black a{
