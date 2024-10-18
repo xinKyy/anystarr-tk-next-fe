@@ -73,7 +73,7 @@ const HelpCenter = () =>{
         <div>-Click Generate code</div>
         <div>-And copy > share the code with you, the advertiser</div>
         <div>It is recommend 30 or 60 days depending on what the creator agrees to.</div>
-        <Image src={"example.jpeg"} />
+        <Image src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/help_center.jpeg"} />
       </div>),
     ]),
     getItem("Q&A for Logistics", "6", <HelpCenterIcon id={4} />, [
