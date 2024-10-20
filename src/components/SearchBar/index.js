@@ -38,6 +38,7 @@ const SearchBar = ({onChange}) => {
           value={searchName}
           onChange={(e)=>{
             setSearchName(e.target.value);
+            debouncedOnChange(e.target.value);
           }}
           placeholder='Search product'
         />
