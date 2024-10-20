@@ -20,22 +20,24 @@ const Home = () => {
   const [sort, setSort] = useState(1);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [searchName, setSearchName] = useState("");
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
 
   const scrollDiv = useRef();
 
-  const getProdList = () => {
+  const getProdList = (searchNameRe) => {
     if (loading || !hasMore) return; // 检查是否正在加载或没有更多数据
+
+    let nowPage = searchNameRe ? 1 : page;
+
     setLoading(true);
     APIGetProductList(JSON.stringify({
       sort: sort,
-      page: page,
+      page: nowPage,
       pageSize: 100,
-      searchName:searchName
+      searchName:searchNameRe
     })).then(resp => {
       if (resp.data.list) {
-        if ( page === 1){
+        if ( nowPage === 1){
           data = resp.data.list.records;
         } else {
           data = prodList.concat(resp.data.list.records);
@@ -75,10 +77,7 @@ const Home = () => {
 
   const onSearch = (v) =>{
     setPage(1);
-    setSearchName(v);
-    setTimeout(()=>{
-      getProdList();
-    }, 10);
+    getProdList(v);
   };
 
   return (
