@@ -300,7 +300,10 @@ a{
 
 
 .app-footer {
-  margin-top: 30px;
+  position: absolute;
+  bottom: 0;
+  left:0;
+  right:0;
 }
 .app-footer .footer-gray {
   /* background-color: rgb(245,242,240); */
@@ -311,7 +314,7 @@ a{
   background-color: #111114;
   text-align: center;
   color: #fff !important;
-  padding: 10px;
+  padding: 5px 10px;
   font-size: 12px;
   display: flex;
   justify-content: center;
@@ -332,7 +335,7 @@ a{
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  padding: 20px 10px 20px 10px;
+  padding: 10px 10px 10px 10px;
   align-items: center;
 }
 

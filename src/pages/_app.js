@@ -34,33 +34,19 @@ function App({ Component, pageProps }) {
          }}>
            <Component {...pageProps} />
          </div>
-         <div className={"app-footer"}>
-           <div className={"footer-gray"}>
-             <div className={"footer-g-content"}>
-               <div className={"cont-left"}>
-                 <a href={"https://www.abcomo.com/"} target={"_blank"}>
-                   <img className={"logo-ab"} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/logo_ab.png"}/>
-                 </a>
-                 <img className={"ic-sx"} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/ic_sx.png"} />
-                 <a href={"https://www.anystarr.com/"} target={"_blank"}>
-                   <img className={"logo-1"} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/logo_footer.png"} />
-                 </a>
-               </div>
-               <a href={"https://www.anystarr.com/en/terms-and-conditions/"} className={"footer-link-2 link-item"}>
-                 Terms and Conditions
-               </a>
-               <a href={"https://www.anystarr.com/en/privacy-policy/"} className={"footer-link-2 link-item"}>
-                 Privacy Policy
-               </a>
-             </div>
-           </div>
-           <div className={"footer-black"}>
-              <span>
-                abComo ecommerce pte ltd.2024 All rights reserved
-              </span>
-           </div>
-         </div>
        </div>
+       <div className={"app-footer"}>
+          <div className={"footer-gray"}>
+            <div className={"footer-g-content"}>
+              <a href={"https://www.anystarr.com/en/terms-and-conditions/"} className={"footer-link-2 link-item"}>
+                Terms and Conditions
+              </a>
+              <a href={"https://www.anystarr.com/en/privacy-policy/"} className={"footer-link-2 link-item"}>
+                Privacy Policy
+              </a>
+            </div>
+          </div>
+        </div>
       </Layout>
     </ConfigProvider>
   );
