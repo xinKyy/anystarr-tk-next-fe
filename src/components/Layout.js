@@ -4,7 +4,14 @@ import Header from './Header';
 import {BackTop} from "antd";
 import ConnectTikTipsModal from "@/components/connectTikTipsModal";
 import LoginModal from "@/components/LoginModal";
+import {useRouter} from "next/router";
+
+const hideHeader = ["/influencers-2", "/home"];
+
 function Layout({ children }) {
+
+  const router = useRouter();
+
   return (
     <>
       <style jsx>{`
@@ -12,10 +19,27 @@ function Layout({ children }) {
           padding-top: 60px;
         }
       `}</style>
-      <Header />
+
+      {
+        !hideHeader.includes(router.pathname)  &&  <Header />
+      }
       <div className='content-container'>
         {children}
       </div>
+      {
+        !hideHeader.includes(router.pathname) && <div className={"app-footer"}>
+          <div className={"footer-gray"}>
+            <div className={"footer-g-content"}>
+              <a href={"https://www.anystarr.com/en/terms-and-conditions/"} className={"footer-link-2 link-item"}>
+                Terms and Conditions
+              </a>
+              <a href={"https://www.anystarr.com/en/privacy-policy/"} className={"footer-link-2 link-item"}>
+                Privacy Policy
+              </a>
+            </div>
+          </div>
+        </div>
+      }
       <BackTop style={{
         right:"30px"
       }}></BackTop>

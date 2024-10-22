@@ -25,7 +25,7 @@ function App({ Component, pageProps }) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta charSet='utf-8' />
         <title>anystarr</title>
-        <link rel='shortcut icon' href='/favicon.jpeg' type='image/ico'/>
+        <link rel='shortcut icon' href='/favicon.jpeg' type='image/jpeg'/>
       </Head>
       <Layout>
        <div>
@@ -35,18 +35,6 @@ function App({ Component, pageProps }) {
            <Component {...pageProps} />
          </div>
        </div>
-       <div className={"app-footer"}>
-          <div className={"footer-gray"}>
-            <div className={"footer-g-content"}>
-              <a href={"https://www.anystarr.com/en/terms-and-conditions/"} className={"footer-link-2 link-item"}>
-                Terms and Conditions
-              </a>
-              <a href={"https://www.anystarr.com/en/privacy-policy/"} className={"footer-link-2 link-item"}>
-                Privacy Policy
-              </a>
-            </div>
-          </div>
-        </div>
       </Layout>
     </ConfigProvider>
   );
