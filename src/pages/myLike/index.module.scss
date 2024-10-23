@@ -4,6 +4,31 @@
   margin: 0 auto;
   position: relative;
   padding-top: 20px;
+
+  .sampleBtn {
+    width: 200px;
+    padding-top: 30px;
+    background: linear-gradient(to right, #25f4ee 50%, #fe2c55 50%);
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    .btnInner {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 4px;
+      right: 4px;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+      border-radius: 25px;
+    }
+  }
+
+
   .grid_container {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 两列等宽 */

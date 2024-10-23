@@ -13,7 +13,7 @@ function updateImageUrl(url, w, h) {
   if (!url) return "";
   return url.replace(/(\d+):(\d+)/, `${w}:${h}`);
 }
-const HomeCard = ({item, fromMyLike}) => {
+const MyCollectionCard = ({item, fromMyLike}) => {
 
   const router = useRouter();
   const [collected, setCollected] = useState(item.collect);
@@ -99,58 +99,68 @@ const HomeCard = ({item, fromMyLike}) => {
 
 
   return (
-    <div onClick={toDetails} className={styles.flexContainer}>
-      <div className={styles.textContainer}>
-        <div className={styles.flex_center}>
-          <div className={styles.imgContainer}>
-            <img
-              src={ item.alyImage ? item.alyImage : updateImageUrl(item.image, 500, 500)}
-              alt='Image'
-              className={styles.rcImage}
-            />
+    <div className={`${styles.flex_center} ${styles.collection_card}`}>
+      <div>
+        {
+          fromMyLike && <div onClick={(e)=>{
+            e.stopPropagation();
+          }} className={styles.select_icon}>
+
           </div>
+        }
+      </div>
+      <div onClick={toDetails} className={styles.flexContainer}>
+        <div className={styles.title}>{item.title}</div>
+        <div className={styles.content}>
+          <img
+            src={ item.alyImage ? item.alyImage : updateImageUrl(item.image, 500, 500)}
+            alt='Image'
+          />
+          <div>
+            <div className={styles.normal_wrap}>Earn per sale</div>
+            <div className={styles.price}>{item.price}</div>
+          </div>
+
           <div style={{
             flex:1,
-          }} className={styles.flex_column}>
-            <div>
-              <div className={styles.normal_wrap}>Earn per sale</div>
-              <div className={styles.price}>{convertPrice(item.price)}</div>
+            justifyContent:"flex-end"
+          }} className={`${styles.flex_center} ${styles.zoom_in_mobile}`}>
+            <div className={styles.flex_column_center}>
+              <div>Tiktok</div>
+              <div className={styles.normal_wrap}>Commission</div>
+              <div style={{color:"#000"}} className={styles.price}>{item.openRate}%</div>
             </div>
-            <div>
+            <SizeBox w={20}></SizeBox>
+            <div style={{
+              color:"#f34949",
+              fontWeight:"bold",
+              fontSize:"30px"
+            }}>VS</div>
+            <SizeBox w={20}></SizeBox>
+            <div className={styles.flex_column_center}>
+              <div>anyStarr</div>
               <div className={styles.normal_wrap}>Commission</div>
               <div className={styles.price}>{item.finishRate}%</div>
             </div>
-            {/* <span className={styles.commission}>Commission ¥20</span>*/}
-            <div className={styles.sold}>Sold {item.soldNum}</div>
           </div>
+
+          {/* <span className={styles.commission}>Commission ¥20</span>*/}
         </div>
-        <div className={styles.title}>{item.title}</div>
-        <SizeBox h={10}></SizeBox>
-        <div className={styles.flex_center}>
-          <div onClick={toAddTk} className={styles.sampleBtn}>
-            <div className={styles.btnInner}>Add to Showcase</div>
-          </div>
-          {
-            fromMyLike && <div onClick={(e)=>{
-              e.stopPropagation();
-            }} className={styles.select_icon}>
 
-            </div>
-          }
+        <div className={styles.sold}>Sold {item.soldNum}</div>
+
+        <div className={styles.iconContainer}>
+          <i className={`icon-class ${styles.icon}`}></i>
         </div>
+
+        <div onClick={collect} className={ collected ? styles.stared_img : styles.star_img}></div>
+
+        {
+          showConnectTips && <ConnectTikTipsModal show={showConnectTips} onCancel={()=>setShowConnectTips(false)}></ConnectTikTipsModal>
+        }
       </div>
-
-      <div className={styles.iconContainer}>
-        <i className={`icon-class ${styles.icon}`}></i>
-      </div>
-
-      <div onClick={collect} className={ collected ? styles.stared_img : styles.star_img}></div>
-
-      {
-        showConnectTips && <ConnectTikTipsModal show={showConnectTips} onCancel={()=>setShowConnectTips(false)}></ConnectTikTipsModal>
-      }
     </div>
   );
 };
 
-export default HomeCard;
+export default MyCollectionCard;
