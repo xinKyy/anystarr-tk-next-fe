@@ -1,7 +1,7 @@
 import styles from "./index.module.scss";
 import SizeBox from "@/components/SizeBox";
 
-const Home = () =>{
+const AnystarrHome = () =>{
 
 
   return <div className={styles.home_page}>
@@ -12,7 +12,7 @@ const Home = () =>{
           <a href={"https://anystarr.com/"}>
             <div className={styles.items}>Home</div>
           </a>
-          <a href={"https://anystarr.com/influencers-2/"}>
+          <a href={"/influencers-2/"}>
             <div className={styles.items}>Influencers</div>
           </a>
           <a href={"https://app.anystarr.com/login"}>
@@ -174,7 +174,7 @@ const Home = () =>{
           <div className={styles.left}>
             <div className={styles.tt_1}>GET STARTED</div>
             <SizeBox h={30}></SizeBox>
-            <a href={"https://anystarr.com/influencers-2/"}>
+            <a href={"/influencers-2/"}>
               <div>Influencers</div>
             </a>
             <SizeBox h={15}></SizeBox>
@@ -202,4 +202,4 @@ const Home = () =>{
 };
 
 
-export default Home;
+export default AnystarrHome;

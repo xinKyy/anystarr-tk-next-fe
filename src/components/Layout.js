@@ -6,7 +6,7 @@ import ConnectTikTipsModal from "@/components/connectTikTipsModal";
 import LoginModal from "@/components/LoginModal";
 import {useRouter} from "next/router";
 
-const hideHeader = ["/influencers-2", "/home"];
+const hideHeader = ["/influencers-2", "/home", "/"];
 
 function Layout({ children }) {
 
@@ -30,10 +30,10 @@ function Layout({ children }) {
         !hideHeader.includes(router.pathname) && <div className={"app-footer"}>
           <div className={"footer-gray"}>
             <div className={"footer-g-content"}>
-              <a href={"/beta/Terms_and_Conditions_anyStarr.html"} className={"footer-link-2 link-item"}>
+              <a href={"/Terms_and_Conditions_anyStarr.html"} className={"footer-link-2 link-item"}>
                 Terms and Conditions
               </a>
-              <a href={"/beta/privacy_policy.html"} className={"footer-link-2 link-item"}>
+              <a href={"/privacy_policy.html"} className={"footer-link-2 link-item"}>
                 Privacy Policy
               </a>
             </div>

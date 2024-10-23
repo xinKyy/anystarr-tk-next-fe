@@ -12,7 +12,7 @@ const Home = () =>{
           <a href={"https://anystarr.com/"}>
             <div className={styles.items}>Home</div>
           </a>
-          <a href={"https://anystarr.com/influencers-2/"}>
+          <a href={"/influencers-2/"}>
             <div className={styles.items}>Influencers</div>
           </a>
           <a href={"https://app.anystarr.com/login"}>
@@ -143,7 +143,7 @@ const Home = () =>{
           <div className={styles.left}>
             <div className={styles.tt_1}>GET STARTED</div>
             <SizeBox h={30}></SizeBox>
-            <a href={"https://anystarr.com/influencers-2/"}>
+            <a href={"/influencers-2/"}>
               <div>Influencers</div>
             </a>
             <SizeBox h={15}></SizeBox>
