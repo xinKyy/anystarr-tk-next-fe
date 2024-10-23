@@ -30,10 +30,10 @@ function Layout({ children }) {
         !hideHeader.includes(router.pathname) && <div className={"app-footer"}>
           <div className={"footer-gray"}>
             <div className={"footer-g-content"}>
-              <a href={"/Terms_and_Conditions_anyStarr.html"} className={"footer-link-2 link-item"}>
+              <a href={"/beta/Terms_and_Conditions_anyStarr.html"} className={"footer-link-2 link-item"}>
                 Terms and Conditions
               </a>
-              <a href={"/privacy_policy.html"} className={"footer-link-2 link-item"}>
+              <a href={"/beta/privacy_policy.html"} className={"footer-link-2 link-item"}>
                 Privacy Policy
               </a>
             </div>
