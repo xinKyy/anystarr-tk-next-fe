@@ -15,11 +15,11 @@ const Home = () =>{
           <a href={"https://anystarr.com/influencers-2/"}>
             <div className={styles.items}>Influencers</div>
           </a>
-          <a href={"https://app.anystarr.com/shoppingInfo"}>
-            <div className={styles.items}>商家合作</div>
-          </a>
           <a href={"https://app.anystarr.com/login"}>
             <div className={styles.items}>Log in</div>
+          </a>
+          <a href={"https://app.anystarr.com/shoppingInfo"}>
+            <div className={styles.items}>商家合作</div>
           </a>
         </div>
       </div>
@@ -189,9 +189,9 @@ const Home = () =>{
           <div className={styles.right}>
             <div className={styles.tt_1}>HELP AND LEGAL</div>
             <SizeBox h={30}></SizeBox>
-            <div>Terms and conditions</div>
+            <a href={"/Terms_and_Conditions_anyStarr.html"}><div>Terms and conditions</div></a>
             <SizeBox h={15}></SizeBox>
-            <div>Privacy Policy</div>
+            <a href={"/privacy_policy.html"}><div>Privacy Policy</div></a>
           </div>
 
         </div>

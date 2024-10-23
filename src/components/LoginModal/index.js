@@ -24,8 +24,8 @@ const LoginModal = ({open, onCancel})=>{
 
       <div className={styles.help_wrap}>
         <a href={`/beta/helpCenter`} target={"_blank"}><div>Help</div></a>
-        <a href={`https://www.anystarr.com/en/privacy-policy/`} target={"_blank"}><div>Privacy Policy</div></a>
-        <a href={`https://www.anystarr.com/en/terms-and-conditions/`} target={"_blank"}><div>Terms and Conditions</div></a>
+        <a href={"/privacy_policy.html"} target={"_blank"}><div>Privacy Policy</div></a>
+        <a href={"/Terms_and_Conditions_anyStarr.html"} target={"_blank"}><div>Terms and Conditions</div></a>
       </div>
     </div>
   </Modal>;

@@ -25,10 +25,10 @@ const SearchBar = ({onChange}) => {
       <div style={{
         color:"#000"
       }}>
-        <a className={styles.a} href={"https://www.anystarr.com/en/terms-and-conditions/"}>
+        <a className={styles.a} href={"/Terms_and_Conditions_anyStarr.html"}>
           Terms and Conditions
         </a>
-        <a className={styles.a} href={"https://www.anystarr.com/en/privacy-policy/"}>
+        <a className={styles.a} href={"/privacy_policy.html"}>
           Privacy Policy
         </a>
       </div>
