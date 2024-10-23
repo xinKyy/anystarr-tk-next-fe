@@ -5,7 +5,7 @@ import HomeCard from "@/components/HomeCard";
 import SortBy from "@/components/SoryBy";
 import {APIGetProductList} from "@/api";
 
-let data = [
+let newData = [
   {
     "productId": "1729394745420976584",
     "createTime": "2024-06-25T17:31:49.878+00:00",
@@ -2207,6 +2207,7 @@ let data = [
     "collect": false
   }
 ];
+let data = [];
 
 const Home = () => {
   const [prodList, setProdList] = useState(data);
