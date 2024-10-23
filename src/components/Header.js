@@ -70,6 +70,7 @@ const Header = () => {
   const content = (
     <div className={"pop_content"}>
       <div onClick={toMyLike}>My Collection</div>
+      <div>Person center</div>
       <div onClick={()=>{
         localStorage.removeItem("userInfo");
         localStorage.removeItem("token");

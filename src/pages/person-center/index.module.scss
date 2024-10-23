@@ -1,0 +1,54 @@
+
+.person_center{
+  width: 100%;
+  min-height: 100vh;
+  .bg_wrap{
+    background: url("https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/home_bg-scaled-2.jpg") no-repeat;
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .avatar_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .avatar{
+      position: absolute;
+      top: -50px;
+    }
+  }
+
+  .nick_name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .info_wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    .info_item{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .num{
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      .des{
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+  }
+}
