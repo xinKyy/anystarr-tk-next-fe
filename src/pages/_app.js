@@ -26,6 +26,7 @@ function App({ Component, pageProps }) {
         <meta charSet='utf-8' />
         <title>anystarr</title>
         <link rel='shortcut icon' href='/favicon.jpeg' type='image/jpeg'/>
+        <link rel='icon' href='/favicon.ico' type='image/x-icon' />
       </Head>
       <Layout>
        <div>
