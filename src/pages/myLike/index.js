@@ -2292,13 +2292,13 @@ const MyLike = () =>{
           grid ? <div className={styles.grid_container}>
             {
               prodList.map(item => (
-                <HomeCard fromMyLike={true} key={item.productId} item={item} />
+                <HomeCard fromMyLike={false} key={item.productId} item={item} />
               ))
             }
           </div> : <div>
             {
               prodList.map(item => (
-                <MyCollectionCard fromMyLike={true} key={item.productId} item={item} />
+                <MyCollectionCard fromMyLike={false} key={item.productId} item={item} />
               ))
             }
           </div>
