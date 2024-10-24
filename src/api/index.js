@@ -32,3 +32,18 @@ export const APIDeleteFavoriteItems = (params) => {
 export const APICheckCollect = (params) => {
   return ajaxRequest.get(`/api/v1/favoriteItems/checkCollect`, params);
 };
+
+// 获取商品一级类目
+export const APIGetCategoryFirst = () => {
+  return ajaxRequest.postJson(`/api/v1/category/first`, {});
+};
+
+// 根据一级获取二级类目
+export const APIGetCategorySecond = () => {
+  return ajaxRequest.postJson(`/api/v1/category/sub`, {});
+};
+
+// 获取推荐商品
+export const APIGetRecommendList = () => {
+  return ajaxRequest.get(`/api/v1/recommend/list`, {});
+};
