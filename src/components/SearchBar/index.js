@@ -1,18 +1,38 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useRef, useState, useMemo} from 'react';
 import styles from './index.module.scss';
 import debounce from 'lodash.debounce';
-import {Input} from "antd";
-
-const SearchBar = ({onChange}) => {
+import {Input, Select} from "antd";
+import {LoadingOutlined} from "@ant-design/icons";
+const { Option } = Select;
+const SearchBar = ({onChange, loading}) => {
 
   const [searchName, setSearchName] = useState("");
+  const [currenSearchType, setCurrentSearchType] = useState(1); // 1 pid 2 name 3 佣金率
+  const currenSearchTypeRef = useRef(1); // 1 pid 2 name 3 佣金率
 
   const debouncedOnChange = useCallback(
     debounce((value) => {
-      onChange(value);
+      onChange(value, currenSearchTypeRef.current);
     }, 500), // 300ms 的防抖时间
     []
   );
+
+  const handleChange = (value) => {
+    currenSearchTypeRef.current = value;
+    setCurrentSearchType(value);
+  };
+
+  const selectBefore = (
+    <Select style={{
+      minWidth:"100px"
+    }} onChange={handleChange} defaultValue={currenSearchType}>
+      <Option value={1}>PID</Option>
+      <Option value={2}>Product name</Option>
+      <Option value={3}>Commission rate</Option>
+    </Select>
+  );
+
+  const searchIcon = useMemo(()=><img src={"/search.svg"} className={`${styles.icon}`}/>, []);
 
   return (
     <div style={{
@@ -36,15 +56,17 @@ const SearchBar = ({onChange}) => {
         <Input
           className={styles.inputField}
           value={searchName}
+          addonBefore={selectBefore}
           onChange={(e)=>{
             setSearchName(e.target.value);
             debouncedOnChange(e.target.value);
           }}
-          placeholder='Search product'
+          placeholder='Search input'
         />
-        <div onClick={()=>onChange(searchName)} className={styles.searchButton}>
-          <img src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/search.svg"} className={`${styles.icon} anticon`}>
-          </img>
+        <div onClick={()=>onChange(searchName, currenSearchType)} className={styles.searchButton}>
+          {
+            loading ? <LoadingOutlined></LoadingOutlined> : searchIcon
+          }
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import SearchBar from "@/components/SearchBar";
 import HomeCard from "@/components/HomeCard";
 import SortBy from "@/components/SoryBy";
-import {APIGetProductList} from "@/api";
+import {APIGetCategoryFirst, APIGetProductList} from "@/api";
 
 let newData = [
   {
@@ -2212,13 +2212,14 @@ let data = [];
 const Home = () => {
   const [prodList, setProdList] = useState(data);
   const [sort, setSort] = useState(1);
+  const [categoryId, setCategoryId] = useState();
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
 
   const scrollDiv = useRef();
 
-  const getProdList = (searchNameRe) => {
+  const getProdList = (searchNameRe, searchType) => {
     if (loading || !hasMore) return; // 检查是否正在加载或没有更多数据
 
     let nowPage = searchNameRe ? 1 : page;
@@ -2228,7 +2229,8 @@ const Home = () => {
       sort: sort,
       page: nowPage,
       pageSize: 100,
-      searchName:searchNameRe
+      searchName:searchNameRe,
+      searchType:searchType
     })).then(resp => {
       if (resp.data.list) {
         if ( nowPage === 1){
@@ -2243,6 +2245,16 @@ const Home = () => {
       setLoading(false);
     });
   };
+
+  const getLevel1ProList = () =>{
+    APIGetCategoryFirst().then(resp=>{
+      console.log(resp, "APIGetCategoryFirst");
+    });
+  };
+
+  useEffect(()=>{
+    getLevel1ProList();
+  }, []);
 
   useEffect(() => {
     getProdList();
@@ -2269,9 +2281,9 @@ const Home = () => {
     };
   }, [loading]);
 
-  const onSearch = (v) =>{
+  const onSearch = (v, searchType) =>{
     setPage(1);
-    getProdList(v);
+    getProdList(v, searchType);
   };
 
   return (
@@ -2279,7 +2291,7 @@ const Home = () => {
       width:"100vw"
     }}>
       <div ref={scrollDiv} className={styles.home_page}>
-        <SearchBar onChange={onSearch} />
+        <SearchBar loading={loading} onChange={onSearch} />
         <div className={styles.sort_wrap}>
           <SortBy current={sort} onChange={onSortChange} />
         </div>
