@@ -87,11 +87,14 @@ const Home = () => {
     setPage(1);
     if (v === category1Id) {
       setCategory2Id(null);
+      setCategory3Id(null);
       setCategory1Id(null);
       return;
     }
     setCategory2Id(null);
+    setCategory3Id(null);
     setCategory2List([]);
+    setCategory3List([]);
     setCategory1Id(v);
   };
 
