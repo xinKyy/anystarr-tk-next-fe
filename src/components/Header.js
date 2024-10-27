@@ -40,6 +40,7 @@ const Header = () => {
     const tokenStr = getQueryString("token");
     if (tokenStr){
       localStorage.setItem("token", tokenStr);
+      router.push("/beta");
     }
     getUserInfo();
     // const user = {

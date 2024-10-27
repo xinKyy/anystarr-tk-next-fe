@@ -1,26 +1,51 @@
 import styles from "./index.module.scss";
 import {Avatar} from "antd";
 import SizeBox from "@/components/SizeBox";
+import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
+import HomeCard from "@/components/HomeCard";
+import {APIGetRecommendList} from "@/api";
 
 const PersonCenter = () =>{
+  const userInfo = useSelector(state => state.home.userInfo.userInfo);
+
+  const [recommendList, setRecommendList] = useState([]);
+
+  useEffect(()=>{
+    APIGetRecommendList().then(resp=>{
+
+    });
+  }, []);
+
+
   return <div className={styles.person_center}>
     <div className={styles.bg_wrap}></div>
     <div className={styles.avatar_wrap}>
-      <Avatar className={styles.avatar} size={100} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/home_bg-scaled-2.jpg"}></Avatar>
+      <Avatar className={styles.avatar} size={100} src={userInfo?.avatarUrl}></Avatar>
     </div>
     <div className={styles.nick_name}>
-      XXXX
+      {userInfo?.displayName}
     </div>
     <div className={styles.info_wrap}>
       <div className={styles.info_item}>
-        <div className={styles.num}>5579</div>
-        <div className={styles.des}>粉丝数</div>
+        <div className={styles.num}>{userInfo?.followerCount}</div>
+        <div className={styles.des}>Follower</div>
       </div>
       <SizeBox w={20}></SizeBox>
       <div className={styles.info_item}>
-        <div className={styles.num}>79998</div>
-        <div className={styles.des}>视频点赞数</div>
+        <div className={styles.num}>{userInfo?.likesCount}</div>
+        <div className={styles.des}>Likes</div>
       </div>
+    </div>
+
+    <div>
+      Based on your Showcase data, you may be interested in the following items
+    </div>
+    <div>
+      All interested ? <span>Add to showcase</span>
+    </div>
+    <div>
+      {/* <HomeCard item={}></HomeCard>*/}
     </div>
   </div>;
 };
