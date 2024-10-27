@@ -2326,14 +2326,18 @@ const Home = () => {
         </div>
 
          <CategoryList onCheckLevel1={onCheckLevel1} currentCategoryId={category1Id}></CategoryList>
-         <SizeBox h={20}></SizeBox>
+
         {
-          category2List && category2List.length  > 0 && <Category2List onCheckLevel2={onCheckLevel2} category2List={category2List} currentCategoryId={category2Id}></Category2List>
+          category2List && category2List.length  > 0 && <>
+            <SizeBox h={20}></SizeBox>
+            <Category2List onCheckLevel2={onCheckLevel2} category2List={category2List} currentCategoryId={category2Id}></Category2List>
+            <SizeBox h={20}></SizeBox>
+          </>
         }
 
         <Spin style={{
           width:"100%"
-        }} spinning={false} indicator={
+        }} spinning={loading} indicator={
           <LoadingOutlined
             style={{
               fontSize: 48,
