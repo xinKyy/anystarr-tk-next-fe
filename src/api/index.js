@@ -45,5 +45,5 @@ export const APIGetCategorySecond = (params) => {
 
 // 获取推荐商品
 export const APIGetRecommendList = () => {
-  return ajaxRequest.get(`/api/v1/recommend/list`, {});
+  return ajaxRequest.post(`/api/v1/recommend/list`, {});
 };
