@@ -23,7 +23,7 @@ const Category2List = ({onCheckLevel2, currentCategoryId, category2List}) =>{
       if (!onStop.current){
         scroll();
       }
-    }, 20); // 调整滚动速度
+    }, 40); // 调整滚动速度
 
     return () => clearInterval(interval);
   }, []);

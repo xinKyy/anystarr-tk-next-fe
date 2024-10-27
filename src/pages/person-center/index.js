@@ -7,6 +7,7 @@ import HomeCard from "@/components/HomeCard";
 import {APIGetRecommendList} from "@/api";
 import {isMobile} from "@/utils/action";
 import CreateLinkModal from "@/components/CreateLinkModal";
+import BackBtn from "@/components/BackBtn";
 
 const PersonCenter = () =>{
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
@@ -30,7 +31,9 @@ const PersonCenter = () =>{
   };
 
   return <div className={styles.person_center}>
-
+    <div className={styles.back_wrap}>
+      <BackBtn></BackBtn>
+    </div>
     {
       showCreate && <CreateLinkModal pidArr={recommendList.map(item=>item.productId)} show={showCreate} onCancel={()=>setShowCreate(false)}></CreateLinkModal>
     }

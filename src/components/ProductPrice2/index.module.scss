@@ -3,13 +3,14 @@
   width: 100%;
   position: relative;
   box-sizing: border-box;
-  min-height: 80px;
+  min-height: 280px;
   padding: 0 20px;
   @media (max-width: 768px) {
     width: 100%;
     margin-top: 10px;
     padding: 0 20px;
     margin-left: -4px;
+    min-height: 120px;
   }
 }
 

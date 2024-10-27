@@ -2,6 +2,19 @@
 .person_center{
   width: 100%;
   min-height: 100vh;
+
+  .back_wrap{
+    margin: 0 auto;
+    position: fixed;
+    top: 80px;
+    left: 10px;
+    background: #fff;
+    border-radius: 25px;
+    @media screen and (max-width: 650px){
+      background: unset;
+    }
+  }
+
   .bg_wrap{
     background: url("https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/home_bg-scaled-2.jpg") no-repeat;
     width: 100%;

@@ -421,7 +421,7 @@ const CategoryList = ({onCheckLevel1, currentCategoryId}) =>{
       if (!onStop.current){
         scroll();
       }
-    }, 20); // 调整滚动速度
+    }, 40); // 调整滚动速度
 
     return () => clearInterval(interval);
   }, []);
