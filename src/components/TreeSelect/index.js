@@ -482,12 +482,12 @@ const CategoryTreeSelect = () => {
   };
 
 
-  const onLoadData = ({ categoryId, level }) => new Promise((resolve) => {
-       if (level === 2){
-         getLevel2ListBy1Id(categoryId, resolve);
+  const onLoadData = (item) => new Promise((resolve) => {
+       if (item.level === 1){
+         getLevel2ListBy1Id(item.id, resolve);
        }
-       if (level === 3){
-         getLevel3ListBy2Id(categoryId, resolve);
+       if (item.level === 2){
+         getLevel3ListBy2Id(item.id, resolve);
        }
     });
   const onChange = (newValue) => {
