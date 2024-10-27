@@ -64,14 +64,11 @@ const Header = () => {
   }, []);
 
 
-  const toMyLike = () =>{
-    router.push("/myLike");
-  };
 
   const content = (
     <div className={"pop_content"}>
-      <div onClick={toMyLike}>My Collection</div>
-      {/* <div>Person center</div>*/}
+      <Link href={"/myLike"}><div>My Collection</div></Link>
+      <Link href={"/person-center"}><div>Person center</div></Link>
       <div onClick={()=>{
         localStorage.removeItem("userInfo");
         localStorage.removeItem("token");

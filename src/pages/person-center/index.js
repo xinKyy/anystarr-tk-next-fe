@@ -5,13 +5,17 @@ import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import HomeCard from "@/components/HomeCard";
 import {APIGetRecommendList} from "@/api";
+import {isMobile} from "@/utils/action";
 
 const PersonCenter = () =>{
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
-
+  const [mobile, setMobile] = useState(false);
   const [recommendList, setRecommendList] = useState([]);
 
   useEffect(()=>{
+
+    setMobile(isMobile());
+
     APIGetRecommendList().then(resp=>{
       if (resp.data.list){
         setRecommendList(resp.data.list);
@@ -23,7 +27,7 @@ const PersonCenter = () =>{
   return <div className={styles.person_center}>
     <div className={styles.bg_wrap}></div>
     <div className={styles.avatar_wrap}>
-      <Avatar className={styles.avatar} size={100} src={userInfo?.avatarUrl}></Avatar>
+      <Avatar className={styles.avatar} size={mobile ? 80 : 100} src={userInfo?.avatarUrl}></Avatar>
     </div>
     <div className={styles.nick_name}>
       {userInfo?.displayName}
