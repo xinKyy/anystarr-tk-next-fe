@@ -178,14 +178,14 @@ const Home = () => {
           mobile && <CategoryList onCheckLevel1={onCheckLevel1} currentCategoryId={category1Id}></CategoryList>
         }
         {
-          category2List && category2List.length  > 0 && <>
+          mobile && category2List && category2List.length  > 0 && <>
             <SizeBox h={20}></SizeBox>
             <Category2List onCheckLevel2={onCheckLevel2} category2List={category2List} currentCategoryId={category2Id}></Category2List>
           </>
         }
 
         {
-          category3List && category3List.length  > 0 && <>
+          mobile && category3List && category3List.length  > 0 && <>
             <SizeBox h={20}></SizeBox>
             <Category2List onCheckLevel2={onCheckLevel3} category2List={category3List} currentCategoryId={category3Id}></Category2List>
             <SizeBox h={20}></SizeBox>
