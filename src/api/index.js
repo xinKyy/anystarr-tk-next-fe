@@ -40,7 +40,7 @@ export const APIGetCategoryFirst = () => {
 
 // 根据一级获取二级类目
 export const APIGetCategorySecond = (params) => {
-  return ajaxRequest.postJson(`/api/v1/category/sub`, params);
+  return ajaxRequest.post(`/api/v1/category/sub`, params);
 };
 
 // 获取推荐商品
