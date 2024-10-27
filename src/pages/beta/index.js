@@ -55,7 +55,7 @@ const Home = () => {
 
   useEffect(() => {
     getProdList();
-  }, [sort, page, category1Id, category2Id]);
+  }, [sort, page, category1Id, category2Id, category3Id]);
 
   const onSortChange = (sortby) => {
     setSort(sortby);
