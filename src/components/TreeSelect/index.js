@@ -439,8 +439,8 @@ const CategoryTreeSelect = ({onCategoryChange}) => {
           item.value = item.categoryId;
           item.isLeaf = category1Id;
         });
-        treeData.concat(l2);
-        setTreeData(treeData);
+        const arr = treeData.concat(l2);
+        setTreeData(arr.slice());
       }
     }).finally(()=>{
       resolve(undefined);
@@ -461,26 +461,13 @@ const CategoryTreeSelect = ({onCategoryChange}) => {
           item.pId = category2Id;
           item.isLeaf = true;
         });
-        treeData.concat(l3);
-        setTreeData(treeData);
+        const arr = treeData.concat(l3);
+        setTreeData(arr.slice());
       }
     }).finally(()=>{
       resolve(undefined);
     });
   };
-
-
-  const genTreeNode = (parentId, level, isLeaf = false) => {
-    const random = Math.random().toString(36).substring(2, 6);
-    return {
-      id: random,
-      pId: parentId,
-      value: random,
-      title: isLeaf ? 'Tree Node' : 'Expand to load',
-      isLeaf,
-    };
-  };
-
 
   const onLoadData = (item) => new Promise((resolve) => {
        if (item.level === 1){
