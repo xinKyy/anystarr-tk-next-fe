@@ -7,6 +7,8 @@ import {APIGetCategoryFirst, APIGetCategorySecond, APIGetProductList} from "@/ap
 import CategoryList from "@/components/CategoryList";
 import Category2List from "@/components/Category2List";
 import SizeBox from "@/components/SizeBox";
+import {Spin} from "antd";
+import {LoadingOutlined} from "@ant-design/icons";
 
 let newData = [
   {
@@ -2214,12 +2216,12 @@ let data = [];
 const Home = () => {
   const [prodList, setProdList] = useState(data);
   const [sort, setSort] = useState(1);
-  const [category1Id, setCategory1Id] = useState(600024);
+  const [category1Id, setCategory1Id] = useState();
   const [category2Id, setCategory2Id] = useState();
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
-  const [category2List, setCategoryList] = useState([]);
+  const [category2List, setCategory2List] = useState([]);
 
   const scrollDiv = useRef();
 
@@ -2234,7 +2236,8 @@ const Home = () => {
       page: nowPage,
       pageSize: 100,
       searchName:searchNameRe,
-      searchType:searchType
+      searchType:searchType,
+      categoryId:category2Id || category1Id
     })).then(resp => {
       if (resp.data.list) {
         if ( nowPage === 1){
@@ -2246,12 +2249,14 @@ const Home = () => {
       }
     }).finally(() => {
       setLoading(false);
+    }).catch(e=>{
+      setLoading(false);
     });
   };
 
   useEffect(() => {
     getProdList();
-  }, [sort, page]);
+  }, [sort, page, category1Id, category2Id]);
 
   const onSortChange = (sortby) => {
     setSort(sortby);
@@ -2280,10 +2285,18 @@ const Home = () => {
   };
 
   const onCheckLevel1 = (v) =>{
+    if (v === category1Id) {
+      setCategory1Id(null);
+      return;
+    }
     setCategory1Id(v);
   };
 
   const onCheckLevel2 = (v) =>{
+    if (v === category2Id) {
+      setCategory2Id(null);
+      return;
+    }
     setCategory2Id(v);
   };
 
@@ -2292,7 +2305,9 @@ const Home = () => {
     APIGetCategorySecond({
       parentId:category1Id,
     }).then(resp=>{
-      console.log(resp, "second2list");
+      if (resp.data.result){
+        setCategory2List(resp.data.result);
+      }
     });
   };
 
@@ -2310,19 +2325,29 @@ const Home = () => {
           <SortBy current={sort} onChange={onSortChange} />
         </div>
 
-        {/* <CategoryList onCheckLevel1={onCheckLevel1} currentCategoryId={category1Id}></CategoryList>*/}
-        {/* <SizeBox h={20}></SizeBox>*/}
+         <CategoryList onCheckLevel1={onCheckLevel1} currentCategoryId={category1Id}></CategoryList>
+         <SizeBox h={20}></SizeBox>
         {
           category2List && category2List.length  > 0 && <Category2List onCheckLevel2={onCheckLevel2} category2List={category2List} currentCategoryId={category2Id}></Category2List>
         }
 
-        <div className={styles.grid_container}>
-          {
-            prodList && prodList.map(item => (
-              <HomeCard key={item.productId} item={item} />
-            ))
-          }
-        </div>
+        <Spin style={{
+          width:"100%"
+        }} spinning={false} indicator={
+          <LoadingOutlined
+            style={{
+              fontSize: 48,
+            }}
+            spin
+          />} >
+          <div className={styles.grid_container}>
+            {
+              prodList && prodList.map(item => (
+                <HomeCard key={item.productId} item={item} />
+              ))
+            }
+          </div>
+        </Spin>
       </div>
     </div>
   );
