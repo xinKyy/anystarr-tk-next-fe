@@ -444,6 +444,7 @@ const CategoryTreeSelect = ({onCategoryChange}) => {
         setTreeData(
           treeData.concat(l2),
         );
+        resolve(undefined);
       }
     }).finally(()=>{
       resolve(undefined);
@@ -467,6 +468,7 @@ const CategoryTreeSelect = ({onCategoryChange}) => {
         setTreeData(
           treeData.concat(l3),
         );
+        resolve(undefined);
       }
     }).finally(()=>{
       resolve(undefined);
