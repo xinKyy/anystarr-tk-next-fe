@@ -13,7 +13,7 @@ function updateImageUrl(url, w, h) {
   if (!url) return "";
   return url.replace(/(\d+):(\d+)/, `${w}:${h}`);
 }
-const MyCollectionCard = ({item, fromMyLike}) => {
+const MyCollectionCard = ({item, fromMyLike, checkItem, checked}) => {
 
   const router = useRouter();
   const [collected, setCollected] = useState(item.collect);
@@ -104,7 +104,8 @@ const MyCollectionCard = ({item, fromMyLike}) => {
         {
           fromMyLike && <div onClick={(e)=>{
             e.stopPropagation();
-          }} className={styles.select_icon}>
+            checkItem(item.productId);
+          }} className={`${styles.select_icon} ${checked ? styles.active : ""}`}>
 
           </div>
         }

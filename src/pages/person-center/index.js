@@ -6,10 +6,12 @@ import {useEffect, useState} from "react";
 import HomeCard from "@/components/HomeCard";
 import {APIGetRecommendList} from "@/api";
 import {isMobile} from "@/utils/action";
+import CreateLinkModal from "@/components/CreateLinkModal";
 
 const PersonCenter = () =>{
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
   const [mobile, setMobile] = useState(false);
+  const [showCreate, setShowCreate] = useState(false);
   const [recommendList, setRecommendList] = useState([]);
 
   useEffect(()=>{
@@ -23,8 +25,16 @@ const PersonCenter = () =>{
     });
   }, []);
 
+  const toAddTk = () =>{
+    setShowCreate(true);
+  };
 
   return <div className={styles.person_center}>
+
+    {
+      showCreate && <CreateLinkModal pidArr={recommendList.map(item=>item.productId)} show={showCreate} onCancel={()=>setShowCreate(false)}></CreateLinkModal>
+    }
+
     <div className={styles.bg_wrap}></div>
     <div className={styles.avatar_wrap}>
       <Avatar className={styles.avatar} size={mobile ? 80 : 100} src={userInfo?.avatarUrl}></Avatar>
@@ -49,7 +59,7 @@ const PersonCenter = () =>{
        Based on your Showcase data, you may be interested in the following items
      </div>
      <div className={styles.title_1}>
-       All interested ? <span>Add to showcase</span>
+       All interested ? <span onClick={toAddTk}>Add to showcase</span>
      </div>
      <div className={styles.grid_container}>
        {

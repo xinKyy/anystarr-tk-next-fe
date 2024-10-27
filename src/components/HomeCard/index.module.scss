@@ -68,6 +68,11 @@
   border: 1px solid #666;
   flex-shrink: 0;
   margin-left: 10px;
+  transition: all .3s;
+  &.active{
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+  }
 }
 
 .imgContainer {

@@ -3,8 +3,8 @@ import HomeCard from "@/components/HomeCard";
 import {useEffect, useRef, useState} from "react";
 import {APIGetLikeProductList, APIGetProductList} from "@/api";
 import BackBtn from "@/components/BackBtn";
-import {useSelector} from "react-redux";
 import MyCollectionCard from "@/components/MyCollectionCard";
+import CreateLinkModal from "@/components/CreateLinkModal";
 let data = [
   {
     "productId": "1729394745420976584",
@@ -2213,6 +2213,10 @@ const MyLike = () =>{
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
   const [grid, setGrid] = useState(true);
+  const [showCreate, setShowCreate] = useState(false);
+
+  const [checkPids, setCheckPids] = useState([]);
+
   const scrollDiv = useRef();
 
   const getProdList = () => {
@@ -2242,15 +2246,6 @@ const MyLike = () =>{
     getProdList();
   }, [loading]);
 
-
-  const handleScroll = () => {
-    if (loading || !hasMore) return;
-    const nearBottom = window.innerHeight + document.documentElement.scrollTop >= scrollDiv.current?.offsetHeight - 100;
-    if (nearBottom) {
-      setPage(page + 1);
-    }
-  };
-
   useEffect(() => {
     // window.addEventListener('scroll', handleScroll);
     // return () => {
@@ -2259,7 +2254,17 @@ const MyLike = () =>{
   }, [loading]);
 
   const toAddTk = () =>{
+    setShowCreate(true);
+  };
 
+  const checkItem = (pid) =>{
+    if (checkPids.includes(pid)){
+     const newArr = checkPids.filter(item=>item !== pid);
+     setCheckPids(newArr);
+     return;
+    }
+    checkPids.push(pid);
+    setCheckPids(checkPids.slice());
   };
 
   return <div className={styles.my_like_page} ref={scrollDiv}>
@@ -2269,6 +2274,9 @@ const MyLike = () =>{
       justifyContent:"space-between"
     }}>
       <BackBtn/>
+      {
+        showCreate && <CreateLinkModal pidArr={checkPids} show={showCreate} onCancel={()=>setShowCreate(false)}></CreateLinkModal>
+      }
       <div style={{
         marginLeft:"10px",
         display:"flex",
@@ -2292,13 +2300,13 @@ const MyLike = () =>{
           grid ? <div className={styles.grid_container}>
             {
               prodList.map(item => (
-                <HomeCard fromMyLike={false} key={item.productId} item={item} />
+                <HomeCard fromMyLike={true} key={item.productId} checkItem={checkItem} item={item} checked={checkPids?.includes(item.productId)} />
               ))
             }
           </div> : <div>
             {
               prodList.map(item => (
-                <MyCollectionCard fromMyLike={false} key={item.productId} item={item} />
+                <MyCollectionCard fromMyLike={true} key={item.productId} item={item} checkItem={checkItem} checked={checkPids?.includes(item.productId)} />
               ))
             }
           </div>
