@@ -9,6 +9,7 @@ import Category2List from "@/components/Category2List";
 import SizeBox from "@/components/SizeBox";
 import {Spin} from "antd";
 import {LoadingOutlined} from "@ant-design/icons";
+import CategoryTreeSelect from "@/components/TreeSelect";
 let data = [];
 const Home = () => {
   const [prodList, setProdList] = useState(data);
@@ -154,7 +155,13 @@ const Home = () => {
       width:"100vw"
     }}>
       <div ref={scrollDiv} className={styles.home_page}>
-        <SearchBar loading={loading} onChange={onSearch} />
+        <div style={{
+          display:"flex",
+          alignItems:"center"
+        }}>
+          <CategoryTreeSelect></CategoryTreeSelect>
+          <SearchBar loading={loading} onChange={onSearch} />
+        </div>
         <div className={styles.sort_wrap}>
           <SortBy current={sort} onChange={onSortChange} />
         </div>
