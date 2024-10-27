@@ -420,6 +420,7 @@ const CategoryTreeSelect = ({onCategoryChange}) => {
           item.title = item.name;
           item.value = item.categoryId;
           item.pId = 0;
+          item.isLeaf = false;
           return item;
         }));
       }
@@ -437,7 +438,8 @@ const CategoryTreeSelect = ({onCategoryChange}) => {
           item.id = item.categoryId;
           item.title = item.name;
           item.value = item.categoryId;
-          item.isLeaf = category1Id;
+          item.pId = category1Id;
+          item.isLeaf = false;
         });
         const arr = treeData.concat(l2);
         setTreeData(arr.slice());
