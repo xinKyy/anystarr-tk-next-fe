@@ -30,7 +30,7 @@ const CreateLinkModal = ({show, onCancel, pidArr}) =>{
   const getLinkByBatchId = async () =>{
     if (!batchId.current) return;
     if (!show) return;
-    if (success !== "none") return;
+    if (!link.current) return;
     try {
       const resp = await APIGetLinkByBatchId(batchId.current);
       if (resp.data?.link){
