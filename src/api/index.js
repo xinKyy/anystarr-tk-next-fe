@@ -47,3 +47,13 @@ export const APIGetCategorySecond = (params) => {
 export const APIGetRecommendList = () => {
   return ajaxRequest.post(`/api/v1/recommend/list`, {});
 };
+
+// 一键加橱链接生成
+export const APICreatLinkByPid = (params) => {
+  return ajaxRequest.postJson(`/api/v1/favoriteItems/creatLink`, params);
+};
+
+// 获取一键加橱链接
+export const APIGetLinkByBatchId = (batchId) => {
+  return ajaxRequest.get(`/api/v1/favoriteItems/queryLink`, {batchId});
+};

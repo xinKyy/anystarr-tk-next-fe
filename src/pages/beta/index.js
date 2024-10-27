@@ -15,10 +15,12 @@ const Home = () => {
   const [sort, setSort] = useState(1);
   const [category1Id, setCategory1Id] = useState();
   const [category2Id, setCategory2Id] = useState();
+  const [category3Id, setCategory3Id] = useState();
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
   const [category2List, setCategory2List] = useState([]);
+  const [category3List, setCategory3List] = useState([]);
 
   const scrollDiv = useRef();
 
@@ -34,7 +36,7 @@ const Home = () => {
       pageSize: 100,
       searchName:searchNameRe,
       searchType:searchType,
-      categoryId:category2Id || category1Id
+      categoryId:category3Id || category2Id || category1Id
     })).then(resp => {
       if (resp.data.list) {
         if ( nowPage === 1){
@@ -97,6 +99,14 @@ const Home = () => {
     setCategory2Id(v);
   };
 
+  const onCheckLevel3 = (v) =>{
+    if (v === category3Id) {
+      setCategory3Id(null);
+      return;
+    }
+    setCategory3Id(v);
+  };
+
   const getLevel2ListBy1Id = () =>{
     if (!category1Id) return;
     APIGetCategorySecond({
@@ -108,9 +118,24 @@ const Home = () => {
     });
   };
 
+  const getLevel3ListBy2Id = () =>{
+    if (!category2Id) return;
+    APIGetCategorySecond({
+      parentId:category2Id,
+    }).then(resp=>{
+      if (resp.data.result){
+        setCategory3List(resp.data.result);
+      }
+    });
+  };
+
   useEffect(()=>{
     getLevel2ListBy1Id();
   }, [category1Id]);
+
+  useEffect(()=>{
+    getLevel3ListBy2Id();
+  }, [category2Id]);
 
   return (
     <div style={{
@@ -128,6 +153,14 @@ const Home = () => {
           category2List && category2List.length  > 0 && <>
             <SizeBox h={20}></SizeBox>
             <Category2List onCheckLevel2={onCheckLevel2} category2List={category2List} currentCategoryId={category2Id}></Category2List>
+            <SizeBox h={20}></SizeBox>
+          </>
+        }
+
+        {
+          category3List && category3List.length  > 0 && <>
+            <SizeBox h={20}></SizeBox>
+            <Category2List onCheckLevel2={onCheckLevel3} category2List={category3List} currentCategoryId={category3Id}></Category2List>
             <SizeBox h={20}></SizeBox>
           </>
         }
