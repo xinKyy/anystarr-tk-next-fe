@@ -84,6 +84,7 @@ const Home = () => {
   };
 
   const onCheckLevel1 = (v) =>{
+    setPage(1);
     if (v === category1Id) {
       setCategory2Id(null);
       setCategory1Id(null);
@@ -95,6 +96,7 @@ const Home = () => {
   };
 
   const onCheckLevel2 = (v) =>{
+    setPage(1);
     if (v === category2Id) {
       setCategory3Id(null);
       setCategory2Id(null);
@@ -106,6 +108,7 @@ const Home = () => {
   };
 
   const onCheckLevel3 = (v) =>{
+    setPage(1);
     if (v === category3Id) {
       setCategory3Id(null);
       return;
