@@ -12,6 +12,11 @@
   border-radius: 14px;
   cursor: pointer;
   padding: 20px;
+  @media screen and (max-width: 650px){
+    height: 150px;
+    padding: 10px;
+    margin: 0 10px;
+  }
 
   .title {
     font-family: 'Inter', sans-serif;
@@ -93,8 +98,8 @@
 
   @media screen and (max-width: 650px) {
     img{
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
       border-radius: 10px;
       object-fit: cover;
       margin-right: 10px;
@@ -161,6 +166,16 @@
   cursor: pointer;
 
   transition: all .3s;
+
+  @media screen and (max-width: 650px){
+    position: absolute;
+    bottom: 10px;
+    z-index: 1;
+    left: 20px;
+    width: 15px;
+    height: 15px;
+  }
+
   &.active{
     background: var(--primary-color);
     border-color: var(--primary-color);

@@ -2208,7 +2208,7 @@ let data = [
   }
 ];
 const MyLike = () =>{
-  const [prodList, setProdList] = useState([]);
+  const [prodList, setProdList] = useState(data);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据

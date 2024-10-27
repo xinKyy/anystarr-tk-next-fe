@@ -184,6 +184,9 @@
       align-items: center;
       font-weight: 500;
       border-radius: 25px;
+      @media screen and (max-width: 640px){
+        font-size: 12px;
+      }
     }
   }
 }
