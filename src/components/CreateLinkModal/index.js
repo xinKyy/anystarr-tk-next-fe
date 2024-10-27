@@ -9,6 +9,7 @@ import {useEffect, useState, useRef} from "react";
 import {isMobile} from "@/utils/action";
 import copy from "copy-to-clipboard";
 import { useRequest } from "ahooks";
+import SizeBox from "@/components/SizeBox";
 
 const CreateLinkModal = ({show, onCancel, pidArr}) =>{
   const [success, setSuccess] = useState("none"); // "success" | "fail" | "none"
