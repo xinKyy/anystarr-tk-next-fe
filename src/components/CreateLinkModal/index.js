@@ -30,6 +30,7 @@ const CreateLinkModal = ({show, onCancel, pidArr}) =>{
   const getLinkByBatchId = async () =>{
     if (!batchId.current) return;
     if (!show) return;
+    if (success !== "none") return;
     try {
       const resp = await APIGetLinkByBatchId(batchId.current);
       if (resp.data?.link){
@@ -94,9 +95,13 @@ const CreateLinkModal = ({show, onCancel, pidArr}) =>{
       }
       {
         success === "success" ?
-          <div onClick={toAddTk} className={styles.sampleBtn}>
-            <div className={styles.btnInner}>Add to Showcase</div>
-          </div> : success === "fail" ?
+          <>
+            <div>Create link success!</div>
+            <SizeBox h={10}></SizeBox>
+            <div onClick={toAddTk} className={styles.sampleBtn}>
+              <div className={styles.btnInner}>Add to Showcase</div>
+            </div>
+          </> : success === "fail" ?
           <>
             <div>Sorry, the generation failed</div>
             <div className={styles.ok_btn} onClick={onCancel}>Ok</div>
