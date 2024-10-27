@@ -441,8 +441,9 @@ const CategoryTreeSelect = ({onCategoryChange}) => {
           item.pId = category1Id;
           item.isLeaf = false;
         });
-        const arr = treeData.concat(l2);
-        setTreeData(arr.slice());
+        setTreeData(
+          treeData.concat(l2),
+        );
       }
     }).finally(()=>{
       resolve(undefined);
@@ -463,8 +464,9 @@ const CategoryTreeSelect = ({onCategoryChange}) => {
           item.pId = category2Id;
           item.isLeaf = true;
         });
-        const arr = treeData.concat(l3);
-        setTreeData(arr.slice());
+        setTreeData(
+          treeData.concat(l3),
+        );
       }
     }).finally(()=>{
       resolve(undefined);
