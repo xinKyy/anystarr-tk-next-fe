@@ -11,6 +11,33 @@
   .sort_wrap{
     padding: 10px 20px;
   }
+
+  .category_wrap{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 0 15px;
+    .item_view{
+      flex-shrink: 0;
+      border: 1px solid var(--primary-color-80);
+      padding: 0 10px;
+      height: 35px;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 35px;
+      text-align: center;
+      margin-right: 10px;
+      color:var(--primary-color) ;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all .3s;
+      &:hover{
+        background: var(--primary-color-80);
+        color: #fff;
+      }
+    }
+  }
+
   .grid_container {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 两列等宽 */

@@ -3,7 +3,10 @@ import {useEffect, useRef, useState} from "react";
 import SearchBar from "@/components/SearchBar";
 import HomeCard from "@/components/HomeCard";
 import SortBy from "@/components/SoryBy";
-import {APIGetCategoryFirst, APIGetProductList} from "@/api";
+import {APIGetCategoryFirst, APIGetCategorySecond, APIGetProductList} from "@/api";
+import CategoryList from "@/components/CategoryList";
+import Category2List from "@/components/Category2List";
+import SizeBox from "@/components/SizeBox";
 
 let newData = [
   {
@@ -2208,19 +2211,20 @@ let newData = [
   }
 ];
 let data = [];
-
 const Home = () => {
   const [prodList, setProdList] = useState(data);
   const [sort, setSort] = useState(1);
-  const [categoryId, setCategoryId] = useState();
+  const [category1Id, setCategory1Id] = useState(600024);
+  const [category2Id, setCategory2Id] = useState();
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
+  const [category2List, setCategoryList] = useState([]);
 
   const scrollDiv = useRef();
 
   const getProdList = (searchNameRe, searchType) => {
-    if (loading || !hasMore) return; // 检查是否正在加载或没有更多数据
+    if (loading) return; // 检查是否正在加载或没有更多数据
 
     let nowPage = searchNameRe ? 1 : page;
 
@@ -2239,22 +2243,11 @@ const Home = () => {
           data = prodList.concat(resp.data.list.records);
         }
         setProdList(data);
-        setHasMore(data.length > 0); // 更新是否还有更多数据
       }
     }).finally(() => {
       setLoading(false);
     });
   };
-
-  const getLevel1ProList = () =>{
-    APIGetCategoryFirst().then(resp=>{
-      console.log(resp, "APIGetCategoryFirst");
-    });
-  };
-
-  useEffect(()=>{
-    getLevel1ProList();
-  }, []);
 
   useEffect(() => {
     getProdList();
@@ -2286,6 +2279,27 @@ const Home = () => {
     getProdList(v, searchType);
   };
 
+  const onCheckLevel1 = (v) =>{
+    setCategory1Id(v);
+  };
+
+  const onCheckLevel2 = (v) =>{
+    setCategory2Id(v);
+  };
+
+  const getLevel2ListBy1Id = () =>{
+    if (!category1Id) return;
+    APIGetCategorySecond(JSON.stringify({
+      parentId:category1Id,
+    })).then(resp=>{
+      console.log(resp, "second2list");
+    });
+  };
+
+  useEffect(()=>{
+    getLevel2ListBy1Id();
+  }, [category1Id]);
+
   return (
     <div style={{
       width:"100vw"
@@ -2295,6 +2309,13 @@ const Home = () => {
         <div className={styles.sort_wrap}>
           <SortBy current={sort} onChange={onSortChange} />
         </div>
+
+        {/* <CategoryList onCheckLevel1={onCheckLevel1} currentCategoryId={category1Id}></CategoryList>*/}
+        {/* <SizeBox h={20}></SizeBox>*/}
+        {
+          category2List && category2List.length  > 0 && <Category2List onCheckLevel2={onCheckLevel2} category2List={category2List} currentCategoryId={category2Id}></Category2List>
+        }
+
         <div className={styles.grid_container}>
           {
             prodList && prodList.map(item => (
