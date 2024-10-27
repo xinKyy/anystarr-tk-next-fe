@@ -153,7 +153,6 @@ const Home = () => {
           category2List && category2List.length  > 0 && <>
             <SizeBox h={20}></SizeBox>
             <Category2List onCheckLevel2={onCheckLevel2} category2List={category2List} currentCategoryId={category2Id}></Category2List>
-            <SizeBox h={20}></SizeBox>
           </>
         }
 
