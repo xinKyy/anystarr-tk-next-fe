@@ -39,7 +39,7 @@ const PersonCenter = () =>{
         <div className={styles.des}>Likes</div>
       </div>
     </div>
-
+    <SizeBox h={20}></SizeBox>
    <div className={styles.section_wrap}>
      <div className={styles.title_1}>
        Based on your Showcase data, you may be interested in the following items
@@ -47,7 +47,6 @@ const PersonCenter = () =>{
      <div className={styles.title_1}>
        All interested ? <span>Add to showcase</span>
      </div>
-     <SizeBox h={20}></SizeBox>
      <div className={styles.grid_container}>
        {
          recommendList && recommendList.map(item=>{
@@ -55,6 +54,7 @@ const PersonCenter = () =>{
          })
        }
      </div>
+     <SizeBox h={50}></SizeBox>
    </div>
   </div>;
 };
