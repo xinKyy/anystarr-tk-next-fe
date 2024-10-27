@@ -440,6 +440,7 @@ const CategoryTreeSelect = ({onCategoryChange}) => {
           item.value = item.categoryId;
           item.pId = category1Id;
           item.isLeaf = false;
+          return item;
         });
         setTreeData(
           treeData.concat(l2),
@@ -464,6 +465,7 @@ const CategoryTreeSelect = ({onCategoryChange}) => {
           item.value = item.categoryId;
           item.pId = category2Id;
           item.isLeaf = true;
+          return item;
         });
         setTreeData(
           treeData.concat(l3),
