@@ -2289,9 +2289,9 @@ const Home = () => {
 
   const getLevel2ListBy1Id = () =>{
     if (!category1Id) return;
-    APIGetCategorySecond(JSON.stringify({
+    APIGetCategorySecond({
       parentId:category1Id,
-    })).then(resp=>{
+    }).then(resp=>{
       console.log(resp, "second2list");
     });
   };
