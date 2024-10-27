@@ -13,7 +13,9 @@ const PersonCenter = () =>{
 
   useEffect(()=>{
     APIGetRecommendList().then(resp=>{
-
+      if (resp.data.list){
+        setRecommendList(resp.data.list);
+      }
     });
   }, []);
 
@@ -45,8 +47,13 @@ const PersonCenter = () =>{
      <div className={styles.title_1}>
        All interested ? <span>Add to showcase</span>
      </div>
-     <div>
-       {/* <HomeCard item={}></HomeCard>*/}
+     <SizeBox h={20}></SizeBox>
+     <div className={styles.grid_container}>
+       {
+         recommendList && recommendList.map(item=>{
+           return <HomeCard item={item}></HomeCard>;
+         })
+       }
      </div>
    </div>
   </div>;
