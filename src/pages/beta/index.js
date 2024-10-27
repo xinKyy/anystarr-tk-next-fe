@@ -85,17 +85,23 @@ const Home = () => {
 
   const onCheckLevel1 = (v) =>{
     if (v === category1Id) {
+      setCategory2Id(null);
       setCategory1Id(null);
       return;
     }
+    setCategory2Id(null);
+    setCategory2List([]);
     setCategory1Id(v);
   };
 
   const onCheckLevel2 = (v) =>{
     if (v === category2Id) {
+      setCategory3Id(null);
       setCategory2Id(null);
       return;
     }
+    setCategory3Id(null);
+    setCategory3List([]);
     setCategory2Id(v);
   };
 
