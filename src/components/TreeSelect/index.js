@@ -397,7 +397,7 @@ let level1 = [
   }
 ];
 
-const CategoryTreeSelect = () => {
+const CategoryTreeSelect = ({onCategoryChange}) => {
   const [value, setValue] = useState();
   const [treeData, setTreeData] = useState(level1.map(item=>{
     item.id = item.categoryId;
@@ -491,21 +491,22 @@ const CategoryTreeSelect = () => {
        }
     });
   const onChange = (newValue) => {
-    console.log(newValue);
     setValue(newValue);
+    onCategoryChange(newValue);
   };
   return (
     <TreeSelect
       treeDataSimpleMode
       style={{
         width: '100%',
+        height:38,
       }}
       value={value}
       dropdownStyle={{
         maxHeight: 400,
         overflow: 'auto',
       }}
-      placeholder={"Please select"}
+      placeholder={"Select category"}
       onChange={onChange}
       loadData={onLoadData}
       treeData={treeData}

@@ -10,6 +10,7 @@ import SizeBox from "@/components/SizeBox";
 import {Spin} from "antd";
 import {LoadingOutlined} from "@ant-design/icons";
 import CategoryTreeSelect from "@/components/TreeSelect";
+import {isMobile} from "@/utils/action";
 let data = [];
 const Home = () => {
   const [prodList, setProdList] = useState(data);
@@ -22,6 +23,7 @@ const Home = () => {
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
   const [category2List, setCategory2List] = useState([]);
   const [category3List, setCategory3List] = useState([]);
+  const [mobile, setMobile] = useState(false);
 
   const scrollDiv = useRef();
 
@@ -78,6 +80,10 @@ const Home = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [loading]);
+
+  useEffect(()=>{
+    setMobile(isMobile());
+  }, []);
 
   const onSearch = (v, searchType) =>{
     setPage(1);
@@ -159,15 +165,18 @@ const Home = () => {
           display:"flex",
           alignItems:"center"
         }}>
-          <CategoryTreeSelect></CategoryTreeSelect>
+          {
+            !mobile &&  <CategoryTreeSelect onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
+          }
           <SearchBar loading={loading} onChange={onSearch} />
         </div>
         <div className={styles.sort_wrap}>
           <SortBy current={sort} onChange={onSortChange} />
         </div>
 
-         <CategoryList onCheckLevel1={onCheckLevel1} currentCategoryId={category1Id}></CategoryList>
-
+        {
+          mobile && <CategoryList onCheckLevel1={onCheckLevel1} currentCategoryId={category1Id}></CategoryList>
+        }
         {
           category2List && category2List.length  > 0 && <>
             <SizeBox h={20}></SizeBox>
