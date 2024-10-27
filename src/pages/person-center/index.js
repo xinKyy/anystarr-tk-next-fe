@@ -38,15 +38,17 @@ const PersonCenter = () =>{
       </div>
     </div>
 
-    <div>
-      Based on your Showcase data, you may be interested in the following items
-    </div>
-    <div>
-      All interested ? <span>Add to showcase</span>
-    </div>
-    <div>
-      {/* <HomeCard item={}></HomeCard>*/}
-    </div>
+   <div className={styles.section_wrap}>
+     <div className={styles.title_1}>
+       Based on your Showcase data, you may be interested in the following items
+     </div>
+     <div className={styles.title_1}>
+       All interested ? <span>Add to showcase</span>
+     </div>
+     <div>
+       {/* <HomeCard item={}></HomeCard>*/}
+     </div>
+   </div>
   </div>;
 };
 

@@ -5,9 +5,12 @@
   .bg_wrap{
     background: url("https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/home_bg-scaled-2.jpg") no-repeat;
     width: 100%;
-    height: 300px;
+    height: 200px;
     background-position: center;
     background-size: cover;
+    @media screen and (max-width: 650px) {
+      height: 130px;
+    }
   }
 
   .avatar_wrap{
@@ -48,6 +51,23 @@
       .des{
         font-size: 16px;
         font-weight: 300;
+      }
+    }
+  }
+
+  .section_wrap{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+
+    .title_1{
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 30px;
+      span{
+        color: var(--primary-color-80);
+        text-decoration: underline;
+        cursor: pointer;
       }
     }
   }
