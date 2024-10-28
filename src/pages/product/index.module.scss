@@ -202,10 +202,10 @@
 
     .bottom_wrap{
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       position: fixed;
       bottom: 0;
-      height: 55px;
+      height: 80px;
       width: 100%;
       border-top: .5px solid #999999;
       background: #ffffff;
