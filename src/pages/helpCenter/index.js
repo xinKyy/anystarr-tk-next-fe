@@ -103,7 +103,9 @@ const HelpCenter = () =>{
 
   const onMenuClick = (e) => {
     setCurrentIndex(e.key);
-    setShowMenu(false);
+    if (mobile){
+      setShowMenu(false);
+    }
     setTimeout(()=>{
       window.location.href = `#${e.key}`;
     }, 0);
