@@ -161,12 +161,10 @@ const Home = () => {
       width:"100vw"
     }}>
       <div ref={scrollDiv} className={styles.home_page}>
-        <div style={{
-          display:"flex",
-          alignItems:"center"
-        }}>
+        <div className={styles.mobile_wrap}>
           {
-            !mobile &&  <CategoryTreeSelect onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
+            // !mobile &&
+            <CategoryTreeSelect className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
           }
           <SearchBar loading={loading} onChange={onSearch} />
         </div>
@@ -175,21 +173,21 @@ const Home = () => {
         </div>
 
         {
-          mobile && <CategoryList onCheckLevel1={onCheckLevel1} currentCategoryId={category1Id}></CategoryList>
+          // mobile && <CategoryList onCheckLevel1={onCheckLevel1} currentCategoryId={category1Id}></CategoryList>
         }
         {
-          mobile && category2List && category2List.length  > 0 && <>
-            <SizeBox h={20}></SizeBox>
-            <Category2List onCheckLevel2={onCheckLevel2} category2List={category2List} currentCategoryId={category2Id}></Category2List>
-          </>
+          // mobile && category2List && category2List.length  > 0 && <>
+          //   <SizeBox h={20}></SizeBox>
+          //   <Category2List onCheckLevel2={onCheckLevel2} category2List={category2List} currentCategoryId={category2Id}></Category2List>
+          // </>
         }
 
         {
-          mobile && category3List && category3List.length  > 0 && <>
-            <SizeBox h={20}></SizeBox>
-            <Category2List onCheckLevel2={onCheckLevel3} category2List={category3List} currentCategoryId={category3Id}></Category2List>
-            <SizeBox h={20}></SizeBox>
-          </>
+          // mobile && category3List && category3List.length  > 0 && <>
+          //   <SizeBox h={20}></SizeBox>
+          //   <Category2List onCheckLevel2={onCheckLevel3} category2List={category3List} currentCategoryId={category3Id}></Category2List>
+          //   <SizeBox h={20}></SizeBox>
+          // </>
         }
 
         <Spin style={{
