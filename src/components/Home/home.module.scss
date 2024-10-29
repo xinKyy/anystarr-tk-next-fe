@@ -10,10 +10,13 @@
 
   .mobile_wrap{
     display: flex;
+    flex-direction: column-reverse;
     justify-content: space-between;
     .select_category{
-      width: 500px;
-      margin: 0 20px;
+      width: 600px;
+      margin: 0 auto;
+      margin-top: 20px;
+      height: 38px;
     }
     @media screen and (max-width: 650px) {
       flex-direction: column-reverse;
