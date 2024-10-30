@@ -397,8 +397,8 @@ let level1 = [
   }
 ];
 
-const CategoryTreeSelect = ({onCategoryChange, className}) => {
-  const [value, setValue] = useState();
+const CategoryTreeSelect = ({onCategoryChange, className, category1Id}) => {
+  const [value, setValue] = useState(category1Id);
   const [treeData, setTreeData] = useState(level1.map(item=>{
     item.id = item.categoryId;
     item.title = item.name;

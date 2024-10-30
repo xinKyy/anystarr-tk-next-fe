@@ -15,6 +15,8 @@ let data = [];
 let category1IdRef;
 let pageRef = 1;
 let back = false;
+let searchNameRef = "";
+let searchNameTypeRef = 1;
 const Home = () => {
   const [prodList, setProdList] = useState(data);
   const [sort, setSort] = useState(1);
@@ -27,6 +29,9 @@ const Home = () => {
   const getProdList = (searchNameRe, searchType) => {
     if (loading) return; // 检查是否正在加载或没有更多数据
 
+    searchNameRef = searchNameRe;
+    searchNameTypeRef = searchType;
+
     let nowPage = searchNameRe ? 1 : page;
 
     setLoading(true);
@@ -34,8 +39,8 @@ const Home = () => {
       sort: Number(localStorage.getItem("mySort") ?? "1"),
       page: nowPage,
       pageSize: 100,
-      searchName:searchNameRe,
-      searchType:searchType,
+      searchName:searchNameRef,
+      searchType:searchNameTypeRef,
       categoryId:category1IdRef
     })).then(resp => {
       if (resp.data.list) {
@@ -115,9 +120,9 @@ const Home = () => {
         <div className={styles.mobile_wrap}>
           {
             // !mobile &&
-            <CategoryTreeSelect className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
+            <CategoryTreeSelect category1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
           }
-          <SearchBar loading={loading} onChange={onSearch} />
+          <SearchBar searchNameRef={searchNameRef} searchNameTypeRef={searchNameTypeRef} loading={loading} onChange={onSearch} />
         </div>
         <div className={styles.sort_wrap}>
           <SortBy current={sort} onChange={onSortChange} />

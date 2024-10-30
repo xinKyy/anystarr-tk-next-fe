@@ -4,10 +4,10 @@ import debounce from 'lodash.debounce';
 import {Input, Select} from "antd";
 import {LoadingOutlined} from "@ant-design/icons";
 const { Option } = Select;
-const SearchBar = ({onChange, loading}) => {
+const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
 
-  const [searchName, setSearchName] = useState("");
-  const [currenSearchType, setCurrentSearchType] = useState(1); // 1 pid 2 name 3 佣金率
+  const [searchName, setSearchName] = useState(searchNameRef);
+  const [currenSearchType, setCurrentSearchType] = useState(searchNameTypeRef); // 1 pid 2 name 3 佣金率
   const currenSearchTypeRef = useRef(1); // 1 pid 2 name 3 佣金率
 
   const debouncedOnChange = useCallback(
