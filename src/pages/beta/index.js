@@ -158,11 +158,7 @@ const Home = () => {
           <div className={styles.grid_container}>
             {
               prodList && prodList.map(item => (
-                <div onClick={()=>{
-                  back = true;
-                }}>
-                  <HomeCard key={item.productId} item={item} />
-                </div>
+                <HomeCard key={item.productId} item={item} />
               ))
             }
           </div>
