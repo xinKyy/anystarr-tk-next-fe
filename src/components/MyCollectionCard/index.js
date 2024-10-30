@@ -100,16 +100,6 @@ const MyCollectionCard = ({item, fromMyLike, checkItem, checked}) => {
 
   return (
     <div className={`${styles.flex_center} ${styles.collection_card}`}>
-      <div>
-        {
-          fromMyLike && <div onClick={(e)=>{
-            e.stopPropagation();
-            checkItem(item.productId);
-          }} className={`${styles.select_icon} ${checked ? styles.active : ""}`}>
-
-          </div>
-        }
-      </div>
       <div onClick={toDetails} className={styles.flexContainer}>
         <div className={styles.title}>{item.title}</div>
         <div className={styles.content}>
@@ -118,7 +108,7 @@ const MyCollectionCard = ({item, fromMyLike, checkItem, checked}) => {
             alt='Image'
           />
           <div>
-            <div className={styles.normal_wrap}>Earn per sale</div>
+            <div className={styles.normal_wrap}>Price</div>
             <div className={styles.price}>{item.price}</div>
           </div>
 
@@ -149,6 +139,16 @@ const MyCollectionCard = ({item, fromMyLike, checkItem, checked}) => {
         </div>
 
         <div className={styles.sold}>Sold {item.soldNum}</div>
+        <div>
+          {
+            fromMyLike && <div onClick={(e)=>{
+              e.stopPropagation();
+              checkItem(item.productId);
+            }} className={`${styles.select_icon} ${checked ? styles.active : ""}`}>
+
+            </div>
+          }
+        </div>
 
         <div className={styles.iconContainer}>
           <i className={`icon-class ${styles.icon}`}></i>

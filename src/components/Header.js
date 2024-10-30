@@ -80,7 +80,7 @@ const Header = () => {
 
   return  <div id='header_bar' className='header_container'>
 
-    <Link href='/'>
+    <Link href='/beta'>
       <div className='logo-container'>
         <img className='logo' alt='logo' src={"https://app.anystarr.com/static/media/logo.6627c626.png"} />
       </div>

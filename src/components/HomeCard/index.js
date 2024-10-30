@@ -113,7 +113,7 @@ const HomeCard = ({item, fromMyLike, checkItem, checked}) => {
             flex:1,
           }} className={styles.flex_column}>
             <div>
-              <div className={styles.normal_wrap}>Earn per sale</div>
+              <div className={styles.normal_wrap}>Price</div>
               <div className={styles.price}>{convertPrice(item.price)}</div>
             </div>
             <div>
