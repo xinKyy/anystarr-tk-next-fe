@@ -20,6 +20,7 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
   const handleChange = (value) => {
     currenSearchTypeRef.current = value;
     setCurrentSearchType(value);
+    searchNameTypeRef = value;
   };
 
   const selectBefore = (
@@ -59,6 +60,7 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
           addonBefore={selectBefore}
           onChange={(e)=>{
             setSearchName(e.target.value);
+            searchNameRef = e.target.value;
             debouncedOnChange(e.target.value);
           }}
           placeholder='Search input'

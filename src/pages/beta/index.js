@@ -19,7 +19,7 @@ let searchNameRef = "";
 let searchNameTypeRef = 1;
 const Home = () => {
   const [prodList, setProdList] = useState(data);
-  const [sort, setSort] = useState(1);
+  const [sort, setSort] = useState(5);
   const [category1Id, setCategory1Id] = useState(category1IdRef);
   const [page, setPage] = useState(pageRef);
   const [loading, setLoading] = useState(false);
@@ -28,9 +28,6 @@ const Home = () => {
 
   const getProdList = (searchNameRe, searchType) => {
     if (loading) return; // 检查是否正在加载或没有更多数据
-
-    searchNameRef = searchNameRe;
-    searchNameTypeRef = searchType;
 
     let nowPage = searchNameRe ? 1 : page;
 
