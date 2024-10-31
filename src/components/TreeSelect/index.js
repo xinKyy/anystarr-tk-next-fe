@@ -492,6 +492,7 @@ const CategoryTreeSelect = ({onCategoryChange, className, category1Id}) => {
   return (
     <TreeSelect
       treeDataSimpleMode
+      allowClear
       className={className}
       value={value}
       dropdownStyle={{
