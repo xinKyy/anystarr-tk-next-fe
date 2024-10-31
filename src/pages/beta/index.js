@@ -47,7 +47,12 @@ const Home = () => {
         } else {
           data = prodList.concat(resp.data.list.records);
         }
-        setProdList(data);
+        setProdList(data.filter(item => {
+          if (!item.lyImage && !item.alyImages && !item.images && !item.image){
+            return false;
+          }
+          return true;
+        }));
       }
     }).finally(() => {
       setLoading(false);
