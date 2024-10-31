@@ -106,7 +106,7 @@ const Home = () => {
   };
 
   useEffect(()=>{
-    setSort(Number(localStorage.getItem("mySort") ?? "1"));
+    setSort(Number(localStorage.getItem("mySort") ?? "5"));
   }, []);
 
   return (
