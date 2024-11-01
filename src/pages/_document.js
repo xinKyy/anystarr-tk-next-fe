@@ -21,6 +21,15 @@ export default class MyDocument extends Document {
               background-color: #f3f3f3;
             }
           `}</style>
+
+          <script async src={"https://www.googletagmanager.com/gtag/js?id=G-RGC7VTRCE4"}></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments)}
+            gtag('js', new Date());
+
+            gtag('config', 'G-RGC7VTRCE4');
+          </script>
         </Head>
         <body>
           <Main />
