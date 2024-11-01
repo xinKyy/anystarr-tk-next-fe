@@ -23,13 +23,16 @@ export default class MyDocument extends Document {
           `}</style>
 
           <script async src={"https://www.googletagmanager.com/gtag/js?id=G-RGC7VTRCE4"}></script>
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){window.dataLayer.push(arguments)}
-            gtag('js', new Date());
-
-            gtag('config', 'G-RGC7VTRCE4');
-          </script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){window.dataLayer.push(arguments)}
+                gtag('js', new Date());
+                gtag('config', 'G-RGC7VTRCE4');
+              `,
+            }}
+          />
         </Head>
         <body>
           <Main />
