@@ -16,7 +16,7 @@ const AnystarrHome = () =>{
             <div className={styles.items}>Influencers</div>
           </a>
           <a href={"/beta"}>
-            <div className={styles.items}>Creator tool</div>
+            <div className={styles.items}>TikTok</div>
           </a>
           <a href={"https://app.anystarr.com/shoppingInfo"}>
             <div className={styles.items}>商家合作</div>
