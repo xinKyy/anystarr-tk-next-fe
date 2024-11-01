@@ -180,7 +180,6 @@ const AnystarrHome = () =>{
             </a>
             <SizeBox h={15}></SizeBox>
             {/* <div>Blog</div>*/}
-            <SizeBox h={15}></SizeBox>
             <a href={"https://app.anystarr.com/en"}>
               <div>Platform</div>
             </a>
