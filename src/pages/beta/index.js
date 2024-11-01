@@ -63,8 +63,9 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (back){
-      back = false;
+    const back = localStorage.getItem("toProductDetails");
+    if (back === 1){
+      localStorage.setItem("toProductDetails", 0);
       return;
     }
     getProdList();

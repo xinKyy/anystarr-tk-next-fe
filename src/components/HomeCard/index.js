@@ -22,6 +22,7 @@ const HomeCard = ({item, fromMyLike, checkItem, checked}) => {
   const [showConnectTips, setShowConnectTips] = useState(false);
 
   const toDetails = () =>{
+    localStorage.setItem("toProductDetails", 1);
     router.push(`/product/${item.productId}`);
   };
 
