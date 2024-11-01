@@ -18,9 +18,6 @@ const AnystarrHome = () =>{
           <a href={"/beta"}>
             <div className={styles.items}>TikTok</div>
           </a>
-          <a href={"https://app.anystarr.com/shoppingInfo"}>
-            <div className={styles.items}>商家合作</div>
-          </a>
         </div>
       </div>
     </div>
@@ -176,6 +173,10 @@ const AnystarrHome = () =>{
             <SizeBox h={30}></SizeBox>
             <a href={"/influencers-2/"}>
               <div>Influencers</div>
+            </a>
+            <SizeBox h={15}></SizeBox>
+            <a href={"https://app.anystarr.com/shoppingInfo"}>
+              商家合作
             </a>
             <SizeBox h={15}></SizeBox>
             {/* <div>Blog</div>*/}
