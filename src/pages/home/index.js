@@ -21,9 +21,6 @@ const AnystarrHome = () =>{
           <a href={"https://app.anystarr.com/shoppingInfo"}>
             <div className={styles.items}>商家合作</div>
           </a>
-          <a href={"https://app.anystarr.com/login"}>
-            <div className={styles.items}>Log in</div>
-          </a>
         </div>
       </div>
     </div>
