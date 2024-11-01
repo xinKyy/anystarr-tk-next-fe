@@ -13,7 +13,7 @@ const LoginModal = ({open, onCancel})=>{
 
       <div>
         <div className={styles.login_title}>Login</div>
-        <div className={styles.title_desc}>Continue to anystarr</div>
+        <div className={styles.title_desc}>Continue to anyStarr</div>
       </div>
       <SizeBox h={30}></SizeBox>
       <a href={`${host}/api/v1/tiktok/oauth`}>
@@ -21,11 +21,18 @@ const LoginModal = ({open, onCancel})=>{
           Connect Tiktok
         </div>
       </a>
+      <div style={{
+        marginTop:"5px"
+      }} className={styles.help_wrap}>
+        By proceeding, you agree to the
+        <a style={{margin:"0 5px"}} href={"/Terms_and_Conditions_anyStarr.html"} target={"_blank"}>Terms and Conditions {" "} </a> and
+        <a style={{margin:"0 5px"}} href={"/privacy_policy.html"} target={"_blank"}> {" "} Privacy Policy </a>
+      </div>
 
       <div className={styles.help_wrap}>
         <a href={`/helpCenter`} target={"_blank"}><div>Help</div></a>
-        <a href={"/privacy_policy.html"} target={"_blank"}><div>Privacy Policy</div></a>
-        <a href={"/Terms_and_Conditions_anyStarr.html"} target={"_blank"}><div>Terms and Conditions</div></a>
+        <a href={`/helpCenter`} target={"_blank"}><div>Terms and Conditions</div></a>
+        <a href={`/helpCenter`} target={"_blank"}><div>Privacy Policy </div></a>
       </div>
     </div>
   </Modal>;

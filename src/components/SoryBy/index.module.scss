@@ -22,6 +22,16 @@
 
 .itemText {
   padding-right: 4px;
+  display: flex;
+  align-items: center;
+  img{
+    width: 30px;
+    height: 30px;
+    transition: all .3s;
+    &:hover{
+      scale: 1.1;
+    }
+  }
 }
 
 .arrows {

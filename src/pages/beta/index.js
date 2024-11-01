@@ -21,6 +21,7 @@ const Home = () => {
   const [category1Id, setCategory1Id] = useState(category1IdRef);
   const [page, setPage] = useState(pageRef);
   const [loading, setLoading] = useState(false);
+  const [random, setRandom] = useState(1);
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
   const scrollDiv = useRef();
 
@@ -67,10 +68,13 @@ const Home = () => {
       return;
     }
     getProdList();
-  }, [sort, page, category1Id]);
+  }, [sort, page, category1Id, random]);
 
   const onSortChange = (sortby) => {
     setSort(sortby);
+    if (sortby === 5){
+      setRandom(random + 1);
+    }
     localStorage.setItem("mySort", sortby);
     setPage(1); // Reset page when sorting
     pageRef = 1;
