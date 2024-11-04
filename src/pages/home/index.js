@@ -90,11 +90,11 @@ const AnystarrHome = () =>{
         <SizeBox h={20}></SizeBox>
         <div>We are helping to make the most of Influencer Marketing while bringing value to brands, creators and communities around the globe.</div>
         <SizeBox h={20}></SizeBox>
-        <a href={"https://app.anystarr.com/"}>
-          <div className={styles.c_btn}>
-            VIEW CAMPAIGNS
-          </div>
-        </a>
+        {/* <a href={"https://app.anystarr.com/"}>*/}
+        {/*  <div className={styles.c_btn}>*/}
+        {/*    VIEW CAMPAIGNS*/}
+        {/*  </div>*/}
+        {/* </a>*/}
 
       </div>
       <div className={styles.left}>
