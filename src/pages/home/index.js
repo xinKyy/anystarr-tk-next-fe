@@ -36,11 +36,11 @@ const AnystarrHome = () =>{
       <div className={styles.title_2}>
         We are helping to make the most of Influencer Marketing while bringing value to brands, creators and communities around the globe.
       </div>
-      <a href={"https://app.anystarr.com/en"}>
-        <div className={styles.btn}>
-          View Campaigns
-        </div>
-      </a>
+      {/* <a href={"https://app.anystarr.com/en"}>*/}
+      {/*  <div className={styles.btn}>*/}
+      {/*    View Campaigns*/}
+      {/*  </div>*/}
+      {/* </a>*/}
     </div>
 
     <SizeBox h={80}></SizeBox>
@@ -73,11 +73,11 @@ const AnystarrHome = () =>{
 
         <SizeBox h={20}></SizeBox>
 
-        <a href={"https://app.anystarr.com/en/register_pre"}>
-          <div className={styles.c_btn}>
-            GET STARTED
-          </div>
-        </a>
+        {/* <a href={"https://app.anystarr.com/en/register_pre"}>*/}
+        {/*  <div className={styles.c_btn}>*/}
+        {/*    GET STARTED*/}
+        {/*  </div>*/}
+        {/* </a>*/}
       </div>
     </div>
     <SizeBox h={100}></SizeBox>
@@ -176,7 +176,7 @@ const AnystarrHome = () =>{
         <div className={styles.right_wrap}>
 
           <div className={styles.left}>
-            <div className={styles.tt_1}>GET STARTED</div>
+            {/* <div className={styles.tt_1}>GET STARTED</div>*/}
             <SizeBox h={30}></SizeBox>
             <a href={"/influencers-2/"}>
               <div>Influencers</div>
