@@ -1,13 +1,35 @@
 import styles from "./index.module.scss";
 import SizeBox from "@/components/SizeBox";
 import LoginModal from "@/components/LoginModal";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {Avatar} from "antd";
+import {APIGetUserInfo} from "@/api";
+import useDispatchAction from "@/hooks/useDisptachAction";
+import {setUserInfo} from "@/redux/actions/home";
 
 const AnystarrHome = () =>{
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
   const [openConnectModal, setOpenConnectModal] = useState(false);
+  const dispatchAction = useDispatchAction({ setUserInfo });
+
+  const getUserInfo = () =>{
+    const token = localStorage.getItem("token");
+    if (token){
+      APIGetUserInfo().then(resp=>{
+        if (resp.data.user){
+          const user = resp.data.user;
+          dispatchAction.setUserInfo(user);
+          localStorage.setItem("user", JSON.stringify(user));
+        }
+      });
+    }
+  };
+
+  useEffect(()=>{
+    getUserInfo();
+  }, []);
+
   return <div className={styles.home_page}>
     <div className={styles.header}>
       <div className={styles.header_content}>
