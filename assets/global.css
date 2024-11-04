@@ -132,6 +132,14 @@ a{
   cursor: pointer;
 }
 
+@media screen and (max-width: 650px){
+  .link_wallet{
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+  }
+}
+
 .language-btn{
   background: url("../src/imgs/header/global-icon.svg") no-repeat;
     background-color: #FF0167;

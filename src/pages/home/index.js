@@ -1,9 +1,11 @@
 import styles from "./index.module.scss";
 import SizeBox from "@/components/SizeBox";
+import LoginModal from "@/components/LoginModal";
+import {useState} from "react";
 
 const AnystarrHome = () =>{
 
-
+  const [openConnectModal, setOpenConnectModal] = useState(false);
   return <div className={styles.home_page}>
     <div className={styles.header}>
       <div className={styles.header_content}>
@@ -18,9 +20,14 @@ const AnystarrHome = () =>{
           <a href={"/beta"}>
             <div className={styles.items}>TikTok</div>
           </a>
+          <SizeBox w={20}></SizeBox>
+          <div onClick={()=>setOpenConnectModal(true)} className={"link_wallet"}>
+            Connect Tiktok
+          </div>
         </div>
       </div>
     </div>
+    <LoginModal open={openConnectModal} onCancel={()=>setOpenConnectModal(false)}></LoginModal>
     <div className={styles.content_img_wrap}>
       <div className={styles.bg_image_wrap}></div>
       <div className={styles.title_1}>

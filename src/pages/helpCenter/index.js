@@ -258,7 +258,7 @@ const WelcomeComp = ({onMenu, randomList, items, mobile}) =>{
 
   return (
     <div id={"0"} className={styles.welcome_container}>
-      <h1>Welcome to anystarr!</h1>
+      <h1>Welcome to anyStarr!</h1>
       <SizeBox h={30}/>
       <h1 className={styles.welcome_heading}>How can we help you?</h1>
       <Popover  overlayInnerStyle={{

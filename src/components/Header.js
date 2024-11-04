@@ -111,7 +111,7 @@ const Header = () => {
             </div>
           </Popover>
           :  <div onClick={()=>setOpenConnectModal(true)} className={"link_wallet"}>
-            Connect Tiktok
+            Login
           </div>
       }
     </div>
