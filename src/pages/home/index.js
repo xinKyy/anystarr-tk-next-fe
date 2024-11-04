@@ -3,10 +3,11 @@ import SizeBox from "@/components/SizeBox";
 import LoginModal from "@/components/LoginModal";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import {Avatar} from "antd";
+import {Avatar, Popover} from "antd";
 import {APIGetUserInfo} from "@/api";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {setUserInfo} from "@/redux/actions/home";
+import Link from "next/link";
 
 const AnystarrHome = () =>{
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
@@ -30,6 +31,18 @@ const AnystarrHome = () =>{
     getUserInfo();
   }, []);
 
+  const content = (
+    <div className={"pop_content"}>
+      <Link href={"/myLike"}><div>My Collection</div></Link>
+      <Link href={"/person-center"}><div>Person center</div></Link>
+      <div onClick={()=>{
+        localStorage.removeItem("userInfo");
+        localStorage.removeItem("token");
+        dispatchAction.setUserInfo(null);
+      }}>Logout</div>
+    </div>
+  );
+
   return <div className={styles.home_page}>
     <div className={styles.header}>
       <div className={styles.header_content}>
@@ -47,10 +60,14 @@ const AnystarrHome = () =>{
           <SizeBox w={20}></SizeBox>
           {
             userInfo?.displayName || userInfo?.avatarUrl ?
-            <div style={{cursor:"pointer"}}>
-            <Avatar src={userInfo.avatarUrl}></Avatar>
-            <span className={"user_name_wrap"} style={{marginLeft:"10px"}}>{userInfo?.displayName}</span>
-            </div> :       <div onClick={()=>setOpenConnectModal(true)} className={"link_wallet"}>
+              <Popover trigger={"click"} placement={"bottom"} content={content}>
+                <div style={{cursor:"pointer"}}>
+                  <Avatar size={50} src={userInfo?.avatarUrl}></Avatar>
+                  <span className={"user_name_wrap"} style={{marginLeft:"10px"}}>{userInfo?.displayName}</span>
+                </div>
+              </Popover>
+              :
+              <div onClick={()=>setOpenConnectModal(true)} className={"link_wallet"}>
               Connect Tiktok
             </div>
           }
