@@ -90,18 +90,6 @@ const Header = () => {
 
     <div className='right-container'>
       {/* <div className='language-btn'></div>*/}
-
-      <a style={{
-        fontSize:"16px",
-        color:"#000",
-        marginRight:"20px",
-        fontWeight:"bold"
-      }} className={"font_hover"} href={"/helpCenter"} target={"_blank"} >
-        {
-          mobile ? <img width={30} height={30} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/help_icon.png"}/> : "Help center"
-        }
-      </a>
-
       {
         userInfo?.displayName || userInfo?.avatarUrl ?
           <Popover trigger={"click"} placement={"bottom"} content={content}>

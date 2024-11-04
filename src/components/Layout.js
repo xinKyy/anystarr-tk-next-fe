@@ -36,6 +36,9 @@ function Layout({ children }) {
               <a href={"/privacy_policy.html"} className={"footer-link-2 link-item"}>
                 Privacy Policy
               </a>
+              <a href={"/helpCenter"} className={"footer-link-2 link-item"}>
+                Help center
+              </a>
             </div>
           </div>
         </div>

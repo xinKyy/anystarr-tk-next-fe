@@ -272,7 +272,7 @@ const WelcomeComp = ({onMenu, randomList, items, mobile}) =>{
       <div className={styles.welcome_topics}>
         {topics.map((topic, index) => (
           <div onClick={()=>onMenuClick(topic)} key={index} className={styles.welcome_card}>
-            <img src={topic.icon} alt={topic.title} className={styles.welcome_icon} />
+            {/* <img src={topic.icon} alt={topic.title} className={styles.welcome_icon} />*/}
             <h3 className={styles.welcome_cardTitle}>{topic.title}</h3>
             <p className={styles.welcome_cardDescription}>{topic.description}</p>
           </div>

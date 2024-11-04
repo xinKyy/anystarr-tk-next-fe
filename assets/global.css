@@ -353,7 +353,7 @@ a{
 }
 
 .footer-link-2 {
-  margin-left: 40px;
+  margin: 0 20px;
 }
 .footer-g-content .cont-left {
   display: flex;
