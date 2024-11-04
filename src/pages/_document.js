@@ -29,7 +29,14 @@ export default class MyDocument extends Document {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){window.dataLayer.push(arguments)}
                 gtag('js', new Date());
-                gtag('config', 'G-RGC7VTRCE4');
+                const user = localStorage.getItem("user");
+                let displayName = "unLoginUser";
+                if (user){
+                  displayName = JSON.parse(user).displayName
+                }
+                gtag('config', 'G-RGC7VTRCE4', {
+                 'user_id': displayName
+                });
               `,
             }}
           />
