@@ -103,10 +103,10 @@ const Header = () => {
       </a>
 
       {
-        userInfo?.displayName ?
+        userInfo?.displayName || userInfo?.avatarUrl ?
           <Popover trigger={"click"} placement={"bottom"} content={content}>
             <div style={{cursor:"pointer"}}>
-             <Avatar src={userInfo.avatarUrl}></Avatar>
+             <Avatar src={userInfo?.avatarUrl}></Avatar>
               <span className={"user_name_wrap"} style={{marginLeft:"10px"}}>{userInfo?.displayName}</span>
             </div>
           </Popover>

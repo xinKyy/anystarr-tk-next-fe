@@ -2,9 +2,11 @@ import styles from "./index.module.scss";
 import SizeBox from "@/components/SizeBox";
 import LoginModal from "@/components/LoginModal";
 import {useState} from "react";
+import {useSelector} from "react-redux";
+import {Avatar} from "antd";
 
 const AnystarrHome = () =>{
-
+  const userInfo = useSelector(state => state.home.userInfo.userInfo);
   const [openConnectModal, setOpenConnectModal] = useState(false);
   return <div className={styles.home_page}>
     <div className={styles.header}>
@@ -21,9 +23,15 @@ const AnystarrHome = () =>{
             <div className={styles.items}>TikTok</div>
           </a>
           <SizeBox w={20}></SizeBox>
-          <div onClick={()=>setOpenConnectModal(true)} className={"link_wallet"}>
-            Connect Tiktok
-          </div>
+          {
+            userInfo?.displayName || userInfo?.avatarUrl ?
+            <div style={{cursor:"pointer"}}>
+            <Avatar src={userInfo.avatarUrl}></Avatar>
+            <span className={"user_name_wrap"} style={{marginLeft:"10px"}}>{userInfo?.displayName}</span>
+            </div> :       <div onClick={()=>setOpenConnectModal(true)} className={"link_wallet"}>
+              Connect Tiktok
+            </div>
+          }
         </div>
       </div>
     </div>
