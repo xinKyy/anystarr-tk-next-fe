@@ -5,10 +5,11 @@ import {useRouter} from "next/router";
 import {isMobile} from "@/utils/action";
 import copy from "copy-to-clipboard";
 import {message} from "antd";
-import {APIAddFavoriteItems, APIDeleteFavoriteItems} from "@/api";
+import {APIAddFavoriteItems, APIDeleteFavoriteItems, APIGetLinkByPid} from "@/api";
 import {useSelector} from "react-redux";
 import ConnectTikTipsModal from "@/components/connectTikTipsModal";
-import useLogin from "@/hooks/useLogin"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
+import useLogin from "@/hooks/useLogin";
+import {LoadingOutlined} from "@ant-design/icons"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
 function updateImageUrl(url, w, h) {
   if (!url) return "";
   return url.replace(/(\d+):(\d+)/, `${w}:${h}`);
@@ -20,6 +21,7 @@ const HomeCard = ({item, fromMyLike, checkItem, checked}) => {
   const { needLogin } = useLogin();
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
   const [showConnectTips, setShowConnectTips] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const toDetails = () =>{
     localStorage.setItem("toProductDetails", "1");
@@ -40,16 +42,31 @@ const HomeCard = ({item, fromMyLike, checkItem, checked}) => {
       setShowConnectTips(true);
       return;
     }
-
-    if (item?.url){
+    if (loading) return;
+    if (item.needApplyLink){
+      setLoading(true);
+      APIGetLinkByPid(item.productId).then(resp=>{
+        if (resp.data.url){
+          const url = resp.data.url;
+          if (isMobile()){
+            window.open(url, "_blank");
+          } else {
+            copy(url);
+            message.success("Copy link successfully, please open it with a browser on your mobile device");
+          }
+        }
+      }).finally(()=>{
+        setLoading(false);
+      });
+    } else {
+      const url = item.url;
       if (isMobile()){
-        window.open(item?.url, "_blank");
+        window.open(url, "_blank");
       } else {
-        copy(item?.url);
+        copy(url);
         message.success("Copy link successfully, please open it with a browser on your mobile device");
       }
     }
-
   };
 
   const addCollect = () =>{
@@ -129,7 +146,9 @@ const HomeCard = ({item, fromMyLike, checkItem, checked}) => {
         <SizeBox h={10}></SizeBox>
         <div className={styles.flex_center}>
           <div onClick={toAddTk} className={styles.sampleBtn}>
-            <div className={styles.btnInner}>Add to Showcase</div>
+            <div className={styles.btnInner}> {
+              loading && <LoadingOutlined></LoadingOutlined>
+            } Add to Showcase</div>
           </div>
           {
             fromMyLike && <div onClick={(e)=>{

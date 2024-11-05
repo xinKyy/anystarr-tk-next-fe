@@ -57,3 +57,8 @@ export const APICreatLinkByPid = (params) => {
 export const APIGetLinkByBatchId = (batchId) => {
   return ajaxRequest.get(`/api/v1/favoriteItems/queryLink`, {batchId});
 };
+
+
+export const APIGetLinkByPid = (productId) => {
+  return ajaxRequest.get(`/api/v1/product/getNewLink`, {productId});
+};
