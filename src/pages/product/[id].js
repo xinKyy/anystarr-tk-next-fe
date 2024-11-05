@@ -51,7 +51,11 @@ const Product = ({productId}) =>{
 
   const toAddTk = (e) =>{
     e.stopPropagation();
-
+    window.gtag && window.gtag('event', 'add_to_showcase', {
+      'event_category': 'add_to_showcase',
+      'event_label': 'add_to_showcase',
+      'value': productId,
+    });
     // if (needLogin){
     //   setShowConnectTips(true);
     //   return;
