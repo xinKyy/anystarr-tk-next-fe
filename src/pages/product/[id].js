@@ -5,13 +5,14 @@ import ProductPrice from "@/components/ProductPrice";
 import ProductPrice2 from "@/components/ProductPrice2";
 import SizeBox from "@/components/SizeBox";
 import {useRouter} from "next/router";
-import {APIAddFavoriteItems, APIDeleteFavoriteItems, APIGetProductInfo} from "@/api";
+import {APIAddFavoriteItems, APIDeleteFavoriteItems, APIGetLinkByPid, APIGetProductInfo} from "@/api";
 import {isMobile} from "@/utils/action";
 import copy from 'copy-to-clipboard';
 import BackBtn from "@/components/BackBtn";
 import ConnectTikTipsModal from "@/components/connectTikTipsModal";
 import {useSelector} from "react-redux";
 import useLogin from "@/hooks/useLogin";
+import {LoadingOutlined} from "@ant-design/icons";
 
 function updateImageUrl(url, w, h) {
   if (!url) return "";
@@ -27,6 +28,7 @@ const Product = ({productId}) =>{
   const [mobile, setMobile] = useState(false);
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [addTkLoading, setAddTkLoading] = useState(false);
   const [showConnectTips, setShowConnectTips] = useState(false);
   const { needLogin } = useLogin();
   const onChange = (currentSlide) => {
@@ -50,16 +52,34 @@ const Product = ({productId}) =>{
   const toAddTk = (e) =>{
     e.stopPropagation();
 
-    if (needLogin){
-      setShowConnectTips(true);
-      return;
-    }
+    // if (needLogin){
+    //   setShowConnectTips(true);
+    //   return;
+    // }
 
-    if (product?.url){
+    if (addTkLoading) return;
+
+    if (product?.needApplyLink){
+      setAddTkLoading(true);
+      APIGetLinkByPid(product.productId).then(resp=>{
+        if (resp.data.url){
+          const url = resp.data.url;
+          if (isMobile()){
+            window.open(url, "_blank");
+          } else {
+            copy(url);
+            message.success("Copy link successfully, please open it with a browser on your mobile device");
+          }
+        }
+      }).finally(()=>{
+        setAddTkLoading(false);
+      });
+    } else {
+      const url = product?.url;
       if (isMobile()){
-        window.open(product?.url, "_blank");
+        window.open(url, "_blank");
       } else {
-        copy(product?.url);
+        copy(url);
         message.success("Copy link successfully, please open it with a browser on your mobile device");
       }
     }
@@ -169,7 +189,9 @@ const Product = ({productId}) =>{
             </Button>
             <SizeBox w={20}></SizeBox>
             <div className={styles.btn}>
-              <div onClick={toAddTk} className={styles.btnInner}>Add to Showcase</div>
+              <div onClick={toAddTk} className={styles.btnInner}>
+                {addTkLoading && <LoadingOutlined></LoadingOutlined>}
+                Add to Showcase</div>
             </div>
           </div>
         </div>
@@ -188,7 +210,9 @@ const Product = ({productId}) =>{
           </Button>
           <SizeBox w={20}></SizeBox>
           <div className={styles.btn}>
-            <div onClick={toAddTk} className={styles.btnInner}>Add to Showcase</div>
+            <div onClick={toAddTk} className={styles.btnInner}>
+              {addTkLoading && <LoadingOutlined></LoadingOutlined>}
+              Add to Showcase</div>
           </div>
         </div>
       </div> : <div className={styles.product_wrap}><Skeleton /></div>
