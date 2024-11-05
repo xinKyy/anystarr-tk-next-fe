@@ -12,6 +12,13 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
 
   const debouncedOnChange = useCallback(
     debounce((value) => {
+
+      window.gtag && window.gtag('event', 'search', {
+        'event_category': 'search',
+        'event_label': 'search',
+        'value': value,
+      });
+
       onChange(value, currenSearchTypeRef.current);
     }, 500), // 300ms 的防抖时间
     []

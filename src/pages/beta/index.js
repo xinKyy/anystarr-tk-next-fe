@@ -72,6 +72,13 @@ const Home = () => {
   }, [sort, page, category1Id, random]);
 
   const onSortChange = (sortby) => {
+
+    window.gtag && window.gtag('event', 'sort', {
+      'event_category': 'sort',
+      'event_label': 'sort',
+      'value': sortby,
+    });
+
     setSort(sortby);
     if (sortby === 5){
       setRandom(random + 1);

@@ -38,6 +38,12 @@ const HomeCard = ({item, fromMyLike, checkItem, checked}) => {
   const toAddTk = (e) =>{
     e.stopPropagation();
 
+    window.gtag && window.gtag('event', 'add_to_showcase', {
+      'event_category': 'add_to_showcase',
+      'event_label': 'add_to_showcase',
+      'value': item.productId,
+    });
+
     if (needLogin){
       setShowConnectTips(true);
       return;
@@ -70,6 +76,13 @@ const HomeCard = ({item, fromMyLike, checkItem, checked}) => {
   };
 
   const addCollect = () =>{
+
+    window.gtag && window.gtag('event', 'add_to_collection', {
+      'event_category': 'add_to_collection',
+      'event_label': 'add_to_collection',
+      'value': item.productId,
+    });
+
     let user = localStorage.getItem("user");
     if (user){
       user = JSON.parse(user);

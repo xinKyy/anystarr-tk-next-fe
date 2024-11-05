@@ -486,6 +486,13 @@ const CategoryTreeSelect = ({onCategoryChange, className, category1Id}) => {
        }
     });
   const onChange = (newValue) => {
+
+    window.gtag && window.gtag('event', 'category', {
+      'event_category': 'category',
+      'event_label': 'category_id',
+      'value': newValue,
+    });
+
     setValue(newValue);
     onCategoryChange(newValue);
   };
