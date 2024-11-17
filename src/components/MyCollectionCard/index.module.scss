@@ -29,6 +29,7 @@
     overflow: hidden;            /* 隐藏溢出部分 */
     text-overflow: ellipsis;     /* 溢出时显示省略号 */
     -webkit-line-clamp: 1;       /* 限制显示的行数，这里是 2 行 */
+    flex-shrink: 0;
   }
 
   .star_img{
@@ -164,7 +165,8 @@
   flex-shrink: 0;
   margin-right: 10px;
   cursor: pointer;
-
+  position: absolute;
+  right: 10px;
   transition: all .3s;
 
   @media screen and (max-width: 650px){
