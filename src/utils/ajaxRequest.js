@@ -7,6 +7,7 @@ import {
     message
 } from 'antd';
 import host from "@/utils/host";
+import {signParamStr} from "@/utils/sign";
 
 
 // 普通请求（会验证登录）
@@ -21,6 +22,8 @@ function ajaxRequest(methods, url, params, contentType) {
             contentType: contentType === 'json' ? 'application/json' : 'application/x-www-form-urlencoded',
             // headers: headers,
             beforeSend: function (request) {
+                const signStr = signParamStr(params);
+                request.setRequestHeader('sign', signStr);
                 if (token){
                     request.setRequestHeader('token', token);
                     request.setRequestHeader("Access-Control-Allow-Origin", "*");
