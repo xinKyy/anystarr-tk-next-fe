@@ -78,10 +78,10 @@ const Home = () => {
       'value': sortby,
     });
     if (sort === sortby){
-      setSort(null);
+      setSort(undefined);
       setPage(1); // Reset page when sorting
       pageRef = 1;
-      localStorage.setItem("mySort", null);
+      localStorage.setItem("mySort", undefined);
       setHasMore(true); // 重置是否还有更多数据
     } else {
       setSort(sortby);
