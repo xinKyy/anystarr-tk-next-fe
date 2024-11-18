@@ -26,7 +26,7 @@ const Home = () => {
   const scrollDiv = useRef();
 
   const searchNameRef = useRef();
-  const searchNameTypeRef = useRef(1);
+  const searchNameTypeRef = useRef(2);
 
   const getProdList = (searchNameRe, searchType) => {
     if (loading) return; // 检查是否正在加载或没有更多数据
@@ -72,21 +72,27 @@ const Home = () => {
   }, [sort, page, category1Id, random]);
 
   const onSortChange = (sortby) => {
-
     window.gtag && window.gtag('event', 'sort', {
       'event_category': 'sort',
       'event_label': 'sort',
       'value': sortby,
     });
-
-    setSort(sortby);
-    if (sortby === 5){
-      setRandom(random + 1);
+    if (sort === sortby){
+      setSort(null);
+      setPage(1); // Reset page when sorting
+      pageRef = 1;
+      localStorage.setItem("mySort", null);
+      setHasMore(true); // 重置是否还有更多数据
+    } else {
+      setSort(sortby);
+      if (sortby === 5){
+        setRandom(random + 1);
+      }
+      localStorage.setItem("mySort", sortby);
+      setPage(1); // Reset page when sorting
+      pageRef = 1;
+      setHasMore(true); // 重置是否还有更多数据
     }
-    localStorage.setItem("mySort", sortby);
-    setPage(1); // Reset page when sorting
-    pageRef = 1;
-    setHasMore(true); // 重置是否还有更多数据
   };
 
   const handleScroll = () => {

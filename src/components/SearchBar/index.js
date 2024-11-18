@@ -34,11 +34,17 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
     <Select style={{
       minWidth:"100px"
     }} onChange={handleChange} defaultValue={currenSearchType}>
-      <Option value={1}>PID</Option>
+      <Option value={1}>Product link</Option>
       <Option value={2}>Product name</Option>
       <Option value={3}>Commission rate</Option>
     </Select>
   );
+
+  const map = {
+    1:"Product link",
+    2:"Product name",
+    3:"Commission rate",
+  };
 
   const searchIcon = useMemo(()=><img src={"/search.svg"} className={`${styles.icon}`}/>, []);
 
@@ -68,9 +74,8 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
           onChange={(e)=>{
             setSearchName(e.target.value);
             searchNameRef = e.target.value;
-            debouncedOnChange(e.target.value);
           }}
-          placeholder='Search input'
+          placeholder={`Search ${map[currenSearchType]}`}
         />
         <div onClick={()=>onChange(searchName, currenSearchType)} className={styles.searchButton}>
           {
