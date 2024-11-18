@@ -73,7 +73,7 @@ const Header = () => {
         localStorage.removeItem("userInfo");
         localStorage.removeItem("token");
         dispatchAction.setUserInfo(null);
-        router.push("/");
+        router.push("/beta");
       }}>Logout</div>
     </div>
   );
