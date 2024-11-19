@@ -22,6 +22,8 @@
   },
   "scripts": {
     "start": "node server.js",
+    "start:prod": "env-cmd -f .env.production node server.js",
+    "start:test": "env-cmd -f .env.test node server.js",
     "build": "next build",
     "analyze": "ANALYZE=true next build",
     "prod": "NODE_ENV=production node server.js"
@@ -52,6 +54,7 @@
     "lottie-react": "^2.4.0",
     "next": "^12.0.6",
     "next-redux-wrapper": "^6.0.2",
+    "env-cmd": "^10.1.0",
     "prop-types": "^15.6.2",
     "query-string": "^6.2.0",
     "react": "^17.0.2",

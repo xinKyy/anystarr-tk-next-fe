@@ -98,15 +98,15 @@ module.exports = withBundleAnalyzer({
     staticFolder: '/static',
     isDev, // Pass through env variables
   },
-  async rewrites() {
-    return [
-      {
-        source: '/anystarr-new-web/:path*',
-        destination: 'https://anystarr.com/anystarr-new-web/:path*', // 实际API的基本URL
-        // destination: 'http://8.136.233.221:8090/:path*', // 实际API的基本URL
-        // destination: 'http://192.168.2.126:8090/:path*', // 实际API的基本URL
-        // destination: 'http://192.168.2.236:9292/:path*', // 实际API的基本URL
-      },
-    ];
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/anystarr-new-web/:path*',
+  //       destination: `${process.env.BASE_API_URL}/anystarr-new-web/:path*`, // 实际API的基本URL
+  //       // destination: 'http://8.136.233.221:8090/:path*', // 实际API的基本URL
+  //       // destination: 'http://192.168.2.126:8090/:path*', // 实际API的基本URL
+  //       // destination: 'http://192.168.2.236:9292/:path*', // 实际API的基本URL
+  //     },
+  //   ];
+  // },
 });
