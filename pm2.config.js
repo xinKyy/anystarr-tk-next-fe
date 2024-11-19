@@ -18,7 +18,8 @@ module.exports = {
       node_args: '--harmony',
       env: {
         NODE_ENV: 'production',
-        PORT: 5999
+        PORT: 5999,
+        BASE_API_URL:"https://anystarr.com/anystarr-new-web"
       },
       out_file: './logs/out.log', // normal log
       error_file: './logs/err.log', // error log

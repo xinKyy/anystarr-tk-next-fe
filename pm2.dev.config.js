@@ -14,11 +14,12 @@ module.exports = {
         'logs',
         'static'
       ],
-      instances: 2,  // start 2 instances
+      instances: 1,  // start 2 instances
       node_args: '--harmony',
       env: {
         NODE_ENV: 'production',
-        PORT: 3999
+        PORT: 3999,
+        BASE_API_URL:"https://anystarr.shop/anystarr-new-web"
       },
       out_file: './logs/out.log', // normal log
       error_file: './logs/err.log', // error log
