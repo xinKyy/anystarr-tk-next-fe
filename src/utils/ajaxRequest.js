@@ -25,7 +25,7 @@ function ajaxRequest(methods, url, params, contentType) {
                 const signStr = signParamStr(params);
                 request.setRequestHeader('sign', signStr);
                 if (window.location.href.includes("anystarr.shop")){
-                  request.setRequestHeader('test', true);
+                  // request.setRequestHeader('test', true);
                 }
                 if (token){
                     request.setRequestHeader('token', token);
