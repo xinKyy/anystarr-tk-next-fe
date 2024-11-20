@@ -24,6 +24,9 @@ function ajaxRequest(methods, url, params, contentType) {
             beforeSend: function (request) {
                 const signStr = signParamStr(params);
                 request.setRequestHeader('sign', signStr);
+                if (window.location.href.includes("anystarr.shop")){
+                  request.setRequestHeader('test', true);
+                }
                 if (token){
                     request.setRequestHeader('token', token);
                     request.setRequestHeader("Access-Control-Allow-Origin", "*");
