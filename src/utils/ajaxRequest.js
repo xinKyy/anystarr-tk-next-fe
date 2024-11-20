@@ -23,7 +23,7 @@ function ajaxRequest(methods, url, params, contentType) {
             // headers: headers,
             beforeSend: function (request) {
                 const signStr = signParamStr(params);
-                request.setRequestHeader('sign', signStr);
+                request.setRequestHeader('signature', signStr);
                 if (window.location.href.includes("anystarr.shop")){
                   request.setRequestHeader('test', true);
                 }
