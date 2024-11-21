@@ -170,13 +170,15 @@ const Product = ({productId}) =>{
     </div>
     {
       product ? <div className={styles.product_wrap}>
-        <Carousel className={styles.top_img_wrap} afterChange={onChange}>
-          <img
-            src={ product.alyImage ? product.alyImage : updateImageUrl(product?.image, 700, 700)}
-            alt='Image'
-            className={styles.rc_image}
-          />
-        </Carousel>
+        {/* <Carousel className={styles.top_img_wrap} afterChange={onChange}>*/}
+          <div className={styles.top_img_wrap}>
+            <img
+              src={ product.alyImage ? product.alyImage : updateImageUrl(product?.image, 700, 700)}
+              alt='Image'
+              className={styles.rc_image}
+            />
+          </div>
+        {/* </Carousel>*/}
         <div>
           <ProductPrice price={product?.price} rate={product?.finishRate}></ProductPrice>
           <ProductPrice2 tkRate={product?.openRate} usRate={product?.finishRate}></ProductPrice2>
