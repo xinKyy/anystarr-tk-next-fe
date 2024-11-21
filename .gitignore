@@ -12,7 +12,7 @@ database.sqlite
 # Test coverage
 coverage
 
-yarn.lock
+yarn.lock*
 
 # Logs
 npm-debug.log*
