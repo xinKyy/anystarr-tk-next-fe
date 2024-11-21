@@ -32,8 +32,7 @@ function ajaxRequest(methods, url, params, contentType) {
                   queryParams:signParams
                 });
                 request.setRequestHeader('Sign', signStr);
-                 console.log(signStr, "signStrsignStrsignStr");
-                 console.log(signParams, "signStrsignStrsignStr");
+                request.setRequestHeader('timestamp', Date.now());
                 if (window.location.href.includes("anystarr.shop")){
                   request.setRequestHeader('test', true);
                 }
