@@ -1,3 +1,5 @@
+import CryptoJS from 'crypto-js';
+
 const EQUAL = '=';
 const AND = '&';
 
@@ -17,8 +19,24 @@ export function signParamStr(requestParams) {
     Object.assign(treeMap, requestParams.body);
   }
 
-  return getSignParamStrV2(treeMap);
+  const paramsStr = getSignParamStrV2(treeMap);
+
+  return generateHmacSHA256Signature(paramsStr, "an1&yst%@arr-ne1fw-we5b-2!0@2#4$b");
 }
+
+/**
+ * 生成 HMAC-SHA256 签名
+ * @param {string} data - 待签名的数据
+ * @param {string} key - 密钥
+ * @returns {string} 签名字符串（以 Hex 表示）
+ */
+function generateHmacSHA256Signature(data, key) {
+  const hmac = CryptoJS.HmacSHA256(data, key);
+  const signature = hmac.toString(CryptoJS.enc.Hex);
+  return signature;
+}
+
+
 
 /**
  * 计算签名字符串：按键名排序并拼接

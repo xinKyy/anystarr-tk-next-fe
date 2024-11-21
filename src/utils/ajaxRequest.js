@@ -22,8 +22,18 @@ function ajaxRequest(methods, url, params, contentType) {
             contentType: contentType === 'json' ? 'application/json' : 'application/x-www-form-urlencoded',
             // headers: headers,
             beforeSend: function (request) {
-                const signStr = signParamStr( contentType === 'json' ? JSON.parse(params) : params);
+                let signParams;
+                try {
+                  signParams = JSON.parse(params);
+                } catch (e){
+                  signParams = params;
+                }
+                const signStr = signParamStr({
+                  queryParams:signParams
+                });
                 request.setRequestHeader('Sign', signStr);
+                 console.log(signStr, "signStrsignStrsignStr");
+                 console.log(signParams, "signStrsignStrsignStr");
                 if (window.location.href.includes("anystarr.shop")){
                   request.setRequestHeader('test', true);
                 }
