@@ -3,6 +3,8 @@ import {useEffect, useRef, useState} from "react";
 import SearchBar from "@/components/SearchBar";
 import HomeCard from "@/components/HomeCard";
 import SortBy from "@/components/SoryBy";
+import { Select, Option } from 'antd';
+import { prodListMock } from '@/constants/Product';
 import {APIGetCategoryFirst, APIGetCategorySecond, APIGetProductList} from "@/api";
 import CategoryList from "@/components/CategoryList";
 import Category2List from "@/components/Category2List";
@@ -29,37 +31,38 @@ const Home = () => {
   const searchNameTypeRef = useRef(2);
 
   const getProdList = (searchNameRe, searchType) => {
-    if (loading) return; // 检查是否正在加载或没有更多数据
+    setProdList(prodListMock);
+    // if (loading) return; // 检查是否正在加载或没有更多数据
 
-    let nowPage = searchNameRe ? 1 : page;
+    // let nowPage = searchNameRe ? 1 : page;
 
-    setLoading(true);
-    APIGetProductList(JSON.stringify({
-      sort: Number(localStorage.getItem("mySort") ?? "1"),
-      page: nowPage,
-      pageSize: 100,
-      searchName:searchNameRef.current,
-      searchType:searchNameTypeRef.current,
-      categoryId:category1IdRef
-    })).then(resp => {
-      if (resp.data.list) {
-        if ( nowPage === 1){
-          data = resp.data.list.records;
-        } else {
-          data = prodList.concat(resp.data.list.records);
-        }
-        setProdList(data.filter(item => {
-          if (!item.lyImage && !item.alyImages && !item.images && !item.image){
-            return false;
-          }
-          return true;
-        }));
-      }
-    }).finally(() => {
-      setLoading(false);
-    }).catch(e=>{
-      setLoading(false);
-    });
+    // setLoading(true);
+    // APIGetProductList(JSON.stringify({
+    //   sort: Number(localStorage.getItem("mySort") ?? "1"),
+    //   page: nowPage,
+    //   pageSize: 100,
+    //   searchName:searchNameRef.current,
+    //   searchType:searchNameTypeRef.current,
+    //   categoryId:category1IdRef
+    // })).then(resp => {
+    //   if (resp.data.list) {
+    //     if ( nowPage === 1){
+    //       data = resp.data.list.records;
+    //     } else {
+    //       data = prodList.concat(resp.data.list.records);
+    //     }
+    //     setProdList(data.filter(item => {
+    //       if (!item.lyImage && !item.alyImages && !item.images && !item.image){
+    //         return false;
+    //       }
+    //       return true;
+    //     }));
+    //   }
+    // }).finally(() => {
+    //   setLoading(false);
+    // }).catch(e=>{
+    //   setLoading(false);
+    // });
   };
 
   useEffect(() => {
@@ -135,17 +138,86 @@ const Home = () => {
     setSort(Number(localStorage.getItem("mySort") ?? "5"));
   }, []);
 
+  // 下拉框数据
+  const select_data = [{
+    placeholder: 'Select category',
+    list: [{
+      value: '1',
+      label: 'Product Name',
+    },
+    {
+      value: '2',
+      label: 'Product Code',
+    },
+    {
+      value: '3',
+      label: 'Product Description',
+
+    }
+  ]
+  },
+  {
+    placeholder: 'Commission rate',
+    list: [{
+      value: '1',
+      label: 'Product Name',
+    },
+    {
+      value: '2',
+      label: 'Product Code',
+    },
+    {
+      value: '3',
+      label: 'Product Description',
+
+    }]
+  },
+  {
+    placeholder: 'Earn per sale',
+    list: [{
+      value: '1',
+      label: 'Product Name',
+    },
+    {
+      value: '2',
+      label: 'Product Code',
+    },
+    {
+      value: '3',
+      label: 'Product Description',
+
+    }
+  ]
+  }];
+    
+
   return (
     <div style={{
       width:"100vw"
     }}>
       <div ref={scrollDiv} className={styles.home_page}>
         <div className={styles.mobile_wrap}>
-          {
+          {/* {
             // !mobile &&
-            <CategoryTreeSelect category1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
-          }
+            // <CategoryTreeSelect category1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
+          } */}
+          <div className={styles.select_area}>
+            <div className={styles.select_area_item}>
+            {select_data.map((dataSet, index) => (
+                  <Select placeholder={dataSet.placeholder} key={index} style={{ width: 200, borderRadius: 30 }}>
+                    {dataSet.list.map((item) => (
+                      
+                      <Option key={item.value} value={item.value}>
+                        {item.label}
+                      </Option>
+                    ))}
+                  </Select>
+                ))}
+            </div>
+          </div>
           <SearchBar searchNameRef={searchNameRef.current} searchNameTypeRef={searchNameTypeRef.current} loading={loading} onChange={onSearch} />
+          
+          
         </div>
         <div className={styles.sort_wrap}>
           <SortBy current={sort} onChange={onSortChange} />

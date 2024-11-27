@@ -18,6 +18,23 @@
       margin-top: 20px;
       height: 38px;
     }
+
+    .select_area {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+
+      .select_area_item {
+        width: 600px;
+        display: flex;
+        gap: 30px;
+
+        .custom_select {
+          border-radius: 20px;
+        }
+      }
+    }
+
     @media screen and (max-width: 650px) {
       flex-direction: column-reverse;
       .select_category{
