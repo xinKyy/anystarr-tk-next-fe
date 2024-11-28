@@ -1,6 +1,7 @@
 import styles from '../../components/Home/home.module.scss';
 import {useEffect, useRef, useState} from "react";
 import SearchBar from "@/components/SearchBar";
+import SearchDropDown from "@/components/SearchDropDown";
 import HomeCard from "@/components/HomeCard";
 import SortBy from "@/components/SoryBy";
 import { Select, Option } from 'antd';
@@ -14,6 +15,7 @@ import {LoadingOutlined} from "@ant-design/icons";
 import CategoryTreeSelect from "@/components/TreeSelect";
 import {isMobile} from "@/utils/action";
 import CustomEmpty from '@/components/CustomEmpty';
+import { set } from 'core-js/core/dict';
 let data = [];
 let category1IdRef;
 let pageRef = 1;
@@ -23,6 +25,8 @@ const Home = () => {
   const [sort, setSort] = useState(5);
   const [category1Id, setCategory1Id] = useState(category1IdRef);
   const [page, setPage] = useState(pageRef);
+
+  const [visibleDropDown, setVisibleDropDown] = useState(false);
   const [loading, setLoading] = useState(false);
   const [random, setRandom] = useState(1);
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
@@ -31,7 +35,7 @@ const Home = () => {
   const searchNameTypeRef = useRef(2);
 
   const getProdList = (searchNameRe, searchType) => {
-    setProdList(prodListMock);
+    // setProdList(prodListMock);
     // if (loading) return; // 检查是否正在加载或没有更多数据
 
     // let nowPage = searchNameRe ? 1 : page;
@@ -134,6 +138,11 @@ const Home = () => {
     category1IdRef = v;
   };
 
+  const showVisibleDropDown = () => {
+    // 取反
+    setVisibleDropDown(!visibleDropDown);
+  };
+
   useEffect(()=>{
     setSort(Number(localStorage.getItem("mySort") ?? "5"));
   }, []);
@@ -222,7 +231,12 @@ const Home = () => {
                 ))}
             </div>
           </div>
-          <SearchBar searchNameRef={searchNameRef.current} searchNameTypeRef={searchNameTypeRef.current} loading={loading} onChange={onSearch} />
+          {
+            visibleDropDown && <SearchDropDown />
+          }
+          <div onClick={showVisibleDropDown}>
+            <SearchBar searchNameRef={searchNameRef.current} searchNameTypeRef={searchNameTypeRef.current} loading={loading} onChange={onSearch} />
+          </div>
 
 
         </div>
@@ -263,10 +277,10 @@ const Home = () => {
                 <HomeCard key={item.productId} item={item} />
               ))
             }
+          </div>
             {
               prodList.length === 0 && <CustomEmpty result={searchNameRef.current}/>
             }
-          </div>
         </Spin>
       </div>
     </div>

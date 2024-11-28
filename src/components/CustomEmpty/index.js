@@ -2,7 +2,7 @@
 import {Empty, Button } from 'antd';
 import styles from './index.module.scss';
 const CustomEmpty = ({result}) => {
-    return <>
+    return (
         <div className={styles.Empty_container}>
             <div className={styles.container}>
                 <div>
@@ -16,6 +16,6 @@ const CustomEmpty = ({result}) => {
                 </div>
             </div>
         </div>
-    </>;
+    );
 };
 export default CustomEmpty;
