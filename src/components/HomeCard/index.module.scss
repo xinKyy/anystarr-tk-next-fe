@@ -1,15 +1,66 @@
 .flexContainer {
   display: flex;
-  flex-direction: column;
   border: 1px solid #e5e5e5;
   box-shadow: 0 3.2px 23px rgba(0, 0, 0, 0.1);
   background-color: white;
-  overflow: hidden;
   position: relative;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 14px;
   cursor: pointer;
   height: 100%;
+
+  .position_wrap{
+    display: none;
+    width: 453px;
+    height: 299px;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 10px 0px rgba(240,119,74,0.23);
+    border-radius: 20px;
+    border: 1px solid #F0774A;
+    position: absolute;
+    z-index: 999;
+    align-items: center;
+    left: 0;
+    .right_wrap{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      .text_1{
+        font-weight: 400;
+        font-size: 14px;
+        color: #666666
+      }
+
+      .text_2{
+        font-weight: bold;
+        font-size: 20px;
+        color: #FA6400;
+      }
+
+      .text_3{
+        font-weight: bold;
+        font-size: 20px;
+        color: #999999;
+      }
+
+      .text_4{
+        color: #000000;
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+  }
+
+
+  &:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* 添加阴影 */
+    .position_wrap{
+      display: flex;
+    }
+  }
+
   .star_img{
     position: absolute;
     top: 5px;
@@ -38,14 +89,6 @@
     z-index: 2;
     background: url("../../../public/product/stared.svg") no-repeat;
     background-size: contain;
-  }
-
-  &:hover {
-    transform: translateY(-6px);
-    outline: 2px solid var(--primary-color);
-    .star_img{
-      opacity: 1;
-    }
   }
 
   @media (max-width: 650px) {
@@ -160,11 +203,24 @@
 
   .sold {
     font-family: 'Inter', sans-serif;
-    font-weight: medium;
-    color: #666;
+    font-weight: 400;
     font-size: 12px;
+    color: #666666;
     margin-top: 5px;
-    text-align: center;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    div{
+      width: 55px;
+      height: 22px;
+      background: rgba(170,167,177,0.30);
+      border-radius: 11px;
+      color: #923E07;
+      text-align: center;
+      line-height: 22px;
+      font-weight: bold;
+      margin-left: 5px;
+    }
   }
 
   .sampleBtn {
@@ -209,3 +265,144 @@
   }
 }
 
+
+.card_max_wrap{
+  position: relative;
+  transition: all .3s;
+  cursor: pointer;
+  .card_wrap{
+    display: flex;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px 0px rgba(221,221,221,0.62);
+    border-radius: 20px;
+    border: 1px solid rgba(237,236,238,0.85);
+    padding: 20px 17px;
+    .top{
+      display: flex;
+      img{
+        width: 116px;
+        height: 115px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+    }
+
+    .title_main{
+      margin-top: 23px;
+      font-weight: 500;
+      font-size: 16px;
+      color: #333333;
+      display: -webkit-box;        /* 兼容 flex 布局 */
+      -webkit-box-orient: vertical; /* 垂直方向排列子元素 */
+      overflow: hidden;            /* 隐藏溢出部分 */
+      text-overflow: ellipsis;     /* 溢出时显示省略号 */
+      -webkit-line-clamp: 1;       /* 限制显示的行数，这里是 2 行 */
+    }
+
+    .total_wrap{
+      margin-top: 10px;
+      font-weight: 400;
+      font-size: 14px;
+      color: #666666;
+      display: flex;
+      align-items: center;
+      .sold_num_wrap{
+        height: 22px;
+        padding: 0 10px;
+        line-height: 22px;
+        background: rgba(170,167,177,0.34);
+        color: #923E07;
+        border-radius: 11px;
+        margin-left: 10px;
+      }
+    }
+
+    .add_tk{
+      width: 100%;
+      height: 40px;
+      background: #241E1F;
+      border-radius: 24px;
+      font-size: 18px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+  }
+  .right_wrap{
+    flex-shrink: 0;
+    width: 104px;
+    margin-left: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background: #ffffff;
+    img{
+      width: 28px;
+      height: 28px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .title_1{
+      font-weight: 400;
+      font-size: 14px;
+      color: #666666;
+    }
+    .title_2{
+      font-weight: bold;
+      font-size: 22px;
+      color: #FA6400;
+      margin-bottom: 10px;
+    }
+    .title_3{
+      font-weight: bold;
+      font-size: 22px;
+      color: #B2B2B2;
+    }
+
+    .title_4{
+      font-weight: bold;
+      font-size: 14px;
+      color: #000;
+      margin-top: 7px;
+      margin-bottom: 12px;
+    }
+  }
+
+  .hovered{
+    position: absolute;
+    background: #ffffff;
+    left: -23%;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    opacity: 0; /* 初始透明 */
+    visibility: hidden; /* 初始不可见 */
+    transition: visibility 0.3s, transform 0.3s;
+    transform: translateY(-10px); /* 初始位置偏移 */
+  }
+
+  @media screen and (max-width: 650px){
+    .hovered:nth-child(2n){
+      right: 0;
+      left: unset;
+    }
+  }
+
+  &:hover{
+    .card_wrap{
+      box-shadow: 0px 3px 10px 0px rgba(240,119,74,0.5);
+      border: 1px solid #F0774A;
+    }
+    .hovered{
+      display: flex;
+      visibility: visible; /* 让元素可见 */
+      z-index: 999;
+      opacity: 1;
+      transform: translateY(0); /* 回到原位 */
+    }
+  }
+}

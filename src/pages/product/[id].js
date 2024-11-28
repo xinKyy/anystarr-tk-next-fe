@@ -21,30 +21,7 @@ function updateImageUrl(url, w, h) {
 
 
 const Product = ({productId}) =>{
-  const [product, setProduct] = useState({
-    "productId": "1729394749048132040",
-    "createTime": "2024-06-25T19:02:15.638+00:00",
-    "updateTime": "2024-11-27T17:28:49.413+00:00",
-    "isDelete": 0,
-    "title": "Women's Solid Ribbed Long Sleeve Second-skin Feel Tight-fitting Playsuit Tummy Control Jumpsuit for Fall, Workout Ribbed Bodycon Jumpsuit, Sports Jumpsuits for Women, Running Outdoor Outfits, One-piece Yoga Suit, unitard bodysuit",
-    "image": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8d7b62a0a8d14f20bd50ee6cffec1d53~tplv-dx0w9n1ysr-resize-jpeg:200:200.jpeg?from=1826719393",
-    "price": "$14.16 - 38.15",
-    "soldNum": 450869,
-    "isApply": 1,
-    "openRate": "12.0",
-    "finishRate": "18",
-    "lastTime": "2024-11-27T21:58:46.840+00:00",
-    "url": "https://affiliate-us.tiktok.com/api/v1/share/AIpO5ffTx8XF",
-    "daySoldNum": 0,
-    "daySoldAmount": "0.00",
-    "soldAmount": "172006.52",
-    "alyImage": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/0a710ef21dc749cfaa6351ecc7b8bfce%7Etplv-dx0w9n1ysr-resize-jpeg%3A600%3A600.jpeg%3Ffrom%3D1826719393",
-    "images": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/a81d2443079a4da58515b4bbeaab0dc3~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/9a03cb7e2292427aba7369875615bcba~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/b9a5d5d559c14a5da7dcf8657a9c473e~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/52ca10383bb6410488b65755a9417340~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/4ed0e0dcd46544238d08fb678d7bf3c2~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/862afc2ce01146fd8f612c9973b8644b~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/f180d86f41b04a349c0504d437bcde45~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/66473de8898047dd8325619e14a9f8b8~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/c387d9910f244200b279143ca88b66de~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393",
-    "alyImages": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/8d7b62a0a8d14f20bd50ee6cffec1d53%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/be32005aa02f44a09c838f52ef544ef6%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/839b1be2f7044824aa7f5e1893c0b754%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/8ee56b15efad4b6cb51163cbbc727b8b%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/19368472ac784b71bb5ea80e811cd49a%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/99ff969783ee4ffb85a551ab41938ba5%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/3a4bc33e168e4515b2b02793b531d051%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/efc74e8884934e548e8ffff9f0d9c9cf%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/66473de8898047dd8325619e14a9f8b8%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393",
-    "collect": false,
-    "collectId": null,
-    "needApplyLink": true
-  });
+  const [product, setProduct] = useState();
   const [mobile, setMobile] = useState(false);
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -196,30 +173,7 @@ const Product = ({productId}) =>{
 };
 
 const ProductDetails = ({productId}) =>{
-  const [product, setProduct] = useState({
-    "productId": "1729394749048132040",
-    "createTime": "2024-06-25T19:02:15.638+00:00",
-    "updateTime": "2024-11-27T17:28:49.413+00:00",
-    "isDelete": 0,
-    "title": "Women's Solid Ribbed Long Sleeve Second-skin Feel Tight-fitting Playsuit Tummy Control Jumpsuit for Fall, Workout Ribbed Bodycon Jumpsuit, Sports Jumpsuits for Women, Running Outdoor Outfits, One-piece Yoga Suit, unitard bodysuit",
-    "image": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/8d7b62a0a8d14f20bd50ee6cffec1d53~tplv-dx0w9n1ysr-resize-jpeg:200:200.jpeg?from=1826719393",
-    "price": "$14.16 - 38.15",
-    "soldNum": 450869,
-    "isApply": 1,
-    "openRate": "12.0",
-    "finishRate": "18",
-    "lastTime": "2024-11-27T21:58:46.840+00:00",
-    "url": "https://affiliate-us.tiktok.com/api/v1/share/AIpO5ffTx8XF",
-    "daySoldNum": 0,
-    "daySoldAmount": "0.00",
-    "soldAmount": "172006.52",
-    "alyImage": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/0a710ef21dc749cfaa6351ecc7b8bfce%7Etplv-dx0w9n1ysr-resize-jpeg%3A600%3A600.jpeg%3Ffrom%3D1826719393",
-    "images": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/a81d2443079a4da58515b4bbeaab0dc3~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/9a03cb7e2292427aba7369875615bcba~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/b9a5d5d559c14a5da7dcf8657a9c473e~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/52ca10383bb6410488b65755a9417340~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/4ed0e0dcd46544238d08fb678d7bf3c2~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/862afc2ce01146fd8f612c9973b8644b~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/f180d86f41b04a349c0504d437bcde45~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p19-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/66473de8898047dd8325619e14a9f8b8~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/c387d9910f244200b279143ca88b66de~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393",
-    "alyImages": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/8d7b62a0a8d14f20bd50ee6cffec1d53%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/be32005aa02f44a09c838f52ef544ef6%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/839b1be2f7044824aa7f5e1893c0b754%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/8ee56b15efad4b6cb51163cbbc727b8b%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/19368472ac784b71bb5ea80e811cd49a%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/99ff969783ee4ffb85a551ab41938ba5%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/3a4bc33e168e4515b2b02793b531d051%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/efc74e8884934e548e8ffff9f0d9c9cf%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/66473de8898047dd8325619e14a9f8b8%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393",
-    "collect": false,
-    "collectId": null,
-    "needApplyLink": true
-  });
+  const [product, setProduct] = useState();
   const [mobile, setMobile] = useState(false);
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
