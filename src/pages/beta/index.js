@@ -36,37 +36,37 @@ const Home = () => {
 
   const getProdList = (searchNameRe, searchType) => {
     // setProdList(prodListMock);
-    // if (loading) return; // 检查是否正在加载或没有更多数据
+    if (loading) return; // 检查是否正在加载或没有更多数据
 
-    // let nowPage = searchNameRe ? 1 : page;
+    let nowPage = searchNameRe ? 1 : page;
 
-    // setLoading(true);
-    // APIGetProductList(JSON.stringify({
-    //   sort: Number(localStorage.getItem("mySort") ?? "1"),
-    //   page: nowPage,
-    //   pageSize: 100,
-    //   searchName:searchNameRef.current,
-    //   searchType:searchNameTypeRef.current,
-    //   categoryId:category1IdRef
-    // })).then(resp => {
-    //   if (resp.data.list) {
-    //     if ( nowPage === 1){
-    //       data = resp.data.list.records;
-    //     } else {
-    //       data = prodList.concat(resp.data.list.records);
-    //     }
-    //     setProdList(data.filter(item => {
-    //       if (!item.lyImage && !item.alyImages && !item.images && !item.image){
-    //         return false;
-    //       }
-    //       return true;
-    //     }));
-    //   }
-    // }).finally(() => {
-    //   setLoading(false);
-    // }).catch(e=>{
-    //   setLoading(false);
-    // });
+    setLoading(true);
+    APIGetProductList(JSON.stringify({
+      sort: Number(localStorage.getItem("mySort") ?? "1"),
+      page: nowPage,
+      pageSize: 100,
+      searchName:searchNameRef.current,
+      searchType:searchNameTypeRef.current,
+      categoryId:category1IdRef
+    })).then(resp => {
+      if (resp.data.list) {
+        if ( nowPage === 1){
+          data = resp.data.list.records;
+        } else {
+          data = prodList.concat(resp.data.list.records);
+        }
+        setProdList(data.filter(item => {
+          if (!item.lyImage && !item.alyImages && !item.images && !item.image){
+            return false;
+          }
+          return true;
+        }));
+      }
+    }).finally(() => {
+      setLoading(false);
+    }).catch(e=>{
+      setLoading(false);
+    });
   };
 
   useEffect(() => {
