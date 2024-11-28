@@ -13,10 +13,10 @@
   line-height: 24px;
   user-select: none;
   cursor: pointer;
+  color: black;
   &.active {
-    border-color: #ff99aa;
-    color: #ff99aa;
-    font-weight: bold;
+    border-color: #18d87e;
+    color: #F0774A ;
   }
 }
 
@@ -24,7 +24,8 @@
   padding-right: 4px;
   display: flex;
   align-items: center;
-  color: black;
+
+
   img{
     width: 30px;
     height: 30px;
@@ -56,10 +57,6 @@
 }
 
 .activeUp {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin-bottom: 2px;
   &::before {
     content: "";
     border-left: 3.5px solid transparent;
@@ -70,9 +67,6 @@
 }
 
 .activeDown {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   &::before {
     content: "";
     border-left: 3.5px solid transparent;
@@ -105,4 +99,5 @@
 
 .arrowDown {
   justify-content: flex-start;
+  
 }

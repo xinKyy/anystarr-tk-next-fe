@@ -13,6 +13,7 @@ import {Spin} from "antd";
 import {LoadingOutlined} from "@ant-design/icons";
 import CategoryTreeSelect from "@/components/TreeSelect";
 import {isMobile} from "@/utils/action";
+import CustomEmpty from '@/components/CustomEmpty';
 let data = [];
 let category1IdRef;
 let pageRef = 1;
@@ -206,7 +207,7 @@ const Home = () => {
             // !mobile &&
             // <CategoryTreeSelect category1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
           } */}
-          {/* <CategoryTreeSelect category1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect> */}
+          {/* <CategoryTreeSelect categor2y1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect> */}
           <div className={styles.select_area}>
             <div className={styles.select_area_item}>
             {select_data.map((dataSet, index) => (
@@ -261,6 +262,9 @@ const Home = () => {
               prodList && prodList.map(item => (
                 <HomeCard key={item.productId} item={item} />
               ))
+            }
+            {
+              prodList.length === 0 && <CustomEmpty result={searchNameRef.current}/>
             }
           </div>
         </Spin>
