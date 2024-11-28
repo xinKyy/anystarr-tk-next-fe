@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {Button, Carousel, Image, message, Skeleton} from "antd";
 import ProductPrice from "@/components/ProductPrice";
 import ProductPrice2 from "@/components/ProductPrice2";
+import ProductModal from "@/components/ProductModal";
 import SizeBox from "@/components/SizeBox";
 import {useRouter} from "next/router";
 import {APIAddFavoriteItems, APIDeleteFavoriteItems, APIGetLinkByPid, APIGetProductInfo} from "@/api";
@@ -436,6 +437,8 @@ const ProductDetails = ({productId}) =>{
         </div>
       </div>
     </div>
+    {/* 模态框 */}
+    <ProductModal />
   </>;
 };
 
