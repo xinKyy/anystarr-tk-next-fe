@@ -1,0 +1,33 @@
+.SearchDropDown {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 99999;
+
+
+  .dropDown {
+    border: 1px solid #F0774A;
+    border-radius: 15px;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    top: 65px;
+    width: 600px;
+    padding: 20px;
+    color: #999999;
+
+    .dropDownItem {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      &:hover {
+        background-color: #F3F3F3;
+        color: black;
+      }
+    }
+
+    @media (max-width: 640px) {
+      width: 93%;
+      border-radius: 30px;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+.customModal {
+  .title {
+    padding-left: 20px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .steps {
+    display: flex;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .step {
+      width: 25%;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+
+      .left {
+        display: flex;
+        justify-content: space-between;
+      }
+      .right {
+        margin-top: 20px;
+        width: max-content;
+
+        .jt {
+          display: inline-block;
+          transform: translateY(1px) rotate(1deg);
+        }
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer {
+    padding-left: 20px;
+
+    p:nth-child(2) {
+      color: #5E8F9D;
+    }
+  }
+}
