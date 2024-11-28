@@ -19,10 +19,16 @@
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
+      padding: 10px;
+      border-radius: 10px;
       &:hover {
         background-color: #F3F3F3;
         color: black;
       }
+    }
+
+    .no_hover{
+      background-color: unset !important;
     }
 
     @media (max-width: 640px) {
