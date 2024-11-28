@@ -503,7 +503,7 @@ const CategoryTreeSelect = ({onCategoryChange, className, category1Id}) => {
       className={className}
       value={value}
       dropdownStyle={{
-        maxHeight: 400,
+        maxHeight: 200,
         overflow: 'auto',
       }}
       placeholder={"Select category"}

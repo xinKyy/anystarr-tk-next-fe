@@ -26,7 +26,6 @@ const Home = () => {
   const [random, setRandom] = useState(1);
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
   const scrollDiv = useRef();
-
   const searchNameRef = useRef();
   const searchNameTypeRef = useRef(2);
 
@@ -160,17 +159,23 @@ const Home = () => {
     placeholder: 'Commission rate',
     list: [{
       value: '1',
-      label: 'Product Name',
+      label: '< 15%',
     },
     {
       value: '2',
-      label: 'Product Code',
+      label: '15% - 20%',
     },
     {
       value: '3',
-      label: 'Product Description',
+      label: '25% - 30%',
 
-    }]
+    },
+     {
+      value: '3',
+      label: '> 30%',
+
+      }
+    ]
   },
   {
     placeholder: 'Earn per sale',
@@ -189,7 +194,7 @@ const Home = () => {
     }
   ]
   }];
-    
+
 
   return (
     <div style={{
@@ -201,23 +206,24 @@ const Home = () => {
             // !mobile &&
             // <CategoryTreeSelect category1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
           } */}
+          {/* <CategoryTreeSelect category1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect> */}
           <div className={styles.select_area}>
             <div className={styles.select_area_item}>
             {select_data.map((dataSet, index) => (
-                  <Select placeholder={dataSet.placeholder} key={index} style={{ width: 200, borderRadius: 30 }}>
+              <Select placeholder={dataSet.placeholder} key={index} style={{ width: 200, borderRadius: 30 }} dropdownStyle={{border: '1px solid #FC883A', textAlign: 'center',  }}>
                     {dataSet.list.map((item) => (
-                      
-                      <Option key={item.value} value={item.value}>
+
+                      <Select.Option key={item.value} value={item.value}>
                         {item.label}
-                      </Option>
+                      </Select.Option>
                     ))}
                   </Select>
                 ))}
             </div>
           </div>
           <SearchBar searchNameRef={searchNameRef.current} searchNameTypeRef={searchNameTypeRef.current} loading={loading} onChange={onSearch} />
-          
-          
+
+
         </div>
         <div className={styles.sort_wrap}>
           <SortBy current={sort} onChange={onSortChange} />

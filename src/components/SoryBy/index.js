@@ -5,28 +5,46 @@ import React, { useState } from 'react';
 const SortBy = ({current, onChange}) => {
   // 点击后动态改变排序状态
   const isSomeConditionTrue = true;
-  const [myArray, setMyArray] = useState([
+  const [sortByData, setSortByData] = useState([
     {
       name: 'Total sold',
-      sort: 1
+      sort: -1
     },
     {
-      name: 'Sold (yesterday)',
-      sort: 1
+      name: 'Sold',
+      subName: 'yesterday',
+      sort: -1
     },
     {
       name: 'Total sales',
-      sort: 0
+      sort: -1
     },
     {
       name: 'Earn per sale',
-      sort: 1
-    }, 
+      sort: -1
+    },
     {
       name: 'Commissonn rate',
-      sort: 1
+      sort: -1
     }
   ]);
+
+   const onChangeSwitch = (index) => {
+     setSortByData((prevData) => {
+      console.log(prevData, index);
+
+      const newData = [...prevData];
+       const item = newData[index];
+       // 如果是-1 则赋值为 1
+       if (item.sort === -1) {
+         item.sort = 1;
+       } else {
+         item.sort = item.sort === 1 ? 0 : 1;
+       }
+
+      return newData;
+    });
+  };
   return (
     <div className={styles.container}>
 
@@ -49,13 +67,15 @@ const SortBy = ({current, onChange}) => {
       </div> */}
 
       <div className={styles.container}>
-            {myArray.map((item, index) => (
+            {sortByData.map((item, index) => (
               <div
                 key={index}
-                onClick={() => onChange(index)}
+                onClick={() => onChangeSwitch(index)}
                 className={`${styles.sortItem} ${item.sort === 1 && styles.active}`}
               >
-                <div className={styles.itemText}>{item.name}</div>
+                <div className={styles.itemText}>{item.name}
+                  { item.subName && <span className={styles.subName}>({item.subName})</span> }
+                </div>
                 <div className={styles.arrows}>
                   <div className={`${item.sort === 1 ? styles.activeUp : styles.arrowUp}`}></div>
                   <div className={`${item.sort === 0 ? styles.activeDown : styles.arrowDown}`}></div>
@@ -63,7 +83,7 @@ const SortBy = ({current, onChange}) => {
               </div>
             ))}
     </div>
-{/* 
+{/*
       <div  onClick={()=>onChange(3)} className={`${styles.sortItem} ${ current === 3 && styles.active}`}>
         <div className={styles.itemText}>Daily Sales</div>
         <div className={styles.arrows}>

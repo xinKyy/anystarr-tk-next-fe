@@ -29,8 +29,10 @@
         display: flex;
         gap: 30px;
 
-        .custom_select {
-          border-radius: 20px;
+        :global(.ant-select-selector) {
+          border-radius: 25px;
+          color: #D5D6D8;
+          text-align: center;
         }
       }
     }
@@ -41,6 +43,12 @@
         width: 93%;
         margin: 0 auto;
         margin-top: 20px;
+      }
+      .select_area_item {
+        padding: 0px 3%;
+        width: 93%;
+        // 超出滚动
+        overflow-x: auto;
       }
     }
   }
