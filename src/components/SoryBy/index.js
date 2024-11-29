@@ -31,7 +31,7 @@ const SortBy = ({current, onChange}) => {
   const [currentSort, setCurrentSort] = useState(-1);
   const [currentSortType, setCurrentSorType] = useState(-1);
 
-  const onChangeSwitch = (index) => {
+  const onChangeSwitch = (type, index) => {
      console.log(index);
 
      setSortByData((prevData) => {
@@ -49,7 +49,7 @@ const SortBy = ({current, onChange}) => {
        } else {
          item.sort = item.sort === 1 ? 2 : 1;
        }
-       setCurrentSort(index + 1);
+       setCurrentSort(type);
        setCurrentSorType(item.sort);
           console.log("设置了值");
 
@@ -88,8 +88,8 @@ const SortBy = ({current, onChange}) => {
         {sortByData.map((item, index) => (
           <div
             key={index}
-            onClick={() => onChangeSwitch(item.type)}
-            className={`${styles.sortItem} ${item.sort === 1 && styles.active} ${currentSort === index + 1 && styles.sort_item_active}` }
+            onClick={() => onChangeSwitch(item.type, index)}
+            className={`${styles.sortItem} ${item.sort === 1 && styles.active} ${currentSort === item.type && styles.sort_item_active}` }
               >
                 <div className={styles.itemText}>{item.name}
                   { item.subName && <span className={styles.subName}>({item.subName})</span> }
