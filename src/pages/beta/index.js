@@ -139,6 +139,7 @@ const Home = () => {
     searchNameTypeRef.current = searchType;
     getProdList(v, searchType);
 
+    if (!v) return;
     const item = {name:v, type:searchType};
     let localHistory = localStorage.getItem("history");
     if (localHistory){
