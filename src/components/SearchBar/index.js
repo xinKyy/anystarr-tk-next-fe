@@ -36,7 +36,6 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
     }} onChange={handleChange} defaultValue={currenSearchType}>
       <Option value={1}>Product link</Option>
       <Option value={2}>Product name</Option>
-      <Option value={3}>Commission rate</Option>
     </Select>
   );
 

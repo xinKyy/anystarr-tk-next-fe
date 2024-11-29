@@ -205,10 +205,14 @@ const Home = () => {
     {
       value: 3,
       label: '25% - 30%',
+    },
+    {
+      value: 4,
+      label: '25% - 30%',
 
     },
      {
-      value: 4,
+      value: 5,
       label: '> 30%',
       }
     ]
