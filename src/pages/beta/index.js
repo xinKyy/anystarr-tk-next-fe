@@ -190,23 +190,7 @@ const Home = () => {
   }, []);
 
   // 下拉框数据
-  const select_data = [{
-    placeholder: 'Select category',
-    list: [{
-      value: 1,
-      label: 'Product Name',
-    },
-    {
-      value: 2,
-      label: 'Product Code',
-    },
-    {
-      value: 3,
-      label: 'Product Description',
-
-    }
-  ]
-  },
+  const select_data = [
   {
     placeholder: 'Commission rate',
     fieldName: 'commissionType',
@@ -266,10 +250,10 @@ const Home = () => {
             // !mobile &&
             // <CategoryTreeSelect category1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
           } */}
-          {/* <CategoryTreeSelect categor2y1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect> */}
           <div className={styles.select_area}>
             <div className={styles.select_area_item}>
-            {select_data.map((dataSet, index) => (
+              <CategoryTreeSelect categor2y1Id={category1Id} className={styles.select_category} onCategoryChange={onCheckLevel1}></CategoryTreeSelect>
+              {select_data.map((dataSet, index) => (
               <Select onChange={(value) => onSelected(dataSet.fieldName, value)} placeholder={dataSet.placeholder} key={index} style={{ width: 200, borderRadius: 30 }} dropdownStyle={{border: '1px solid #FC883A', textAlign: 'center',  }} >
                     {dataSet.list.map((item) => (
 
