@@ -8,20 +8,24 @@ const SortBy = ({current, onChange}) => {
   const [sortByData, setSortByData] = useState([
     {
       name: 'Total sold',
-      sort: -1
+      sort: -1,
+      type: 2,
     },
     {
       name: 'Sold',
       subName: 'yesterday',
-      sort: -1
+      sort: -1,
+      type: 3
     },
     {
       name: 'Earn per sale',
-      sort: -1
+      sort: -1,
+      type: 6
     },
     {
       name: 'Commissonn rate',
-      sort: -1
+      sort: -1,
+      type: 4
     }
   ]);
   const [currentSort, setCurrentSort] = useState(-1);
@@ -84,7 +88,7 @@ const SortBy = ({current, onChange}) => {
         {sortByData.map((item, index) => (
           <div
             key={index}
-            onClick={() => onChangeSwitch(index)}
+            onClick={() => onChangeSwitch(item.type)}
             className={`${styles.sortItem} ${item.sort === 1 && styles.active} ${currentSort === index + 1 && styles.sort_item_active}` }
               >
                 <div className={styles.itemText}>{item.name}
