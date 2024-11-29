@@ -34,6 +34,8 @@ const Home = () => {
   const searchNameRef = useRef();
   const searchNameTypeRef = useRef(2);
 
+  const historyRef = useRef(false);
+
   const getProdList = (searchNameRe, searchType) => {
     // setProdList(prodListMock);
     if (loading) return; // 检查是否正在加载或没有更多数据
@@ -124,6 +126,19 @@ const Home = () => {
     searchNameRef.current = v;
     searchNameTypeRef.current = searchType;
     getProdList(v, searchType);
+
+    const item = {name:v, type:searchType};
+    let localHistory = localStorage.getItem("history");
+    if (localHistory){
+      localHistory = JSON.parse(localHistory);
+    } else {
+      localHistory = [];
+    }
+    if (localHistory && localHistory.filter(it => it.name === item.name).length === 0){
+     localHistory.push(item);
+    }
+    localStorage.setItem("history", JSON.stringify(localHistory));
+    showVisibleDropDown(true);
   };
 
   const onCheckLevel1 = (v) =>{
@@ -138,9 +153,13 @@ const Home = () => {
     category1IdRef = v;
   };
 
-  const showVisibleDropDown = () => {
+  const showVisibleDropDown = (bool) => {
     // 取反
-    setVisibleDropDown(!visibleDropDown);
+    if (bool === false && historyRef.current === false){
+      setVisibleDropDown(false);
+    } else {
+      setVisibleDropDown(true);
+    }
   };
 
   useEffect(()=>{
@@ -232,9 +251,12 @@ const Home = () => {
             </div>
           </div>
           {
-            visibleDropDown && <SearchDropDown />
+            visibleDropDown && <div onFocus={()=>showVisibleDropDown(true)}>
+              <SearchDropDown hover={()=>{ historyRef.current = true; }} show={()=>showVisibleDropDown(true)} noHover={()=>{ historyRef.current = false; }} onSearch={(e, item)=>onSearch(item.name, item.type)} />
+            </div>
           }
-          <div onClick={showVisibleDropDown}>
+
+          <div onFocus={()=>showVisibleDropDown(true)} onBlur={()=>showVisibleDropDown(false)}>
             <SearchBar searchNameRef={searchNameRef.current} searchNameTypeRef={searchNameTypeRef.current} loading={loading} onChange={onSearch} />
           </div>
 

@@ -229,15 +229,15 @@ const ProductDetails = ({productId}) =>{
               <div className={styles.title_1}>Sold<span>(yesterday)</span></div>
               <div>{product.daySoldNum}</div>
             </div>
-            {/* <div className={styles.item_wrap}>*/}
-            {/*  <div className={styles.title_1}>Sold<span>(last 7 days)</span></div>*/}
-            {/*  <div>{product}</div>*/}
-            {/* </div>*/}
+             <div className={styles.item_wrap}>
+              <div className={styles.title_1}>Sold<span>(last 7 days)</span></div>
+              <div>{product.day7SoldNum ?? "--"}</div>
+             </div>
           </div>
 
           <div className={styles.btn_wrap}>
             {
-              product.collect ? <div onClick={opCollect} className={styles.remove_collection}>
+              collect ? <div onClick={opCollect} className={styles.remove_collection}>
                 Uncollections
               </div> : <div onClick={opCollect} className={styles.add_to_collection}>Add to Collection</div>
             }
@@ -253,7 +253,7 @@ const ProductDetails = ({productId}) =>{
       </div> : <div className={styles.product_wrap}><Skeleton /></div>
     }
 
-    <ProductModal />
+    <ProductModal  />
   </>;
 };
 

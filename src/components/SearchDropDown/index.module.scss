@@ -14,9 +14,11 @@
     width: 600px;
     padding: 20px;
     color: #999999;
+    z-index: 999;
 
     .dropDownItem {
       display: flex;
+      cursor: pointer;
       justify-content: space-between;
       margin-top: 10px;
       padding: 10px;

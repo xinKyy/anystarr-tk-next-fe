@@ -14,7 +14,7 @@ const CustomModal = ({ visible, onCancel, title, customContent }) => {
       <div className={styles.customModal}>
         <p className={styles.title}>Method1</p>
         <div className={styles.steps}>
-          <div className={styles.step}>     
+          <div className={styles.step}>
             <div className={styles.left}>
               <img src='/static/detail-01.png'/>
               <div style={{marginTop: '10px'}}>
@@ -25,7 +25,7 @@ const CustomModal = ({ visible, onCancel, title, customContent }) => {
             <div className={styles.right}>--<span className={styles.jt}>⇀</span></div>
           </div>
 
-          <div className={styles.step}>     
+          <div className={styles.step}>
             <div className={styles.left}>
               <img src='/static/detail-02.png'/>
               <div style={{marginTop: '10px'}}>
@@ -36,7 +36,7 @@ const CustomModal = ({ visible, onCancel, title, customContent }) => {
             <div className={styles.right}>--<span className={styles.jt}>⇀</span></div>
           </div>
 
-          <div className={styles.step}>     
+          <div className={styles.step}>
             <div className={styles.left}>
               <img src='/static/detail-04.png'/>
               <div style={{marginTop: '10px'}}>
@@ -47,7 +47,7 @@ const CustomModal = ({ visible, onCancel, title, customContent }) => {
             <div className={styles.right}>--<span className={styles.jt}>⇀</span></div>
           </div>
 
-          <div className={styles.step}>     
+          <div className={styles.step}>
             <div className={styles.left}>
               <img src='/static/detail-04.png'/>
               <div style={{marginTop: '10px'}}>
@@ -95,7 +95,7 @@ const ProductModal = () => {
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      {/* <button onClick={openModal}>Open Modal</button>*/}
       <CustomModal
         visible={modalVisible}
         onCancel={closeModal}
