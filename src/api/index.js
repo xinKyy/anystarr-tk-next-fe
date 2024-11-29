@@ -35,12 +35,12 @@ export const APICheckCollect = (params) => {
 
 // 获取商品一级类目
 export const APIGetCategoryFirst = () => {
-  return ajaxRequest.postJson(`/api/v1/category/first`, {});
+  return ajaxRequest.get(`/api/v1/category/first`, {});
 };
 
 // 根据一级获取二级类目
 export const APIGetCategorySecond = (params) => {
-  return ajaxRequest.post(`/api/v1/category/sub`, params);
+  return ajaxRequest.get(`/api/v1/category/sub`, params);
 };
 
 // 获取推荐商品
