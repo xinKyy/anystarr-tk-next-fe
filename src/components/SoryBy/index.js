@@ -91,8 +91,8 @@ const SortBy = ({current, onChange}) => {
                   { item.subName && <span className={styles.subName}>({item.subName})</span> }
                 </div>
                 <div className={styles.arrows}>
-                  <div className={`${item.sort === 2 ? styles.activeUp : styles.arrowUp}`}></div>
-                  <div className={`${item.sort === 1 ? styles.activeDown : styles.arrowDown}`}></div>
+                  <div className={`${item.sort === 1 ? styles.activeUp : styles.arrowUp}`}></div>
+                  <div className={`${item.sort === 2 ? styles.activeDown : styles.arrowDown}`}></div>
                 </div>
               </div>
             ))}
