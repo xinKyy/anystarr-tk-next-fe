@@ -14,10 +14,11 @@
   user-select: none;
   cursor: pointer;
   color: black;
-  &.active {
-    border-color: #18d87e;
-    color: #F0774A ;
-  }
+}
+
+.sort_item_active {
+  border-color: #18d87e;
+  color: #F0774A;
 }
 
 .itemText {
@@ -99,5 +100,5 @@
 
 .arrowDown {
   justify-content: flex-start;
-  
+
 }

@@ -23,6 +23,7 @@ let back = false;
 const Home = () => {
   const [prodList, setProdList] = useState(data);
   const [sort, setSort] = useState(5);
+  const [sortType, setSortType] = useState(5);
   const [category1Id, setCategory1Id] = useState(category1IdRef);
   const [page, setPage] = useState(pageRef);
   const [commissionType, setCommissionType] = useState(0);
@@ -47,7 +48,8 @@ const Home = () => {
 
     setLoading(true);
     APIGetProductList(JSON.stringify({
-      sort: Number(localStorage.getItem("mySort") ?? "1"),
+      sort: sort,
+      sortType: sortType,
       page: nowPage,
       pageSize: 100,
       searchName:searchNameRef.current,
@@ -85,14 +87,17 @@ const Home = () => {
     getProdList();
   }, [sort, page, category1Id, random]);
 
-  const onSortChange = (sortby) => {
+  const onSortChange = (sortby, sortType) => {
     window.gtag && window.gtag('event', 'sort', {
       'event_category': 'sort',
       'event_label': 'sort',
       'value': sortby,
     });
+    console.log("调用了父组件 ", sortby, sortType);
+
+    setSortType(sortType);
     if (sort === sortby){
-      setSort(5);
+      setSort(sortby);
       setPage(1); // Reset page when sorting
       pageRef = 1;
       localStorage.setItem("mySort", 5);
@@ -107,6 +112,8 @@ const Home = () => {
       pageRef = 1;
       setHasMore(true); // 重置是否还有更多数据
     }
+    console.log(sortby, sortType);
+
   };
 
   const handleScroll = () => {

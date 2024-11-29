@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 const SortBy = ({current, onChange}) => {
@@ -16,10 +16,6 @@ const SortBy = ({current, onChange}) => {
       sort: -1
     },
     {
-      name: 'Total sales',
-      sort: -1
-    },
-    {
       name: 'Earn per sale',
       sort: -1
     },
@@ -28,23 +24,41 @@ const SortBy = ({current, onChange}) => {
       sort: -1
     }
   ]);
+  const [currentSort, setCurrentSort] = useState(-1);
+  const [currentSortType, setCurrentSorType] = useState(-1);
 
-   const onChangeSwitch = (index) => {
+  const onChangeSwitch = (index) => {
+     console.log(index);
+
      setSortByData((prevData) => {
-      console.log(prevData, index);
-
+       // 设置所有项的sort值都为-1
+       prevData.forEach((item, subIndex) => {
+         if (index !== subIndex) {
+            item.sort = -1;
+         }
+       });
       const newData = [...prevData];
        const item = newData[index];
        // 如果是-1 则赋值为 1
        if (item.sort === -1) {
          item.sort = 1;
        } else {
-         item.sort = item.sort === 1 ? 0 : 1;
+         item.sort = item.sort === 1 ? 2 : 1;
        }
+       setCurrentSort(index + 1);
+       setCurrentSorType(item.sort);
+          console.log("设置了值");
 
       return newData;
     });
   };
+
+  useEffect(() => {
+    console.log("发生了改变");
+
+    onChange(currentSort, currentSortType);
+  }, [currentSort, currentSortType]);
+
   return (
     <div className={styles.container}>
 
@@ -67,18 +81,18 @@ const SortBy = ({current, onChange}) => {
       </div> */}
 
       <div className={styles.container}>
-            {sortByData.map((item, index) => (
-              <div
-                key={index}
-                onClick={() => onChangeSwitch(index)}
-                className={`${styles.sortItem} ${item.sort === 1 && styles.active}`}
+        {sortByData.map((item, index) => (
+          <div
+            key={index}
+            onClick={() => onChangeSwitch(index)}
+            className={`${styles.sortItem} ${item.sort === 1 && styles.active} ${currentSort === index + 1 && styles.sort_item_active}` }
               >
                 <div className={styles.itemText}>{item.name}
                   { item.subName && <span className={styles.subName}>({item.subName})</span> }
                 </div>
                 <div className={styles.arrows}>
-                  <div className={`${item.sort === 1 ? styles.activeUp : styles.arrowUp}`}></div>
-                  <div className={`${item.sort === 0 ? styles.activeDown : styles.arrowDown}`}></div>
+                  <div className={`${item.sort === 2 ? styles.activeUp : styles.arrowUp}`}></div>
+                  <div className={`${item.sort === 1 ? styles.activeDown : styles.arrowDown}`}></div>
                 </div>
               </div>
             ))}
