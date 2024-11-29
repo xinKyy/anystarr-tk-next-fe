@@ -25,6 +25,9 @@ const Home = () => {
   const [sort, setSort] = useState(5);
   const [category1Id, setCategory1Id] = useState(category1IdRef);
   const [page, setPage] = useState(pageRef);
+  const [commissionType, setCommissionType] = useState(0);
+  const [earnPerType, setEarnPerType] = useState(0);
+
 
   const [visibleDropDown, setVisibleDropDown] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -48,7 +51,9 @@ const Home = () => {
       page: nowPage,
       pageSize: 100,
       searchName:searchNameRef.current,
-      searchType:searchNameTypeRef.current,
+      searchType: searchNameTypeRef.current,
+      commissionType: commissionType,
+      earnPerType: earnPerType,
       categoryId:category1IdRef
     })).then(resp => {
       if (resp.data.list) {
@@ -162,6 +167,16 @@ const Home = () => {
     }
   };
 
+  // 搜索狂选中
+  const onSelected = (fieldName, index) => {
+    console.log(fieldName, index);
+    if (fieldName === 'commissionType') {
+      setCommissionType(index);
+    } else {
+      setEarnPerType(index);
+    }
+  };
+
   useEffect(()=>{
     setSort(Number(localStorage.getItem("mySort") ?? "5"));
   }, []);
@@ -170,15 +185,15 @@ const Home = () => {
   const select_data = [{
     placeholder: 'Select category',
     list: [{
-      value: '1',
+      value: 1,
       label: 'Product Name',
     },
     {
-      value: '2',
+      value: 2,
       label: 'Product Code',
     },
     {
-      value: '3',
+      value: 3,
       label: 'Product Description',
 
     }
@@ -186,41 +201,49 @@ const Home = () => {
   },
   {
     placeholder: 'Commission rate',
+    fieldName: 'commissionType',
     list: [{
-      value: '1',
+      value: 1,
       label: '< 15%',
     },
     {
-      value: '2',
+      value: 2,
       label: '15% - 20%',
     },
     {
-      value: '3',
+      value: 3,
       label: '25% - 30%',
 
     },
      {
-      value: '3',
+      value: 4,
       label: '> 30%',
-
       }
     ]
   },
   {
     placeholder: 'Earn per sale',
+    fieldName: 'earnPerType',
     list: [{
-      value: '1',
-      label: 'Product Name',
+      value: 1,
+      label: '<$3',
     },
     {
-      value: '2',
-      label: 'Product Code',
+      value: 2,
+      label: '$3 - $5',
+      },
+      {
+      value: 3,
+      label: '$5 - $10',
     },
-    {
-      value: '3',
-      label: 'Product Description',
-
-    }
+     {
+      value: 4,
+      label: '$10 - $20',
+      },
+      {
+      value: 5,
+      label: '>$20',
+    },
   ]
   }];
 
@@ -239,7 +262,7 @@ const Home = () => {
           <div className={styles.select_area}>
             <div className={styles.select_area_item}>
             {select_data.map((dataSet, index) => (
-              <Select placeholder={dataSet.placeholder} key={index} style={{ width: 200, borderRadius: 30 }} dropdownStyle={{border: '1px solid #FC883A', textAlign: 'center',  }}>
+              <Select onChange={(value) => onSelected(dataSet.fieldName, value)} placeholder={dataSet.placeholder} key={index} style={{ width: 200, borderRadius: 30 }} dropdownStyle={{border: '1px solid #FC883A', textAlign: 'center',  }} >
                     {dataSet.list.map((item) => (
 
                       <Select.Option key={item.value} value={item.value}>
