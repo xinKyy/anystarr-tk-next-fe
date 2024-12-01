@@ -278,8 +278,20 @@
     border-radius: 20px;
     border: 1px solid rgba(237,236,238,0.85);
     padding: 20px 17px;
-    @media screen and (max-width: 650px){
+    @media screen and (max-width: 1380px){
+      zoom: 0.9;
+      padding: 10px;
+    }
+    @media screen and (max-width: 1050px){
+      zoom: 0.9;
+      padding: 10px;
+    }
+    @media screen and (max-width: 850px){
       zoom: 0.8;
+      padding: 10px;
+    }
+    @media screen and (max-width: 650px){
+      zoom: 0.7;
       padding: 10px;
     }
     @media screen and (max-width: 390px){
