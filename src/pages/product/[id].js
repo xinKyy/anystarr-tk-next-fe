@@ -94,9 +94,10 @@ const ProductDetails = ({productId}) =>{
           if (isMobile()){
             window.open(url, "_blank");
             setShowCase(true);
+          } else {
+            setProductLink(url);
+            setShowCase(true);
           }
-          setProductLink(url);
-          setShowCase(true);
         }
       }).finally(()=>{
         setAddTkLoading(false);
@@ -105,9 +106,10 @@ const ProductDetails = ({productId}) =>{
       const url = product?.url;
       if (isMobile()){
         window.open(url, "_blank");
+      } else {
+        setProductLink(url);
+        setShowCase(true);
       }
-      setProductLink(url);
-      setShowCase(true);
     }
 
   };
