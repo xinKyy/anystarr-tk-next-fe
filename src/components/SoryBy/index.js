@@ -66,7 +66,7 @@ const SortBy = ({current, onChange}) => {
   return (
     <div className={styles.container}>
 
-      <div onClick={()=>onChange(5)} className={`${styles.sortItem} ${ current === 5 && styles.active}`}>
+      <div onClick={()=>onChange(5, 1)} className={`${styles.sortItem} ${ current === 5 && styles.active}`}>
         <div className={styles.itemText}>
           <img src={"/refresh.png"}/>
         </div>
@@ -89,7 +89,7 @@ const SortBy = ({current, onChange}) => {
           <div
             key={index}
             onClick={() => onChangeSwitch(item.type, index)}
-            className={`${styles.sortItem} ${item.sort === 1 && styles.active} ${currentSort === item.type && styles.sort_item_active}` }
+            className={`${styles.sortItem} ${item.sort === 1 && styles.active} ${current === item.type && styles.sort_item_active}` }
               >
                 <div className={styles.itemText}>{item.name}
                   { item.subName && <span className={styles.subName}>({item.subName})</span> }

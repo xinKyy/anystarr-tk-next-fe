@@ -3091,24 +3091,22 @@ const Home = () => {
   const onSortChange = (sortby, sortType) => {
     console.log(sortby, sortType, "sortType sortType sortType");
     setSortType(sortType);
+    if (sortby === 5){
+      setRandom(random + 1);
+    }
     if (sort === sortby){
-      setSort(5);
+      setSort(sort);
       setPage(1); // Reset page when sorting
       pageRef = 1;
-      localStorage.setItem("mySort", 5);
+      localStorage.setItem("mySort", sortby);
       setHasMore(true); // 重置是否还有更多数据
     } else {
       setSort(sortby);
-      if (sortby === 5){
-        setRandom(random + 1);
-      }
       localStorage.setItem("mySort", sortby);
       setPage(1); // Reset page when sorting
       pageRef = 1;
       setHasMore(true); // 重置是否还有更多数据
     }
-    console.log(sortby, sortType);
-
   };
 
   const handleScroll = () => {
