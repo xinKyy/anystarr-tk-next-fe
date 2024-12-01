@@ -286,6 +286,10 @@
       zoom: 0.7;
       padding: 10px;
     }
+    @media screen and (max-width: 350px){
+      zoom: 0.6;
+      padding: 10px;
+    }
     .top{
       display: flex;
       img{
