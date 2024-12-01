@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
 import QRCode from "react-qr-code";
-import { Modal } from 'antd';
+import {message, Modal} from 'antd';
+import copy from "copy-to-clipboard";
 
 const AddShowCaseStepModal = ({ visible, link,  onCancel}) => {
+
+  const onCopy = () =>{
+
+    copy(link);
+    message.success("Copy link successfully, please open it with a browser on your mobile device");
+
+  };
+
   return (
     <Modal
       visible={visible}
@@ -71,7 +80,7 @@ const AddShowCaseStepModal = ({ visible, link,  onCancel}) => {
         <div className={styles.footer}>
           <p>Copy the link below to open it in your mobile browser:</p>
           <p>{link}
-            <img src='/static/detail-05.png' style={{marginLeft: '20px'}}/>
+            <img onClick={onCopy} src='/static/detail-05.png' style={{marginLeft: '20px'}}/>
           </p>
         </div>
       </div>

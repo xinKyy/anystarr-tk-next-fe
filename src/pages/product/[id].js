@@ -94,9 +94,6 @@ const ProductDetails = ({productId}) =>{
           if (isMobile()){
             window.open(url, "_blank");
             setShowCase(true);
-          } else {
-            copy(url);
-            message.success("Copy link successfully, please open it with a browser on your mobile device");
           }
           setProductLink(url);
           setShowCase(true);
@@ -108,10 +105,9 @@ const ProductDetails = ({productId}) =>{
       const url = product?.url;
       if (isMobile()){
         window.open(url, "_blank");
-      } else {
-        copy(url);
-        message.success("Copy link successfully, please open it with a browser on your mobile device");
       }
+      setProductLink(url);
+      setShowCase(true);
     }
 
   };
