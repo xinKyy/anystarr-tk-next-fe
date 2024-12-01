@@ -40,7 +40,6 @@
       .select_category{
         width: 93%;
         margin: 0 auto;
-        margin-top: 20px;
       }
       .select_area_item {
         padding: 0px 3%;
@@ -88,19 +87,20 @@
     gap: 10px; /* 列与列之间的间隔 */
     padding: 10px;
     @media (max-width: 1200px) {
-      grid-template-columns: repeat(4, 1fr); /* 两列等宽 */
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px; /* 列与列之间的间隔 */
       grid-auto-rows: 1fr; /* 让每行高度相同 */
     }
     @media (max-width: 768px) {
-      grid-template-columns: repeat(3, 1fr); /* 两列等宽 */
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px; /* 列与列之间的间隔 */
       grid-auto-rows: 1fr; /* 让每行高度相同 */
     }
     @media (max-width: 500px) {
-      grid-template-columns: repeat(2, 1fr); /* 两列等宽 */
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 5px; /* 列与列之间的间隔 */
       grid-auto-rows: 1fr; /* 让每行高度相同 */
+      overflow: hidden;
     }
   }
 }

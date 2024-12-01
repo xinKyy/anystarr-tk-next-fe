@@ -298,17 +298,17 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
         </div>
         <div className={styles.right_wrap_out}>
           <div>
-            <div>
+            <div className={styles.flex_row_m}>
               <div className={styles.title_1}>Price</div>
               <div className={styles.title_2}>{item.price}</div>
             </div>
-            <div>
+            <div className={styles.flex_row_m}>
               <div className={styles.title_1}>Vs.open collab</div>
               <div className={styles.title_3}>{item.openRate}%</div>
             </div>
           </div>
            <div>
-             <div>
+             <div className={styles.flex_row_m}>
                <div className={styles.title_1}>Total sales</div>
                <div className={styles.title_4}>{item.soldAmount}</div>
              </div>

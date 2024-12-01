@@ -278,6 +278,9 @@
     border-radius: 20px;
     border: 1px solid rgba(237,236,238,0.85);
     padding: 20px 17px;
+    @media screen and (max-width: 650px){
+      zoom: 0.8;
+    }
     .top{
       display: flex;
       img{
@@ -431,6 +434,9 @@
     }
   }
 
+  .flex_row_m{
+  }
+
   &:hover{
     .card_wrap{
       box-shadow: 0px 3px 10px 0px rgba(240,119,74,0.5);
@@ -439,6 +445,31 @@
         width: 104px;
       }
     }
+
+    @media screen and (max-width: 650px){
+      .card_wrap{
+        flex-direction: column;
+        .right_wrap_out{
+          width: 100%;
+          margin-top: 20px;
+          padding-right: 20px;
+
+          img{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+          }
+        }
+      }
+      .flex_row_m{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
     .hovered{
       display: flex;
       visibility: visible; /* 让元素可见 */
