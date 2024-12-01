@@ -3024,7 +3024,7 @@ let back = false;
 const Home = () => {
   const [prodList, setProdList] = useState(data);
   const [sort, setSort] = useState(5);
-  const [sortType, setSortType] = useState(5);
+  const [sortType, setSortType] = useState();
   const [category1Id, setCategory1Id] = useState(category1IdRef);
   const [page, setPage] = useState(pageRef);
   const [commissionType, setCommissionType] = useState(0);
@@ -3086,19 +3086,13 @@ const Home = () => {
       return;
     }
     getProdList();
-  }, [sort, page, category1Id, random]);
+  }, [sort, page, category1Id, random, sortType]);
 
   const onSortChange = (sortby, sortType) => {
-    window.gtag && window.gtag('event', 'sort', {
-      'event_category': 'sort',
-      'event_label': 'sort',
-      'value': sortby,
-    });
-    console.log("调用了父组件 ", sortby, sortType);
-
+    console.log(sortby, sortType, "sortType sortType sortType");
     setSortType(sortType);
     if (sort === sortby){
-      setSort(sortby);
+      setSort(5);
       setPage(1); // Reset page when sorting
       pageRef = 1;
       localStorage.setItem("mySort", 5);
