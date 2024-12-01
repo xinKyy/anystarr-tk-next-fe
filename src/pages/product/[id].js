@@ -1,11 +1,6 @@
 import styles from "./index.module.scss";
 import React, {useEffect, useState} from "react";
 import {Button, Carousel, Image, message, Skeleton} from "antd";
-import ProductPrice from "@/components/ProductPrice";
-import ProductPrice2 from "@/components/ProductPrice2";
-import ProductModal from "@/components/ProductModal";
-import SizeBox from "@/components/SizeBox";
-import {useRouter} from "next/router";
 import {APIAddFavoriteItems, APIDeleteFavoriteItems, APIGetLinkByPid, APIGetProductInfo} from "@/api";
 import {isMobile} from "@/utils/action";
 import copy from 'copy-to-clipboard';
@@ -14,6 +9,7 @@ import ConnectTikTipsModal from "@/components/connectTikTipsModal";
 import {useSelector} from "react-redux";
 import useLogin from "@/hooks/useLogin";
 import {LoadingOutlined} from "@ant-design/icons";
+import AddShowCaseStepModal from "@/components/ProductModal";
 
 function updateImageUrl(url, w, h) {
   if (!url) return "";
@@ -68,9 +64,9 @@ const ProductDetails = ({productId}) =>{
   const [addTkLoading, setAddTkLoading] = useState(false);
   const [showConnectTips, setShowConnectTips] = useState(false);
   const { needLogin } = useLogin();
-  const onChange = (currentSlide) => {
-    console.log(currentSlide);
-  };
+
+  const [showCase, setShowCase] = useState(false);
+  const [productLink, setProductLink] = useState("");
 
   const getDetails = () =>{
     APIGetProductInfo({productId:productId}).then(resp=>{
@@ -97,10 +93,13 @@ const ProductDetails = ({productId}) =>{
           const url = resp.data.url;
           if (isMobile()){
             window.open(url, "_blank");
+            setShowCase(true);
           } else {
             copy(url);
             message.success("Copy link successfully, please open it with a browser on your mobile device");
           }
+          setProductLink(url);
+          setShowCase(true);
         }
       }).finally(()=>{
         setAddTkLoading(false);
@@ -282,7 +281,7 @@ const ProductDetails = ({productId}) =>{
       </div> : <div className={styles.product_wrap}><Skeleton /></div>
     }
 
-    <ProductModal  />
+    <AddShowCaseStepModal visible={showCase} link={productLink}  onCancel={()=>setShowCase(false)}  />
   </>;
 };
 
