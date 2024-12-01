@@ -28,36 +28,7 @@ const Product = ({productId}) =>{
 };
 
 const ProductDetails = ({productId}) =>{
-  const [product, setProduct] = useState({
-    "productId": "1729418818380599419",
-    "createTime": "2024-06-27T03:48:29.543+00:00",
-    "updateTime": "2024-11-30T04:16:38.949+00:00",
-    "isDelete": 0,
-    "title": "Individual Lashes Kit, 1 Box DIY Lash Extensions Eyelashes with Tweezers & Bond & Seal and Lash Remover, Curly Fake Lashes Set for Women Makeup, Lash Clusters, Lashes Extension Kit, Makeup Set, Christmas, Christmas Gift",
-    "image": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/1f56101da2ef4e91abd409eaaf4d4013~tplv-dx0w9n1ysr-resize-jpeg:200:200.jpeg?from=1826719393",
-    "price": "$11.64 - 12.91",
-    "soldNum": 44103,
-    "isApply": 1,
-    "totalRate": "15.000000",
-    "openRate": "10.0",
-    "finishRate": "14.0",
-    "lastTime": "2024-11-30T23:58:57.888+00:00",
-    "url": "https://affiliate-us.tiktok.com/api/v1/share/AIr0qRpVldfX",
-    "daySoldNum": 0,
-    "daySoldAmount": "0.00",
-    "soldAmount": "5693.70",
-    "alyImage": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/677b6b4ed0bf4048a4629488285b0533%7Etplv-aphluv4xwc-origin-jpeg.jpeg%3Ffrom%3D1345521523",
-    "images": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/1f56101da2ef4e91abd409eaaf4d4013~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/acbfd8a1d7f74a7cb3e32d4f67f04b8c~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/dc03da34fc79440e8151c3f306dad0a7~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/1ff70bcd4bcf40b785a35b9d04ac906d~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/030a7646302b45968050e4fcfbcbfffc~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/629d1002f71b47b58fc7772ace02ad8f~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/cc97090ad430458a9ecf7a776064152d~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/7933dc61634848838b8632310b3c687c~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/da20cadb21794f679ccea7faaef8964f~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393",
-    "alyImages": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/1f56101da2ef4e91abd409eaaf4d4013%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/acbfd8a1d7f74a7cb3e32d4f67f04b8c%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/dc03da34fc79440e8151c3f306dad0a7%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/1ff70bcd4bcf40b785a35b9d04ac906d%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/030a7646302b45968050e4fcfbcbfffc%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/629d1002f71b47b58fc7772ace02ad8f%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/cc97090ad430458a9ecf7a776064152d%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/7933dc61634848838b8632310b3c687c%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/da20cadb21794f679ccea7faaef8964f%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393",
-    "day7SoldNum": null,
-    "isUpEs": 1,
-    "sortValue": 2.9508,
-    "manualFactors": 1,
-    "earnPer": "1.810000",
-    "collect": false,
-    "collectId": null,
-    "needApplyLink": true
-  });
+  const [product, setProduct] = useState();
   const [mobile, setMobile] = useState(false);
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
