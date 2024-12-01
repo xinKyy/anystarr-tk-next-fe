@@ -256,7 +256,7 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
       <div>
         <div className={styles.top}>
           <img  src={ item.alyImage ? item.alyImage : updateImageUrl(item.image, 500, 500)}/>
-          <div className={styles.right_wrap}>
+          <div className={styles.right_wrap_inner}>
             <div>
               <div className={styles.title_1}>Earn per sale</div>
               <div className={styles.title_2}>{getEarn(item.price, Number(item.finishRate) / 100)}</div>
@@ -279,7 +279,7 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
         <div>
           <div className={styles.top}>
             <img  src={ item.alyImage ? item.alyImage : updateImageUrl(item.image, 500, 500)}/>
-            <div className={styles.right_wrap}>
+            <div className={styles.right_wrap_inner}>
               <div>
                 <div className={styles.title_1}>Earn per sale</div>
                 <div className={styles.title_2}>{getEarn(item.price, Number(item.finishRate) / 100)}</div>
@@ -296,7 +296,7 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
             loading && <LoadingOutlined></LoadingOutlined>
           } Add to Showcase</div>
         </div>
-        <div className={styles.right_wrap}>
+        <div className={styles.right_wrap_out}>
           <div>
             <div>
               <div className={styles.title_1}>Price</div>

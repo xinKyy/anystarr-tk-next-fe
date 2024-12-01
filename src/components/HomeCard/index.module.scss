@@ -270,6 +270,7 @@
   position: relative;
   transition: all .3s;
   cursor: pointer;
+  flex-shrink: 0;
   .card_wrap{
     display: flex;
     background: #FFFFFF;
@@ -332,9 +333,47 @@
     }
 
   }
-  .right_wrap{
+  .right_wrap_inner{
     flex-shrink: 0;
-    width: 104px;
+    margin-left: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background: #ffffff;
+    img{
+      width: 28px;
+      height: 28px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .title_1{
+      font-weight: 400;
+      font-size: 14px;
+      color: #666666;
+    }
+    .title_2{
+      font-weight: bold;
+      font-size: 22px;
+      color: #FA6400;
+      margin-bottom: 10px;
+    }
+    .title_3{
+      font-weight: bold;
+      font-size: 22px;
+      color: #B2B2B2;
+    }
+
+    .title_4{
+      font-weight: bold;
+      font-size: 14px;
+      color: #000;
+      margin-top: 7px;
+      margin-bottom: 12px;
+    }
+  }
+  .right_wrap_out{
+    flex-shrink: 0;
+    width: 0;
     margin-left: 16px;
     display: flex;
     justify-content: space-between;
@@ -396,6 +435,9 @@
     .card_wrap{
       box-shadow: 0px 3px 10px 0px rgba(240,119,74,0.5);
       border: 1px solid #F0774A;
+      .right_wrap_out{
+        width: 104px;
+      }
     }
     .hovered{
       display: flex;

@@ -32,7 +32,36 @@ const Product = ({productId}) =>{
 };
 
 const ProductDetails = ({productId}) =>{
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState({
+    "productId": "1729541559560212791",
+    "createTime": "2024-08-06T18:30:48.133+00:00",
+    "updateTime": "2024-11-30T14:15:49.514+00:00",
+    "isDelete": 0,
+    "title": "Women's Plain Button Front Ribbed Tank Top, Tank Tops for Women, Casual Sleeveless Round Neck Top for Daily Wear, Ladies Clothes for Fall, Fall Outfits, Fallfreshness Clothes,  Birthday Gifts",
+    "image": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/e2dcbd9b23564b3f84a9b3e8fafdad59~tplv-dx0w9n1ysr-resize-jpeg:200:200.jpeg?from=1826719393",
+    "price": "$7.14 - 29.24",
+    "soldNum": 20107,
+    "isApply": 1,
+    "totalRate": "20.000000",
+    "openRate": "10.0",
+    "finishRate": "18.0",
+    "lastTime": "2024-11-30T22:26:16.703+00:00",
+    "url": null,
+    "daySoldNum": 0,
+    "daySoldAmount": "0.00",
+    "soldAmount": "5879.29",
+    "alyImage": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/45c66c92fb064ceb9a5d46e7b03f28a1%7Etplv-dx0w9n1ysr-resize-jpeg%3A600%3A600.jpeg%3Ffrom%3D520841845",
+    "images": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/e2dcbd9b23564b3f84a9b3e8fafdad59~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/6a51317133ba46658bd38b8beb2184d2~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/23e83bd1bcd44068ade28e46dc8ba47a~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/4f260973af39438ca6ee3e2b7cd028c7~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/d36d2f2528da4e33a03f1b2189cf21aa~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/4290d36471b843938977215ca36f4882~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/50661c04bd334cbaa4b095725a174928~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/a7ce86181d6f46ac8e8a4f2cdd09c7eb~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/4ccd7ba41ad143fba89852cbee79356f~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393",
+    "alyImages": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/e2dcbd9b23564b3f84a9b3e8fafdad59%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/6a51317133ba46658bd38b8beb2184d2%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/23e83bd1bcd44068ade28e46dc8ba47a%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/4f260973af39438ca6ee3e2b7cd028c7%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/d36d2f2528da4e33a03f1b2189cf21aa%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/4290d36471b843938977215ca36f4882%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/50661c04bd334cbaa4b095725a174928%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/a7ce86181d6f46ac8e8a4f2cdd09c7eb%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/4ccd7ba41ad143fba89852cbee79356f%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393",
+    "day7SoldNum": null,
+    "isUpEs": 1,
+    "sortValue": 2.9802,
+    "manualFactors": 1,
+    "earnPer": "5.260000",
+    "collect": false,
+    "collectId": null,
+    "needApplyLink": true
+  });
   const [mobile, setMobile] = useState(false);
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -204,7 +233,7 @@ const ProductDetails = ({productId}) =>{
           <div className={styles.vs_wrap}>
             <div className={styles.vs_left}>
               <div>
-                <div></div>
+                <img src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/anystarr-cion.png"}></img>
                 <div className={styles.text_1}>Commission</div>
                 <div className={styles.high_light}>{product.finishRate}%</div>
                 <div className={styles.text_2}>Commission Rate</div>
@@ -213,7 +242,7 @@ const ProductDetails = ({productId}) =>{
             <img className={styles.vs_icon} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/vs_icon.png"} />
             <div className={styles.vs_right}>
               <div>
-                <div></div>
+                <img src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/tk-icon.png"}></img>
                 <div className={styles.text_1}>vs.open collab</div>
                 <div className={styles.gray_text}>{product.openRate}%</div>
                 <div className={styles.text_2}>Commission Rate</div>

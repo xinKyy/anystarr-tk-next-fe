@@ -9,8 +9,8 @@ body {
 }
 
 :root{
-    --primary-color: rgb(254, 44, 85);
-    --primary-color-80: rgba(254, 44, 85, 0.8);
+    --primary-color: #FA6400;
+    --primary-color-80: rgba(250, 100, 0, 0.8);
     --ansytarr-primary-color: #F0774A
 }
 
@@ -117,7 +117,7 @@ a{
 }
 
 .link_wallet{
-  background: #FF0167;
+  background: var(--primary-color);
   padding: 0 20px;
   height: 36px;
   display: flex;
