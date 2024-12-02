@@ -7,9 +7,9 @@ const CustomEmpty = ({result}) => {
             <div className={styles.container}>
                 <div>
                     <img src='/static/no_data.png'></img>
-                </div> 
+                </div>
                 <div className={styles.msg}>
-                Sorry，there are no results for “{result ? result : "未知"}”
+                Sorry，there are no results for “{result ? result : "unknown"}”
                 </div>
                 <div className={styles.btn}>
                     Recommended for you
