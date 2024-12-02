@@ -46,8 +46,6 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
     const sType = params.get('t'); // "
 
     if (sName && sType){
-      setSearchName(searchName);
-      setCurrentSearchType(sType);
       onChange(sName, sType);
     }
   };
