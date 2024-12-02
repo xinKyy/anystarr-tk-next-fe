@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState, useMemo} from 'react';
+import React, {useCallback, useRef, useState, useMemo, useEffect} from 'react';
 import styles from './index.module.scss';
 import debounce from 'lodash.debounce';
 import {Input, Select} from "antd";
@@ -10,20 +10,6 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
   const [currenSearchType, setCurrentSearchType] = useState(searchNameTypeRef); // 1 pid 2 name 3 佣金率
   const currenSearchTypeRef = useRef(1); // 1 pid 2 name 3 佣金率
 
-  const debouncedOnChange = useCallback(
-    debounce((value) => {
-
-      window.gtag && window.gtag('event', 'search', {
-        'event_category': 'search',
-        'event_label': 'search',
-        'value': value,
-      });
-
-      onChange(value, currenSearchTypeRef.current);
-    }, 500), // 300ms 的防抖时间
-    []
-  );
-
   const handleChange = (value) => {
     currenSearchTypeRef.current = value;
     setCurrentSearchType(value);
@@ -34,8 +20,8 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
     <Select style={{
       minWidth:"100px"
     }} onChange={handleChange} defaultValue={currenSearchType}>
-      <Option value={1}>Product link</Option>
-      <Option value={2}>Product name</Option>
+      <Option value={1}>Product Link</Option>
+      <Option value={2}>Product Name</Option>
     </Select>
   );
 
@@ -46,6 +32,25 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
   };
 
   const searchIcon = useMemo(()=><img src={"/search.svg"} className={`${styles.icon}`}/>, []);
+
+
+  useEffect(()=>{
+    getPathSearch();
+  }, [window.location.href]);
+
+  const getPathSearch = () =>{
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+
+    const sName = params.get('s'); // "hhhhdada"
+    const sType = params.get('t'); // "
+
+    if (sName && sType){
+      setSearchName(searchName);
+      setCurrentSearchType(sType);
+      onChange(sName, sType);
+    }
+  };
 
   return (
     <div style={{

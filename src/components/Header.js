@@ -3,13 +3,14 @@ import getConfig from 'next/config';
 import {useRouter} from "next/router";
 import host from "@/utils/host";
 import {APIGetUserInfo} from "@/api";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useSelector} from "react-redux";
 import useDispatchAction from "@/hooks/useDisptachAction";
 import {setUserInfo} from "@/redux/actions/home";
-import {Avatar, Popover} from "antd";
+import {Avatar, Input, Modal, Popover, Select} from "antd";
 import {getQueryString, isMobile} from "@/utils/action";
 import LoginModal from "@/components/LoginModal";
+const { Option } = Select;
 const { publicRuntimeConfig: { staticFolder } } = getConfig();
 const Header = () => {
   const router = useRouter();
@@ -91,6 +92,7 @@ const Header = () => {
 
     <div className='right-container'>
       {/* <div className='language-btn'></div>*/}
+      <SearchInput/>
       {
         userInfo?.displayName || userInfo?.avatarUrl ?
           <Popover trigger={"click"} placement={"bottom"} content={content}>
@@ -104,6 +106,43 @@ const Header = () => {
           </div>
       }
     </div>
+  </div>;
+};
+
+
+const SearchInput = () =>{
+  const [open, setOpen] = useState(false);
+  const [searchName, setSearchName] = useState("");
+  const [currenSearchType, setCurrentSearchType] = useState(1); // 1 pid 2 name 3 佣金率
+  const currenSearchTypeRef = useRef(1); // 1 pid 2 name 3 佣金率
+  const handleChange = (value) => {
+    currenSearchTypeRef.current = value;
+    setCurrentSearchType(value);
+  };
+  const router = useRouter();
+
+  const onSearch = () =>{
+    router.push(`/beta?s=${searchName}&t=${currenSearchType}`);
+    setSearchName("");
+    setOpen(false);
+  };
+
+  return  <div>
+    <img onClick={()=>setOpen(!open)}  className={"search_icon"} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/search.png"} />
+    <Modal rootClassName={"global_search"} width={877}  centered   footer={null} title={null} closable={false} open={open} onCancel={()=>setOpen(false)}>
+      <div className={"search_warp"}>
+        <div className={"left_wrap"}>
+          <Select rootClassName={"left_wrap"} onChange={handleChange} defaultValue={currenSearchType}>
+            <Option value={1}>Product Link</Option>
+            <Option value={2}>Product Name</Option>
+          </Select>
+        </div>
+        <Input value={searchName} onChange={(e)=>setSearchName(e.target.value)} onPressEnter={onSearch} placeholder={`Search Product ${currenSearchType === 1 ? "Link" : "Name"}`} className={"input"}></Input>
+        <div onClick={onSearch} className={"right_wrap"}>
+          <img src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/search_white.png"}/>
+        </div>
+      </div>
+    </Modal>
   </div>;
 };
 
