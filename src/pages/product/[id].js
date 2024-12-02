@@ -28,7 +28,36 @@ const Product = ({productId}) =>{
 };
 
 const ProductDetails = ({productId}) =>{
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState({
+    "productId": "1729385956637708969",
+    "createTime": "2024-07-04T06:59:20.492+00:00",
+    "updateTime": "2024-12-01T23:48:36.510+00:00",
+    "isDelete": 0,
+    "title": "Women's 3pack Skinny Plain Ribbed Crewneck Crop Tank Top, Summer Clothes Women, Comfort Sleeveless Round Neck Slim-fit Cropped Tops Minimalist Womenswear",
+    "image": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/81d0c158831d46ab8773212baf508230~tplv-dx0w9n1ysr-resize-jpeg:200:200.jpeg?from=1826719393",
+    "price": "$7.39",
+    "soldNum": 2002,
+    "isApply": 1,
+    "totalRate": "15.000000",
+    "openRate": "10.0",
+    "finishRate": "14.0",
+    "lastTime": "2024-12-01T21:43:17.388+00:00",
+    "url": null,
+    "daySoldNum": 0,
+    "daySoldAmount": "0.00",
+    "soldAmount": "14794.779999999999",
+    "alyImage": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/81d0c158831d46ab8773212baf508230%7Etplv-dx0w9n1ysr-resize-jpeg%3A600%3A600.jpeg%3Ffrom%3D1826719393",
+    "images": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/81d0c158831d46ab8773212baf508230~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/3c2127156c244e7ba5c36a2c236ed7a1~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/ee24cbc0faac426bb13ccbe30109793c~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/fa028272e9164462b395562c2df3e41d~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/28fa58ee1572415fa90e40b918d8a8db~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393",
+    "alyImages": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/81d0c158831d46ab8773212baf508230%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/3c2127156c244e7ba5c36a2c236ed7a1%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/ee24cbc0faac426bb13ccbe30109793c%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/fa028272e9164462b395562c2df3e41d%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/28fa58ee1572415fa90e40b918d8a8db%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393",
+    "day7SoldNum": null,
+    "isUpEs": 1,
+    "sortValue": 0.079,
+    "manualFactors": 1,
+    "earnPer": "1.030000",
+    "collect": false,
+    "collectId": null,
+    "needApplyLink": true
+  });
   const [mobile, setMobile] = useState(false);
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -151,7 +180,8 @@ const ProductDetails = ({productId}) =>{
   };
 
   const getEarn = (price, rate) =>{
-    if (price.includes("-")){
+    if (!price) return "--";
+    if (price?.includes("-")){
       const maxPrice = Number(price.split("-")[1]);
       return `$${(maxPrice * rate).toFixed(2)}`;
     }

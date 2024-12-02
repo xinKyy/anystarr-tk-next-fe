@@ -274,6 +274,7 @@
   .card_wrap{
     display: flex;
     background: #FFFFFF;
+    height: 100%;
     box-shadow: 0px 2px 6px 0px rgba(221,221,221,0.62);
     border-radius: 20px;
     border: 1px solid rgba(237,236,238,0.85);
@@ -305,18 +306,19 @@
     .top{
       display: flex;
       img{
-        width: 116px;
-        height: 115px;
+        width: 100px;
+        height: 100px;
         border-radius: 10px;
         object-fit: cover;
       }
     }
 
     .title_main{
-      margin-top: 23px;
+      margin-top: 10px;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 14px;
       color: #333333;
+      height: 15px;
       display: -webkit-box;        /* 兼容 flex 布局 */
       -webkit-box-orient: vertical; /* 垂直方向排列子元素 */
       overflow: hidden;            /* 隐藏溢出部分 */
@@ -327,7 +329,7 @@
     .total_wrap{
       margin-top: 10px;
       font-weight: 400;
-      font-size: 14px;
+      font-size: 12px;
       color: #666666;
       display: flex;
       align-items: center;
@@ -344,15 +346,15 @@
 
     .add_tk{
       width: 100%;
-      height: 40px;
+      height: 35px;
       background: #241E1F;
       border-radius: 24px;
-      font-size: 18px;
+      font-size: 16px;
       color: #FFFFFF;
       display: flex;
       align-items: center;
       cursor: pointer;
-      margin-top: 20px;
+      margin-top: 10px;
       justify-content: center;
     }
 
@@ -363,7 +365,13 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    justify-content: center;
     background: #ffffff;
+
+    .line_h{
+      height: 60px;
+    }
+
     img{
       width: 28px;
       height: 28px;
@@ -372,24 +380,24 @@
     }
     .title_1{
       font-weight: 400;
-      font-size: 14px;
+      font-size: 12px;
       color: #666666;
     }
     .title_2{
       font-weight: bold;
-      font-size: 22px;
+      font-size: 20px;
       color: #FA6400;
       margin-bottom: 10px;
     }
     .title_3{
       font-weight: bold;
-      font-size: 22px;
+      font-size: 20px;
       color: #B2B2B2;
     }
 
     .title_4{
       font-weight: bold;
-      font-size: 14px;
+      font-size: 12px;
       color: #000;
       margin-top: 7px;
       margin-bottom: 12px;
@@ -403,6 +411,9 @@
     justify-content: space-between;
     flex-direction: column;
     background: #ffffff;
+    .line_h{
+      height: 60px;
+    }
     img{
       width: 28px;
       height: 28px;
@@ -411,24 +422,24 @@
     }
     .title_1{
       font-weight: 400;
-      font-size: 14px;
+      font-size: 12px;
       color: #666666;
     }
     .title_2{
       font-weight: bold;
-      font-size: 22px;
+      font-size: 20px;
       color: #FA6400;
       margin-bottom: 10px;
     }
     .title_3{
       font-weight: bold;
-      font-size: 22px;
+      font-size: 20px;
       color: #B2B2B2;
     }
 
     .title_4{
       font-weight: bold;
-      font-size: 14px;
+      font-size: 12px;
       color: #000;
       margin-top: 7px;
       margin-bottom: 12px;
@@ -438,14 +449,14 @@
   .hovered{
     position: absolute;
     background: #ffffff;
-    left: -23%;
+    left: -20%;
     top: 0;
     width: 100%;
     z-index: -1;
     opacity: 0; /* 初始透明 */
     visibility: hidden; /* 初始不可见 */
     transition: visibility 0.3s, transform 0.3s;
-    transform: translateY(-10px); /* 初始位置偏移 */
+    //transform: translateY(-10px); /* 初始位置偏移 */
   }
 
   @media screen and (max-width: 650px){
@@ -474,13 +485,15 @@
           width: calc(100% - 20px);
           margin-top: 10px;
           padding-right: 0;
-
+          .line_h{
+            height: 30px;
+          }
           img{
             width: 20px;
             height: 20px;
             position: absolute;
-            top: 5px;
-            right: 5px;
+            top: 10px;
+            right: 10px;
           }
         }
       }

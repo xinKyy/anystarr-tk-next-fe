@@ -68,7 +68,7 @@ const SortBy = ({current, onChange}) => {
 
       <div onClick={()=>onChange(5, 1)} className={`${styles.sortItem} ${ current === 5 && styles.active}`}>
         <div className={styles.itemText}>
-          <img src={"/refresh.png"}/>
+          <img  src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/recommend.png"}/>
         </div>
         {/* <div className={styles.arrows}>
           <div className={styles.arrowUp}></div>

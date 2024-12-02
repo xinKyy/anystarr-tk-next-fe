@@ -5,6 +5,7 @@ import {APIGetLikeProductList, APIGetProductList} from "@/api";
 import BackBtn from "@/components/BackBtn";
 import MyCollectionCard from "@/components/MyCollectionCard";
 import CreateLinkModal from "@/components/CreateLinkModal";
+import {LoadingOutlined} from "@ant-design/icons";
 let data = [
   {
     "productId": "1729394745420976584",
@@ -2289,8 +2290,8 @@ const MyLike = () =>{
           cursor:"pointer",
           marginRight:"10px"
         }} onClick={()=>setGrid(!grid)} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/convert_icon.svg"} />
-        <div onClick={toAddTk} className={styles.sampleBtn}>
-          <div className={styles.btnInner}>Add to Showcase</div>
+        <div onClick={toAddTk} className={styles.add_to_showcase}>
+          Add to Showcase
         </div>
       </div>
     </div>

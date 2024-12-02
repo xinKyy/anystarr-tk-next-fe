@@ -56,7 +56,7 @@
 }
 
 .label {
-  color: #FF002C;
+  color: var(--primary-color);
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -70,7 +70,7 @@
 }
 
 .value {
-  color: #FF002C;
+  color: var(--primary-color);
   font-family: 'Inter', sans-serif;
   font-weight: bold;
   font-size: 20px;
@@ -176,7 +176,7 @@
   }
 
   .label {
-    color: #FF002C;
+    color: var(--primary-color);
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 14px;
@@ -190,7 +190,7 @@
   }
 
   .value {
-    color: #FF002C;
+    color: var(--primary-color);
     font-family: 'Inter', sans-serif;
     font-weight: bold;
     font-size: 14px;

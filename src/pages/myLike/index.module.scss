@@ -27,6 +27,16 @@
       border-radius: 25px;
     }
   }
+  .add_to_showcase{
+    width: 200px;
+    height: 64px;
+    background: #1E191A;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
 
 
   .grid_container {

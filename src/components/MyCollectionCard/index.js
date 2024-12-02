@@ -123,7 +123,7 @@ const MyCollectionCard = ({item, fromMyLike, checkItem, checked}) => {
             </div>
             <SizeBox w={20}></SizeBox>
             <div style={{
-              color:"#f34949",
+              color:"#FA6400",
               fontWeight:"bold",
               fontSize:"30px"
             }}>VS</div>

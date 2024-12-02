@@ -4,7 +4,7 @@ import debounce from 'lodash.debounce';
 import {Input, Select} from "antd";
 import {CloseCircleFilled} from "@ant-design/icons";
 const { Option } = Select;
-const SearchDropDown = ({onSearch, show, hover, noHover}) => {
+const SearchDropDown = ({onSearch, show, hover, noHover, onBlur}) => {
 
   const [history, setHistory] = useState([]);
 
@@ -29,19 +29,21 @@ const SearchDropDown = ({onSearch, show, hover, noHover}) => {
   if (!history || history.length <= 0) return <div></div>;
 
   return (
-    <div onFocus={show} onMouseEnter={hover} onMouseLeave={noHover} className={styles.SearchDropDown}>
-      <div className={styles.dropDown}>
-          <div className={`${styles.dropDownItem} ${styles.no_hover}`}>
-            <div></div>
-            <div><img src='/static/historyTime.png' style={{withdth: 16, height: 16}}></img></div>
-          </div>
+    <div  className={styles.SearchDropDown}>
+      <div onMouseEnter={hover} onMouseLeave={noHover} className={styles.dropDown}>
         {
           history.map(item=>{
             return <div onClick={(e)=>{
               e.stopPropagation();
               onSearch(e, item);
             }} className={styles.dropDownItem}>
-              <div>{item.name}</div>
+              <div style={{
+                display:"flex",
+                alignItems:"center"
+              }}>
+                <img src='/static/historyTime.png' style={{withdth: 16, height: 16, marginRight:"10px"}}></img>
+                <div>{item.name}</div>
+              </div>
               <div onClick={(e)=>onRemove(e, item)}><CloseCircleFilled /></div>
             </div>;
           })

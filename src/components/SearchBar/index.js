@@ -74,6 +74,9 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
             setSearchName(e.target.value);
             searchNameRef = e.target.value;
           }}
+          onPressEnter={(e)=>{
+            onChange(searchName, currenSearchType);
+          }}
           placeholder={`Search ${map[currenSearchType]}`}
         />
         <div onClick={()=>onChange(searchName, currenSearchType)} className={styles.searchButton}>

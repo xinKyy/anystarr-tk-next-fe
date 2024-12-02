@@ -110,7 +110,7 @@
   .price {
     font-family: 'Inter', sans-serif;
     font-weight: bold;
-    color: #FF002C;
+    color: var(--primary-color);
     font-size: 20px;
     height: 15px;
     text-align: center;
@@ -234,7 +234,7 @@
   .price {
     font-family: 'Inter', sans-serif;
     font-weight: bold;
-    color: #FF002C;
+    color: var(--primary-color);
     font-size: 20px;
     height: 15px;
     text-align: center;

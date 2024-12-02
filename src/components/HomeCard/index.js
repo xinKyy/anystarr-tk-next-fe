@@ -240,6 +240,7 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
   };
 
   const getEarn = (price, rate) =>{
+    if (!price) return "--";
     if (price.includes("-")){
       const maxPrice = Number(price.split("-")[1]);
       return `$${(maxPrice * rate).toFixed(2)}`;
@@ -257,7 +258,7 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
         <div className={styles.top}>
           <img  src={ item.alyImage ? item.alyImage : updateImageUrl(item.image, 500, 500)}/>
           <div className={styles.right_wrap_inner}>
-            <div>
+            <div className={styles.line_h}>
               <div className={styles.title_1}>Earn per sale</div>
               <div className={styles.title_2}>{getEarn(item.price, Number(item.finishRate) / 100)}</div>
             </div>
@@ -280,11 +281,11 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
           <div className={styles.top}>
             <img  src={ item.alyImage ? item.alyImage : updateImageUrl(item.image, 500, 500)}/>
             <div className={styles.right_wrap_inner}>
-              <div>
+              <div className={styles.line_h}>
                 <div className={styles.title_1}>Earn per sale</div>
                 <div className={styles.title_2}>{getEarn(item.price, Number(item.finishRate) / 100)}</div>
               </div>
-              <div>
+              <div className={styles.line_h}>
                 <div className={styles.title_1}>Commission</div>
                 <div className={styles.title_2}>{item.finishRate}%</div>
               </div>
@@ -298,21 +299,23 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
         </div>
         <div className={styles.right_wrap_out}>
           <div>
-            <div className={styles.flex_row_m}>
+            <div className={`${styles.flex_row_m} ${styles.line_h}`}>
               <div className={styles.title_1}>Price</div>
               <div className={styles.title_2}>{item.price}</div>
             </div>
-            <div className={styles.flex_row_m}>
+            <div className={`${styles.flex_row_m} ${styles.line_h}`}>
               <div className={styles.title_1}>Vs.open collab</div>
               <div className={styles.title_3}>{item.openRate}%</div>
             </div>
           </div>
-           <div>
-             <div className={styles.flex_row_m}>
+          <div>
+            <div className={`${styles.flex_row_m} ${styles.line_h}`}>
                <div className={styles.title_1}>Total sales</div>
                <div className={styles.title_4}>{item.soldAmount}</div>
              </div>
-             <img onClick={collect} src={ collected ? "https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/liked.png" : "https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/like.png"} />
+             <div style={{marginBottom:"5px"}}>
+               <img onClick={collect} src={ collected ? "https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/liked.png" : "https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/like.png"} />
+             </div>
            </div>
         </div>
       </div>

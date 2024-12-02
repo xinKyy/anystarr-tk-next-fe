@@ -256,6 +256,7 @@
   align-items: flex-start;
   zoom: 0.8;
   margin-top: 38px;
+  padding-bottom: 80px;
   .left_wrapper{
     .top_img{
       width: 543px;
@@ -493,7 +494,8 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    overflow: hidden;
+    overflow: scroll;
+    padding-bottom: 80px;
     margin-top: 0;
     .left_wrapper{
       width: 100%;
