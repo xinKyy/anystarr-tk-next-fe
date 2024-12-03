@@ -91,7 +91,6 @@ const Home = () => {
       }, 300);
       return;
     }
-    setPageLoading(true);
     getProdList();
   }, [sort, page, category1Id, random, sortType, commissionType, earnPerType]);
 
