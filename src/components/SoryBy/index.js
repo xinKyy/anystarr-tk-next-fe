@@ -51,7 +51,7 @@ const SortBy = ({current, onChange}) => {
        } else {
          item.sort = -1;
        }
-       setCurrentSort(type);
+       setCurrentSort( item.sort === -1 ? 5 : type);
        setCurrentSorType(item.sort);
 
       return newData;
