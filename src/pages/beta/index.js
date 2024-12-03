@@ -55,7 +55,7 @@ const Home = () => {
       sort: sort,
       sortType: sortType,
       page: nowPage,
-      pageSize: 30,
+      pageSize: 40,
       searchName:searchNameRef.current,
       searchType: searchNameTypeRef.current,
       commissionType: commissionType,
@@ -117,7 +117,7 @@ const Home = () => {
 
   const handleScroll = () => {
     if (loading || !hasMore) return;
-    const nearBottom = window.innerHeight + document.documentElement.scrollTop >= scrollDiv.current?.offsetHeight - 100;
+    const nearBottom = window.innerHeight + document.documentElement.scrollTop >= scrollDiv.current?.offsetHeight - 200;
     if (nearBottom) {
       pageRef = page + 1;
       setPage(page + 1);
