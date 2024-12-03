@@ -99,6 +99,7 @@
 .flex_center{
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
 .flex_column{
@@ -288,42 +289,48 @@
       padding: 10px;
     }
     @media screen and (max-width: 850px){
-      zoom: 0.8;
+      zoom: 0.9;
       padding: 10px;
     }
     @media screen and (max-width: 650px){
-      zoom: 0.7;
+      zoom: 0.9;
       padding: 10px;
+      padding-top: 20px;
     }
     @media screen and (max-width: 390px){
-      zoom: 0.7;
+      zoom: 0.9;
       padding: 10px;
+      padding-top: 20px;
     }
     @media screen and (max-width: 350px){
-      zoom: 0.6;
+      zoom: 0.9;
       padding: 10px;
+      padding-top: 20px;
     }
     .top{
       display: flex;
       img{
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         border-radius: 10px;
         object-fit: cover;
       }
     }
 
     .title_main{
-      margin-top: 10px;
       font-weight: 500;
       font-size: 14px;
       color: #333333;
       height: 15px;
       display: -webkit-box;        /* 兼容 flex 布局 */
       -webkit-box-orient: vertical; /* 垂直方向排列子元素 */
+      word-break: break-word;
       overflow: hidden;            /* 隐藏溢出部分 */
       text-overflow: ellipsis;     /* 溢出时显示省略号 */
       -webkit-line-clamp: 1;       /* 限制显示的行数，这里是 2 行 */
+      @media screen and (max-width: 650px){
+        margin-top: 10px;
+      }
     }
 
     .total_wrap{
@@ -354,8 +361,19 @@
       display: flex;
       align-items: center;
       cursor: pointer;
-      margin-top: 10px;
       justify-content: center;
+    }
+
+    .ext_icon{
+      width: 12px;
+      height: 7px;
+      object-fit: contain;
+      display: none;
+      cursor: pointer;
+      @media screen and (max-width: 650px){
+        display: block;
+        margin-left: 10px;
+      }
     }
 
   }
@@ -370,6 +388,9 @@
 
     .line_h{
       height: 60px;
+      @media screen and (max-width: 650px){
+        height: 40px;
+      }
     }
 
     img{
@@ -388,11 +409,17 @@
       font-size: 20px;
       color: #FA6400;
       margin-bottom: 10px;
+      @media screen and (max-width: 650px){
+        font-size: 16px;
+      }
     }
     .title_3{
       font-weight: bold;
       font-size: 20px;
       color: #B2B2B2;
+      @media screen and (max-width: 650px){
+        font-size: 16px;
+      }
     }
 
     .title_4{
@@ -401,8 +428,20 @@
       color: #000;
       margin-top: 7px;
       margin-bottom: 12px;
+      @media screen and (max-width: 650px){
+        font-size: 16px;
+      }
     }
   }
+
+  .driver{
+    width: 2px;
+    height: 160px;
+    background: #F4F4F4;
+    border-radius: 3px;
+    margin: auto 20px;
+  }
+
   .right_wrap_out{
     flex-shrink: 0;
     width: 0;
@@ -430,11 +469,17 @@
       font-size: 20px;
       color: #FA6400;
       margin-bottom: 10px;
+      @media screen and (max-width: 650px){
+        font-size: 16px;
+      }
     }
     .title_3{
       font-weight: bold;
       font-size: 20px;
       color: #B2B2B2;
+      @media screen and (max-width: 650px){
+        font-size: 16px;
+      }
     }
 
     .title_4{
@@ -457,6 +502,7 @@
     visibility: hidden; /* 初始不可见 */
     transition: visibility 0.3s, transform 0.3s;
     //transform: translateY(-10px); /* 初始位置偏移 */
+
   }
 
   @media screen and (max-width: 650px){
@@ -467,6 +513,51 @@
   }
 
   .flex_row_m{
+  }
+
+  .hovered_m{
+    display: flex;
+    visibility: visible; /* 让元素可见 */
+    z-index: 664;
+    opacity: 1;
+    transform: translateY(0); /* 回到原位 */
+  }
+
+  @media screen and (max-width: 650px){
+    .card_wrap{
+      flex-direction: column;
+      .driver{
+        width: 100%;
+        height: 1px;
+        background: #F4F4F4;
+        border-radius: 3px;
+        margin: 15px auto 0px auto;
+      }
+      .right_wrap_out{
+        width: calc(100% - 20px);
+        margin-top: 10px;
+        padding-right: 0;
+        .line_h{
+          height: 30px;
+        }
+        img{
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          @media screen and (max-width: 650px){
+            top: 5px;
+            right: 5px;
+          }
+        }
+      }
+    }
+    .flex_row_m{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &:hover{
@@ -481,6 +572,13 @@
     @media screen and (max-width: 650px){
       .card_wrap{
         flex-direction: column;
+        .driver{
+          width: 100%;
+          height: 1px;
+          background: #F4F4F4;
+          border-radius: 3px;
+          margin: 15px auto 0px auto;
+        }
         .right_wrap_out{
           width: calc(100% - 20px);
           margin-top: 10px;
@@ -494,6 +592,10 @@
             position: absolute;
             top: 10px;
             right: 10px;
+            @media screen and (max-width: 650px){
+              top: 5px;
+              right: 5px;
+            }
           }
         }
       }
@@ -504,12 +606,14 @@
       }
     }
 
-    .hovered{
-      display: flex;
-      visibility: visible; /* 让元素可见 */
-      z-index: 999;
-      opacity: 1;
-      transform: translateY(0); /* 回到原位 */
+    @media screen and (min-width: 650px){
+      .hovered{
+        display: flex;
+        visibility: visible; /* 让元素可见 */
+        z-index: 664;
+        opacity: 1;
+        transform: translateY(0); /* 回到原位 */
+      }
     }
   }
 }

@@ -2284,12 +2284,13 @@ const MyLike = () =>{
         justifyContent:"space-between",
         alignItems:"center"
       }}>
-        <img style={{
-          width:"20px",
-          height:"20px",
-          cursor:"pointer",
-          marginRight:"10px"
-        }} onClick={()=>setGrid(!grid)} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/convert_icon.svg"} />
+        {/* <img style={{*/}
+        {/*  width:"20px",*/}
+        {/*  height:"20px",*/}
+        {/*  cursor:"pointer",*/}
+        {/*  marginRight:"10px"*/}
+        {/* }} onClick={()=>setGrid(!grid)} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/convert_icon.svg"} />*/}
+
         <div onClick={toAddTk} className={styles.add_to_showcase}>
           Add to Showcase
         </div>

@@ -1,11 +1,12 @@
 import React, {useCallback, useRef, useState, useMemo, useEffect} from 'react';
 import styles from './index.module.scss';
 import debounce from 'lodash.debounce';
-import {Input, Select} from "antd";
+import {Input, Popover, Select} from "antd";
 import {LoadingOutlined} from "@ant-design/icons";
+import SearchDropDown from "@/components/SearchDropDown";
 const { Option } = Select;
 const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
-
+  const [openHistory, setOpenHistory] = useState(false);
   const [searchName, setSearchName] = useState(searchNameRef);
   const [currenSearchType, setCurrentSearchType] = useState(searchNameTypeRef); // 1 pid 2 name 3 佣金率
   const currenSearchTypeRef = useRef(1); // 1 pid 2 name 3 佣金率
@@ -19,6 +20,10 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
   const selectBefore = (
     <Select style={{
       minWidth:"100px"
+    }} onClick={(e)=>{
+      if (!openHistory){
+        e.stopPropagation();
+      }
     }} onChange={handleChange} defaultValue={currenSearchType}>
       <Option value={1}>Product Link</Option>
       <Option value={2}>Product Name</Option>
@@ -68,26 +73,38 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
           Privacy Policy
         </a>
       </div>
-      <div className={styles.searchBar}>
-        <Input
-          className={styles.inputField}
-          value={searchName}
-          addonBefore={selectBefore}
-          onChange={(e)=>{
-            setSearchName(e.target.value);
-            searchNameRef = e.target.value;
-          }}
-          onPressEnter={(e)=>{
-            onChange(searchName, currenSearchType);
-          }}
-          placeholder={`Search ${map[currenSearchType]}`}
-        />
-        <div onClick={()=>onChange(searchName, currenSearchType)} className={styles.searchButton}>
-          {
-            loading ? <LoadingOutlined></LoadingOutlined> : searchIcon
-          }
+
+      <Popover overlayInnerStyle={{
+        padding:"0",
+        background:"#00000000",
+        zIndex:665,
+        width:"100%",
+        boxShadow:"none"
+      }} zIndex={665} arrow={false} onOpenChange={(v)=>{
+        setOpenHistory(v);
+      }}  placement={"bottom"}  trigger={"click"} content={
+        <SearchDropDown onBlur={()=>{}} hover={()=>{ }} show={()=>{}} noHover={()=>{ }} onSearch={(e, item)=>onChange(item.name, item.type)} />}>
+        <div className={styles.searchBar}>
+          <Input
+            className={styles.inputField}
+            value={searchName}
+            addonBefore={selectBefore}
+            onChange={(e)=>{
+              setSearchName(e.target.value);
+              searchNameRef = e.target.value;
+            }}
+            onPressEnter={(e)=>{
+              onChange(searchName, currenSearchType);
+            }}
+            placeholder={`Search ${map[currenSearchType]}`}
+          />
+          <div onClick={()=>onChange(searchName, currenSearchType)} className={styles.searchButton}>
+            {
+              loading ? <LoadingOutlined></LoadingOutlined> : searchIcon
+            }
+          </div>
         </div>
-      </div>
+      </Popover>
     </div>
   );
 };

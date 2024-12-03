@@ -2,19 +2,16 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  z-index: 99999;
-
-
+  z-index: 665;
   .dropDown {
     border: 1px solid #F0774A;
     border-radius: 15px;
-    position: absolute;
     background-color: rgb(255, 255, 255);
-    top: 65px;
+    top: 100px;
     width: 600px;
     padding: 10px;
     color: #999999;
-    z-index: 999;
+    z-index: 665;
 
     .dropDownItem {
       display: flex;
@@ -34,7 +31,7 @@
     }
 
     @media (max-width: 640px) {
-      width: 93%;
+      margin: 0 20px;
       border-radius: 30px;
     }
   }

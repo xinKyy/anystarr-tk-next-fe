@@ -28,7 +28,36 @@ const Product = ({productId}) =>{
 };
 
 const ProductDetails = ({productId}) =>{
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState({
+    "productId": "1729385956667528016",
+    "createTime": "2024-06-27T02:07:07.150+00:00",
+    "updateTime": "2024-12-01T23:48:37.914+00:00",
+    "isDelete": 0,
+    "title": "Spring Fall 2024 New Trendy No Trace Barrettes, Casual Matching Non-slip and Durable Plastic Hair Clips for Summer Vacation Beach for Women and Girls, Exquisite Versatile Back To School Accessories, Fall Outfits, Fall Freshness",
+    "image": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/6ab0abfb55f541a5becf8b6b81c9c08c~tplv-dx0w9n1ysr-resize-jpeg:200:200.jpeg?from=1826719393",
+    "price": "$1.35",
+    "soldNum": 46729,
+    "isApply": 1,
+    "totalRate": "15.000000",
+    "openRate": "10.0",
+    "finishRate": "14.0",
+    "lastTime": "2024-12-02T21:30:04.602+00:00",
+    "url": "https://affiliate-us.tiktok.com/api/v1/share/AIpx1GGuoBvM",
+    "daySoldNum": 0,
+    "daySoldAmount": "0.00",
+    "soldAmount": "63084.15",
+    "alyImage": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/1b3347afaf9546eda998ef7c81b69df9%7Etplv-aphluv4xwc-origin-jpeg.jpeg%3Ffrom%3D1345521523",
+    "images": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/6ab0abfb55f541a5becf8b6b81c9c08c~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/6d21ec56b4024e2587ff54b2ef493ba1~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/3e54bd787d9e43529ba45273fc65b951~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/37973c25e8364080bb98d7249d8e692b~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/f1781afc764f4e71aeb4ef84d184c9a7~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/46b08f9e8985498288ed3db800d67f65~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/f720a5ea2a674d88a28f476cea9153eb~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/f695e0b87c934a41b122534a743aaec8~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/5c30b736f6424a34bba1f761f15d54bc~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393",
+    "alyImages": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/6ab0abfb55f541a5becf8b6b81c9c08c%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/6d21ec56b4024e2587ff54b2ef493ba1%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/3e54bd787d9e43529ba45273fc65b951%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/37973c25e8364080bb98d7249d8e692b%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/f1781afc764f4e71aeb4ef84d184c9a7%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/46b08f9e8985498288ed3db800d67f65%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/f720a5ea2a674d88a28f476cea9153eb%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/f695e0b87c934a41b122534a743aaec8%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/5c30b736f6424a34bba1f761f15d54bc%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393",
+    "day7SoldNum": null,
+    "isUpEs": 1,
+    "sortValue": 0.435,
+    "manualFactors": 1,
+    "earnPer": "0.190000",
+    "collect": false,
+    "collectId": null,
+    "needApplyLink": true
+  });
   const [mobile, setMobile] = useState(false);
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -44,6 +73,7 @@ const ProductDetails = ({productId}) =>{
       console.log(resp, "resp");
       if (resp.data.product){
         setProduct(resp.data.product);
+        setCollect(resp.data.collect);
       }
     });
   };
@@ -64,7 +94,6 @@ const ProductDetails = ({productId}) =>{
           const url = resp.data.url;
           if (isMobile()){
             window.open(url, "_blank");
-            setShowCase(true);
           } else {
             setProductLink(url);
             setShowCase(true);
@@ -187,15 +216,15 @@ const ProductDetails = ({productId}) =>{
           <div className={styles.title_wrap}>{product.title}</div>
           <div className={styles.row_wrap}>
             <div className={styles.row_item}>
-              <div className={styles.light_high}>{getEarn(product.price, Number(product.finishRate) / 100)}</div>
+              <div className={styles.light_high}>${getEarn(product.price, Number(product.finishRate) / 100)}</div>
               <div>Earn per sale</div>
             </div>
             <div className={styles.row_item}>
-              <div className={styles.normal_wrap}>{product.price}</div>
+              <div className={styles.normal_wrap}>${product.price}</div>
               <div>Price</div>
             </div>
             <div className={styles.row_item}>
-              <div className={styles.normal_wrap}>{product.soldAmount}</div>
+              <div className={styles.normal_wrap}>${product.soldAmount}</div>
               <div>Total sales</div>
             </div>
           </div>

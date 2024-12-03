@@ -46,20 +46,19 @@ const SortBy = ({current, onChange}) => {
        // 如果是-1 则赋值为 1
        if (item.sort === -1) {
          item.sort = 1;
+       } else if (item.sort === 1){
+         item.sort = 2;
        } else {
-         item.sort = item.sort === 1 ? 2 : 1;
+         item.sort = null;
        }
        setCurrentSort(type);
        setCurrentSorType(item.sort);
-          console.log("设置了值");
 
       return newData;
     });
   };
 
   useEffect(() => {
-    console.log("发生了改变");
-
     onChange(currentSort, currentSortType);
   }, [currentSort, currentSortType]);
 

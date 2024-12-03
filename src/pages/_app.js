@@ -6,6 +6,11 @@ import 'antd/dist/reset.css';
 import '../config/i18n';
 import {ConfigProvider, message} from "antd";
 import {InstagramOutlined, LinkedinOutlined} from "@ant-design/icons";
+message.config({
+  top: 160,
+  duration: 2,
+  maxCount: 3,
+});
 function App({ Component, pageProps }) {
   return (
     <ConfigProvider

@@ -129,7 +129,7 @@ const SearchInput = () =>{
 
   return  <div>
     <img onClick={()=>setOpen(!open)}  className={"search_icon"} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/search.png"} />
-    <Modal rootClassName={"global_search"} width={877}  centered   footer={null} title={null} closable={false} open={open} onCancel={()=>setOpen(false)}>
+    <Modal rootClassName={"global_search"} width={789}  centered   footer={null} title={null} closable={false} open={open} onCancel={()=>setOpen(false)}>
       <div className={"search_warp"}>
         <div className={"left_wrap"}>
           <Select rootClassName={"left_wrap"} onChange={handleChange} defaultValue={currenSearchType}>

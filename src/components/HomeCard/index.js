@@ -9,7 +9,8 @@ import {APIAddFavoriteItems, APIDeleteFavoriteItems, APIGetLinkByPid} from "@/ap
 import {useSelector} from "react-redux";
 import ConnectTikTipsModal from "@/components/connectTikTipsModal";
 import useLogin from "@/hooks/useLogin";
-import {LoadingOutlined} from "@ant-design/icons"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
+import {LoadingOutlined} from "@ant-design/icons";
+import AddShowCaseStepModal from "@/components/ProductModal"; // 假设你将 SCSS 文件命名为 YourStyles.module.scss
 function updateImageUrl(url, w, h) {
   if (!url) return "";
   return url.replace(/(\d+):(\d+)/, `${w}:${h}`);
@@ -133,6 +134,10 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
   const [showConnectTips, setShowConnectTips] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [extOpen, setExtOpen] = useState(false);
+
+  const [showCase, setShowCase] = useState(false);
+  const [productLink, setProductLink] = useState("");
 
   const toDetails = () =>{
     localStorage.setItem("toProductDetails", "1");
@@ -149,12 +154,6 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
   const toAddTk = (e) =>{
     e.stopPropagation();
 
-    window.gtag && window.gtag('event', 'add_to_showcase', {
-      'event_category': 'add_to_showcase',
-      'event_label': 'add_to_showcase',
-      'value': item.productId,
-    });
-
     if (needLogin){
       setShowConnectTips(true);
       return;
@@ -168,8 +167,8 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
           if (isMobile()){
             window.open(url, "_blank");
           } else {
-            copy(url);
-            message.success("Copy link successfully, please open it with a browser on your mobile device");
+            setProductLink(url);
+            setShowCase(true);
           }
         }
       }).finally(()=>{
@@ -180,8 +179,8 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
       if (isMobile()){
         window.open(url, "_blank");
       } else {
-        copy(url);
-        message.success("Copy link successfully, please open it with a browser on your mobile device");
+        setProductLink(url);
+        setShowCase(true);
       }
     }
   };
@@ -253,6 +252,7 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
     return `$${(Number(price) * rate).toFixed(2)}`;
   };
   return <div className={styles.card_max_wrap}>
+    <AddShowCaseStepModal visible={showCase} link={productLink}  onCancel={()=>setShowCase(false)}  />
     <div onClick={toDetails} className={styles.card_wrap}>
       <div>
         <div className={styles.top}>
@@ -270,12 +270,24 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
         </div>
         <div className={styles.title_main}>{item.title}</div>
         <div className={styles.total_wrap}>Total sold <div className={styles.sold_num_wrap}>{item.soldNum}</div></div>
-        <div onClick={toAddTk} className={styles.add_tk}>{
-          loading && <LoadingOutlined></LoadingOutlined>
-        } Add to Showcase</div>
+        <div className={styles.flex_center}>
+          <div onClick={toAddTk} className={styles.add_tk}>{
+            loading && <LoadingOutlined></LoadingOutlined>
+          } Add to Showcase</div>
+          {
+            fromMyLike && <div onClick={(e)=>{
+              e.stopPropagation();
+              checkItem(item.productId);
+            }} className={`${styles.select_icon} ${checked ? styles.active : ""}`}></div>
+          }
+          <img onClick={(e)=>{
+            e.stopPropagation();
+            setExtOpen(true);
+          }} className={styles.ext_icon} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/ext_icon.png"} />
+        </div>
       </div>
     </div>
-    <div className={styles.hovered}>
+    <div className={`${styles.hovered} ${extOpen ? styles.hovered_m : ""}`}>
       <div onClick={toDetails} className={styles.card_wrap}>
         <div>
           <div className={styles.top}>
@@ -293,10 +305,23 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
           </div>
           <div className={styles.title_main}>{item.title}</div>
           <div className={styles.total_wrap}>Total sold <div className={styles.sold_num_wrap}>{item.soldNum}</div></div>
-          <div onClick={toAddTk} className={styles.add_tk}>{
-            loading && <LoadingOutlined></LoadingOutlined>
-          } Add to Showcase</div>
+          <div className={styles.flex_center}>
+            <div onClick={toAddTk} className={styles.add_tk}>{
+              loading && <LoadingOutlined></LoadingOutlined>
+            } Add to Showcase</div>
+            {
+              fromMyLike && <div onClick={(e)=>{
+                e.stopPropagation();
+                checkItem(item.productId);
+              }} className={`${styles.select_icon} ${checked ? styles.active : ""}`}></div>
+            }
+            <img onClick={(e)=>{
+              e.stopPropagation();
+              setExtOpen(false);
+            }} className={styles.ext_icon} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/ext_icon_r.png"} />
+          </div>
         </div>
+        <div className={styles.driver}></div>
         <div className={styles.right_wrap_out}>
           <div>
             <div className={`${styles.flex_row_m} ${styles.line_h}`}>
@@ -311,7 +336,7 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
           <div>
             <div className={`${styles.flex_row_m} ${styles.line_h}`}>
                <div className={styles.title_1}>Total sales</div>
-               <div className={styles.title_4}>{item.soldAmount}</div>
+               <div className={styles.title_4}>${item.soldAmount}</div>
              </div>
              <div style={{marginBottom:"5px"}}>
                <img onClick={collect} src={ collected ? "https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/liked.png" : "https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/like.png"} />
