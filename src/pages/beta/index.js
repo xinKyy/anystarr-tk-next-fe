@@ -88,7 +88,7 @@ const Home = () => {
       return;
     }
     getProdList();
-  }, [sort, page, category1Id, random, sortType]);
+  }, [sort, page, category1Id, random, sortType, commissionType, earnPerType]);
 
   const onSortChange = (sortby, sortType) => {
     console.log(sortby, sortType, "sortType sortType sortType");
@@ -206,7 +206,6 @@ const Home = () => {
     {
       value: 4,
       label: '25% - 30%',
-
     },
      {
       value: 5,
