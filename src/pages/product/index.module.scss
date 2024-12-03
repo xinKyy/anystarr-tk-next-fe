@@ -160,10 +160,16 @@
 }
 
 .back_wrap{
-  max-width: 1300px;
-  width: 100%;
-  margin: 20px 50px 20px auto;
-  padding-left: 30px;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 665;
+  top: -45px;
+
+  @media (max-width: 650px){
+    top: 80px;
+    left: 0;
+  }
 }
 
 
@@ -255,9 +261,11 @@
   justify-content: center;
   align-items: flex-start;
   zoom: 0.8;
-  margin-top: 38px;
+  margin-top: 68px;
+  position: relative;
   padding-bottom: 80px;
   .left_wrapper{
+    position: relative;
     .top_img{
       width: 543px;
       height: 543px;

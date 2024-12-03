@@ -19,16 +19,42 @@ function updateImageUrl(url, w, h) {
 
 const Product = ({productId}) =>{
   return <div>
-    <div className={styles.back_wrap}>
-      <BackBtn></BackBtn>
-    </div>
     <ProductDetails productId={productId}/>
   </div>;
 
 };
 
 const ProductDetails = ({productId}) =>{
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState({
+    "productId": "1729463881013760427",
+    "createTime": "2024-06-25T23:14:53.011+00:00",
+    "updateTime": "2024-12-02T11:47:29.084+00:00",
+    "isDelete": 0,
+    "title": "Wireless Headphones with Built-in Microphone, Electronic Audio Earbuds Wireless Noise Cancellation Headphones for Fall, Foldable Gaming Headset for Phones, Computers, MP3, Fun Summer Gift, Wireless Earbuds",
+    "image": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/58f5b6e1cb4a4369b9193ab911823d86~tplv-dx0w9n1ysr-resize-jpeg:200:200.jpeg?from=1826719393",
+    "price": "$16.91",
+    "soldNum": 79532,
+    "isApply": 1,
+    "totalRate": "20.000000",
+    "openRate": "12.0",
+    "finishRate": "18.0",
+    "lastTime": "2024-12-02T23:52:29.326+00:00",
+    "url": "https://affiliate-us.tiktok.com/api/v1/share/AInKTyDXDirv",
+    "daySoldNum": 0,
+    "daySoldAmount": "0.00",
+    "soldAmount": "1344886.12",
+    "alyImage": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/70fdfe7f03034169917cab6aa38fc914%7Etplv-dx0w9n1ysr-resize-jpeg%3A600%3A600.jpeg%3Ffrom%3D1826719393",
+    "images": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/58f5b6e1cb4a4369b9193ab911823d86~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/a8922a9dc298416e8d69454dff780513~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/0d9ed6f104fa416fa7f897d11be68858~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/ed69ca98a0474a228065364298ad38b4~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/1b604c4539c94c9780048f0c96e6c864~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/67a62ff3c8a143a69063715a18323c37~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/15161bce95814a8394836f9805857cbb~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/ff09286f07d34220aeeb731c7cc48ea1~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/bf54f1d27ce4423a9921435839f5c427~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393",
+    "alyImages": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/58f5b6e1cb4a4369b9193ab911823d86%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/a8922a9dc298416e8d69454dff780513%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/0d9ed6f104fa416fa7f897d11be68858%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/ed69ca98a0474a228065364298ad38b4%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/1b604c4539c94c9780048f0c96e6c864%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/67a62ff3c8a143a69063715a18323c37%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/15161bce95814a8394836f9805857cbb%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/ff09286f07d34220aeeb731c7cc48ea1%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/bf54f1d27ce4423a9921435839f5c427%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393",
+    "day7SoldNum": 11,
+    "isUpEs": 1,
+    "sortValue": 6.8454,
+    "manualFactors": 1,
+    "earnPer": "3.040000",
+    "collect": false,
+    "collectId": null,
+    "needApplyLink": true
+  });
   const [mobile, setMobile] = useState(false);
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -172,6 +198,9 @@ const ProductDetails = ({productId}) =>{
     {
       product ?     <div className={styles.product_detail_wrap}>
         <div className={styles.left_wrapper}>
+          <div className={styles.back_wrap}>
+            <BackBtn></BackBtn>
+          </div>
           <Image
             src={ product.alyImage ? product.alyImage : updateImageUrl(product?.image, 700, 700)}
             className={styles.top_img}></Image>
