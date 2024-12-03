@@ -49,7 +49,7 @@ const SortBy = ({current, onChange}) => {
        } else if (item.sort === 1){
          item.sort = 2;
        } else {
-         item.sort = null;
+         item.sort = -1;
        }
        setCurrentSort(type);
        setCurrentSorType(item.sort);
