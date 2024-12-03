@@ -117,7 +117,7 @@ const Home = () => {
 
   const handleScroll = () => {
     if (loading || !hasMore) return;
-    const nearBottom = window.innerHeight + document.documentElement.scrollTop >= scrollDiv.current?.offsetHeight - 200;
+    const nearBottom = window.innerHeight + document.documentElement.scrollTop >= scrollDiv.current?.offsetHeight - 50;
     if (nearBottom) {
       pageRef = page + 1;
       setPage(page + 1);
