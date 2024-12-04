@@ -167,6 +167,7 @@ const Home = () => {
 
   // 搜索狂选中
   const onSelected = (fieldName, index) => {
+    setPage(1);
     if (fieldName === 'commissionType') {
       setCommissionType(index);
     } else {
