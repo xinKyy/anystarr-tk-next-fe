@@ -6,7 +6,7 @@ import ConnectTikTipsModal from "@/components/connectTikTipsModal";
 import LoginModal from "@/components/LoginModal";
 import {useRouter} from "next/router";
 
-const hideHeader = ["/influencers-2", "/home", "/"];
+const hideHeader = ["/influencers-2", "/home"];
 
 function Layout({ children }) {
 
