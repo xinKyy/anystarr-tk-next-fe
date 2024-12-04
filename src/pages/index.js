@@ -103,10 +103,12 @@
 //
 // export default Home;
 
-import AnystarrHome from "@/pages/home";
+// import AnystarrHome from "@/pages/home";
 
-const Home = () =>{
-  return <AnystarrHome></AnystarrHome>;
+import Home from "@/pages/beta";
+
+const NewHome = () =>{
+  return <Home></Home>;
 };
 
-export default Home;
+export default NewHome;

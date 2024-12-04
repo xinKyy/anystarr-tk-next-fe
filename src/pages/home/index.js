@@ -54,7 +54,7 @@ const AnystarrHome = () =>{
           <a href={"/influencers-2/"}>
             <div className={styles.items}>Influencers</div>
           </a>
-          <a href={"/beta"}>
+          <a href={"/"}>
             <div className={styles.items}>TikTok</div>
           </a>
           <SizeBox w={20}></SizeBox>

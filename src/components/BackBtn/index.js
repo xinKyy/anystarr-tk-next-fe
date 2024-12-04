@@ -11,7 +11,7 @@ const BackBtn = () =>{
     setMobile(isMobile());
   }, []);
 
-  return <div onClick={() => router.push("/beta")} className={styles.back_btn}>
+  return <div onClick={() => router.push("/")} className={styles.back_btn}>
     <div/>
     {
       !mobile && "Back"

@@ -15,7 +15,7 @@ export const dealResult = async (resp, props) => {
        localStorage.removeItem("user");
        localStorage.removeItem("token");
        setTimeout(() => {
-          window.location.href = "/beta";
+          window.location.href = "/";
        }, 1000);
        return "unLogin";
     }

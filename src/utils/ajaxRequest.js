@@ -66,7 +66,7 @@ function ajaxRequest(methods, url, params, contentType) {
                 localStorage.removeItem("user");
                 localStorage.removeItem("token");
                 setTimeout(() => {
-                  window.location.href = "/beta";
+                  window.location.href = "/";
                 }, 1000);
               } else {
                 // message.error(err.statusText);

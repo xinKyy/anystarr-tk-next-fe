@@ -41,7 +41,7 @@ const Header = () => {
     const tokenStr = getQueryString("token");
     if (tokenStr){
       localStorage.setItem("token", tokenStr);
-      router.push("/beta");
+      router.push("/");
     }
     getUserInfo();
     // const user = {
@@ -74,7 +74,7 @@ const Header = () => {
         localStorage.removeItem("userInfo");
         localStorage.removeItem("token");
         dispatchAction.setUserInfo(null);
-        router.push("/beta");
+        router.push("/");
       }}>Logout</div>
     </div>
   );
@@ -82,7 +82,7 @@ const Header = () => {
 
   return  <div id='header_bar' className='header_container'>
 
-    <Link href='/beta'>
+    <Link href='/'>
       <div className='logo-container'>
         <img className='logo' alt='logo' src={"https://app.anystarr.com/static/media/logo.6627c626.png"} />
       </div>
@@ -123,7 +123,7 @@ const SearchInput = () =>{
   const router = useRouter();
 
   const onSearch = () =>{
-    router.push(`/beta?s=${searchName}&t=${currenSearchType}`);
+    router.push(`/?s=${searchName}&t=${currenSearchType}`);
     setSearchName("");
     setOpen(false);
   };
