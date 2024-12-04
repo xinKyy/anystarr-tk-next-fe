@@ -48,7 +48,7 @@ const AddShowCaseStepModal = ({ visible, link,  onCancel}) => {
 
           <div className={styles.step}>
             <div className={styles.left}>
-              <img src='/static/detail-04.png'/>
+              <img src='/static/post.png'/>
               <div style={{marginTop: '10px'}}>
                 <div>Post</div>
                 <div>Shoppable Video</div>

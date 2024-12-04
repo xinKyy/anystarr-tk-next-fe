@@ -132,6 +132,8 @@ const SearchInput = () =>{
     setMobile(isMobile());
   }, []);
 
+  if (mobile) return <div></div>;
+
   return  <div>
     <img onClick={()=>setOpen(!open)}  className={"search_icon"} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/search.png"} />
     <Modal rootClassName={"global_search"} width={ mobile ? null : 631}  centered={!mobile}   footer={null} title={null} closable={false} open={open} onCancel={()=>setOpen(false)}>
