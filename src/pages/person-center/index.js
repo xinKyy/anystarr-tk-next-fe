@@ -14,7 +14,7 @@ const PersonCenter = () =>{
   const [mobile, setMobile] = useState(false);
   const [showCreate, setShowCreate] = useState(false);
   const [recommendList, setRecommendList] = useState([]);
-
+  const [currentExt, setCurrentExt] = useState("");
   useEffect(()=>{
 
     setMobile(isMobile());
@@ -67,7 +67,7 @@ const PersonCenter = () =>{
      <div className={styles.grid_container}>
        {
          recommendList && recommendList.map(item=>{
-           return <HomeCard item={item}></HomeCard>;
+           return <HomeCard currentExt={currentExt} setCurrentExt={setCurrentExt}  item={item}></HomeCard>;
          })
        }
      </div>

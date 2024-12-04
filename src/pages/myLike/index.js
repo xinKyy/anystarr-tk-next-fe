@@ -2215,7 +2215,7 @@ const MyLike = () =>{
   const [hasMore, setHasMore] = useState(true); // 记录是否还有更多数据
   const [grid, setGrid] = useState(true);
   const [showCreate, setShowCreate] = useState(false);
-
+  const [currentExt, setCurrentExt] = useState("");
   const [checkPids, setCheckPids] = useState([]);
 
   const scrollDiv = useRef();
@@ -2302,7 +2302,7 @@ const MyLike = () =>{
           grid ? <div className={styles.grid_container}>
             {
               prodList.map(item => (
-                <HomeCard fromMyLike={true} key={item.productId} checkItem={checkItem} item={item} checked={checkPids?.includes(item.productId)} />
+                <HomeCard currentExt={currentExt} setCurrentExt={setCurrentExt} fromMyLike={true} key={item.productId} checkItem={checkItem} item={item} checked={checkPids?.includes(item.productId)} />
               ))
             }
           </div> : <div>

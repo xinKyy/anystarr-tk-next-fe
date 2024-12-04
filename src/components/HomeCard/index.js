@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './index.module.scss';
 import SizeBox from "@/components/SizeBox";
 import {useRouter} from "next/router";
@@ -15,9 +15,12 @@ function updateImageUrl(url, w, h) {
   if (!url) return "";
   return url.replace(/(\d+):(\d+)/, `${w}:${h}`);
 }
-const HomeCard = ({item, fromMyLike, checkItem, checked}) => {
 
-  return <CardComp item={item} fromMyLike={fromMyLike} checkItem={checkItem} checked={checked} ></CardComp>;
+let currentPid = "";
+
+const HomeCard = ({currentExt, setCurrentExt, item, fromMyLike, checkItem, checked}) => {
+
+  return <CardComp setCurrentExt={setCurrentExt} currentExt={currentExt} item={item} fromMyLike={fromMyLike} checkItem={checkItem} checked={checked} ></CardComp>;
 
   // return (
   //   <div onClick={toDetails} className={styles.flexContainer}>
@@ -127,14 +130,12 @@ const HomeCard = ({item, fromMyLike, checkItem, checked}) => {
 };
 
 
-const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
+const CardComp = ({currentExt, setCurrentExt, item, fromMyLike, checkItem, checked}) =>{
   const router = useRouter();
   const [collected, setCollected] = useState(item.collect);
   const { needLogin } = useLogin();
-  const userInfo = useSelector(state => state.home.userInfo.userInfo);
   const [showConnectTips, setShowConnectTips] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [extOpen, setExtOpen] = useState(false);
 
   const [showCase, setShowCase] = useState(false);
   const [productLink, setProductLink] = useState("");
@@ -284,12 +285,13 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
           }
           <img onClick={(e)=>{
             e.stopPropagation();
-            setExtOpen(true);
+            currentPid = item.productId;
+            setCurrentExt(item.productId);
           }} className={styles.ext_icon} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/ext_icon.png"} />
         </div>
       </div>
     </div>
-    <div className={`${styles.hovered} ${extOpen ? styles.hovered_m : ""}`}>
+    <div className={`${styles.hovered} ${currentExt === item.productId ? styles.hovered_m : ""}`}>
       <div onClick={toDetails} className={styles.card_wrap}>
         <div>
           <div className={styles.top}>
@@ -319,7 +321,7 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
             }
             <img onClick={(e)=>{
               e.stopPropagation();
-              setExtOpen(false);
+              setCurrentExt("");
             }} className={styles.ext_icon} src={"https://anystarr-image.oss-ap-southeast-1.aliyuncs.com/anystarr-next-asset/ext_icon_r.png"} />
           </div>
         </div>
