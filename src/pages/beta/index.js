@@ -15,6 +15,7 @@ import {LoadingOutlined} from "@ant-design/icons";
 import CategoryTreeSelect from "@/components/TreeSelect";
 import {getQueryString, isMobile} from "@/utils/action";
 import CustomEmpty from '@/components/CustomEmpty';
+import {useRouter} from "next/router";
 const SearchBar = dynamic(() => import("@/components/SearchBar"), {
   ssr: false, // 如果组件只在客户端渲染，可以设置为 false
   loading: () => <></>, // 可选：提供一个加载状态
@@ -41,6 +42,7 @@ const Home = () => {
   const searchNameRef = useRef();
   const searchNameTypeRef = useRef(2);
   const [currentExt, setCurrentExt] = useState("");
+  const router = useRouter();
 
   const getProdList = (searchNameRe, searchType, searchSort) => {
     // setProdList(prodListMock);
@@ -82,6 +84,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    router.push("/");
     const back = localStorage.getItem("toProductDetails");
     if (back === "1"){
       setTimeout(()=>{

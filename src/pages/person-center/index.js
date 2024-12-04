@@ -6,9 +6,11 @@ import {useEffect, useState} from "react";
 import HomeCard from "@/components/HomeCard";
 import {APIGetRecommendList} from "@/api";
 import {isMobile} from "@/utils/action";
-import CreateLinkModal from "@/components/CreateLinkModal";
+import dynamic from 'next/dynamic';
 import BackBtn from "@/components/BackBtn";
-
+const CreateLinkModal = dynamic(() => import('@/components/CreateLinkModal'), {
+  ssr: false,  // Disable SSR for this component
+});
 const PersonCenter = () =>{
   const userInfo = useSelector(state => state.home.userInfo.userInfo);
   const [mobile, setMobile] = useState(false);

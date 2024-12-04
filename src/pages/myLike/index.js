@@ -4,9 +4,11 @@ import {useEffect, useRef, useState} from "react";
 import {APIGetLikeProductList, APIGetProductList} from "@/api";
 import BackBtn from "@/components/BackBtn";
 import MyCollectionCard from "@/components/MyCollectionCard";
-import CreateLinkModal from "@/components/CreateLinkModal";
+import dynamic from 'next/dynamic';
+const CreateLinkModal = dynamic(() => import('@/components/CreateLinkModal'), {
+  ssr: false,  // Disable SSR for this component
+});
 import {LoadingOutlined} from "@ant-design/icons";
-let data = [];
 const MyLike = () =>{
   const [prodList, setProdList] = useState([]);
   const [page, setPage] = useState(1);
