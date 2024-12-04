@@ -69,11 +69,9 @@ const Home = () => {
         if ( nowPage === 1){
           data = resp.data.list.records;
         } else {
-          data = prodList.concat(resp.data.list.records);
+          data = prodList.slice().concat(resp.data.list.records);
         }
-        setProdList(data.filter(item => {
-          return !(!item.lyImage && !item.alyImages && !item.images && !item.image);
-        }));
+        setProdList(data.slice());
       }
     }).finally(() => {
       setLoading(false);
