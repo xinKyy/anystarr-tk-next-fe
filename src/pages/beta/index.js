@@ -79,6 +79,7 @@ const Home = () => {
       setLoading(false);
       setPageLoading(false);
     }).catch(e=>{
+      setPageLoading(false);
       setLoading(false);
     });
   };
@@ -129,7 +130,7 @@ const Home = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [loading]);
+  }, [loading, pageLoading]);
 
   const onSearch = (v, searchType) =>{
     setPage(1);
