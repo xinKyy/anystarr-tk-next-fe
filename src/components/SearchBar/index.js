@@ -24,7 +24,7 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
       if (!openHistory){
         e.stopPropagation();
       }
-    }} onChange={handleChange} defaultValue={currenSearchType}>
+    }} value={currenSearchType} onChange={handleChange} defaultValue={currenSearchType}>
       <Option value={1}>Product Link</Option>
       <Option value={2}>Product Name</Option>
     </Select>
@@ -83,7 +83,11 @@ const SearchBar = ({onChange, loading, searchNameRef, searchNameTypeRef}) => {
       }} zIndex={665} arrow={false} onOpenChange={(v)=>{
         setOpenHistory(v);
       }}  placement={"bottom"}  trigger={"click"} content={
-        <SearchDropDown onBlur={()=>{}} hover={()=>{ }} show={()=>{}} noHover={()=>{ }} onSearch={(e, item)=>onChange(item.name, item.type)} />}>
+        <SearchDropDown onBlur={()=>{}} hover={()=>{ }} show={()=>{}} noHover={()=>{ }} onSearch={(e, item)=>{
+          setSearchName(item.name);
+          setCurrentSearchType(item.type);
+          onChange(item.name, item.type);
+        }} />}>
         <div className={styles.searchBar}>
           <Input
             className={styles.inputField}

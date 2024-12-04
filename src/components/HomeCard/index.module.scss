@@ -356,12 +356,15 @@
       height: 35px;
       background: #241E1F;
       border-radius: 24px;
-      font-size: 16px;
+      font-size: 14px;
       color: #FFFFFF;
       display: flex;
       align-items: center;
       cursor: pointer;
       justify-content: center;
+      @media screen and (max-width: 650px){
+        font-size: 12px;
+      }
     }
 
     .ext_icon{
@@ -449,9 +452,11 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    align-items: center;
     background: #ffffff;
     .line_h{
       height: 60px;
+      text-align: center;
     }
     img{
       width: 28px;
@@ -537,20 +542,21 @@
         width: calc(100% - 20px);
         margin-top: 10px;
         padding-right: 0;
+        align-items: flex-start;
         .line_h{
           height: 30px;
+          text-align: unset;
         }
         img{
           width: 20px;
           height: 20px;
           position: absolute;
-          top: 10px;
-          right: 10px;
-          @media screen and (max-width: 650px){
-            top: 5px;
-            right: 5px;
-          }
+          top: 5px;
+          right: 5px;
         }
+      }
+      .right_wrap_out > div{
+        width: 100%;
       }
     }
     .flex_row_m{
@@ -566,6 +572,9 @@
       border: 1px solid #F0774A;
       .right_wrap_out{
         width: 104px;
+      }
+      .add_tk{
+        font-size: 12px;
       }
     }
 
