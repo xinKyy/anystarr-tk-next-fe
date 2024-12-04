@@ -25,36 +25,7 @@ const Product = ({productId}) =>{
 };
 
 const ProductDetails = ({productId}) =>{
-  const [product, setProduct] = useState({
-    "productId": "1729412714656469506",
-    "createTime": "2024-07-03T07:19:40.555+00:00",
-    "updateTime": "2024-12-02T05:44:37.952+00:00",
-    "isDelete": 0,
-    "title": "Men's Solid Pocket Long Sleeve Fuzzy Hoodie, Loose Casual Hooded Sweatshirt for Fall, Fall Outfits 2024, Fall Drippy Outfits, 2000s Clothes, Going Out Outfit, Cozy Fall Outfits, Essential Hoodies, Hoodies for Men, Fall outfits, Fallfreshness, 90s Clothes",
-    "image": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/e68f2a0d07094d6a91b98676614db4c3~tplv-dx0w9n1ysr-resize-jpeg:200:200.jpeg?from=1826719393",
-    "price": "$41.79 - 75.19",
-    "soldNum": 17932,
-    "isApply": 1,
-    "totalRate": "20.000000",
-    "openRate": "10.0",
-    "finishRate": "18.0",
-    "lastTime": "2024-12-03T22:34:41.384+00:00",
-    "url": "https://affiliate-us.tiktok.com/api/v1/share/AIpp4XQfhEbz",
-    "daySoldNum": 0,
-    "daySoldAmount": "0.00",
-    "soldAmount": "13483.07",
-    "alyImage": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/826b3fd68e8146e490ede42ec39f02c3%7Etplv-dx0w9n1ysr-resize-jpeg%3A600%3A600.jpeg%3Ffrom%3D1826719393",
-    "images": "https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/174146c5648b4f32b0fdcaa1da339629~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/86e356d172cc4452853979bd53076b39~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/c113463467de40359bdf6cbc0e39c2bc~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/3e50ef5c9fcc4894bbaf8c5ff2e32ea3~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/134f71fe91c14257b4a7d336284ef61a~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/36834e955d58421fbaf81961ee443830~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/7fee3c7d0d63486c9c3537f179ce3fad~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/201bc8fc981147d18575aa86b2954b5a~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393|https://p16-oec-va.ibyteimg.com/tos-maliva-i-o3syd03w52-us/b3d18ed0cf01427d82bd7d689a6710e7~tplv-dx0w9n1ysr-resize-jpeg:800:800.jpeg?from=1826719393",
-    "alyImages": "https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/174146c5648b4f32b0fdcaa1da339629%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/86e356d172cc4452853979bd53076b39%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/c113463467de40359bdf6cbc0e39c2bc%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/3e50ef5c9fcc4894bbaf8c5ff2e32ea3%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/134f71fe91c14257b4a7d336284ef61a%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/36834e955d58421fbaf81961ee443830%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/7fee3c7d0d63486c9c3537f179ce3fad%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/201bc8fc981147d18575aa86b2954b5a%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393|https://anystarr-web-image.oss-ap-southeast-1.aliyuncs.com/b3d18ed0cf01427d82bd7d689a6710e7%7Etplv-dx0w9n1ysr-resize-jpeg%3A800%3A800.jpeg%3Ffrom%3D1826719393",
-    "day7SoldNum": 1,
-    "isUpEs": 0,
-    "sortValue": 0.1176,
-    "manualFactors": 1,
-    "earnPer": "13.530000",
-    "collect": false,
-    "collectId": null,
-    "needApplyLink": true
-  });
+  const [product, setProduct] = useState();
   const [mobile, setMobile] = useState(false);
   const [collect, setCollect] = useState(false);
   const [loading, setLoading] = useState(false);
