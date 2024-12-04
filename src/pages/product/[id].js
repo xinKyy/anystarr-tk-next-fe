@@ -66,6 +66,8 @@ const ProductDetails = ({productId}) =>{
             setProductLink(url);
             setShowCase(true);
           }
+        } else {
+          message.info("Sorry, The product has been taken down!");
         }
       }).finally(()=>{
         setAddTkLoading(false);

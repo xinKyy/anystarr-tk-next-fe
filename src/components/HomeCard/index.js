@@ -170,6 +170,8 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
             setProductLink(url);
             setShowCase(true);
           }
+        } else {
+          message.info("Sorry, The product has been taken down!");
         }
       }).finally(()=>{
         setLoading(false);
@@ -333,7 +335,7 @@ const CardComp = ({item, fromMyLike, checkItem, checked}) =>{
               <div className={styles.title_3}>{item.openRate}%</div>
             </div>
           </div>
-          <div>
+          <div className={styles.center_div_cloumn}>
             <div className={`${styles.flex_row_m} ${styles.line_h}`}>
                <div className={styles.title_1}>Total sales</div>
                <div className={styles.title_4}>${item.soldAmount}</div>
