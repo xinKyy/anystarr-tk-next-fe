@@ -189,7 +189,7 @@ const ProductDetails = ({productId}) =>{
           <div className={styles.title_wrap}>{product.title}</div>
           <div className={styles.row_wrap}>
             <div className={styles.row_item}>
-              <div className={styles.light_high}>{getEarn(product.price, Number(product.finishRate) / 100)}</div>
+              <div className={styles.light_high}>${product?.earnPer ?? "--"}</div>
               <div>Earn per sale</div>
             </div>
             <div className={styles.row_item}>

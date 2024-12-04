@@ -263,7 +263,7 @@ const CardComp = ({currentExt, setCurrentExt, item, fromMyLike, checkItem, check
           <div className={styles.right_wrap_inner}>
             <div className={styles.line_h}>
               <div className={styles.title_1}>Earn per sale</div>
-              <div className={styles.title_2}>{getEarn(item.price, Number(item.finishRate) / 100)}</div>
+              <div className={styles.title_2}>${item?.earnPer ?? "--"}</div>
             </div>
             <div>
               <div className={styles.title_1}>Commission</div>
@@ -299,7 +299,7 @@ const CardComp = ({currentExt, setCurrentExt, item, fromMyLike, checkItem, check
             <div className={styles.right_wrap_inner}>
               <div className={styles.line_h}>
                 <div className={styles.title_1}>Earn per sale</div>
-                <div className={styles.title_2}>{getEarn(item.price, Number(item.finishRate) / 100)}</div>
+                <div className={styles.title_2}>${item?.earnPer ?? "--"}</div>
               </div>
               <div className={styles.line_h}>
                 <div className={styles.title_1}>Commission</div>
