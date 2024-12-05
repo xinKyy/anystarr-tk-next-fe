@@ -31,8 +31,6 @@ const Home = () => {
   const [page, setPage] = useState(pageRef);
   const [commissionType, setCommissionType] = useState(0);
   const [earnPerType, setEarnPerType] = useState(0);
-
-
   const [visibleDropDown, setVisibleDropDown] = useState(false);
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(false);
@@ -308,7 +306,7 @@ const Home = () => {
             }
           </div>
             {
-              prodList.length === 0 && <CustomEmpty result={searchNameRef.current}/>
+              prodList.length === 0 && !pageLoading && <CustomEmpty result={searchNameRef.current}/>
             }
         </Spin>
         <SizeBox h={200}></SizeBox>

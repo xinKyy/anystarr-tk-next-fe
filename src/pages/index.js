@@ -107,10 +107,9 @@
 
 // import Home from "@/pages/beta";
 import dynamic from "next/dynamic";
-import {LoadingOutlined} from "@ant-design/icons";
 const Home = dynamic(() => import("@/pages/beta"), {
   ssr: false, // 如果组件只在客户端渲染，可以设置为 false
-  loading: () => <LoadingOutlined></LoadingOutlined>, // 可选：提供一个加载状态
+  loading: () => <div></div>, // 可选：提供一个加载状态
 });
 
 const NewHome = () =>{
